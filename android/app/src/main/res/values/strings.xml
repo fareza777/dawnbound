@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Dawnbound</string>
-    <string name="title_activity_main">Dawnbound</string>
+    <string name="app_name">Dawnbound: Roguelike RPG</string>
+    <string name="title_activity_main">Dawnbound: Roguelike RPG</string>
     <string name="package_name">com.fajar.dawnbound</string>
     <string name="custom_url_scheme">com.fajar.dawnbound</string>
-    <!-- AdMob App ID. This is Google's TEST app id: replace with your own (ca-app-pub-XXXX~YYYY) before release. -->
-    <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
+    <!-- AdMob Android app ID for Dawnbound: Roguelike RPG. -->
+    <string name="admob_app_id">ca-app-pub-6279186647593327~3638656746</string>
     <!-- Google Play Games project id (Play Console > Play Games Services > Configuration). "0" = disabled. -->
     <string name="game_services_project_id" translatable="false">0</string>
 </resources>

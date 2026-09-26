@@ -2,7 +2,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.fajar.dawnbound',
-  appName: 'Dawnbound',
+  appName: 'Dawnbound: Roguelike RPG',
   webDir: 'dist',
   android: { backgroundColor: '#0b0a14', allowMixedContent: false },
   plugins: {

@@ -1,21 +1,17 @@
 /**
  * Ads and in-app purchase configuration.
  *
- * BEFORE RELEASE:
- *  1. Create the app in AdMob, then paste your ad unit ids below and set `useTestAds` to false.
- *  2. Put your AdMob *App ID* in android/app/src/main/res/values/strings.xml (`admob_app_id`).
- *  3. In Google Play Console create a one-time in-app product with id `remove_ads`, priced at US$4.99.
- *
- * Until then the game shows Google's official test ads, which are safe to click during development.
+ * Production IDs are registered in the Dawnbound AdMob account. The Play Console
+ * one-time `remove_ads` product still needs to be created before billing is live.
  */
 export const MONETIZATION = {
-  /** Google's test ads (always safe). Must be false for the Play Store release with real ids below. */
-  useTestAds: true,
+  /** Keep false in Play builds; switch on only for local development/testing. */
+  useTestAds: false,
   /** Real ad unit ids from your AdMob account (format ca-app-pub-XXXXXXXXXXXXXXXX/NNNNNNNNNN). */
   production: {
-    banner: '',
-    interstitial: '',
-    rewarded: '',
+    banner: 'ca-app-pub-6279186647593327/1259905416',
+    interstitial: 'ca-app-pub-6279186647593327/7604898479',
+    rewarded: 'ca-app-pub-6279186647593327/3665653467',
   },
   /** Google's documented test ad unit ids. */
   test: {
