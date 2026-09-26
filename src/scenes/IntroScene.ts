@@ -8,12 +8,19 @@ import { INTRO, type CinematicShot } from '@/data/story';
 import { addEmberParticles } from './SplashScene';
 import { vx, vy } from '@/core/viewport';
 
+/** Typewriter speed and how long a finished line stays up before the cinematic moves on by itself. */
+const TYPE_MS = 28;
+const MIN_HOLD_MS = 3500;
+const READ_MS_PER_CHAR = 45;
+
 /** Story cinematic: Ken Burns pans over illustrated shots with typewriter narration and optional voice-over. */
 export class IntroScene extends BaseScene {
   private shot = 0;
   private img?: Phaser.GameObjects.Image;
   private textObj?: Phaser.GameObjects.BitmapText;
   private typing?: Phaser.Time.TimerEvent;
+  /** Plays the cinematic on its own: moves to the next shot once the line is typed, read and voiced. */
+  private auto?: Phaser.Time.TimerEvent;
   private fullText = '';
   private voice?: Phaser.Sound.BaseSound;
   private shots: CinematicShot[] = INTRO;
@@ -82,7 +89,7 @@ export class IntroScene extends BaseScene {
     let n = 0;
     this.typing?.remove();
     this.typing = this.time.addEvent({
-      delay: 28, repeat: this.fullText.length - 1,
+      delay: TYPE_MS, repeat: this.fullText.length - 1,
       callback: () => {
         n++;
         txt.setText(this.fullText.slice(0, n));
@@ -101,8 +108,25 @@ export class IntroScene extends BaseScene {
         v.once('complete', () => services.audio?.setDuck(1));
       }
     });
+    // Auto-advance: typing time + a reading pause that grows with the text (tapping still skips ahead).
+    this.auto?.remove();
+    const typingMs = this.fullText.length * TYPE_MS;
+    const readMs = Math.max(MIN_HOLD_MS, this.fullText.length * READ_MS_PER_CHAR);
+    this.auto = this.time.delayedCall(typingMs + readMs, () => this.autoAdvance(i));
     const counter = label(this, W / 2, H - Math.round(H * 0.08) - 14, `${i + 1} / ${this.shots.length}`, FONT.small, COLORS.textDim, 0.5, 0.5).setDepth(20);
     this.time.delayedCall(700, () => counter.destroy());
+  }
+
+  /** Timer-driven step: waits for a voice line to end, then shows the next shot (or leaves after the last). */
+  private autoAdvance(i: number): void {
+    if (this.done || this.shot !== i) return;
+    if (this.voice?.isPlaying) {
+      this.auto = this.time.delayedCall(300, () => this.autoAdvance(i));
+      return;
+    }
+    this.typing?.remove();
+    this.textObj?.setText(this.fullText);
+    this.advance();
   }
 
   private advance(): void {

@@ -1,0 +1,107 @@
+{
+  "verifiedAt": "2026-09-26T08:08:46.025Z",
+  "checks": [
+    {
+      "file": "App-Icon.png",
+      "width": 512,
+      "height": 512,
+      "colorType": 2,
+      "bytes": 452356,
+      "sha256": "1c874da39c6a52898d8ea4a970697dc393bd37f84554f2383099a2e80a72127f"
+    },
+    {
+      "file": "Feature-Graphic.png",
+      "width": 1024,
+      "height": 500,
+      "colorType": 2,
+      "bytes": 929857,
+      "sha256": "26f23b8994eb4d498a3d5411e9196014d3161c3c1e064d1cf7df01f739a04373"
+    },
+    {
+      "file": "Store-1.png",
+      "width": 1080,
+      "height": 1920,
+      "colorType": 2,
+      "bytes": 1477688,
+      "sha256": "b3d6a4c44508ea97d9c9d6cc184cbadd5bf64c26b7ec614a9641926945b63d4d"
+    },
+    {
+      "file": "Store-2.png",
+      "width": 1080,
+      "height": 1920,
+      "colorType": 2,
+      "bytes": 1542000,
+      "sha256": "bbb8c86462db663203717097bc732d20de5cc300767589b34b5f91a5d0a0da17"
+    },
+    {
+      "file": "Store-3.png",
+      "width": 1080,
+      "height": 1920,
+      "colorType": 2,
+      "bytes": 1136974,
+      "sha256": "4d88a6adb7a79148c500e7474986ec57dd3781d48ca4e2ff346e08ef80ee54db"
+    },
+    {
+      "file": "Store-4.png",
+      "width": 1080,
+      "height": 1920,
+      "colorType": 2,
+      "bytes": 1525101,
+      "sha256": "0fd7a9a4175ffb23d7cdc8333cd08752b3da37d31aca60758bdeae1385188f99"
+    },
+    {
+      "file": "Store-5.png",
+      "width": 1080,
+      "height": 1920,
+      "colorType": 2,
+      "bytes": 1131055,
+      "sha256": "012875c77f0bb24778a0b5accdc8067956f16eb0fd29b396061687577998d4af"
+    },
+    {
+      "file": "Store-6.png",
+      "width": 1080,
+      "height": 1920,
+      "colorType": 2,
+      "bytes": 1345330,
+      "sha256": "f9cd65271ee94e6632b94621e8dcb1b1546a3f0c2340d25d325ad12b3dcb8088"
+    },
+    {
+      "file": "Store-7.png",
+      "width": 1080,
+      "height": 1920,
+      "colorType": 2,
+      "bytes": 1163931,
+      "sha256": "592a00c321f3b365794dcfa6fe16161ac4f3c162e8fb754b7902dd2f97a77f01"
+    },
+    {
+      "file": "Store-8.png",
+      "width": 1080,
+      "height": 1920,
+      "colorType": 2,
+      "bytes": 1429212,
+      "sha256": "7b15ec15836d40f6d92a87c4ef6470e3e5bbad4d20f7a11a8db062e7f6b13ed1"
+    },
+    {
+      "file": "Dawnbound-Landscape.mp4",
+      "width": 1920,
+      "height": 1080,
+      "fps": "30/1",
+      "codec": "h264",
+      "audio": "aac",
+      "duration": 28.053333,
+      "bytes": 20054986,
+      "fullDecode": "passed"
+    },
+    {
+      "file": "Dawnbound-Vertical.mp4",
+      "width": 1080,
+      "height": 1920,
+      "fps": "30/1",
+      "codec": "h264",
+      "audio": "aac",
+      "duration": 28.053333,
+      "bytes": 20462609,
+      "fullDecode": "passed"
+    }
+  ]
+}

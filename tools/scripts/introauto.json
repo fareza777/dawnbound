@@ -1,0 +1,15 @@
+[
+ {
+  "goto": "http://localhost:4174"
+ },
+ {
+  "until": "window.__game && window.__services && window.__services.save && window.__grant && window.__game.scene.getScenes(true).length > 0",
+  "timeout": 20000
+ },
+ {
+  "wait": 800
+ },
+ {
+  "eval": "(async()=>{const g=__game; g.scene.getScenes(true).filter(s=>s.scene.key!=='Notify').forEach(s=>s.scene.stop()); g.scene.start('Intro',{next:'Menu'}); const out=[]; for(let i=0;i<14;i++){ await new Promise(r=>setTimeout(r,5000)); const s=g.scene.getScene('Intro'); out.push(g.scene.isActive('Intro')? 'shot'+(s.shot+1)+'/'+s.shots.length : g.scene.getScenes(true).map(x=>x.scene.key).join('+')); } return out.join(' ');})()"
+ }
+]

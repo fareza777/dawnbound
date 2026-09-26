@@ -1,0 +1,11 @@
+import {chromium} from 'playwright-core';
+import {pathToFileURL} from 'node:url';
+import path from 'node:path';
+const browser=await chromium.launch({channel:'msedge',headless:true});
+const page=await browser.newPage({viewport:{width:1480,height:1200}});
+await page.goto(pathToFileURL(path.resolve('store/launch-en/gallery.html')).href);
+await page.locator('.shots img').last().waitFor();
+await page.evaluate(()=>Promise.all(Array.from(document.images).map(i=>i.decode())));
+await page.locator('.shots').screenshot({path:'store/launch-en/exports/Store-Overview.png'});
+await page.screenshot({path:'store/launch-en/source/gallery-review.png',fullPage:true});
+await browser.close();

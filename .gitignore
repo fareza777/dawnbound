@@ -25,3 +25,5 @@ android/app/release/
 .env
 __pycache__/
 *.pyc
+# Launch pack archive duplicates the exports (kept locally)
+store/launch-en/*.zip
