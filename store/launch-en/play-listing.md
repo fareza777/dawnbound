@@ -8,9 +8,9 @@ Privacy policy: https://fareza777.github.io/dawnbound/privacy-policy.html
 
 ## Store copy
 
-**App name (25/30):** Dawnbound: Roguelike RPG
+**App name (24/30):** Dawnbound: Roguelike RPG
 
-**Short description (68/80):** Master one-thumb combat, shape your build, and bring the dawn back.
+**Short description (67/80):** Master one-thumb combat, shape your build, and bring the dawn back.
 
 **Full description:**
 
