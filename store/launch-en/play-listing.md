@@ -1,9 +1,9 @@
 # Dawnbound: Roguelike RPG — Google Play listing
 
-Default language: English (United States)  
-App category: Game › Role Playing  
-App type: Game · Free with optional ads and in-app purchase  
-Orientation: Portrait  
+Default language: English (United States)
+App category: Game › Role Playing
+App type: Game · Free with optional ads and in-app purchase
+Orientation: Portrait
 Privacy policy: https://fareza777.github.io/dawnbound/privacy-policy.html
 
 ## Store copy
