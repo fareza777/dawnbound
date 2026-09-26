@@ -1,0 +1,42 @@
+[
+ {
+  "goto": "http://localhost:4174"
+ },
+ {
+  "until": "window.__game && window.__services && window.__services.save && window.__grant && window.__game.scene.getScenes(true).length > 0",
+  "timeout": 20000
+ },
+ {
+  "wait": 800
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); __run.start({heroId:'rowan'}); g.scene.start('RunMap'); 'map'"
+ },
+ {
+  "wait": 2000
+ },
+ {
+  "wait": 600
+ },
+ {
+  "shot": "t1_hint_move"
+ },
+ {
+  "eval": "__autoplay()"
+ },
+ {
+  "wait": 12000
+ },
+ {
+  "shot": "t2_hint"
+ },
+ {
+  "wait": 9000
+ },
+ {
+  "shot": "t3_hint"
+ },
+ {
+  "eval": "JSON.stringify(Object.keys(__services.save.data.flags).filter(k=>k.startsWith('hint_')))"
+ }
+]

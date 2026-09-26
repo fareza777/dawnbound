@@ -1,0 +1,51 @@
+[
+ {
+  "goto": "http://localhost:4174"
+ },
+ {
+  "until": "window.__game && window.__services && window.__services.save && window.__grant && window.__game.scene.getScenes(true).length > 0",
+  "timeout": 20000
+ },
+ {
+  "wait": 800
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; s.flags.rift_open=1; __grant(24); const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); g.scene.start('Hub'); 'hub'"
+ },
+ {
+  "wait": 2500
+ },
+ {
+  "eval": "const d=__game.scene.getScene('Dialogue'); if(__game.scene.isActive('Dialogue')){d.scene.stop(); __game.scene.getScene('Hub').scene.resume();} 'ok'"
+ },
+ {
+  "wait": 800
+ },
+ {
+  "eval": "const s=__services.save.data; const Q=__questIds; \nconst mains=Q.filter(q=>q.type==='main').map(q=>q.id), sides=Q.filter(q=>q.type==='side').map(q=>q.id);\ns.quests[mains[0]]={status:'claimed',progress:{}}; s.quests[mains[1]]={status:'claimed',progress:{}}; s.quests[mains[2]]={status:'active',progress:{o0:3}};\ns.quests[sides[0]]={status:'active',progress:{o0:4}}; s.quests[sides[1]]={status:'complete',progress:{o0:99}}; s.quests[sides[2]]={status:'active',progress:{}}; s.quests[sides[3]]={status:'claimed',progress:{}};\ns.trackedQuest=sides[0]; __game.scene.getScene('Hub').openMenu('QuestLog'); 'q'"
+ },
+ {
+  "wait": 1200
+ },
+ {
+  "shot": "q_active"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "__game.scene.getScene('QuestLog').scene.restart({from:'Hub',tab:'done'}); 'd'"
+ },
+ {
+  "wait": 900
+ },
+ {
+  "shot": "q_done"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "(window.__errs||[]).join('|')"
+ }
+]

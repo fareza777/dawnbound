@@ -1,0 +1,121 @@
+[
+ {
+  "goto": "http://localhost:4174"
+ },
+ {
+  "until": "window.__game && window.__services && window.__services.save && ['Menu','Onboarding'].some(k=>__game.scene.isActive(k))",
+  "timeout": 30000
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); __services.notify=()=>{}; const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; s.profile.tutorialDone=true; s.stats.runs=5; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop());g.scene.start('Menu'); 'm'"
+ },
+ {
+  "wait": 2200
+ },
+ {
+  "shot": "ad_menu"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "__game.scene.getScene('Menu').scene.launch('RemoveAds',{from:'Menu'}); 'ra'"
+ },
+ {
+  "wait": 900
+ },
+ {
+  "shot": "ad_removeads"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); __services.notify=()=>{}; const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; s.profile.tutorialDone=true; s.stats.runs=5; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop());__run.start({heroId:'rowan'}); g.scene.start('RunMap'); 'map'"
+ },
+ {
+  "until": "__game.scene.isActive('RunMap') && __game.scene.getScene('RunMap').cameras.main",
+  "timeout": 10000
+ },
+ {
+  "wait": 1200
+ },
+ {
+  "shot": "ad_map"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "const m=__game.scene.getScene('RunMap'); m.select(__run.choices(__run.run).find(n=>n.kind==='combat')||__run.choices(__run.run)[0]); 's'"
+ },
+ {
+  "until": "__game.scene.isActive('Room') && __game.scene.getScene('Room').player",
+  "timeout": 15000
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "eval": "const r=__game.scene.getScene('Room'); __run.run.rerolls=0; r.openBoonPick('level'); 'bp'"
+ },
+ {
+  "wait": 1200
+ },
+ {
+  "shot": "ad_reroll"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "__game.scene.stop('BoonPick'); __game.scene.getScene('Room').scene.resume(); const r=__game.scene.getScene('Room'); r.player.hp=1; r.damagePlayer(999,'physical'); 'die'"
+ },
+ {
+  "until": "__game.scene.isActive('Revive')",
+  "timeout": 8000
+ },
+ {
+  "wait": 600
+ },
+ {
+  "shot": "ad_revive"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "__game.scene.getScene('Revive').revive(); 'rv'"
+ },
+ {
+  "wait": 2200
+ },
+ {
+  "shot": "ad_revived"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "const r=__game.scene.getScene('Room'); JSON.stringify({alive:r.player.alive, hp:r.player.hp, max:r.player.maxHp, revived:__run.run.adRevived, scenes:__game.scene.getScenes(true).map(x=>x.scene.key)})"
+ },
+ {
+  "eval": "__run.run.embersFound=40; const r=__game.scene.getScene('Room'); r.player.hp=1; r.damagePlayer(999,'physical'); 'die2'"
+ },
+ {
+  "until": "__game.scene.isActive('Results')",
+  "timeout": 10000
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "shot": "ad_results"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "(window.__errs||[]).join(' | ')"
+ }
+]

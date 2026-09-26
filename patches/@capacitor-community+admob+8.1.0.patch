@@ -1,0 +1,44 @@
+diff --git a/node_modules/@capacitor-community/admob/android/src/main/java/com/getcapacitor/community/admob/banner/BannerExecutor.java b/node_modules/@capacitor-community/admob/android/src/main/java/com/getcapacitor/community/admob/banner/BannerExecutor.java
+index 36b773c..1b3a7ad 100644
+--- a/node_modules/@capacitor-community/admob/android/src/main/java/com/getcapacitor/community/admob/banner/BannerExecutor.java
++++ b/node_modules/@capacitor-community/admob/android/src/main/java/com/getcapacitor/community/admob/banner/BannerExecutor.java
+@@ -86,9 +86,15 @@ public class BannerExecutor extends Executor {
+             mAdViewLayout.setHorizontalGravity(Gravity.CENTER_HORIZONTAL);
+             mAdViewLayout.setVerticalGravity(Gravity.BOTTOM);
+ 
++            // Exact banner height: a WRAP_CONTENT container with gravity grows to fill most of the screen, and the
++            // transparent area then covers (and on some devices blanks out) the web view underneath.
++            final AdSize containerSize = mAdView.getAdSize();
++            final int containerHeight = containerSize != null && containerSize.getHeight() > 0
++                ? containerSize.getHeightInPixels(contextSupplier.get())
++                : CoordinatorLayout.LayoutParams.WRAP_CONTENT;
+             final CoordinatorLayout.LayoutParams mAdViewLayoutParams = new CoordinatorLayout.LayoutParams(
+                 CoordinatorLayout.LayoutParams.WRAP_CONTENT,
+-                CoordinatorLayout.LayoutParams.WRAP_CONTENT
++                containerHeight
+             );
+ 
+             // TODO: Make an enum like the AdSizeEnum?
+@@ -268,8 +274,20 @@ public class BannerExecutor extends Executor {
+                 final AdRequest adRequest = RequestHelper.createRequest(adOptions);
+                 // Assign the correct id needed
+                 AdViewIdHelper.assignIdToAdView(adView, adOptions, adRequest, logTag, contextSupplier.get());
+-                // Add the AdView to the view hierarchy.
+-                mAdViewLayout.addView(adView);
++                // Add the AdView to the view hierarchy with the exact size of the requested banner.
++                // (With WRAP_CONTENT some WebView versions stretch the ad view far beyond the banner height.)
++                AdSize requestedSize = adView.getAdSize();
++                if (requestedSize != null && requestedSize.getHeight() > 0) {
++                    mAdViewLayout.addView(
++                        adView,
++                        new RelativeLayout.LayoutParams(
++                            requestedSize.getWidthInPixels(contextSupplier.get()),
++                            requestedSize.getHeightInPixels(contextSupplier.get())
++                        )
++                    );
++                } else {
++                    mAdViewLayout.addView(adView);
++                }
+                 // Start loading the ad.
+                 adView.loadAd(adRequest);
+                 adView.setAdListener(

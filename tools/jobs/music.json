@@ -1,0 +1,62 @@
+[
+ {
+  "out": "src/assets/audio/music/m_title.mp3",
+  "seconds": 90,
+  "prompt": "Instrumental video game soundtrack, retro 16-bit SNES-era fantasy RPG style with rich modern production, seamless loop, no vocals. Main title theme: hopeful yet melancholic, a lone music-box and harp melody grows into warm strings and soft choir pads, lantern in the darkness, 80 BPM"
+ },
+ {
+  "out": "src/assets/audio/music/m_intro.mp3",
+  "seconds": 80,
+  "prompt": "Instrumental video game soundtrack, retro 16-bit SNES-era fantasy RPG style with rich modern production, seamless loop, no vocals. Story prologue narration underscore: gentle solo piano and cello, sorrowful and tender, slowly swelling strings, 70 BPM, cinematic"
+ },
+ {
+  "out": "src/assets/audio/music/m_village.mp3",
+  "seconds": 90,
+  "prompt": "Instrumental video game soundtrack, retro 16-bit SNES-era fantasy RPG style with rich modern production, seamless loop, no vocals. Cozy night village hub: warm acoustic guitar, flute and soft glockenspiel, crackling hearth mood, safe and nostalgic, 90 BPM"
+ },
+ {
+  "out": "src/assets/audio/music/m_forest.mp3",
+  "seconds": 70,
+  "prompt": "Instrumental video game soundtrack, retro 16-bit SNES-era fantasy RPG style with rich modern production, seamless loop, no vocals. Enchanted dark forest dungeon: plucked harp and flute melody, soft strings, light hand percussion, mysterious but adventurous, 100 BPM"
+ },
+ {
+  "out": "src/assets/audio/music/m_crypt.mp3",
+  "seconds": 80,
+  "prompt": "Instrumental video game soundtrack, retro 16-bit SNES-era fantasy RPG style with rich modern production, seamless loop, no vocals. Underground flooded crypt dungeon: dark ambient choir hums, dripping water percussion, low strings and eerie celesta, tense, 85 BPM"
+ },
+ {
+  "out": "src/assets/audio/music/m_desert.mp3",
+  "seconds": 80,
+  "prompt": "Instrumental video game soundtrack, retro 16-bit SNES-era fantasy RPG style with rich modern production, seamless loop, no vocals. Scorching desert ruins: middle eastern oud and ney flute, darbuka percussion, driving and exotic, 110 BPM"
+ },
+ {
+  "out": "src/assets/audio/music/m_ice.mp3",
+  "seconds": 80,
+  "prompt": "Instrumental video game soundtrack, retro 16-bit SNES-era fantasy RPG style with rich modern production, seamless loop, no vocals. Frozen cathedral: crystalline bells, pipe organ and airy synth pad, cold and beautiful, sad waltz feeling, 95 BPM"
+ },
+ {
+  "out": "src/assets/audio/music/m_throne.mp3",
+  "seconds": 80,
+  "prompt": "Instrumental video game soundtrack, retro 16-bit SNES-era fantasy RPG style with rich modern production, seamless loop, no vocals. Final dungeon hollow throne: ominous pipe organ, low brass, pulsing synth bass and war drums, dark and grand, 105 BPM"
+ },
+ {
+  "out": "src/assets/audio/music/m_boss.mp3",
+  "seconds": 90,
+  "prompt": "Instrumental video game soundtrack, retro 16-bit SNES-era fantasy RPG style with rich modern production, seamless loop, no vocals. Intense boss battle: fast driving drums, aggressive electric bass, heroic brass stabs and racing strings, epic JRPG boss fight, 150 BPM"
+ },
+ {
+  "out": "src/assets/audio/music/m_final.mp3",
+  "seconds": 100,
+  "prompt": "Instrumental video game soundtrack, retro 16-bit SNES-era fantasy RPG style with rich modern production, seamless loop, no vocals. Final boss battle against the dark king: choir pads, pipe organ, heavy drums and fiery violin lead, desperate and epic, 160 BPM"
+ },
+ {
+  "out": "src/assets/audio/music/m_victory.mp3",
+  "seconds": 40,
+  "prompt": "Instrumental video game soundtrack, retro 16-bit SNES-era fantasy RPG style with rich modern production, seamless loop, no vocals. Victory fanfare that settles into a warm triumphant hymn with brass and strings, joyful, 100 BPM"
+ },
+ {
+  "out": "src/assets/audio/music/m_defeat.mp3",
+  "seconds": 40,
+  "prompt": "Instrumental video game soundtrack, retro 16-bit SNES-era fantasy RPG style with rich modern production, seamless loop, no vocals. Somber defeat theme: soft piano and distant strings, bittersweet but hopeful, 60 BPM"
+ }
+]

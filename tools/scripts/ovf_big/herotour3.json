@@ -1,0 +1,68 @@
+[
+ {
+  "goto": "http://localhost:4174"
+ },
+ {
+  "until": "window.__services && window.__services.save",
+  "timeout": 20000
+ },
+ {
+  "eval": "__services.save.data.settings.textScale=1.3; __services.save.markDirty(); __services.save.flush(); setTimeout(()=>location.reload(),50); 'r'"
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "until": "window.__overflow && window.__game && window.__game.scene.getScenes(true).length > 0",
+  "timeout": 30000
+ },
+ {
+  "until": "window.__game && window.__services && window.__services.save && ['Menu','Onboarding'].some(k=>__game.scene.isActive(k))",
+  "timeout": 30000
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); __services.notify=()=>{}; const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; s.unlocks.heroes=['rowan','sera']; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); g.scene.start('Hub'); 'h'"
+ },
+ {
+  "wait": 2500
+ },
+ {
+  "eval": "if(__game.scene.isActive('Dialogue')){__game.scene.stop('Dialogue'); __game.scene.getScene('Hub').scene.resume();} __game.scene.getScene('Hub').openMenu('Hero'); 'hero'"
+ },
+ {
+  "wait": 1000
+ },
+ {
+  "shot": "hero_rowan"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "__game.scene.getScene('Hero').scene.restart({from:'Hub',view:'sera'}); 's'"
+ },
+ {
+  "wait": 800
+ },
+ {
+  "shot": "hero_sera"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "__game.scene.getScene('Hero').scene.restart({from:'Hub',view:'kaito'}); 'k'"
+ },
+ {
+  "wait": 800
+ },
+ {
+  "shot": "hero_kaito"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "(window.__errs||[]).join('|')"
+ }
+]

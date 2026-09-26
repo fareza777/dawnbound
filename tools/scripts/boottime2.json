@@ -1,0 +1,1 @@
+[{"goto":"http://localhost:4174"},{"until":"window.__game && window.__game.scene.getScenes(true).some(s=>s.scene.key!=='Boot')","timeout":30000},{"eval":"'first non-boot scene at ms='+Math.round(performance.now())+' '+__game.scene.getScenes(true).map(s=>s.scene.key).join(',')"}]

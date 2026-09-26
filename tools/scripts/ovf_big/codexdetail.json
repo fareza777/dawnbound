@@ -1,0 +1,176 @@
+[
+ {
+  "goto": "http://localhost:4174"
+ },
+ {
+  "until": "window.__services && window.__services.save",
+  "timeout": 20000
+ },
+ {
+  "eval": "__services.save.data.settings.textScale=1.3; __services.save.markDirty(); __services.save.flush(); setTimeout(()=>location.reload(),50); 'r'"
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "until": "window.__overflow && window.__game && window.__game.scene.getScenes(true).length > 0",
+  "timeout": 30000
+ },
+ {
+  "until": "window.__game && window.__services && window.__services.save && window.__grant && window.__game.scene.getScenes(true).length > 0",
+  "timeout": 20000
+ },
+ {
+  "wait": 800
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; s.flags.rift_open=1; __grant(24); const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); g.scene.start('Hub'); 'hub'"
+ },
+ {
+  "wait": 2500
+ },
+ {
+  "eval": "const d=__game.scene.getScene('Dialogue'); if(__game.scene.isActive('Dialogue')){d.scene.stop(); __game.scene.getScene('Hub').scene.resume();} 'ok'"
+ },
+ {
+  "wait": 800
+ },
+ {
+  "eval": "const s=__services.save.data; const E=['slime_green','forest_spider','geode_golem','drowned_one','magma_crawler']; E.forEach((id,i)=>s.codex.enemies[id]=3+i); s.codex.enemies.gorehorn=1; s.unlocks.bossesDefeated=['gorehorn']; s.codex.items.push('u_maren_blade','u_thornfang'); s.codex.relics.push('whetstone'); s.codex.boons.push('em_kindle'); 'ok'"
+ },
+ {
+  "eval": "__game.scene.getScene('Hub').openMenu('Codex'); 'c'"
+ },
+ {
+  "wait": 900
+ },
+ {
+  "eval": "const c=__game.scene.getScene('Codex'); c.show('bestiary'); const z=[]; const w=l=>l.forEach(o=>{if(o.type==='Zone')z.push(o); if(o.list)w(o.list)}); w(c.children.list); const t=z[0]; t.input.enabled=true; t.emit('pointerup'); 'zones '+z.length"
+ },
+ {
+  "wait": 800
+ },
+ {
+  "shot": "cd1_slime"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "const c=__game.scene.getScene('Codex'); c.children.list.filter(o=>o.type==='Container'&&o.depth===1000).forEach(o=>o.destroy()); c.detailOpen=false; c.scroll.locked=false; 'closed'"
+ },
+ {
+  "wait": 300
+ },
+ {
+  "eval": "const c=__game.scene.getScene('Codex'); c.show('bestiary'); const z=[]; const w=l=>l.forEach(o=>{if(o.type==='Zone')z.push(o); if(o.list)w(o.list)}); w(c.children.list); const t=z[2]; t.input.enabled=true; t.emit('pointerup'); 'zones '+z.length"
+ },
+ {
+  "wait": 800
+ },
+ {
+  "shot": "cd1b_golem"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "const c=__game.scene.getScene('Codex'); c.children.list.filter(o=>o.type==='Container'&&o.depth===1000).forEach(o=>o.destroy()); c.detailOpen=false; c.scroll.locked=false; 'closed'"
+ },
+ {
+  "wait": 300
+ },
+ {
+  "eval": "const c=__game.scene.getScene('Codex'); c.show('bestiary'); const z=[]; const w=l=>l.forEach(o=>{if(o.type==='Zone')z.push(o); if(o.list)w(o.list)}); w(c.children.list); const t=z[55]; t.input.enabled=true; t.emit('pointerup'); 'zones '+z.length"
+ },
+ {
+  "wait": 800
+ },
+ {
+  "shot": "cd2_boss"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "const c=__game.scene.getScene('Codex'); c.children.list.filter(o=>o.type==='Container'&&o.depth===1000).forEach(o=>o.destroy()); c.detailOpen=false; c.scroll.locked=false; 'closed'"
+ },
+ {
+  "wait": 300
+ },
+ {
+  "eval": "const c=__game.scene.getScene('Codex'); c.show('items'); const z=[]; const w=l=>l.forEach(o=>{if(o.type==='Zone')z.push(o); if(o.list)w(o.list)}); w(c.children.list); const t=z[0]; t.input.enabled=true; t.emit('pointerup'); 'zones '+z.length"
+ },
+ {
+  "wait": 800
+ },
+ {
+  "shot": "cd3_unique"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "const c=__game.scene.getScene('Codex'); c.children.list.filter(o=>o.type==='Container'&&o.depth===1000).forEach(o=>o.destroy()); c.detailOpen=false; c.scroll.locked=false; 'closed'"
+ },
+ {
+  "wait": 300
+ },
+ {
+  "eval": "const c=__game.scene.getScene('Codex'); c.show('items'); const z=[]; const w=l=>l.forEach(o=>{if(o.type==='Zone')z.push(o); if(o.list)w(o.list)}); w(c.children.list); const t=z[40]; t.input.enabled=true; t.emit('pointerup'); 'zones '+z.length"
+ },
+ {
+  "wait": 800
+ },
+ {
+  "shot": "cd3b_base"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "const c=__game.scene.getScene('Codex'); c.children.list.filter(o=>o.type==='Container'&&o.depth===1000).forEach(o=>o.destroy()); c.detailOpen=false; c.scroll.locked=false; 'closed'"
+ },
+ {
+  "wait": 300
+ },
+ {
+  "eval": "const c=__game.scene.getScene('Codex'); c.show('relics'); const z=[]; const w=l=>l.forEach(o=>{if(o.type==='Zone')z.push(o); if(o.list)w(o.list)}); w(c.children.list); const t=z[0]; t.input.enabled=true; t.emit('pointerup'); 'zones '+z.length"
+ },
+ {
+  "wait": 800
+ },
+ {
+  "shot": "cd4_relic"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "const c=__game.scene.getScene('Codex'); c.children.list.filter(o=>o.type==='Container'&&o.depth===1000).forEach(o=>o.destroy()); c.detailOpen=false; c.scroll.locked=false; 'closed'"
+ },
+ {
+  "wait": 300
+ },
+ {
+  "eval": "const c=__game.scene.getScene('Codex'); c.show('boons'); const z=[]; const w=l=>l.forEach(o=>{if(o.type==='Zone')z.push(o); if(o.list)w(o.list)}); w(c.children.list); const t=z[0]; t.input.enabled=true; t.emit('pointerup'); 'zones '+z.length"
+ },
+ {
+  "wait": 800
+ },
+ {
+  "shot": "cd5_boon"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "const c=__game.scene.getScene('Codex'); c.children.list.filter(o=>o.type==='Container'&&o.depth===1000).forEach(o=>o.destroy()); c.detailOpen=false; c.scroll.locked=false; 'closed'"
+ },
+ {
+  "wait": 300
+ },
+ {
+  "eval": "(window.__errs||[]).join('|')"
+ }
+]

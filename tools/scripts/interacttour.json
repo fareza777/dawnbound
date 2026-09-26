@@ -1,0 +1,35 @@
+[
+ {
+  "goto": "http://localhost:4174"
+ },
+ {
+  "until": "window.__game && window.__services && window.__services.save && window.__grant && window.__game.scene.getScenes(true).length > 0",
+  "timeout": 20000
+ },
+ {
+  "until": "['Menu','Onboarding'].some(k=>__game.scene.isActive(k))",
+  "timeout": 20000
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); __run.start({heroId:'rowan'}); g.scene.start('RunMap'); 'map'"
+ },
+ {
+  "wait": 2000
+ },
+ {
+  "eval": "__services.save.data.profile.tutorialDone=true; __autoplay()"
+ },
+ {
+  "until": "(()=>{const r=__game.scene.getScene('Room'); if(!(__game.scene.isActive('Room') && r.player && r.nearestInteractable && r.nearestInteractable())) return false; __bot.paused=true; Object.assign(__controls,{moveX:0,moveY:0,attackHeld:false,interact:false,dash:false}); return true})()",
+  "timeout": 120000
+ },
+ {
+  "wait": 400
+ },
+ {
+  "shot": "x1_interact"
+ },
+ {
+  "eval": "(()=>{const h=__game.scene.getScene('Hud'); const b=h.buttons.find(b=>b.key==='interact'); const r=__game.scene.getScene('Room'); return JSON.stringify({near:!!r.nearestInteractable(), bgVis:b.bg.visible, iconVis:b.icon.visible, x:b.x,y:b.y})})()"
+ }
+]

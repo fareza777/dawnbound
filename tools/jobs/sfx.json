@@ -1,0 +1,512 @@
+[
+ {
+  "out": "src/assets/audio/sfx/ui_click.mp3",
+  "seconds": 0.5,
+  "prompt": "soft short UI button click, wooden tick, game menu",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/ui_close.mp3",
+  "seconds": 0.5,
+  "prompt": "soft UI whoosh close, short",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/ui_confirm.mp3",
+  "seconds": 0.6,
+  "prompt": "bright positive UI confirm chime, fantasy game",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/ui_error.mp3",
+  "seconds": 0.5,
+  "prompt": "short dull error buzz, UI denied",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/ui_page.mp3",
+  "seconds": 0.5,
+  "prompt": "paper page turn swish",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/ui_splash.mp3",
+  "seconds": 1.8,
+  "prompt": "magical shimmering chime swell for a game studio logo",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/swing.mp3",
+  "seconds": 0.5,
+  "prompt": "quick sword swing whoosh",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/swing_heavy.mp3",
+  "seconds": 0.6,
+  "prompt": "heavy sword swing whoosh with metal ring",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/thrust.mp3",
+  "seconds": 0.5,
+  "prompt": "fast spear thrust whoosh stab",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/bow.mp3",
+  "seconds": 0.5,
+  "prompt": "bow string release twang with arrow whoosh",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/cast.mp3",
+  "seconds": 0.6,
+  "prompt": "short magic spell cast sparkle, star magic",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/hit.mp3",
+  "seconds": 0.5,
+  "prompt": "sword hitting a monster, fleshy impact thud, crisp",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/hit_heavy.mp3",
+  "seconds": 0.6,
+  "prompt": "heavy crushing hit impact with crunch",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/dash.mp3",
+  "seconds": 0.5,
+  "prompt": "quick dodge roll whoosh dash",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/spin.mp3",
+  "seconds": 0.7,
+  "prompt": "spinning blade whirlwind whoosh",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/nova.mp3",
+  "seconds": 1.0,
+  "prompt": "magic ice nova burst, crystalline shatter wave",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/flare.mp3",
+  "seconds": 1.6,
+  "prompt": "massive holy light explosion, radiant burst with choir shimmer",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/flare_ready.mp3",
+  "seconds": 0.8,
+  "prompt": "magical charge complete chime, glowing",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/potion.mp3",
+  "seconds": 0.8,
+  "prompt": "drinking a potion gulp and glass clink, healing sparkle",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/heal.mp3",
+  "seconds": 0.7,
+  "prompt": "gentle healing sparkle chime",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/coin.mp3",
+  "seconds": 0.5,
+  "prompt": "single gold coin pickup ding, bright",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/pickup.mp3",
+  "seconds": 0.5,
+  "prompt": "item pickup pop, soft",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/ember.mp3",
+  "seconds": 0.5,
+  "prompt": "glowing ember crystal pickup, warm magical tinkle",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/loot_rare.mp3",
+  "seconds": 0.9,
+  "prompt": "rare item drop, sparkling magical jingle",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/loot_legendary.mp3",
+  "seconds": 1.6,
+  "prompt": "legendary item drop, epic golden shimmer with choir hit",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/level_up.mp3",
+  "seconds": 1.2,
+  "prompt": "level up fanfare jingle, bright ascending arpeggio",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/player_hurt.mp3",
+  "seconds": 0.5,
+  "prompt": "young hero hurt grunt with impact",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/player_death.mp3",
+  "seconds": 1.5,
+  "prompt": "hero falls, dramatic fading impact with low boom",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/revive.mp3",
+  "seconds": 1.5,
+  "prompt": "phoenix rebirth fire whoosh and rising magical tone",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/shield_hit.mp3",
+  "seconds": 0.5,
+  "prompt": "magical shield absorbing a hit, glassy ping",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/enemy_death.mp3",
+  "seconds": 0.6,
+  "prompt": "small monster dies, squishy pop poof",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/elite_death.mp3",
+  "seconds": 0.9,
+  "prompt": "big monster death roar cut short with thud",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/boss_death.mp3",
+  "seconds": 2.5,
+  "prompt": "giant boss monster death roar, collapsing rumble and magical explosion",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/enemy_shoot.mp3",
+  "seconds": 0.5,
+  "prompt": "monster spits a magic projectile, short pew",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/enemy_swing.mp3",
+  "seconds": 0.5,
+  "prompt": "monster claw swipe whoosh",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/telegraph.mp3",
+  "seconds": 0.6,
+  "prompt": "warning charge-up hum, danger",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/charge.mp3",
+  "seconds": 0.6,
+  "prompt": "heavy monster charging stomp rush",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/fuse.mp3",
+  "seconds": 0.6,
+  "prompt": "bomb fuse sizzle",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/explosion.mp3",
+  "seconds": 0.9,
+  "prompt": "fiery explosion boom",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/ice_burst.mp3",
+  "seconds": 0.8,
+  "prompt": "ice shards bursting crackle",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/poison_burst.mp3",
+  "seconds": 0.8,
+  "prompt": "toxic gas bubble burst hiss",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/freeze.mp3",
+  "seconds": 0.6,
+  "prompt": "something freezing solid, ice crackle",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/shatter.mp3",
+  "seconds": 0.6,
+  "prompt": "frozen enemy shattering into ice shards",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/zap.mp3",
+  "seconds": 0.5,
+  "prompt": "electric zap crackle",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/thunder.mp3",
+  "seconds": 0.9,
+  "prompt": "lightning bolt strike thunder crack",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/meteor.mp3",
+  "seconds": 1.0,
+  "prompt": "meteor impact fiery explosion",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/smite.mp3",
+  "seconds": 0.7,
+  "prompt": "holy smite beam strike with bell",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/blink.mp3",
+  "seconds": 0.5,
+  "prompt": "magic teleport blink whoosh",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/summon.mp3",
+  "seconds": 0.9,
+  "prompt": "dark summoning ritual whoosh, eerie",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/burrow.mp3",
+  "seconds": 0.8,
+  "prompt": "creature burrowing through sand and dirt rumble",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/spawn.mp3",
+  "seconds": 0.6,
+  "prompt": "monster spawning from a magic portal, dark whoosh",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/break.mp3",
+  "seconds": 0.6,
+  "prompt": "clay pot breaking shatter",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/chest_open.mp3",
+  "seconds": 1.0,
+  "prompt": "treasure chest creaking open with sparkle",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/gate_open.mp3",
+  "seconds": 1.2,
+  "prompt": "heavy iron portcullis gate rising, chains rattling",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/room_clear.mp3",
+  "seconds": 1.2,
+  "prompt": "triumphant short stinger, room cleared, magical",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/step_out.mp3",
+  "seconds": 0.6,
+  "prompt": "footsteps walking through a doorway, whoosh transition",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/descend.mp3",
+  "seconds": 2.0,
+  "prompt": "descending deeper into a dungeon, deep reverberant rumble with eerie wind",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/boon_appear.mp3",
+  "seconds": 1.0,
+  "prompt": "mystical spirit appearing, ethereal shimmer",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/boon_take.mp3",
+  "seconds": 1.0,
+  "prompt": "gaining magical power, rising sparkle whoosh",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/boon_orb.mp3",
+  "seconds": 0.7,
+  "prompt": "touching a magic orb, bell tone",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/relic.mp3",
+  "seconds": 0.9,
+  "prompt": "picking up an ancient relic, mysterious chime",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/shrine.mp3",
+  "seconds": 1.4,
+  "prompt": "praying at a spirit shrine, soft choir swell",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/campfire.mp3",
+  "seconds": 1.5,
+  "prompt": "crackling campfire, relaxing",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/merchant.mp3",
+  "seconds": 0.8,
+  "prompt": "shop bell ding and coin jingle",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/buy.mp3",
+  "seconds": 0.6,
+  "prompt": "purchase coins clink, fantasy shop",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/anvil.mp3",
+  "seconds": 0.8,
+  "prompt": "blacksmith hammer striking anvil clang",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/event_open.mp3",
+  "seconds": 1.0,
+  "prompt": "mysterious encounter sting, curious",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/ambush.mp3",
+  "seconds": 1.0,
+  "prompt": "ambush alarm sting, monsters appear, tense",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/boss_roar.mp3",
+  "seconds": 1.8,
+  "prompt": "huge monster boss roar, terrifying",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/boss_phase.mp3",
+  "seconds": 1.2,
+  "prompt": "boss enrages, powerful energy surge",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/boss_cast.mp3",
+  "seconds": 0.9,
+  "prompt": "dark boss magic incantation charge",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/boss_jump.mp3",
+  "seconds": 0.6,
+  "prompt": "giant leaping whoosh",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/boss_shoot.mp3",
+  "seconds": 0.6,
+  "prompt": "volley of magic projectiles fired",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/slam.mp3",
+  "seconds": 0.9,
+  "prompt": "massive ground slam earthquake boom",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/type.mp3",
+  "seconds": 0.5,
+  "prompt": "single soft typewriter text blip, retro game dialogue",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/quest_complete.mp3",
+  "seconds": 1.4,
+  "prompt": "quest complete fanfare, short and rewarding",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/quest_new.mp3",
+  "seconds": 0.9,
+  "prompt": "new quest received, parchment and chime",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/achievement.mp3",
+  "seconds": 1.2,
+  "prompt": "achievement unlocked sparkle fanfare",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/talent.mp3",
+  "seconds": 0.9,
+  "prompt": "unlocking a skill talent, magical click and glow",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/plant.mp3",
+  "seconds": 0.6,
+  "prompt": "digging soil and planting seeds",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/harvest.mp3",
+  "seconds": 0.8,
+  "prompt": "harvesting crops, rustle and pop, happy",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/forge.mp3",
+  "seconds": 1.2,
+  "prompt": "forging a weapon, hammer clangs and fire whoosh",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/brew.mp3",
+  "seconds": 1.2,
+  "prompt": "bubbling cauldron brewing potion",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/upgrade_fail.mp3",
+  "seconds": 0.8,
+  "prompt": "failed upgrade, metal crack and sad tone",
+  "influence": 0.5
+ },
+ {
+  "out": "src/assets/audio/sfx/door.mp3",
+  "seconds": 0.8,
+  "prompt": "wooden door opening creak",
+  "influence": 0.5
+ }
+]

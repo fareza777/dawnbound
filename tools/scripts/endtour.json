@@ -1,0 +1,42 @@
+[
+ {
+  "goto": "http://localhost:4174"
+ },
+ {
+  "until": "window.__game && window.__services && window.__services.save && window.__game.scene.getScenes(true).length > 0",
+  "timeout": 20000
+ },
+ {
+  "wait": 800
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); const run=__run.start({heroId:'rowan'}); run.kills=87; run.level=9; run.gold=240; run.roomsCleared=14; run.timeSec=812; run.boons=[{id:'em_kindle',rank:2},{id:'em_pyre',rank:1}]; run.relics=[''+'']; run.relics=[]; g.scene.start('Results',{victory:false}); 'res'"
+ },
+ {
+  "wait": 2500
+ },
+ {
+  "shot": "e1_results_defeat"
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); const run=__run.start({heroId:'rowan'}); while(!(run.depth===5&&run.floor===2)) __run.advance(run); run.kills=412; run.level=24; g.scene.start('Results',{victory:true}); 'win'"
+ },
+ {
+  "wait": 2500
+ },
+ {
+  "shot": "e2_results_victory"
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); const run=__run.start({heroId:'rowan'}); g.scene.start('Transition',{}); 'tr'"
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "shot": "e3_transition"
+ },
+ {
+  "eval": "(window.__errs||[]).join(' | ')"
+ }
+]

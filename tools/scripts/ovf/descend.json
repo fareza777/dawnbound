@@ -1,0 +1,33 @@
+[
+ {
+  "goto": "http://localhost:4174"
+ },
+ {
+  "until": "window.__game && window.__services && window.__services.save && window.__grant && window.__game.scene.getScenes(true).length > 0",
+  "timeout": 20000
+ },
+ {
+  "wait": 800
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; s.flags.rift_open=1; __grant(24); const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); g.scene.start('Hub'); 'hub'"
+ },
+ {
+  "wait": 2500
+ },
+ {
+  "eval": "const d=__game.scene.getScene('Dialogue'); if(__game.scene.isActive('Dialogue')){d.scene.stop(); __game.scene.getScene('Hub').scene.resume();} 'ok'"
+ },
+ {
+  "eval": "const s=__services.save.data; s.unlocks.bossesDefeated=['gorehorn','twin_lamias']; s.unlocks.maxDepthReached=3; s.flags.region_drowned=1; s.flags.region_forge=1; __game.scene.getScene('Hub').openMenu('Descend'); 'd'"
+ },
+ {
+  "wait": 1000
+ },
+ {
+  "shot": "descend_new"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ }
+]

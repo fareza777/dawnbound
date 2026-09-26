@@ -1,0 +1,87 @@
+[
+ {
+  "goto": "http://localhost:4174"
+ },
+ {
+  "until": "window.__game && window.__services && window.__services.save && window.__grant && window.__game.scene.getScenes(true).length > 0",
+  "timeout": 20000
+ },
+ {
+  "wait": 800
+ },
+ {
+  "eval": "__setLang('id')"
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); __run.start({heroId:'rowan'}); g.scene.start('RunMap'); 'map'"
+ },
+ {
+  "eval": "__setLang('id')"
+ },
+ {
+  "wait": 2000
+ },
+ {
+  "shot": "r00_map"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "const m=__game.scene.getScene('RunMap'); m.select(__run.choices(__run.run)[0]); 'go'"
+ },
+ {
+  "eval": "const r=__game.scene.getScene('Room'); r.scene.pause(); r.scene.launch('Event',{room:r,eventId:'ev_sand_oracle'}); 'e'"
+ },
+ {
+  "wait": 1300
+ },
+ {
+  "shot": "evt_ev_sand_oracle"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "__game.scene.stop('Event'); __game.scene.getScene('Room').scene.resume(); (window.__errs||[]).join('|')"
+ },
+ {
+  "wait": 300
+ },
+ {
+  "eval": "const r=__game.scene.getScene('Room'); r.scene.pause(); r.scene.launch('Event',{room:r,eventId:'ev_oath_anvil'}); 'e'"
+ },
+ {
+  "wait": 1300
+ },
+ {
+  "shot": "evt_ev_oath_anvil"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "__game.scene.stop('Event'); __game.scene.getScene('Room').scene.resume(); (window.__errs||[]).join('|')"
+ },
+ {
+  "wait": 300
+ },
+ {
+  "eval": "const r=__game.scene.getScene('Room'); r.scene.pause(); r.scene.launch('Event',{room:r,eventId:'ev_frozen_knight'}); 'e'"
+ },
+ {
+  "wait": 1300
+ },
+ {
+  "shot": "evt_ev_frozen_knight"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "__game.scene.stop('Event'); __game.scene.getScene('Room').scene.resume(); (window.__errs||[]).join('|')"
+ },
+ {
+  "wait": 300
+ }
+]

@@ -1,0 +1,95 @@
+[
+ {
+  "goto": "http://localhost:4174"
+ },
+ {
+  "until": "window.__game && window.__services && window.__services.save && window.__grant",
+  "timeout": 20000
+ },
+ {
+  "until": "['Menu','Onboarding'].some(k=>__game.scene.isActive(k))",
+  "timeout": 20000
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true;__services.notify=()=>{}; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop());g.scene.start('Menu'); 'm'"
+ },
+ {
+  "wait": 2500
+ },
+ {
+  "shot": "s1_menu"
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true;__services.notify=()=>{}; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop());g.scene.start('Hub'); 'h'"
+ },
+ {
+  "wait": 3200
+ },
+ {
+  "shot": "s2_dialogue"
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true;__services.notify=()=>{}; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop());s.profile.tutorialDone=true; const run=__run.start({heroId:'rowan'}); g.scene.start('RunMap'); 'map'"
+ },
+ {
+  "wait": 2200
+ },
+ {
+  "shot": "s3_map"
+ },
+ {
+  "eval": "const run=__run.run; run.level=7; run.boons=['em_kindle','em_pyre','em_flashfire','em_meteor'].map(id=>({id,rank:2})); const m=__game.scene.getScene('RunMap'); m.select(__run.choices(run).find(n=>n.kind==='combat')||__run.choices(run)[0]); __autoplay(); 'go'"
+ },
+ {
+  "until": "(()=>{const r=__game.scene.getScene('Room'); return __game.scene.isActive('Room') && r.enemies && r.enemies.filter(e=>e.alive).length>=3 && r.player && r.enemies.some(e=>e.alive && Math.hypot(e.x-r.player.x,e.y-r.player.y)<60)})()",
+  "timeout": 60000
+ },
+ {
+  "wait": 700
+ },
+ {
+  "shot": "s4_combat"
+ },
+ {
+  "eval": "__bot.paused=true; const r=__game.scene.getScene('Room'); r.openBoonPick('level'); 'pick'"
+ },
+ {
+  "wait": 1400
+ },
+ {
+  "shot": "s5_levelup"
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true;__services.notify=()=>{}; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop());s.profile.tutorialDone=true; const run=__run.start({heroId:'rowan'}); while(!(run.depth===3 && run.floor===2)) __run.advance(run); run.level=14; const b=run.map.nodes.find(n=>n.kind==='boss'); g.scene.start('RunMap'); setTimeout(()=>g.scene.getScene('RunMap').select(b),600); 'boss'"
+ },
+ {
+  "wait": 2700
+ },
+ {
+  "shot": "s6_boss"
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true;__services.notify=()=>{}; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop());__grant(26,'store'); const inv=s.inventory; ['weapon','armor','helm','ring'].forEach(sl=>{}); g.scene.start('Hub'); 'hub'"
+ },
+ {
+  "wait": 2500
+ },
+ {
+  "eval": "if(__game.scene.isActive('Dialogue')){__game.scene.stop('Dialogue'); __game.scene.getScene('Hub').scene.resume();} __game.scene.getScene('Hub').openMenu('Inventory'); 'inv'"
+ },
+ {
+  "wait": 1000
+ },
+ {
+  "eval": "const inv=__game.scene.getScene('Inventory'); const it=__services.save.data.inventory.slice().sort((a,b)=>b.rarity-a.rarity)[0]; inv.showDetail(it); 'd'"
+ },
+ {
+  "wait": 2600
+ },
+ {
+  "shot": "s7_inventory"
+ },
+ {
+  "eval": "(window.__errs||[]).join(' | ')"
+ }
+]

@@ -1,0 +1,252 @@
+[
+ {
+  "goto": "http://localhost:4174"
+ },
+ {
+  "until": "window.__game && window.__services && window.__services.save && window.__grant && window.__game.scene.getScenes(true).length > 0",
+  "timeout": 20000
+ },
+ {
+  "wait": 800
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; s.flags.rift_open=1; __grant(24); const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); g.scene.start('Hub'); 'hub'"
+ },
+ {
+  "wait": 2500
+ },
+ {
+  "eval": "const d=__game.scene.getScene('Dialogue'); if(__game.scene.isActive('Dialogue')){d.scene.stop(); __game.scene.getScene('Hub').scene.resume();} 'ok'"
+ },
+ {
+  "wait": 800
+ },
+ {
+  "shot": "u00_hub"
+ },
+ {
+  "eval": "__game.scene.getScene('Hub').openMenu('Inventory'); 'Inventory'"
+ },
+ {
+  "wait": 900
+ },
+ {
+  "shot": "u01_Inventory"
+ },
+ {
+  "eval": "__game.scene.stop('Inventory'); __game.scene.getScene('Hub').scene.resume(); (window.__errs||[]).slice(-3).join(' | ')"
+ },
+ {
+  "wait": 300
+ },
+ {
+  "eval": "__game.scene.getScene('Hub').openMenu('HubMenu'); 'HubMenu'"
+ },
+ {
+  "wait": 900
+ },
+ {
+  "shot": "u02_HubMenu"
+ },
+ {
+  "eval": "__game.scene.stop('HubMenu'); __game.scene.getScene('Hub').scene.resume(); (window.__errs||[]).slice(-3).join(' | ')"
+ },
+ {
+  "wait": 300
+ },
+ {
+  "eval": "__game.scene.getScene('Hub').openMenu('QuestLog'); 'QuestLog'"
+ },
+ {
+  "wait": 900
+ },
+ {
+  "shot": "u03_QuestLog"
+ },
+ {
+  "eval": "__game.scene.stop('QuestLog'); __game.scene.getScene('Hub').scene.resume(); (window.__errs||[]).slice(-3).join(' | ')"
+ },
+ {
+  "wait": 300
+ },
+ {
+  "eval": "__game.scene.getScene('Hub').openMenu('Bounties'); 'Bounties'"
+ },
+ {
+  "wait": 900
+ },
+ {
+  "shot": "u04_Bounties"
+ },
+ {
+  "eval": "__game.scene.stop('Bounties'); __game.scene.getScene('Hub').scene.resume(); (window.__errs||[]).slice(-3).join(' | ')"
+ },
+ {
+  "wait": 300
+ },
+ {
+  "eval": "__game.scene.getScene('Hub').openMenu('Vows'); 'Vows'"
+ },
+ {
+  "wait": 900
+ },
+ {
+  "shot": "u05_Vows"
+ },
+ {
+  "eval": "__game.scene.stop('Vows'); __game.scene.getScene('Hub').scene.resume(); (window.__errs||[]).slice(-3).join(' | ')"
+ },
+ {
+  "wait": 300
+ },
+ {
+  "eval": "__game.scene.getScene('Hub').openMenu('Jukebox'); 'Jukebox'"
+ },
+ {
+  "wait": 900
+ },
+ {
+  "shot": "u06_Jukebox"
+ },
+ {
+  "eval": "__game.scene.stop('Jukebox'); __game.scene.getScene('Hub').scene.resume(); (window.__errs||[]).slice(-3).join(' | ')"
+ },
+ {
+  "wait": 300
+ },
+ {
+  "eval": "__game.scene.getScene('Hub').openMenu('Hero'); 'Hero'"
+ },
+ {
+  "wait": 900
+ },
+ {
+  "shot": "u07_Hero"
+ },
+ {
+  "eval": "__game.scene.stop('Hero'); __game.scene.getScene('Hub').scene.resume(); (window.__errs||[]).slice(-3).join(' | ')"
+ },
+ {
+  "wait": 300
+ },
+ {
+  "eval": "__game.scene.getScene('Hub').openMenu('LanternTree'); 'LanternTree'"
+ },
+ {
+  "wait": 900
+ },
+ {
+  "shot": "u08_LanternTree"
+ },
+ {
+  "eval": "__game.scene.stop('LanternTree'); __game.scene.getScene('Hub').scene.resume(); (window.__errs||[]).slice(-3).join(' | ')"
+ },
+ {
+  "wait": 300
+ },
+ {
+  "eval": "__game.scene.getScene('Hub').openMenu('Blacksmith'); 'Blacksmith'"
+ },
+ {
+  "wait": 900
+ },
+ {
+  "shot": "u09_Blacksmith"
+ },
+ {
+  "eval": "__game.scene.stop('Blacksmith'); __game.scene.getScene('Hub').scene.resume(); (window.__errs||[]).slice(-3).join(' | ')"
+ },
+ {
+  "wait": 300
+ },
+ {
+  "eval": "__game.scene.getScene('Hub').openMenu('Alchemist'); 'Alchemist'"
+ },
+ {
+  "wait": 900
+ },
+ {
+  "shot": "u10_Alchemist"
+ },
+ {
+  "eval": "__game.scene.stop('Alchemist'); __game.scene.getScene('Hub').scene.resume(); (window.__errs||[]).slice(-3).join(' | ')"
+ },
+ {
+  "wait": 300
+ },
+ {
+  "eval": "__game.scene.getScene('Hub').openMenu('Merchant'); 'Merchant'"
+ },
+ {
+  "wait": 900
+ },
+ {
+  "shot": "u11_Merchant"
+ },
+ {
+  "eval": "__game.scene.stop('Merchant'); __game.scene.getScene('Hub').scene.resume(); (window.__errs||[]).slice(-3).join(' | ')"
+ },
+ {
+  "wait": 300
+ },
+ {
+  "eval": "__game.scene.getScene('Hub').openMenu('Garden'); 'Garden'"
+ },
+ {
+  "wait": 900
+ },
+ {
+  "shot": "u12_Garden"
+ },
+ {
+  "eval": "__game.scene.stop('Garden'); __game.scene.getScene('Hub').scene.resume(); (window.__errs||[]).slice(-3).join(' | ')"
+ },
+ {
+  "wait": 300
+ },
+ {
+  "eval": "__game.scene.getScene('Hub').openMenu('Codex'); 'Codex'"
+ },
+ {
+  "wait": 900
+ },
+ {
+  "shot": "u13_Codex"
+ },
+ {
+  "eval": "__game.scene.stop('Codex'); __game.scene.getScene('Hub').scene.resume(); (window.__errs||[]).slice(-3).join(' | ')"
+ },
+ {
+  "wait": 300
+ },
+ {
+  "eval": "__game.scene.getScene('Hub').openMenu('Settings'); 'Settings'"
+ },
+ {
+  "wait": 900
+ },
+ {
+  "shot": "u14_Settings"
+ },
+ {
+  "eval": "__game.scene.stop('Settings'); __game.scene.getScene('Hub').scene.resume(); (window.__errs||[]).slice(-3).join(' | ')"
+ },
+ {
+  "wait": 300
+ },
+ {
+  "eval": "__game.scene.getScene('Hub').openMenu('Descend'); 'Descend'"
+ },
+ {
+  "wait": 900
+ },
+ {
+  "shot": "u15_Descend"
+ },
+ {
+  "eval": "__game.scene.stop('Descend'); __game.scene.getScene('Hub').scene.resume(); (window.__errs||[]).slice(-3).join(' | ')"
+ },
+ {
+  "wait": 300
+ }
+]

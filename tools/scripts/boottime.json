@@ -1,0 +1,1 @@
+[{"goto":"http://localhost:4174"},{"until":"window.__game && window.__game.scene.getScenes(true).some(s=>['Menu','Onboarding'].includes(s.scene.key))","timeout":30000},{"eval":"'boot->menu ms='+Math.round(performance.now())+' heapMB='+(performance.memory?Math.round(performance.memory.usedJSHeapSize/1e6):'?')+' textures='+Object.keys(__game.textures.list).length"}]

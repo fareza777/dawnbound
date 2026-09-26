@@ -1,0 +1,10 @@
+[
+  {"goto": "http://localhost:4173"},
+  {"until": "window.__game && window.__services && window.__services.save && window.__autoplay && window.__game.scene.getScenes(true).length > 0", "timeout": 20000},
+  {"eval": "localStorage.clear(); __services.save.reset(); __autoplay()"},
+  {"wait": 30000}, {"shot": "a1"},
+  {"wait": 30000}, {"shot": "a2"},
+  {"wait": 30000}, {"shot": "a3"},
+  {"wait": 30000}, {"shot": "a4"},
+  {"eval": "JSON.stringify({bot: window.__bot.log.slice(-40), run: (()=>{const r=__run.run; return r && {d:r.depth,f:r.floor,lvl:r.level,kills:r.kills,hp:r.hp,boons:r.boons.length,relics:r.relics.length,gold:r.gold}})(), stats: __services.save.data.stats, inv: __services.save.data.inventory.length, fps: Math.round(__game.loop.actualFps)})"}
+]

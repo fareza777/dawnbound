@@ -1,0 +1,27 @@
+[
+ {
+  "goto": "http://localhost:4174"
+ },
+ {
+  "until": "window.__game && window.__services && window.__services.save && window.__grant && window.__game.scene.getScenes(true).length > 0",
+  "timeout": 20000
+ },
+ {
+  "wait": 800
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; s.flags.rift_open=1; __grant(24); const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); g.scene.start('Hub'); 'hub'"
+ },
+ {
+  "wait": 2500
+ },
+ {
+  "eval": "const d=__game.scene.getScene('Dialogue'); if(__game.scene.isActive('Dialogue')){d.scene.stop(); __game.scene.getScene('Hub').scene.resume();} 'ok'"
+ },
+ {
+  "wait": 800
+ },
+ {
+  "eval": "(async()=>{\nconst g=__game; const wait=(ms)=>new Promise(r=>setTimeout(r,ms));\nconst until=async(f,ms=30000)=>{const t=performance.now(); while(!f()){ if(performance.now()-t>ms) return false; await wait(100);} return true;};\nif(!window.__bot) __autoplay();\nconst out=[];\nasync function trial(n, depth, seed){ __gearFor(depth, 1, seed);\n  __bot.paused=true; await wait(200);\n  g.scene.getScenes(true).filter(s=>s.scene.key!=='Notify').forEach(s=>s.scene.stop());\n  const run=__run.start({heroId:'rowan',seed}); run.mutator=undefined; run.depth=depth; run.floor=1; run.level=30;\n  for(let i=0;i<n;i++){ const o=__run.boonOffers(run,3)[0]; if(o) __run.addBoon(run,o.def.id); }\n  g.scene.start('RunMap'); await until(()=>g.scene.isActive('RunMap'));\n  await wait(600);\n  const m=g.scene.getScene('RunMap'); const c=__run.choices(run); const node=c.find(x=>x.kind==='combat')||c[0]; node.kind='combat'; m.select(node);\n  await until(()=>g.scene.isActive('Room') && g.scene.getScene('Room').player);\n  const r=g.scene.getScene('Room'); let prev=r.player.hp, taken=0, healed=0, resets=0; const inv=setInterval(()=>{ const p=r.player; if(!p) return; const d=p.hp-prev; if(d<0) taken+=-d; else healed+=d; if(p.hp<p.maxHp*0.3){ p.hp=p.maxHp; resets++; } if(!p.alive){p.alive=true;} prev=p.hp; },50);\n  __bot.paused=false;\n  const ok=await until(()=>r.cleared, 240000);\n  clearInterval(inv); __bot.paused=true;\n  const mins=r.roomTime/60; out.push({depth, n, seed, t:+r.roomTime.toFixed(0), maxHp:Math.round(r.player.maxHp), takenPctMin:Math.round(100*taken/r.player.maxHp/mins), healPctMin:Math.round(100*healed/r.player.maxHp/mins), resets});\n}\nconst plan=[[1,5],[2,8],[3,12],[4,15],[5,18]]; for(const [d,n] of plan) for(const seed of [21,22]) await trial(n,d,seed);\nreturn JSON.stringify(out);\n})()"
+ }
+]

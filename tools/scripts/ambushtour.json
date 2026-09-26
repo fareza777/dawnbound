@@ -1,0 +1,69 @@
+[
+ {
+  "goto": "http://localhost:4174"
+ },
+ {
+  "until": "window.__game && window.__services && window.__services.save && window.__grant && window.__game.scene.getScenes(true).length > 0",
+  "timeout": 20000
+ },
+ {
+  "wait": 800
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); __run.start({heroId:'rowan'}); g.scene.start('RunMap'); 'map'"
+ },
+ {
+  "wait": 2000
+ },
+ {
+  "shot": "r00_map"
+ },
+ {
+  "eval": "const m=__game.scene.getScene('RunMap'); m.select(__run.choices(__run.run)[0]); 'go'"
+ },
+ {
+  "wait": 3500
+ },
+ {
+  "shot": "r01_room"
+ },
+ {
+  "shot": "ne_card"
+ },
+ {
+  "eval": "const r=__game.scene.getScene('Room'); r.enemies.forEach(e=>{e.hp=0;}); 'k'"
+ },
+ {
+  "wait": 2500
+ },
+ {
+  "eval": "const r=__game.scene.getScene('Room'); r.scene.pause(); r.scene.launch('Event',{room:r,eventId:'ev_gambler'}); 'e'"
+ },
+ {
+  "wait": 1200
+ },
+ {
+  "eval": "const ev=__game.scene.getScene('Event'); const c=(ev.choices||null); const evd=null; 'ok'"
+ },
+ {
+  "eval": "const ev=__game.scene.getScene('Event'); const btns=[]; const w=l=>l.forEach(o=>{ if(o.list){ if(o.bw!==undefined) btns.push(o); w(o.list);} }); w(ev.children.list); btns[1].emit('pointerdown',{x:0,y:0}); btns[1].emit('pointerup',{x:0,y:0}); 'chose '+btns.length"
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "eval": "const ev=__game.scene.getScene('Event'); const btns=[]; const w=l=>l.forEach(o=>{ if(o.list){ if(o.bw!==undefined) btns.push(o); w(o.list);} }); w(ev.children.list); const b=btns[btns.length-1]; b.emit('pointerdown',{x:0,y:0}); b.emit('pointerup',{x:0,y:0}); 'continue'"
+ },
+ {
+  "wait": 2500
+ },
+ {
+  "eval": "const r=__game.scene.getScene('Room'); JSON.stringify({cleared:r.cleared, alive:r.enemies.filter(e=>e.alive).length, wavesLeft:r.wavesLeft, spawns:r.layout.spawns.length})"
+ },
+ {
+  "shot": "ambush"
+ },
+ {
+  "eval": "(window.__errs||[]).join('|')"
+ }
+]

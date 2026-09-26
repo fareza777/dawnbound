@@ -1,0 +1,239 @@
+/**
+ * AdMob integration with player-friendly pacing:
+ *  - Banners only on calm screens (menu, path map, results) and never in combat.
+ *  - Interstitials only at natural breaks (run end, new depth), never in the first runs, at most every few minutes.
+ *  - Rewarded videos are always the player's choice (revive, double embers, extra reroll, daily gift).
+ * Remove Ads turns banners and interstitials off; rewarded videos stay available as an opt-in.
+ * On the web (dev/QA builds) rewarded ads are simulated so the flows can be tested; production web shows none.
+ */
+import { Capacitor, type PluginListenerHandle } from '@capacitor/core';
+import {
+  AdMob, AdmobConsentStatus, BannerAdPosition, BannerAdSize, InterstitialAdPluginEvents, RewardAdPluginEvents,
+} from '@capacitor-community/admob';
+import { MONETIZATION, adUnitId } from '@/config/monetization';
+import { view } from './viewport';
+import type { SaveData } from '@/data/types';
+import type { AudioManager } from './audio';
+
+export type RewardPlacement = 'revive' | 'double_embers' | 'reroll' | 'daily_gift';
+
+/** Standard 320x50 banner plus a little breathing room. */
+const BANNER_RESERVE_DP = 56;
+const SIMULATED = import.meta.env.DEV || import.meta.env.VITE_QA === '1';
+
+/**
+ * Interstitial pacing rule (pure, unit-tested): never for Remove Ads owners, never in the first runs, never twice
+ * within the minimum gap, and only on every Nth natural break.
+ */
+export interface InterstitialPacing {
+  minRuns: number;
+  minGapSec: number;
+  everyNthBreak: number;
+}
+
+export function interstitialAllowed(shop: SaveData['shop'], runs: number, now: number, cfg: InterstitialPacing = MONETIZATION.interstitial): boolean {
+  return !shop.noAds
+    && runs >= cfg.minRuns
+    && now - shop.lastInterstitialAt >= cfg.minGapSec * 1000
+    && shop.adBreaks % cfg.everyNthBreak === 0;
+}
+
+export class Ads {
+  readonly native = Capacitor.isNativePlatform();
+  private ready = false;
+  private interstitialLoaded = false;
+  private rewardedLoaded = false;
+  private bannerCreated = false;
+  private bannerVisible = false;
+  /** A screen asked for a banner (it may arrive before AdMob finished starting). */
+  private wantBanner = false;
+  private privacyRequired = false;
+  private showing = false;
+
+  constructor(private save: () => SaveData, private audio: () => AudioManager | undefined) {}
+
+  get noAds(): boolean {
+    return this.save().shop.noAds;
+  }
+
+  async init(): Promise<void> {
+    if (!this.native) return;
+    try {
+      await AdMob.initialize({ initializeForTesting: MONETIZATION.useTestAds });
+      // GDPR / UMP consent: shows Google's form only where it is legally required.
+      const info = await AdMob.requestConsentInfo();
+      if (info.isConsentFormAvailable && info.status === AdmobConsentStatus.REQUIRED) await AdMob.showConsentForm();
+      const after = await AdMob.requestConsentInfo();
+      // The enum is not exported by the plugin; its REQUIRED value is the string below.
+      this.privacyRequired = String(after.privacyOptionsRequirementStatus) === 'REQUIRED';
+      this.ready = true;
+      AdMob.addListener(InterstitialAdPluginEvents.Loaded, () => (this.interstitialLoaded = true));
+      AdMob.addListener(InterstitialAdPluginEvents.FailedToLoad, () => (this.interstitialLoaded = false));
+      AdMob.addListener(RewardAdPluginEvents.Loaded, () => (this.rewardedLoaded = true));
+      AdMob.addListener(RewardAdPluginEvents.FailedToLoad, () => (this.rewardedLoaded = false));
+      void this.loadInterstitial();
+      void this.loadRewarded();
+      if (this.wantBanner) void this.showBanner();
+    } catch (err) {
+      console.warn('[ads] init failed', err);
+    }
+  }
+
+  // ------------------------------------------------------------------ banner
+  /** Virtual pixels a scene should keep free at the bottom while it shows a banner. */
+  bannerReserve(): number {
+    // Reserved even before AdMob is ready so the layout does not jump when the banner arrives.
+    if (!this.native || this.noAds) return 0;
+    return Math.ceil(BANNER_RESERVE_DP / view.cssPerVirtual);
+  }
+
+  async showBanner(): Promise<void> {
+    this.wantBanner = true;
+    if (!this.native || !this.ready || this.noAds || this.bannerVisible) return;
+    this.bannerVisible = true;
+    try {
+      if (this.bannerCreated) await AdMob.resumeBanner();
+      else {
+        await AdMob.showBanner({
+          adId: adUnitId('banner'), adSize: BannerAdSize.BANNER, position: BannerAdPosition.BOTTOM_CENTER,
+          margin: 0, isTesting: MONETIZATION.useTestAds,
+        });
+        this.bannerCreated = true;
+      }
+    } catch (err) {
+      this.bannerVisible = false;
+      console.warn('[ads] banner', err);
+    }
+  }
+
+  async hideBanner(): Promise<void> {
+    this.wantBanner = false;
+    if (!this.bannerVisible) return;
+    this.bannerVisible = false;
+    try {
+      await AdMob.hideBanner();
+    } catch (err) {
+      console.warn('[ads] hide banner', err);
+    }
+  }
+
+  // ------------------------------------------------------------------ interstitial
+  private async loadInterstitial(): Promise<void> {
+    if (!this.ready || this.noAds) return;
+    try {
+      await AdMob.prepareInterstitial({ adId: adUnitId('interstitial'), isTesting: MONETIZATION.useTestAds });
+      this.interstitialLoaded = true;
+    } catch (err) {
+      this.interstitialLoaded = false;
+      console.warn('[ads] interstitial load', err);
+    }
+  }
+
+  /**
+   * A natural break (run ended, new depth). Shows an interstitial only if pacing allows; resolves when the game may
+   * continue (immediately when no ad is shown).
+   */
+  async naturalBreak(): Promise<void> {
+    const s = this.save();
+    s.shop.adBreaks += 1;
+    const allowed = this.native && this.ready && !this.showing && this.interstitialLoaded
+      && interstitialAllowed(s.shop, s.stats.runs ?? 0, Date.now());
+    if (!allowed) return;
+    this.showing = true;
+    this.audio()?.setPaused(true);
+    try {
+      await new Promise<void>((resolve) => {
+        const handles: Promise<PluginListenerHandle>[] = [];
+        const done = () => {
+          handles.forEach((h) => void h.then((x) => x.remove()));
+          resolve();
+        };
+        handles.push(AdMob.addListener(InterstitialAdPluginEvents.Dismissed, done));
+        handles.push(AdMob.addListener(InterstitialAdPluginEvents.FailedToShow, done));
+        AdMob.showInterstitial().catch(done);
+      });
+      s.shop.lastInterstitialAt = Date.now();
+    } finally {
+      this.showing = false;
+      this.interstitialLoaded = false;
+      this.audio()?.setPaused(false);
+      void this.loadInterstitial();
+    }
+  }
+
+  // ------------------------------------------------------------------ rewarded
+  private async loadRewarded(): Promise<void> {
+    if (!this.ready) return;
+    try {
+      await AdMob.prepareRewardVideoAd({ adId: adUnitId('rewarded'), isTesting: MONETIZATION.useTestAds });
+      this.rewardedLoaded = true;
+    } catch (err) {
+      this.rewardedLoaded = false;
+      console.warn('[ads] rewarded load', err);
+    }
+  }
+
+  /** Whether a rewarded video can be offered right now (hide the button otherwise). */
+  canReward(): boolean {
+    if (!this.native) return SIMULATED;
+    return this.ready && this.rewardedLoaded && !this.showing;
+  }
+
+  /** Plays a rewarded video. Resolves true only if the player earned the reward. */
+  async showRewarded(_placement: RewardPlacement): Promise<boolean> {
+    if (!this.native) {
+      if (!SIMULATED) return false;
+      await new Promise((r) => setTimeout(r, 500));
+      return true;
+    }
+    if (!this.canReward()) {
+      void this.loadRewarded();
+      return false;
+    }
+    this.showing = true;
+    this.audio()?.setPaused(true);
+    let earned = false;
+    try {
+      await new Promise<void>((resolve) => {
+        const handles: Promise<PluginListenerHandle>[] = [];
+        const done = () => {
+          handles.forEach((h) => void h.then((x) => x.remove()));
+          resolve();
+        };
+        handles.push(AdMob.addListener(RewardAdPluginEvents.Rewarded, () => (earned = true)));
+        handles.push(AdMob.addListener(RewardAdPluginEvents.Dismissed, done));
+        handles.push(AdMob.addListener(RewardAdPluginEvents.FailedToShow, done));
+        AdMob.showRewardVideoAd().catch(done);
+      });
+    } finally {
+      this.showing = false;
+      this.rewardedLoaded = false;
+      this.audio()?.setPaused(false);
+      void this.loadRewarded();
+    }
+    return earned;
+  }
+
+  // ------------------------------------------------------------------ privacy
+  /** True where regulations require an "Ad privacy" entry in settings (e.g. EEA/UK). */
+  get privacyOptionsRequired(): boolean {
+    return this.privacyRequired;
+  }
+
+  async showPrivacyOptions(): Promise<void> {
+    if (!this.native) return;
+    try {
+      await AdMob.showPrivacyOptionsForm();
+    } catch (err) {
+      console.warn('[ads] privacy form', err);
+    }
+  }
+
+  /** Called when Remove Ads is purchased: drop the banner and stop preloading interstitials. */
+  onAdsRemoved(): void {
+    void this.hideBanner();
+    if (this.bannerCreated) void AdMob.removeBanner().catch(() => undefined);
+    this.bannerCreated = false;
+    this.interstitialLoaded = false;
+  }
+}

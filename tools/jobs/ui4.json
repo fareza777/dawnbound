@@ -1,0 +1,20 @@
+[
+ {
+  "out": "src/assets/gen/ui/icon_gift.png",
+  "prompt": "wrapped gift box with a shiny golden ribbon bow, glowing sparkles, fantasy game reward icon",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/ui/icon_crown.png",
+  "prompt": "golden royal crown with red gems, premium shop badge, shiny, fantasy game icon",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ }
+]

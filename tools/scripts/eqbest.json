@@ -1,0 +1,54 @@
+[
+ {
+  "goto": "http://localhost:4174"
+ },
+ {
+  "until": "window.__game && window.__services && window.__services.save && window.__grant && window.__game.scene.getScenes(true).length > 0",
+  "timeout": 20000
+ },
+ {
+  "wait": 800
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; s.flags.rift_open=1; __grant(24); const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); g.scene.start('Hub'); 'hub'"
+ },
+ {
+  "wait": 2500
+ },
+ {
+  "eval": "const d=__game.scene.getScene('Dialogue'); if(__game.scene.isActive('Dialogue')){d.scene.stop(); __game.scene.getScene('Hub').scene.resume();} 'ok'"
+ },
+ {
+  "wait": 800
+ },
+ {
+  "eval": "__grant(30,'eb'); __game.scene.getScene('Hub').openMenu('Inventory'); 'i'"
+ },
+ {
+  "wait": 1000
+ },
+ {
+  "shot": "eb_before"
+ },
+ {
+  "eval": "__game.scene.getScene('Inventory').equipBest(); JSON.stringify(__services.save.data.equipped)"
+ },
+ {
+  "wait": 500
+ },
+ {
+  "shot": "eb_after"
+ },
+ {
+  "eval": "__game.scene.getScene('Inventory').equipBest(); 'again'"
+ },
+ {
+  "wait": 500
+ },
+ {
+  "shot": "eb_again"
+ },
+ {
+  "eval": "(window.__errs||[]).join('|')"
+ }
+]

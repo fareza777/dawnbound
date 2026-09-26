@@ -1,0 +1,137 @@
+[
+ {
+  "goto": "http://localhost:4174"
+ },
+ {
+  "until": "window.__game && window.__services && window.__services.save && ['Menu','Onboarding'].some(k=>__game.scene.isActive(k))",
+  "timeout": 30000
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); __services.notify=()=>{}; const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; s.profile.tutorialDone=true; s.unlocks.heroes=['rowan','sera','elio','kaito']; s.profile.heroId='rowan'; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); const run=__run.start({heroId:'rowan'}); g.scene.start('RunMap'); 'rowan'"
+ },
+ {
+  "until": "__game.scene.isActive('RunMap') && __game.scene.getScene('RunMap').cameras && __game.scene.getScene('RunMap').cameras.main",
+  "timeout": 10000
+ },
+ {
+  "eval": "const m=__game.scene.getScene('RunMap'); const run=__run.run; m.select(__run.choices(run).find(n=>n.kind==='combat')||__run.choices(run)[0]); 'sel'"
+ },
+ {
+  "until": "__game.scene.isActive('Room') && __game.scene.getScene('Room').player && __game.scene.getScene('Room').enemies.some(e=>e.alive)",
+  "timeout": 20000
+ },
+ {
+  "eval": "const r=__game.scene.getScene('Room'); const e=r.enemies.find(e=>e.alive); r.player.x=e.x; r.player.y=e.y+30; __controls.attackHeld=true; 'atk'"
+ },
+ {
+  "wait": 350
+ },
+ {
+  "shot": "h_rowan_atk"
+ },
+ {
+  "eval": "__controls.attackHeld=false; __controls.skill=true; 'sk'"
+ },
+ {
+  "wait": 200
+ },
+ {
+  "shot": "h_rowan_skill"
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); __services.notify=()=>{}; const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; s.profile.tutorialDone=true; s.unlocks.heroes=['rowan','sera','elio','kaito']; s.profile.heroId='sera'; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); const run=__run.start({heroId:'sera'}); g.scene.start('RunMap'); 'sera'"
+ },
+ {
+  "until": "__game.scene.isActive('RunMap') && __game.scene.getScene('RunMap').cameras && __game.scene.getScene('RunMap').cameras.main",
+  "timeout": 10000
+ },
+ {
+  "eval": "const m=__game.scene.getScene('RunMap'); const run=__run.run; m.select(__run.choices(run).find(n=>n.kind==='combat')||__run.choices(run)[0]); 'sel'"
+ },
+ {
+  "until": "__game.scene.isActive('Room') && __game.scene.getScene('Room').player && __game.scene.getScene('Room').enemies.some(e=>e.alive)",
+  "timeout": 20000
+ },
+ {
+  "eval": "const r=__game.scene.getScene('Room'); const e=r.enemies.find(e=>e.alive); r.player.x=e.x; r.player.y=e.y+30; __controls.attackHeld=true; 'atk'"
+ },
+ {
+  "wait": 350
+ },
+ {
+  "shot": "h_sera_atk"
+ },
+ {
+  "eval": "__controls.attackHeld=false; __controls.skill=true; 'sk'"
+ },
+ {
+  "wait": 200
+ },
+ {
+  "shot": "h_sera_skill"
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); __services.notify=()=>{}; const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; s.profile.tutorialDone=true; s.unlocks.heroes=['rowan','sera','elio','kaito']; s.profile.heroId='elio'; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); const run=__run.start({heroId:'elio'}); g.scene.start('RunMap'); 'elio'"
+ },
+ {
+  "until": "__game.scene.isActive('RunMap') && __game.scene.getScene('RunMap').cameras && __game.scene.getScene('RunMap').cameras.main",
+  "timeout": 10000
+ },
+ {
+  "eval": "const m=__game.scene.getScene('RunMap'); const run=__run.run; m.select(__run.choices(run).find(n=>n.kind==='combat')||__run.choices(run)[0]); 'sel'"
+ },
+ {
+  "until": "__game.scene.isActive('Room') && __game.scene.getScene('Room').player && __game.scene.getScene('Room').enemies.some(e=>e.alive)",
+  "timeout": 20000
+ },
+ {
+  "eval": "const r=__game.scene.getScene('Room'); const e=r.enemies.find(e=>e.alive); r.player.x=e.x; r.player.y=e.y+30; __controls.attackHeld=true; 'atk'"
+ },
+ {
+  "wait": 350
+ },
+ {
+  "shot": "h_elio_atk"
+ },
+ {
+  "eval": "__controls.attackHeld=false; __controls.skill=true; 'sk'"
+ },
+ {
+  "wait": 200
+ },
+ {
+  "shot": "h_elio_skill"
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); __services.notify=()=>{}; const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; s.profile.tutorialDone=true; s.unlocks.heroes=['rowan','sera','elio','kaito']; s.profile.heroId='kaito'; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); const run=__run.start({heroId:'kaito'}); g.scene.start('RunMap'); 'kaito'"
+ },
+ {
+  "until": "__game.scene.isActive('RunMap') && __game.scene.getScene('RunMap').cameras && __game.scene.getScene('RunMap').cameras.main",
+  "timeout": 10000
+ },
+ {
+  "eval": "const m=__game.scene.getScene('RunMap'); const run=__run.run; m.select(__run.choices(run).find(n=>n.kind==='combat')||__run.choices(run)[0]); 'sel'"
+ },
+ {
+  "until": "__game.scene.isActive('Room') && __game.scene.getScene('Room').player && __game.scene.getScene('Room').enemies.some(e=>e.alive)",
+  "timeout": 20000
+ },
+ {
+  "eval": "const r=__game.scene.getScene('Room'); const e=r.enemies.find(e=>e.alive); r.player.x=e.x; r.player.y=e.y+30; __controls.attackHeld=true; 'atk'"
+ },
+ {
+  "wait": 350
+ },
+ {
+  "shot": "h_kaito_atk"
+ },
+ {
+  "eval": "__controls.attackHeld=false; __controls.skill=true; 'sk'"
+ },
+ {
+  "wait": 200
+ },
+ {
+  "shot": "h_kaito_skill"
+ }
+]

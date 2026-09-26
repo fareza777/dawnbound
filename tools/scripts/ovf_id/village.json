@@ -1,0 +1,36 @@
+[
+ {
+  "goto": "http://localhost:4174"
+ },
+ {
+  "until": "window.__game && window.__services && window.__services.save && ['Menu','Onboarding'].some(k=>__game.scene.isActive(k))",
+  "timeout": 30000
+ },
+ {
+  "eval": "__setLang('id')"
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); __services.notify=()=>{}; const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; for(const q of ['mq_awaken','mq_training','mq_descend','mq_gorehorn']) s.quests[q]={status:'claimed',progress:[]}; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); g.scene.start('Hub'); 'hub'"
+ },
+ {
+  "eval": "__setLang('id')"
+ },
+ {
+  "wait": 2500
+ },
+ {
+  "eval": "if(__game.scene.isActive('Dialogue')){__game.scene.stop('Dialogue'); __game.scene.getScene('Hub').scene.resume();} const h=__game.scene.getScene('Hub'); __game.scene.stop('HubHud'); const cam=h.cameras.main; cam.stopFollow(); cam.setZoom(cam.zoom/2); cam.centerOn(192,256); 'zoom'"
+ },
+ {
+  "wait": 800
+ },
+ {
+  "shot": "village_full"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "(()=>{const h=__game.scene.getScene('Hub'); const solids=h.solids.getChildren().map(z=>z.body); const out={};\nfor(const sp of h.spots.filter(s=>s.id.startsWith('npc:'))){\n  let reach=0; for(let a=0;a<16;a++){for(const r of [10,14,18]){const x=sp.x+Math.cos(a/16*Math.PI*2)*r, y=sp.y+Math.sin(a/16*Math.PI*2)*r;\n    const blocked=solids.some(b=>x>b.x-5&&x<b.x+b.width+5&&y>b.y-5&&y<b.y+b.height+5); if(!blocked) reach++;}}\n  const n=h.npcSprites.get(sp.id.slice(4)); const sb=n.sprite.getBounds();\n  const occl=h.children.list.filter(o=>o!==n.sprite && o.type==='Sprite' && o.depth>n.sprite.depth && o.getBounds && Phaser.Geom.Rectangle.Overlaps(o.getBounds(),sb) && o.frame && String(o.frame.name).startsWith('p/house')).map(o=>o.frame.name);\n  out[sp.id]={reach, occl};\n} return JSON.stringify(out);})()"
+ }
+]

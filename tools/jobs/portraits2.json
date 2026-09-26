@@ -1,0 +1,66 @@
+[
+ {
+  "out": "src/assets/gen/portraits/ev_oracle.png",
+  "prompt": "fantasy RPG character portrait, bust shot, facing viewer, veiled desert oracle woman, golden jewelry, glowing amber eyes above a sand-colored veil, mysterious calm expression, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/ev_frozen_knight.png",
+  "prompt": "fantasy RPG character portrait, bust shot, facing viewer, knight encased in pale blue ice, frost on his helmet and beard, sorrowful eyes, icy breath, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/ev_rival_bard.png",
+  "prompt": "fantasy RPG character portrait, bust shot, facing viewer, flamboyant young male bard with a feathered green hat, smug grin, lute over shoulder, rival showman, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/ev_choir_ghost.png",
+  "prompt": "fantasy RPG character portrait, bust shot, facing viewer, drowned ghost chorister girl, translucent teal skin, wet hair, singing with closed eyes, water droplets, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/ev_forge_spirit.png",
+  "prompt": "fantasy RPG character portrait, bust shot, facing viewer, fire elemental blacksmith spirit, body of molten embers, stern bearded face made of flame, leather apron, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/ev_crystal_seer.png",
+  "prompt": "fantasy RPG character portrait, bust shot, facing viewer, ancient seer made of violet and cyan crystal, gem-like face, starlight glinting inside, serene, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/ev_old_keeper.png",
+  "prompt": "fantasy RPG character portrait, bust shot, facing viewer, skeleton of an old lanternkeeper in a tattered cloak, a dim lantern still glowing at its chest, peaceful, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/ev_sand_merchant.png",
+  "prompt": "fantasy RPG character portrait, bust shot, facing viewer, shimmering mirage merchant, turbaned grinning trader with gold teeth, heat haze distortion, wares on his back, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ }
+]

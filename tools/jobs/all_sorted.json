@@ -1,0 +1,3656 @@
+[
+ {
+  "out": "src/assets/gen/portraits/maren.png",
+  "prompt": "fantasy RPG character portrait, bust shot, facing viewer, translucent ghostly elderly woman, long silver braided hair, soft blue spirit glow, gentle smile, keeper robe with golden lantern emblem, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/dorran.png",
+  "prompt": "fantasy RPG character portrait, bust shot, facing viewer, grizzled middle-aged male captain, short dark blue hair with grey streaks, scar over eyebrow, dented blue steel armor, stern face, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/brom.png",
+  "prompt": "fantasy RPG character portrait, bust shot, facing viewer, burly stocky blacksmith man, huge braided brown beard, bald head, soot on cheeks, leather apron, glowing forge light, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/ysolde.png",
+  "prompt": "fantasy RPG character portrait, bust shot, facing viewer, young woman alchemist, messy green hair in a bun, brass goggles on forehead, freckles, holding a bubbling green potion, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/pip.png",
+  "prompt": "fantasy RPG character portrait, bust shot, facing viewer, cheerful halfling merchant, green cap with feather, big grin, round cheeks, gold coin earring, green vest, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/liora.png",
+  "prompt": "fantasy RPG character portrait, bust shot, facing viewer, serene young priestess, long golden hair, white and gold hood, closed calm eyes, soft golden halo light, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/kael.png",
+  "prompt": "fantasy RPG character portrait, bust shot, facing viewer, rugged young male hunter, spiky brown hair, three claw scars on cheek, dark green hood, bow on shoulder, sharp eyes, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/tobin.png",
+  "prompt": "fantasy RPG character portrait, bust shot, facing viewer, old male scholar, white hair and long white beard, round spectacles, dark robe, ink-stained fingers, holding an old book, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/nyx.png",
+  "prompt": "fantasy RPG character portrait, bust shot, facing viewer, mysterious hooded woman, deep lavender hood shadowing her face, glowing violet eyes, half silver mask, purple starry cloak, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/mira.png",
+  "prompt": "fantasy RPG character portrait, bust shot, facing viewer, cheerful young farmer woman, long orange hair, straw hat, freckles, dirt on nose, holding a watering can, sunny smile, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/wren.png",
+  "prompt": "fantasy RPG character portrait, bust shot, facing viewer, small girl child, short pink hair with a ribbon, big curious eyes, patched dress, holding a wooden toy sword, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/finn.png",
+  "prompt": "fantasy RPG character portrait, bust shot, facing viewer, charming young male bard, wavy dark blue hair, feathered red cap, playful smile, holding a lute, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/rowan.png",
+  "prompt": "fantasy RPG character portrait, bust shot, facing viewer, young hero, spiky blond hair, determined blue eyes, blue tunic with brown leather shoulder strap, a small golden lantern charm, brave smile, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/sera.png",
+  "prompt": "fantasy RPG character portrait, bust shot, facing viewer, young female spear warrior, long white hair in a high ponytail, cyan eyes, light steel armor, fierce confident look, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/elio.png",
+  "prompt": "fantasy RPG character portrait, bust shot, facing viewer, young male mage, silver lavender hair, violet eyes, starry midnight blue robe, glowing star orb near his face, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/kaito.png",
+  "prompt": "fantasy RPG character portrait, bust shot, facing viewer, young swordsman, dark navy blue hair tied back, calm narrow eyes, dark blue kimono-style jacket, katana hilt visible, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/spirit_ember.png",
+  "prompt": "fantasy RPG character portrait, bust shot, facing viewer, fire spirit face made of living flames, orange and yellow fire hair, glowing ember eyes, wild grin, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/spirit_rime.png",
+  "prompt": "fantasy RPG character portrait, bust shot, facing viewer, ice spirit woman with crystal frost crown, pale blue skin, snowflakes, serene cold eyes, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/spirit_tempest.png",
+  "prompt": "fantasy RPG character portrait, bust shot, facing viewer, lightning spirit with electric yellow hair crackling, bright eyes, energetic grin, storm clouds, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/spirit_venom.png",
+  "prompt": "fantasy RPG character portrait, bust shot, facing viewer, venom spirit woman with green serpent scales, leafy vines hair, emerald eyes, sly smile, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/spirit_aurora.png",
+  "prompt": "fantasy RPG character portrait, bust shot, facing viewer, radiant light spirit with golden halo, white glowing hair, gentle warm face, sunrise colors, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/spirit_umbra.png",
+  "prompt": "fantasy RPG character portrait, bust shot, facing viewer, shadow spirit with dark violet smoke body, glowing purple eyes, crescent moon mark, mysterious smile, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/art/title.png",
+  "prompt": "a lone young hero with a glowing golden lantern standing on a cliff edge overlooking a small village at night, enormous starry night sky with a crescent moon, a glowing purple rift crack in the distant mountains, epic fantasy key art, dramatic lighting, detailed pixel art illustration, vertical composition",
+  "model": "rd-plus",
+  "style": "environment",
+  "w": 216,
+  "h": 384
+ },
+ {
+  "out": "src/assets/gen/art/intro_1.png",
+  "prompt": "a peaceful fantasy village with thatched cottages and green fields under a bright golden sunrise, birds in the sky, dramatic lighting, detailed pixel art illustration, vertical composition",
+  "model": "rd-plus",
+  "style": "environment",
+  "w": 216,
+  "h": 384
+ },
+ {
+  "out": "src/assets/gen/art/intro_2.png",
+  "prompt": "a dark sorcerer king in a black hood raising a hand as a glowing golden crystal shatters into five burning embers, purple lightning, dramatic lighting, detailed pixel art illustration, vertical composition",
+  "model": "rd-plus",
+  "style": "environment",
+  "w": 216,
+  "h": 384
+ },
+ {
+  "out": "src/assets/gen/art/intro_3.png",
+  "prompt": "a dark forest at night where shadowy monsters crawl out of a glowing purple crack in the ground, abandoned houses, dramatic lighting, detailed pixel art illustration, vertical composition",
+  "model": "rd-plus",
+  "style": "environment",
+  "w": 216,
+  "h": 384
+ },
+ {
+  "out": "src/assets/gen/art/intro_4.png",
+  "prompt": "a small village at night protected by a giant glowing golden lantern on a stone shrine, warm light dome against darkness, dramatic lighting, detailed pixel art illustration, vertical composition",
+  "model": "rd-plus",
+  "style": "environment",
+  "w": 216,
+  "h": 384
+ },
+ {
+  "out": "src/assets/gen/art/intro_5.png",
+  "prompt": "an old woman keeper with silver braids holding a glowing lantern, fighting shadow monsters at the village gate, sparks and embers, dramatic lighting, detailed pixel art illustration, vertical composition",
+  "model": "rd-plus",
+  "style": "environment",
+  "w": 216,
+  "h": 384
+ },
+ {
+  "out": "src/assets/gen/art/intro_6.png",
+  "prompt": "an old woman spirit passing a glowing flame to a young blond hero kneeling before a golden lantern shrine, emotional moment, dramatic lighting, detailed pixel art illustration, vertical composition",
+  "model": "rd-plus",
+  "style": "environment",
+  "w": 216,
+  "h": 384
+ },
+ {
+  "out": "src/assets/gen/art/end_1.png",
+  "prompt": "a dark throne room collapsing as five glowing embers merge into a radiant golden crystal, light rays, dramatic lighting, detailed pixel art illustration, vertical composition",
+  "model": "rd-plus",
+  "style": "environment",
+  "w": 216,
+  "h": 384
+ },
+ {
+  "out": "src/assets/gen/art/end_2.png",
+  "prompt": "a golden sunrise over mountains and a village, first dawn after a long night, villagers cheering, dramatic lighting, detailed pixel art illustration, vertical composition",
+  "model": "rd-plus",
+  "style": "environment",
+  "w": 216,
+  "h": 384
+ },
+ {
+  "out": "src/assets/gen/art/end_3.png",
+  "prompt": "a lantern flickering on a shrine at dusk, ominous purple glow deep in a cave below, dramatic lighting, detailed pixel art illustration, vertical composition",
+  "model": "rd-plus",
+  "style": "environment",
+  "w": 216,
+  "h": 384
+ },
+ {
+  "out": "src/assets/gen/art/end_4.png",
+  "prompt": "a young hero offering a hand to a kneeling defeated sorcerer in a black cloak, soft light between them, dramatic lighting, detailed pixel art illustration, vertical composition",
+  "model": "rd-plus",
+  "style": "environment",
+  "w": 216,
+  "h": 384
+ },
+ {
+  "out": "src/assets/gen/art/end_5.png",
+  "prompt": "a quiet village in morning light, a lantern on a shrine resting with a gentle glow, flowers blooming, dramatic lighting, detailed pixel art illustration, vertical composition",
+  "model": "rd-plus",
+  "style": "environment",
+  "w": 216,
+  "h": 384
+ },
+ {
+  "out": "src/assets/gen/art/hub_bg.png",
+  "prompt": "a cozy fantasy village square at night with lanterns and a glowing shrine, cottages, cobblestone path, dramatic lighting, detailed pixel art illustration, vertical composition",
+  "model": "rd-plus",
+  "style": "environment",
+  "w": 216,
+  "h": 384
+ },
+ {
+  "out": "src/assets/gen/brand/app_icon.png",
+  "prompt": "game app icon, a glowing golden lantern with a sword crossed behind it, night blue background, bold readable silhouette, centered",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 256,
+  "h": 256
+ },
+ {
+  "out": "src/assets/gen/brand/app_icon_fg.png",
+  "prompt": "a glowing golden lantern with a sword crossed behind it, bold readable silhouette, centered, game icon",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 256,
+  "h": 256,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/ui/icon_inventory.png",
+  "prompt": "leather backpack, game UI icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/ui/icon_quests.png",
+  "prompt": "rolled parchment scroll with red wax seal, game UI icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/ui/icon_codex.png",
+  "prompt": "old leather book with a golden emblem, game UI icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/ui/icon_settings.png",
+  "prompt": "bronze gear cog, game UI icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/ui/icon_hero.png",
+  "prompt": "knight helmet, game UI icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/ui/icon_map.png",
+  "prompt": "folded treasure map, game UI icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/ui/icon_embers.png",
+  "prompt": "glowing orange ember crystal, game UI icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/ui/icon_gold.png",
+  "prompt": "stack of gold coins, game UI icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/ui/icon_shard.png",
+  "prompt": "pink glowing memory crystal shard, game UI icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/ui/icon_flask.png",
+  "prompt": "red health potion flask, game UI icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/ui/icon_attack.png",
+  "prompt": "sword slash, game UI icon",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/ui/icon_dash.png",
+  "prompt": "wind dash swoosh, game UI icon",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/ui/icon_skill.png",
+  "prompt": "spinning blade, game UI icon",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/ui/icon_flare.png",
+  "prompt": "bright lantern burst of light, game UI icon",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_sword_1.png",
+  "prompt": "Rusty Blade, a straight longsword made of rusty brown pitted iron, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_sword_2.png",
+  "prompt": "Iron Sword, a straight longsword made of plain grey iron, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_sword_3.png",
+  "prompt": "Steel Longsword, a straight longsword made of polished steel, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_sword_4.png",
+  "prompt": "Knight's Falchion, a straight longsword made of steel with gold trim and a small red gem, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_sword_5.png",
+  "prompt": "Moonsteel Saber, a straight longsword made of pale silver-blue moonsteel with a soft glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_sword_6.png",
+  "prompt": "Runeblade, a straight longsword made of dark metal engraved with glowing cyan runes, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_sword_7.png",
+  "prompt": "Dawnforged Sword, a straight longsword made of radiant golden metal with warm ember glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_sword_8.png",
+  "prompt": "Starfall Edge, a straight longsword made of cosmic purple metal with twinkling stars and violet glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_axe_1.png",
+  "prompt": "Hatchet, a battle axe made of rusty brown pitted iron, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_axe_2.png",
+  "prompt": "Iron Axe, a battle axe made of plain grey iron, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_axe_3.png",
+  "prompt": "Bearded Axe, a battle axe made of polished steel, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_axe_4.png",
+  "prompt": "War Axe, a battle axe made of steel with gold trim and a small red gem, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_axe_5.png",
+  "prompt": "Moonsteel Cleaver, a battle axe made of pale silver-blue moonsteel with a soft glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_axe_6.png",
+  "prompt": "Runic Greataxe, a battle axe made of dark metal engraved with glowing cyan runes, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_axe_7.png",
+  "prompt": "Dawnforged Axe, a battle axe made of radiant golden metal with warm ember glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_axe_8.png",
+  "prompt": "Worldsplitter, a battle axe made of cosmic purple metal with twinkling stars and violet glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_dagger_1.png",
+  "prompt": "Shiv, a short curved dagger made of rusty brown pitted iron, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_dagger_2.png",
+  "prompt": "Iron Dagger, a short curved dagger made of plain grey iron, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_dagger_3.png",
+  "prompt": "Stiletto, a short curved dagger made of polished steel, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_dagger_4.png",
+  "prompt": "Assassin's Kris, a short curved dagger made of steel with gold trim and a small red gem, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_dagger_5.png",
+  "prompt": "Moonsteel Fang, a short curved dagger made of pale silver-blue moonsteel with a soft glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_dagger_6.png",
+  "prompt": "Rune Dirk, a short curved dagger made of dark metal engraved with glowing cyan runes, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_dagger_7.png",
+  "prompt": "Dawnforged Kris, a short curved dagger made of radiant golden metal with warm ember glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_dagger_8.png",
+  "prompt": "Nightwhisper, a short curved dagger made of cosmic purple metal with twinkling stars and violet glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_spear_1.png",
+  "prompt": "Wooden Spear, a long spear polearm made of rusty brown pitted iron, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_spear_2.png",
+  "prompt": "Iron Spear, a long spear polearm made of plain grey iron, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_spear_3.png",
+  "prompt": "Pike, a long spear polearm made of polished steel, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_spear_4.png",
+  "prompt": "Halberd, a long spear polearm made of steel with gold trim and a small red gem, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_spear_5.png",
+  "prompt": "Moonsteel Glaive, a long spear polearm made of pale silver-blue moonsteel with a soft glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_spear_6.png",
+  "prompt": "Rune Lance, a long spear polearm made of dark metal engraved with glowing cyan runes, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_spear_7.png",
+  "prompt": "Dawnforged Spear, a long spear polearm made of radiant golden metal with warm ember glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_spear_8.png",
+  "prompt": "Skypiercer, a long spear polearm made of cosmic purple metal with twinkling stars and violet glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_staff_1.png",
+  "prompt": "Walking Stick, a magic staff with a crystal orb made of rusty brown pitted iron, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_staff_2.png",
+  "prompt": "Oak Staff, a magic staff with a crystal orb made of plain grey iron, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_staff_3.png",
+  "prompt": "Crystal Rod, a magic staff with a crystal orb made of polished steel, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_staff_4.png",
+  "prompt": "Sage's Staff, a magic staff with a crystal orb made of steel with gold trim and a small red gem, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_staff_5.png",
+  "prompt": "Moonsteel Scepter, a magic staff with a crystal orb made of pale silver-blue moonsteel with a soft glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_staff_6.png",
+  "prompt": "Rune Staff, a magic staff with a crystal orb made of dark metal engraved with glowing cyan runes, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_staff_7.png",
+  "prompt": "Dawnforged Staff, a magic staff with a crystal orb made of radiant golden metal with warm ember glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_staff_8.png",
+  "prompt": "Starcaller, a magic staff with a crystal orb made of cosmic purple metal with twinkling stars and violet glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_hammer_1.png",
+  "prompt": "Mallet, a heavy war hammer made of rusty brown pitted iron, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_hammer_2.png",
+  "prompt": "Iron Mace, a heavy war hammer made of plain grey iron, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_hammer_3.png",
+  "prompt": "Warhammer, a heavy war hammer made of polished steel, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_hammer_4.png",
+  "prompt": "Morning Star, a heavy war hammer made of steel with gold trim and a small red gem, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_hammer_5.png",
+  "prompt": "Moonsteel Maul, a heavy war hammer made of pale silver-blue moonsteel with a soft glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_hammer_6.png",
+  "prompt": "Rune Hammer, a heavy war hammer made of dark metal engraved with glowing cyan runes, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_hammer_7.png",
+  "prompt": "Dawnforged Maul, a heavy war hammer made of radiant golden metal with warm ember glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_hammer_8.png",
+  "prompt": "Earthshaker, a heavy war hammer made of cosmic purple metal with twinkling stars and violet glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_helm_1.png",
+  "prompt": "Leather Cap, a helmet made of rusty brown pitted iron, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_helm_2.png",
+  "prompt": "Iron Helm, a helmet made of plain grey iron, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_helm_3.png",
+  "prompt": "Chain Coif, a helmet made of polished steel, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_helm_4.png",
+  "prompt": "Knight Helm, a helmet made of steel with gold trim and a small red gem, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_helm_5.png",
+  "prompt": "Moonsteel Visor, a helmet made of pale silver-blue moonsteel with a soft glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_helm_6.png",
+  "prompt": "Rune Crown, a helmet made of dark metal engraved with glowing cyan runes, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_helm_7.png",
+  "prompt": "Dawnforged Helm, a helmet made of radiant golden metal with warm ember glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_helm_8.png",
+  "prompt": "Halo of Stars, a helmet made of cosmic purple metal with twinkling stars and violet glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_armor_1.png",
+  "prompt": "Padded Tunic, a chest armor breastplate made of rusty brown pitted iron, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_armor_2.png",
+  "prompt": "Leather Armor, a chest armor breastplate made of plain grey iron, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_armor_3.png",
+  "prompt": "Chainmail, a chest armor breastplate made of polished steel, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_armor_4.png",
+  "prompt": "Plate Armor, a chest armor breastplate made of steel with gold trim and a small red gem, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_armor_5.png",
+  "prompt": "Moonsteel Cuirass, a chest armor breastplate made of pale silver-blue moonsteel with a soft glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_armor_6.png",
+  "prompt": "Rune Mail, a chest armor breastplate made of dark metal engraved with glowing cyan runes, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_armor_7.png",
+  "prompt": "Dawnforged Plate, a chest armor breastplate made of radiant golden metal with warm ember glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_armor_8.png",
+  "prompt": "Aegis of Dawn, a chest armor breastplate made of cosmic purple metal with twinkling stars and violet glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_boots_1.png",
+  "prompt": "Sandals, a pair of boots made of rusty brown pitted iron, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_boots_2.png",
+  "prompt": "Leather Boots, a pair of boots made of plain grey iron, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_boots_3.png",
+  "prompt": "Iron Greaves, a pair of boots made of polished steel, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_boots_4.png",
+  "prompt": "Ranger Boots, a pair of boots made of steel with gold trim and a small red gem, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_boots_5.png",
+  "prompt": "Moonsteel Sabatons, a pair of boots made of pale silver-blue moonsteel with a soft glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_boots_6.png",
+  "prompt": "Rune Striders, a pair of boots made of dark metal engraved with glowing cyan runes, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_boots_7.png",
+  "prompt": "Dawnforged Boots, a pair of boots made of radiant golden metal with warm ember glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_boots_8.png",
+  "prompt": "Windwalkers, a pair of boots made of cosmic purple metal with twinkling stars and violet glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_ring_1.png",
+  "prompt": "Copper Band, a finger ring with a gem made of rusty brown pitted iron, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_ring_2.png",
+  "prompt": "Silver Ring, a finger ring with a gem made of plain grey iron, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_ring_3.png",
+  "prompt": "Gold Ring, a finger ring with a gem made of polished steel, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_ring_4.png",
+  "prompt": "Sapphire Ring, a finger ring with a gem made of steel with gold trim and a small red gem, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_ring_5.png",
+  "prompt": "Moonstone Ring, a finger ring with a gem made of pale silver-blue moonsteel with a soft glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_ring_6.png",
+  "prompt": "Rune Signet, a finger ring with a gem made of dark metal engraved with glowing cyan runes, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_ring_7.png",
+  "prompt": "Dawn Ring, a finger ring with a gem made of radiant golden metal with warm ember glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_ring_8.png",
+  "prompt": "Band of Eternity, a finger ring with a gem made of cosmic purple metal with twinkling stars and violet glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_amulet_1.png",
+  "prompt": "Wooden Pendant, a pendant amulet on a chain made of rusty brown pitted iron, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_amulet_2.png",
+  "prompt": "Silver Locket, a pendant amulet on a chain made of plain grey iron, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_amulet_3.png",
+  "prompt": "Amber Amulet, a pendant amulet on a chain made of polished steel, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_amulet_4.png",
+  "prompt": "Jade Talisman, a pendant amulet on a chain made of steel with gold trim and a small red gem, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_amulet_5.png",
+  "prompt": "Moonstone Amulet, a pendant amulet on a chain made of pale silver-blue moonsteel with a soft glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_amulet_6.png",
+  "prompt": "Rune Pendant, a pendant amulet on a chain made of dark metal engraved with glowing cyan runes, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_amulet_7.png",
+  "prompt": "Dawn Locket, a pendant amulet on a chain made of radiant golden metal with warm ember glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_amulet_8.png",
+  "prompt": "Heart of Aurelle, a pendant amulet on a chain made of cosmic purple metal with twinkling stars and violet glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_charm_1.png",
+  "prompt": "Lucky Coin, a small magic charm talisman made of rusty brown pitted iron, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_charm_2.png",
+  "prompt": "Rabbit Foot, a small magic charm talisman made of plain grey iron, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_charm_3.png",
+  "prompt": "Glass Eye, a small magic charm talisman made of polished steel, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_charm_4.png",
+  "prompt": "Spirit Bell, a small magic charm talisman made of steel with gold trim and a small red gem, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_charm_5.png",
+  "prompt": "Moon Totem, a small magic charm talisman made of pale silver-blue moonsteel with a soft glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_charm_6.png",
+  "prompt": "Rune Stone, a small magic charm talisman made of dark metal engraved with glowing cyan runes, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_charm_7.png",
+  "prompt": "Ember Idol, a small magic charm talisman made of radiant golden metal with warm ember glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/item_charm_8.png",
+  "prompt": "Sunshard, a small magic charm talisman made of cosmic purple metal with twinkling stars and violet glow, fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/unique_u_maren_blade.png",
+  "prompt": "legendary straight longsword called \"Maren's Last Light\", She held the dark back with this. Now so do you. ornate, glowing, unique fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/unique_u_thornfang.png",
+  "prompt": "legendary short curved dagger called \"Thornfang\", Carved from Whisperwood's oldest bramble. ornate, glowing, unique fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/unique_u_gorehorn_axe.png",
+  "prompt": "legendary battle axe called \"Gorehorn's Cleaver\", Still smells of the Warden's rage. ornate, glowing, unique fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/unique_u_mossheart.png",
+  "prompt": "legendary pendant amulet on a chain called \"Mossheart\", It beats. Slowly. ornate, glowing, unique fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/unique_u_wasp_ring.png",
+  "prompt": "legendary finger ring with a gem called \"Queen's Sting\", The hive remembers its queen. ornate, glowing, unique fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/unique_u_boots_hare.png",
+  "prompt": "legendary pair of boots called \"Boots of the Hare\", Somewhere a hare is very cold. ornate, glowing, unique fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/unique_u_lucky_coin.png",
+  "prompt": "legendary small magic charm talisman called \"Pip's Lucky Penny\", Pip swears he didn't lose it on purpose. ornate, glowing, unique fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/unique_u_bone_crown.png",
+  "prompt": "legendary helmet called \"Crown of the Bone King\", The dead bow to whoever wears it. ornate, glowing, unique fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/unique_u_ghost_veil.png",
+  "prompt": "legendary chest armor breastplate called \"Veil of the Drowned\", Damp. Always damp. ornate, glowing, unique fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/unique_u_lamia_fang.png",
+  "prompt": "legendary long spear polearm called \"Sisters' Fang\", Twin venom, twin sorrow. ornate, glowing, unique fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/unique_u_lantern_charm.png",
+  "prompt": "legendary small magic charm talisman called \"Lantern of the First Keeper\", The flame inside has never gone out. ornate, glowing, unique fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/unique_u_chanter_staff.png",
+  "prompt": "legendary magic staff with a crystal orb called \"Grave Chanter's Rod\", Hum it, and the dead hum back. ornate, glowing, unique fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/unique_u_vamp_ring.png",
+  "prompt": "legendary finger ring with a gem called \"Blood Signet\", Warm to the touch. Warmer after battle. ornate, glowing, unique fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/unique_u_sunspear.png",
+  "prompt": "legendary long spear polearm called \"Sunspear of Azhar\", The djinn's prison key, bent into a weapon. ornate, glowing, unique fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/unique_u_desert_wind.png",
+  "prompt": "legendary pair of boots called \"Sirocco Striders\", They leave no footprints. ornate, glowing, unique fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/unique_u_scorpion_tail.png",
+  "prompt": "legendary short curved dagger called \"Sethar's Stinger\", The Scorpion King's last gift. ornate, glowing, unique fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/unique_u_mirage.png",
+  "prompt": "legendary pendant amulet on a chain called \"Mirage Pendant\", Is it even there? ornate, glowing, unique fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/unique_u_golden_hammer.png",
+  "prompt": "legendary heavy war hammer called \"The Gilded Ruin\", Every blow scatters coins. ornate, glowing, unique fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/unique_u_frost_crown.png",
+  "prompt": "legendary helmet called \"Vesper's Diadem\", She loved once. It froze. ornate, glowing, unique fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/unique_u_glacier_plate.png",
+  "prompt": "legendary chest armor breastplate called \"Glacier Plate\", Colder than the mountain it came from. ornate, glowing, unique fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/unique_u_choir_bell.png",
+  "prompt": "legendary small magic charm talisman called \"Choir Bell\", Ring it and something sings back. ornate, glowing, unique fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/unique_u_starcaller.png",
+  "prompt": "legendary magic staff with a crystal orb called \"Elio's First Star\", The book said stars could be caught. It was right. ornate, glowing, unique fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/unique_u_stormbreaker.png",
+  "prompt": "legendary heavy war hammer called \"Stormbreaker\", Forged in a thunderbolt. Allegedly. ornate, glowing, unique fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/unique_u_hollow_crown.png",
+  "prompt": "legendary helmet called \"Crown of the Hollow King\", It whispers your name. Your real name. ornate, glowing, unique fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/unique_u_dawnblade.png",
+  "prompt": "legendary straight longsword called \"Dawnbreaker\", The sun, sharpened. ornate, glowing, unique fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/unique_u_void_dagger.png",
+  "prompt": "legendary short curved dagger called \"Voidfang\", Cuts the space between moments. ornate, glowing, unique fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/unique_u_magma_boots.png",
+  "prompt": "legendary pair of boots called \"Magma Treads\", Leave a trail. Of fire. ornate, glowing, unique fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/unique_u_worldheart.png",
+  "prompt": "legendary pendant amulet on a chain called \"Worldheart\", Aurelle itself, beating in your hand. ornate, glowing, unique fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/unique_u_eternity.png",
+  "prompt": "legendary finger ring with a gem called \"Band of Endless Dawn\", Time forgets whoever wears it. ornate, glowing, unique fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/unique_u_earthshaker.png",
+  "prompt": "legendary heavy war hammer called \"Heart of the Mountain\", The ground remembers every blow. ornate, glowing, unique fantasy RPG item icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_whetstone.png",
+  "prompt": "magic relic trinket \"Whetstone\", +12% ATK. simple, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_iron_heart.png",
+  "prompt": "magic relic trinket \"Iron Heart\", +30 Max HP. simple, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_feather.png",
+  "prompt": "magic relic trinket \"Swift Feather\", +10% Move Speed. simple, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_lucky_clover.png",
+  "prompt": "magic relic trinket \"Four-Leaf Clover\", +15 Luck. simple, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_hourglass.png",
+  "prompt": "magic relic trinket \"Sand Hourglass\", +12% Cooldown Reduction. simple, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_eagle_eye.png",
+  "prompt": "magic relic trinket \"Eagle Eye\", +8% Crit Chance. simple, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_heavy_pommel.png",
+  "prompt": "magic relic trinket \"Heavy Pommel\", +30% Crit Damage. simple, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_coin_purse.png",
+  "prompt": "magic relic trinket \"Coin Purse\", +30% Gold Find. simple, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_prism.png",
+  "prompt": "magic relic trinket \"Prism Shard\", +25% Magic Find. simple, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_buckler.png",
+  "prompt": "magic relic trinket \"Old Buckler\", +12 Defense. simple, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_gloves.png",
+  "prompt": "magic relic trinket \"Quick Gloves\", +12% Attack Speed. simple, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_magnet.png",
+  "prompt": "magic relic trinket \"Lodestone\", +20 Pickup Radius. simple, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_herb_pouch.png",
+  "prompt": "magic relic trinket \"Herb Pouch\", +40% Potion power. simple, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_ember_stone.png",
+  "prompt": "magic relic trinket \"Ember Stone\", +20% Fire damage, +10% Burn chance. simple, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_frost_stone.png",
+  "prompt": "magic relic trinket \"Frost Stone\", +20% Frost damage, +10% Chill chance. simple, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_storm_stone.png",
+  "prompt": "magic relic trinket \"Storm Stone\", +20% Storm damage, +10% Shock chance. simple, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_venom_stone.png",
+  "prompt": "magic relic trinket \"Venom Stone\", +20% Venom damage, +10% Poison chance. simple, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_sun_stone.png",
+  "prompt": "magic relic trinket \"Sun Stone\", +20% Radiant damage, +1 HP/s regen. simple, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_night_stone.png",
+  "prompt": "magic relic trinket \"Night Stone\", +20% Shadow damage, +10% Bleed chance. simple, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_lens.png",
+  "prompt": "magic relic trinket \"Focusing Lens\", +20% Skill damage. simple, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_boots_wind.png",
+  "prompt": "magic relic trinket \"Wind Anklet\", +1 Dash charge. simple, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_bandage.png",
+  "prompt": "magic relic trinket \"Clean Bandages\", Heal 1 HP on kill. simple, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_thorn_vest.png",
+  "prompt": "magic relic trinket \"Thorn Vest\", Reflect 12 damage when hit. simple, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_ward_charm.png",
+  "prompt": "magic relic trinket \"Ward Charm\", Start each room with 15 shield. simple, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_long_haft.png",
+  "prompt": "magic relic trinket \"Long Haft\", +15% Range. simple, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_big_book.png",
+  "prompt": "magic relic trinket \"Tome of Breadth\", +20% Area size. simple, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_fletching.png",
+  "prompt": "magic relic trinket \"Fine Fletching\", +25% Projectile speed, +10% ATK. simple, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_tonic.png",
+  "prompt": "magic relic trinket \"Bitter Tonic\", +8% Evasion. simple, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_boss_tooth.png",
+  "prompt": "magic relic trinket \"Giant's Tooth\", +20% Boss damage. simple, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_elite_badge.png",
+  "prompt": "magic relic trinket \"Hunter's Badge\", +25% Elite damage. simple, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_twin_arrows.png",
+  "prompt": "magic relic trinket \"Twin Fletch\", +1 projectile on attacks. blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_vampire_fang.png",
+  "prompt": "magic relic trinket \"Vampire Fang\", +4% Lifesteal. blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_reaper_coin.png",
+  "prompt": "magic relic trinket \"Reaper's Coin\", Execute enemies below 10% HP. blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_ember_core.png",
+  "prompt": "magic relic trinket \"Ember Core\", Burning enemies explode on death (100% ATK). blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_frost_core.png",
+  "prompt": "magic relic trinket \"Frozen Core\", Frozen enemies take +30% damage and shatter. blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_storm_core.png",
+  "prompt": "magic relic trinket \"Storm Core\", Every 4th hit chains lightning (70% ATK). blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_rot_core.png",
+  "prompt": "magic relic trinket \"Rot Core\", Poisoned enemies burst on death (80% ATK). blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_holy_relic.png",
+  "prompt": "magic relic trinket \"Saint's Knuckle\", Every 6th attack smites for 150% ATK. blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_shadow_cloak.png",
+  "prompt": "magic relic trinket \"Shade Cloak\", Kills have 35% chance to refund a Dash. blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_berserker_mask.png",
+  "prompt": "magic relic trinket \"Berserker Mask\", +40% damage while below 40% HP. blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_paragon_crown.png",
+  "prompt": "magic relic trinket \"Paragon Circlet\", +25% damage while at full HP. blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_gold_idol.png",
+  "prompt": "magic relic trinket \"Midas Idol\", +1% damage per 25 gold carried (max 40%). blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_first_blood.png",
+  "prompt": "magic relic trinket \"First Blood\", First hit on each enemy deals +50% and crits. blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_echo_bell.png",
+  "prompt": "magic relic trinket \"Echo Bell\", Skill cooldown -1s on kill. blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_spiked_boots.png",
+  "prompt": "magic relic trinket \"Spiked Boots\", Dashing through enemies deals 80% ATK. blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_lantern_oil.png",
+  "prompt": "magic relic trinket \"Lantern Oil\", Flare charges 40% faster. blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_mirror_shield.png",
+  "prompt": "magic relic trinket \"Mirror Shield\", 15% chance to reflect enemy projectiles. blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_momentum.png",
+  "prompt": "magic relic trinket \"Momentum Charm\", Kills grant +20% Attack/Move speed for 2s. blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_meteor_map.png",
+  "prompt": "magic relic trinket \"Star Chart\", A meteor falls every 6s (180% ATK). blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_thunder_rod.png",
+  "prompt": "magic relic trinket \"Thunder Rod\", Lightning strikes a foe every 4s (140% ATK). blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_frost_bell.png",
+  "prompt": "magic relic trinket \"Frost Bell\", Nearby enemies are periodically Chilled. blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_censer.png",
+  "prompt": "magic relic trinket \"Plague Censer\", Release a poison cloud every 4s (60% ATK). blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_halo_ring.png",
+  "prompt": "magic relic trinket \"Halo Ring\", 2 orbs of light circle you. blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_dancing_knives.png",
+  "prompt": "magic relic trinket \"Dancing Knives\", 2 blades orbit you. blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_phylactery.png",
+  "prompt": "magic relic trinket \"Cracked Phylactery\", Heal 25% HP when you clear a room below 30% HP. blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_chest_key.png",
+  "prompt": "magic relic trinket \"Skeleton Key\", Treasure chests drop an extra item. blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_merchant_seal.png",
+  "prompt": "magic relic trinket \"Merchant's Seal\", Shop prices -20%. blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_dice.png",
+  "prompt": "magic relic trinket \"Loaded Dice\", +2 Boon rerolls. blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_scholar_quill.png",
+  "prompt": "magic relic trinket \"Scholar's Quill\", +30% Ember XP. blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_iron_skin.png",
+  "prompt": "magic relic trinket \"Troll Hide\", +8% Damage Reduction, +2 HP/s regen. blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_pierce_tip.png",
+  "prompt": "magic relic trinket \"Piercing Tip\", Projectiles pierce 2 enemies. blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_rubber_ball.png",
+  "prompt": "magic relic trinket \"Bouncing Ball\", Projectiles bounce off walls once. blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_homing_eye.png",
+  "prompt": "magic relic trinket \"Seeker's Eye\", Projectiles gently home in. blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_retaliation.png",
+  "prompt": "magic relic trinket \"Wrath Totem\", When hit, release a nova (120% ATK). blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_elixir_vial.png",
+  "prompt": "magic relic trinket \"Endless Vial\", +1 Flask charge. blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_overkill.png",
+  "prompt": "magic relic trinket \"Butcher's Hook\", Excess damage on kill splashes to nearby enemies. blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_frenzy_idol.png",
+  "prompt": "magic relic trinket \"Frenzy Idol\", Each consecutive hit +2% damage (max 30%), resets when hit. blue shimmer, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_phoenix_feather.png",
+  "prompt": "magic relic trinket \"Phoenix Feather\", Revive once with 40% HP. epic, purple glow, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_crown_thorns.png",
+  "prompt": "magic relic trinket \"Crown of Thorns\", Reflect 40 damage, +40 Max HP. epic, purple glow, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_storm_heart.png",
+  "prompt": "magic relic trinket \"Heart of the Storm\", Crits chain lightning (90% ATK). +10% Crit. epic, purple glow, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_dragon_scale.png",
+  "prompt": "magic relic trinket \"Dragon Scale\", +20% Damage Reduction, immune to Burn. epic, purple glow, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_winter_crown.png",
+  "prompt": "magic relic trinket \"Winter Crown\", Enemies start rooms Chilled. Immune to Chill. epic, purple glow, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_assassin_blade.png",
+  "prompt": "magic relic trinket \"Assassin's Blade\", +15% Crit, +60% Crit Damage. epic, purple glow, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_sun_disk.png",
+  "prompt": "magic relic trinket \"Sun Disk\", Every 5th attack smites (250% ATK) and heals 3. epic, purple glow, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_hydra_tooth.png",
+  "prompt": "magic relic trinket \"Hydra Tooth\", Poison stacks +6 and deals +40%. epic, purple glow, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_quiver.png",
+  "prompt": "magic relic trinket \"Endless Quiver\", +2 projectiles. epic, purple glow, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_time_gear.png",
+  "prompt": "magic relic trinket \"Clockwork Gear\", +25% Attack Speed, +15% CDR. epic, purple glow, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_blood_chalice.png",
+  "prompt": "magic relic trinket \"Blood Chalice\", +8% Lifesteal, crits heal 2. epic, purple glow, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_titan_belt.png",
+  "prompt": "magic relic trinket \"Titan Belt\", +80 Max HP, +20 Defense. epic, purple glow, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_war_drum.png",
+  "prompt": "magic relic trinket \"War Drum\", +30% ATK, +10% Move Speed. epic, purple glow, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_void_lens.png",
+  "prompt": "magic relic trinket \"Void Lens\", Dashing empowers your next attack (+100%, crit). epic, purple glow, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_lucky_star.png",
+  "prompt": "magic relic trinket \"Lucky Star\", +40 Luck, +50% Magic Find. epic, purple glow, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_gorehorn_horn.png",
+  "prompt": "magic relic trinket \"Gorehorn's Horn\", Dash through enemies for 200% ATK and stun them. legendary, golden aura, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_twin_scales.png",
+  "prompt": "magic relic trinket \"Twin Scales\", Attacks hit twice at 60% power. legendary, golden aura, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_djinn_lamp.png",
+  "prompt": "magic relic trinket \"Djinn's Lamp\", Grants 3 random common Boons. legendary, golden aura, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_frozen_heart.png",
+  "prompt": "magic relic trinket \"Vesper's Frozen Heart\", Freeze on crit. Frozen enemies take +60% damage. legendary, golden aura, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_hollow_crown.png",
+  "prompt": "magic relic trinket \"The Hollow Crown\", +50% all damage. You cannot heal from potions. legendary, golden aura, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_lantern_shard.png",
+  "prompt": "magic relic trinket \"Shard of the Dawnstone\", Flare recharges on room clear. +50% Flare damage. legendary, golden aura, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_cursed_blade.png",
+  "prompt": "magic relic trinket \"Cursed Blade\", +60% ATK. Lose 1 HP per second in combat. cursed, dark red aura, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_glass_heart.png",
+  "prompt": "magic relic trinket \"Glass Heart\", +40% damage, -40% Max HP. cursed, dark red aura, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_greed_idol.png",
+  "prompt": "magic relic trinket \"Idol of Greed\", +100% Gold Find, enemies +20% HP. cursed, dark red aura, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_blind_eye.png",
+  "prompt": "magic relic trinket \"Blindfold\", +30% Crit Chance, darkness deepens. cursed, dark red aura, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_lead_boots.png",
+  "prompt": "magic relic trinket \"Lead Boots\", +30% Damage Reduction, -20% Move Speed. cursed, dark red aura, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_blood_price.png",
+  "prompt": "magic relic trinket \"Blood Price\", Shops cost HP instead of gold. cursed, dark red aura, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_wild_magic.png",
+  "prompt": "magic relic trinket \"Wild Magic\", Every room, gain a random boon but lose a random one. cursed, dark red aura, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/relic_berserk_chain.png",
+  "prompt": "magic relic trinket \"Berserk Chain\", +40% Attack Speed, cannot Dash. cursed, dark red aura, fantasy RPG artifact icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_slime_gel.png",
+  "prompt": "Slime Gel, crafting material, Wobbly. Alchemists love it. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_mushroom_cap.png",
+  "prompt": "Sporecap, crafting material, Handle with gloves. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_wasp_stinger.png",
+  "prompt": "Wasp Stinger, crafting material, Still twitching. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_bone_dust.png",
+  "prompt": "Bone Dust, crafting material, What remains of the restless. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_ectoplasm.png",
+  "prompt": "Ectoplasm, crafting material, Cold, sticky, faintly sad. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_grave_moss.png",
+  "prompt": "Grave Moss, crafting material, Grows only where tears fell. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_chitin.png",
+  "prompt": "Scorpion Chitin, crafting material, Harder than bronze. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_sand_pearl.png",
+  "prompt": "Sand Pearl, crafting material, Heat-fused glass. Pretty. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_ancient_linen.png",
+  "prompt": "Ancient Linen, crafting material, Smells of myrrh and old kings. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_frost_crystal.png",
+  "prompt": "Frost Crystal, crafting material, Never melts. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_wraith_silk.png",
+  "prompt": "Wraith Silk, crafting material, Woven from sighs. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_magma_core.png",
+  "prompt": "Magma Core, crafting material, Hot enough to forge anything. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_void_essence.png",
+  "prompt": "Void Essence, crafting material, A drop of nothing. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_iron_ore.png",
+  "prompt": "Iron Scrap, crafting material, Salvaged from common gear. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_arcane_dust.png",
+  "prompt": "Arcane Dust, crafting material, Salvaged from magic gear. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_rare_shard.png",
+  "prompt": "Prism Shard, crafting material, Salvaged from rare gear. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_epic_core.png",
+  "prompt": "Star Core, crafting material, Salvaged from epic gear. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_legend_ash.png",
+  "prompt": "Legend Ash, crafting material, Salvaged from legendary gear. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_moonsteel.png",
+  "prompt": "Moonsteel Ingot, crafting material, Silver under moonlight, blue under stars. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_dawn_shard.png",
+  "prompt": "Dawn Shard, crafting material, A fragment of the Dawnstone's light. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_moonpetal.png",
+  "prompt": "Moonpetal, crafting material, Blooms only at night. Which is always, now. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_sunroot.png",
+  "prompt": "Sunroot, crafting material, Warm, even in the dark. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_ghostcap.png",
+  "prompt": "Ghostcap, crafting material, Translucent mushroom. Do not eat raw. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_frostleaf.png",
+  "prompt": "Frostleaf, crafting material, Crunches like snow. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_emberbloom.png",
+  "prompt": "Emberbloom, crafting material, A flower that burns without being consumed. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_trophy_gorehorn.png",
+  "prompt": "Gorehorn's Horn, crafting material, Proof you broke the Warden. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_trophy_lamia.png",
+  "prompt": "Twin Scale, crafting material, Two scales that never stop touching. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_trophy_azhar.png",
+  "prompt": "Empty Lamp, crafting material, The djinn is free. Is that good? fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_trophy_vesper.png",
+  "prompt": "Thawed Heart, crafting material, Still cold at the center. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_trophy_malachar.png",
+  "prompt": "Hollow Crown Shard, crafting material, The end of the Long Night. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_seed_moonpetal.png",
+  "prompt": "Moonpetal Seed, crafting material, Plant in the garden. Harvest after 1 run. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_seed_sunroot.png",
+  "prompt": "Sunroot Seed, crafting material, Harvest after 2 runs. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_seed_ghostcap.png",
+  "prompt": "Ghostcap Spore, crafting material, Harvest after 2 runs. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_seed_frostleaf.png",
+  "prompt": "Frostleaf Seed, crafting material, Harvest after 3 runs. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_seed_emberbloom.png",
+  "prompt": "Emberbloom Seed, crafting material, Harvest after 3 runs. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_seed_golden.png",
+  "prompt": "Golden Apple Seed, crafting material, Legends say it grows embers. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_q_brom_hammer.png",
+  "prompt": "Brom's Heirloom Hammer, crafting material, Lost in the Sunken Crypt. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_q_cat_bell.png",
+  "prompt": "Tiny Cat Bell, crafting material, Belongs to Wren's cat, Biscuit. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_q_song_sheet.png",
+  "prompt": "Song Sheet, crafting material, Finn's lost music. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_q_letter.png",
+  "prompt": "Faded Letter, crafting material, A letter from the old Lanternkeepers. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/mat_q_recipe.png",
+  "prompt": "Lost Recipe Page, crafting material, Ysolde's grandmother's handwriting. fantasy RPG ingredient icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/elixir_red.png",
+  "prompt": "round glass potion bottle filled with red liquid, cork stopper, fantasy RPG potion icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/elixir_green.png",
+  "prompt": "round glass potion bottle filled with green liquid, cork stopper, fantasy RPG potion icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/elixir_yellow.png",
+  "prompt": "round glass potion bottle filled with yellow liquid, cork stopper, fantasy RPG potion icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/elixir_gold.png",
+  "prompt": "round glass potion bottle filled with golden liquid, cork stopper, fantasy RPG potion icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/elixir_purple.png",
+  "prompt": "round glass potion bottle filled with purple liquid, cork stopper, fantasy RPG potion icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/elixir_blue.png",
+  "prompt": "round glass potion bottle filled with icy blue liquid, cork stopper, fantasy RPG potion icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/elixir_orange.png",
+  "prompt": "round glass potion bottle filled with glowing orange liquid, cork stopper, fantasy RPG potion icon",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_em_kindle.png",
+  "prompt": "fire magic skill icon \"Kindling Strikes\", Attacks have % chance to Burn.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_em_blaze.png",
+  "prompt": "fire magic skill icon \"Blazing Soul\", +% Fire damage and Burn deals more.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_em_pyre.png",
+  "prompt": "fire magic skill icon \"Funeral Pyre\", Burning enemies explode on death for % ATK.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_em_flashfire.png",
+  "prompt": "fire magic skill icon \"Flashfire Dash\", Your dash ends in a fire blast for % ATK.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_em_meteor.png",
+  "prompt": "fire magic skill icon \"Falling Star\", Every s a meteor strikes a foe for % ATK.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_em_trail.png",
+  "prompt": "fire magic skill icon \"Scorched Path\", Dashing leaves flames that deal % ATK per second.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_em_heart.png",
+  "prompt": "fire magic skill icon \"Emberheart\", +% ATK. Burning enemies heal you 1 HP on death.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_em_crit.png",
+  "prompt": "fire magic skill icon \"White Flame\", Critical hits always Burn. +% Crit Damage.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_em_skill.png",
+  "prompt": "fire magic skill icon \"Inferno Rite\", Your Skill deals +% damage and Burns.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_em_wall.png",
+  "prompt": "fire magic skill icon \"Ring of Cinders\", Enemies that touch you ignite and take % ATK.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_em_flare.png",
+  "prompt": "fire magic skill icon \"Solar Hunger\", +% Flare charge rate.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_em_phoenix.png",
+  "prompt": "fire magic skill icon \"Phoenix Rebirth\", Once per run, rise from death with % HP in a blast of fire.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_ri_frostbite.png",
+  "prompt": "ice magic skill icon \"Frostbite\", Attacks have % chance to Chill. 3 Chills Freeze.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_ri_shatter.png",
+  "prompt": "ice magic skill icon \"Shatterpoint\", Frozen enemies take +% damage and shatter on death.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_ri_aura.png",
+  "prompt": "ice magic skill icon \"Winter's Breath\", Enemies within  px are periodically Chilled.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_ri_dash.png",
+  "prompt": "ice magic skill icon \"Glacial Step\", Dash ends in a frost burst for % ATK that Chills.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_ri_armor.png",
+  "prompt": "ice magic skill icon \"Ice Mail\", +% Damage Reduction. Attackers are Chilled.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_ri_spike.png",
+  "prompt": "ice magic skill icon \"Icicle Volley\", Every 4th attack launches  ice shards.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_ri_power.png",
+  "prompt": "ice magic skill icon \"Deep Cold\", +% Frost damage. Freeze lasts longer.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_ri_heart.png",
+  "prompt": "ice magic skill icon \"Frozen Heart\", + Max HP. Heal 2 HP when an enemy Freezes.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_ri_skill.png",
+  "prompt": "ice magic skill icon \"Hoarfrost Rite\", Skill deals +% damage and Chills twice.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_ri_slow.png",
+  "prompt": "ice magic skill icon \"Numbing Wind\", Enemy projectiles near you slow by %.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_ri_winter.png",
+  "prompt": "ice magic skill icon \"Eternal Winter\", All enemies start each room Chilled. Frozen enemies take +% crit damage.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_te_arc.png",
+  "prompt": "shock magic skill icon \"Arc Strike\", Every rd hit chains lightning for % ATK.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_te_haste.png",
+  "prompt": "shock magic skill icon \"Quickening\", +% Attack Speed.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_te_wind.png",
+  "prompt": "shock magic skill icon \"Tailwind\", +% Move Speed and +1 Dash charge.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_te_thunder.png",
+  "prompt": "shock magic skill icon \"Thunderhead\", Every s lightning strikes a foe for % ATK.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_te_shock.png",
+  "prompt": "shock magic skill icon \"Static Charge\", Attacks have % chance to Shock (+15% damage taken).",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_te_power.png",
+  "prompt": "shock magic skill icon \"High Voltage\", +% Storm damage.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_te_dash.png",
+  "prompt": "shock magic skill icon \"Lightning Dash\", Enemies you dash through take % ATK and are Shocked.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_te_kill.png",
+  "prompt": "shock magic skill icon \"Storm Chaser\", Kills grant +% Move and Attack Speed for 2s.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_te_cdr.png",
+  "prompt": "shock magic skill icon \"Surge\", +% Cooldown Reduction.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_te_skill.png",
+  "prompt": "shock magic skill icon \"Thunderclap Rite\", Your Skill calls  lightning bolts.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_te_multi.png",
+  "prompt": "shock magic skill icon \"Forked Bolts\", Chain lightning jumps  extra times.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_te_zeus.png",
+  "prompt": "shock magic skill icon \"Heaven's Wrath\", Critical hits call down lightning for % ATK.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_ve_toxin.png",
+  "prompt": "poison magic skill icon \"Toxin Coat\", Attacks have % chance to Poison (stacks).",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_ve_potent.png",
+  "prompt": "poison magic skill icon \"Potent Venom\", +% Venom damage. Poison stacks +2.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_ve_burst.png",
+  "prompt": "poison magic skill icon \"Plague Bloom\", Poisoned enemies burst into a toxic cloud on death (% ATK).",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_ve_cloud.png",
+  "prompt": "poison magic skill icon \"Miasma\", Every s release a poison cloud around you (% ATK).",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_ve_weaken.png",
+  "prompt": "poison magic skill icon \"Enfeeble\", % chance on hit to Weaken (-25% enemy damage).",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_ve_dash.png",
+  "prompt": "poison magic skill icon \"Noxious Wake\", Dashing through enemies Poisons them 3 times.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_ve_leech.png",
+  "prompt": "poison magic skill icon \"Leeching Rot\", Heal % of poison damage dealt.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_ve_mark.png",
+  "prompt": "poison magic skill icon \"Death Mark\", Enemies with 4+ poison stacks take +% damage.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_ve_skill.png",
+  "prompt": "poison magic skill icon \"Venom Rite\", Skill applies  Poison stacks.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_ve_luck.png",
+  "prompt": "poison magic skill icon \"Carrion Luck\", + Luck and +% Gold Find.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_ve_hydra.png",
+  "prompt": "poison magic skill icon \"Hydra's Blood\", Poison can stack infinitely and deals +% damage.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_au_vital.png",
+  "prompt": "holy magic skill icon \"Dawn's Vigor\", + Max HP and heal fully.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_au_kill.png",
+  "prompt": "holy magic skill icon \"Soul Harvest\", Heal  HP on kill.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_au_shield.png",
+  "prompt": "holy magic skill icon \"Sanctuary\", Start each room with a  HP shield.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_au_regen.png",
+  "prompt": "holy magic skill icon \"Morning Light\", Regenerate  HP per second.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_au_retaliate.png",
+  "prompt": "holy magic skill icon \"Judgement\", When hit, release a holy nova for % ATK.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_au_smite.png",
+  "prompt": "holy magic skill icon \"Smite\", Every 5th attack smites the target for % ATK.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_au_potion.png",
+  "prompt": "holy magic skill icon \"Blessed Flask\", +% Potion power and +1 Flask charge.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_au_holy.png",
+  "prompt": "holy magic skill icon \"Radiance\", +% Radiant damage. Attacks deal bonus light damage.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_au_dodge.png",
+  "prompt": "holy magic skill icon \"Grace\", +% Evasion.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_au_boss.png",
+  "prompt": "holy magic skill icon \"Dawnbreaker\", +% damage to bosses and elites.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_au_orbs.png",
+  "prompt": "holy magic skill icon \"Halo\",  orbs of light circle you, burning enemies.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_au_angel.png",
+  "prompt": "holy magic skill icon \"Guardian Angel\", Once per room, a lethal blow leaves you at 1 HP and grants 2s invulnerability.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_um_crit.png",
+  "prompt": "shadow magic skill icon \"Keen Shadow\", +% Crit Chance.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_um_critdmg.png",
+  "prompt": "shadow magic skill icon \"Deep Cut\", +% Crit Damage.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_um_execute.png",
+  "prompt": "shadow magic skill icon \"Reaper\", Execute non-boss enemies below % HP.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_um_first.png",
+  "prompt": "shadow magic skill icon \"Ambush\", Your first hit on each enemy always crits and deals +%.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_um_life.png",
+  "prompt": "shadow magic skill icon \"Blood Pact\", +% Lifesteal.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_um_bleed.png",
+  "prompt": "shadow magic skill icon \"Serrated Edge\", Attacks have % chance to Bleed.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_um_step.png",
+  "prompt": "shadow magic skill icon \"Shadow Step\", Kills have % chance to refund a Dash charge.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_um_blades.png",
+  "prompt": "shadow magic skill icon \"Umbral Blades\",  shadow blades orbit you, cutting enemies.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_um_mark.png",
+  "prompt": "shadow magic skill icon \"Hunter's Mark\", Crits Mark enemies: +20% damage taken for 5s. +% Shadow damage.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_um_glass.png",
+  "prompt": "shadow magic skill icon \"Glass Dagger\", +% ATK, but -15% Max HP.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_um_skill.png",
+  "prompt": "shadow magic skill icon \"Nightfall Rite\", Skill always crits. +% Skill damage.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_um_void.png",
+  "prompt": "shadow magic skill icon \"Void Walker\", Dashing makes your next attack deal +% damage and crit.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_duo_steam.png",
+  "prompt": "fire combined with ice magic skill icon \"Steam Burst\", Burning an enemy that is Chilled causes a steam explosion (% ATK).",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_duo_plasma.png",
+  "prompt": "fire combined with shock magic skill icon \"Plasma\", Lightning deals +% to Burning enemies.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_duo_wildfire.png",
+  "prompt": "fire combined with poison magic skill icon \"Wildfire\", Poison ticks have % chance to ignite.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_duo_sunfire.png",
+  "prompt": "fire combined with holy magic skill icon \"Sunfire\", Burn deals Radiant damage and heals you for % of it.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_duo_hellfire.png",
+  "prompt": "fire combined with shadow magic skill icon \"Hellfire\", Crits on Burning enemies deal +% damage.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_duo_blizzard.png",
+  "prompt": "ice combined with shock magic skill icon \"Blizzard\", Every 2s hail strikes 3 enemies for % ATK and Chills.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_duo_frostbite.png",
+  "prompt": "ice combined with poison magic skill icon \"Black Frost\", Poison deals double damage to Chilled enemies.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_duo_aegis.png",
+  "prompt": "ice combined with holy magic skill icon \"Crystal Aegis\", Freezing an enemy grants a  HP shield.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_duo_blackice.png",
+  "prompt": "ice combined with shadow magic skill icon \"Black Ice\", +% Crit Chance against Chilled or Frozen enemies.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_duo_toxicstorm.png",
+  "prompt": "shock combined with poison magic skill icon \"Acid Rain\", Lightning applies  Poison stacks.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_duo_divine.png",
+  "prompt": "shock combined with holy magic skill icon \"Divine Storm\", Each lightning strike heals you  HP.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_duo_thunderblade.png",
+  "prompt": "shock combined with shadow magic skill icon \"Thunder Assassin\", Crits chain lightning for % ATK.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_duo_purify.png",
+  "prompt": "poison combined with holy magic skill icon \"Purifying Rot\", Killing a poisoned enemy heals  HP.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_duo_deathbloom.png",
+  "prompt": "poison combined with shadow magic skill icon \"Deathbloom\", Execute threshold +% against poisoned enemies.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/boon_duo_twilight.png",
+  "prompt": "holy combined with shadow magic skill icon \"Twilight\", +% damage while above 50% HP, +% Lifesteal below.",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/talent_might.png",
+  "prompt": "crossed swords with orange flame, skill tree talent icon",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/talent_guard.png",
+  "prompt": "shield with a heart, skill tree talent icon",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/talent_grace.png",
+  "prompt": "winged boot with wind swirls, skill tree talent icon",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/icons/talent_fortune.png",
+  "prompt": "four leaf clover over gold coins, skill tree talent icon",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ }
+]

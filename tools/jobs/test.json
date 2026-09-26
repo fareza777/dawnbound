@@ -1,0 +1,7 @@
+[
+ {"out": "tools/.cache/test/portrait_maren_plus.png", "model": "rd-plus", "style": "default", "w": 96, "h": 96, "prompt": "portrait of an elderly kind woman with silver braided hair, glowing golden lantern light on her face, hooded keeper robe, warm eyes, bust shot, dark background, fantasy RPG character portrait"},
+ {"out": "tools/.cache/test/portrait_maren_fast.png", "model": "rd-fast", "style": "portrait", "w": 96, "h": 96, "prompt": "elderly kind woman with silver braided hair, golden lantern glow, hooded keeper robe, warm eyes, fantasy RPG"},
+ {"out": "tools/.cache/test/icon_sword.png", "model": "rd-plus", "style": "topdown_item", "w": 32, "h": 32, "remove_bg": true, "prompt": "steel longsword with blue gem in the hilt, game item icon"},
+ {"out": "tools/.cache/test/icon_skill.png", "model": "rd-plus", "style": "skill_icon", "w": 32, "h": 32, "prompt": "fire explosion skill icon, burning orange flame burst"},
+ {"out": "tools/.cache/test/art_title.png", "model": "rd-plus", "style": "environment", "w": 256, "h": 448, "prompt": "a lone hooded hero holding a glowing lantern standing on a cliff above a dark village at night, huge starry sky, eerie rift glowing purple in the distance, epic fantasy key art, vertical composition"}
+]

@@ -1,0 +1,17 @@
+[
+ {
+  "out": "src/assets/audio/music/m_drowned.mp3",
+  "seconds": 90,
+  "prompt": "Instrumental video game soundtrack, retro 16-bit SNES-era fantasy RPG style with rich modern production, seamless loop, no vocals. Flooded underground catacombs dungeon: slow dripping water textures, deep bowed bass, haunting glass harmonica melody, distant tolling bell, eerie choir pads, mysterious and melancholic, 72 BPM"
+ },
+ {
+  "out": "src/assets/audio/music/m_forge.mp3",
+  "seconds": 90,
+  "prompt": "Instrumental video game soundtrack, retro 16-bit SNES-era fantasy RPG style with rich modern production, seamless loop, no vocals. Volcanic forge caverns dungeon: driving taiko and anvil-hammer percussion, low brass ostinato, crackling fire ambience, heroic but menacing minor-key melody on distorted pipe organ, 110 BPM, intense exploration"
+ },
+ {
+  "out": "src/assets/audio/music/m_crystal.mp3",
+  "seconds": 90,
+  "prompt": "Instrumental video game soundtrack, retro 16-bit SNES-era fantasy RPG style with rich modern production, seamless loop, no vocals. Crystal cave dungeon: shimmering celesta and glockenspiel arpeggios, ethereal airy synth pads, soft pulsing sub bass, wondrous and slightly dangerous, starlight reflections, 92 BPM"
+ }
+]

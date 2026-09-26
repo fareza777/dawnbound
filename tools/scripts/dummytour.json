@@ -1,0 +1,33 @@
+[
+ {
+  "goto": "http://localhost:4174"
+ },
+ {
+  "until": "window.__game && window.__services && window.__services.save && window.__grant && window.__game.scene.getScenes(true).length > 0",
+  "timeout": 20000
+ },
+ {
+  "wait": 800
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; s.flags.rift_open=1; __grant(24); const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); g.scene.start('Hub'); 'hub'"
+ },
+ {
+  "wait": 2500
+ },
+ {
+  "eval": "const d=__game.scene.getScene('Dialogue'); if(__game.scene.isActive('Dialogue')){d.scene.stop(); __game.scene.getScene('Hub').scene.resume();} 'ok'"
+ },
+ {
+  "wait": 800
+ },
+ {
+  "eval": "__services.save.data.quests.mq_training={status:'active',stage:0,progress:{}}; __services.save.data.quests.mq_awaken={status:'claimed',stage:0,progress:{}}; 'q'"
+ },
+ {
+  "eval": "(async()=>{const h=__game.scene.getScene('Hub'); const s=__services.save.data; const wait=(ms)=>new Promise(r=>setTimeout(r,ms));\ns.trackedQuest='mq_training'; h.anchor.x=h.dummy.x+12; h.anchor.y=h.dummy.y+4; __game.scene.getScene('HubHud').events.emit('refresh');\nconst read=()=>{ const hud=__game.scene.getScene('HubHud'); return hud.questObj.text; };\nconst out=[read()];\nfor(let i=0;i<3;i++){ h.swing(); await wait(300); out.push(read()); }\nreturn JSON.stringify(out);})()"
+ },
+ {
+  "shot": "dummy_hits"
+ }
+]

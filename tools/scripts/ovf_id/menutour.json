@@ -1,0 +1,30 @@
+[
+ {
+  "goto": "http://localhost:4174"
+ },
+ {
+  "until": "window.__game && window.__services && window.__services.save && window.__game.scene.getScenes(true).length > 0",
+  "timeout": 20000
+ },
+ {
+  "wait": 800
+ },
+ {
+  "eval": "__setLang('id')"
+ },
+ {
+  "eval": "const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); import('/assets/'+'x').catch(()=>0); g.scene.start('Menu'); 'menu'"
+ },
+ {
+  "eval": "__setLang('id')"
+ },
+ {
+  "wait": 2500
+ },
+ {
+  "shot": "m1_menu"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ }
+]

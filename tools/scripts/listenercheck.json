@@ -1,0 +1,42 @@
+[
+ {
+  "goto": "http://localhost:4174"
+ },
+ {
+  "until": "window.__game && window.__services && window.__services.save && window.__autoplay && window.__game.scene.getScenes(true).length > 0",
+  "timeout": 20000
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); __autoplay()"
+ },
+ {
+  "wait": 30000
+ },
+ {
+  "wait": 30000
+ },
+ {
+  "wait": 30000
+ },
+ {
+  "wait": 30000
+ },
+ {
+  "shot": "L4"
+ },
+ {
+  "wait": 30000
+ },
+ {
+  "wait": 30000
+ },
+ {
+  "wait": 30000
+ },
+ {
+  "wait": 30000
+ },
+ {
+  "eval": "const h=__game.scene.getScene('Hud'); JSON.stringify({rooms: (__bot&&__bot.log.filter(l=>l.includes('scene Room')).length), itemGained: h.events.listenerCount('itemGained'), roomCleared: h.events.listenerCount('roomCleared'), hurt: h.events.listenerCount('hurt')})"
+ }
+]

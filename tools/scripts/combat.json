@@ -1,0 +1,16 @@
+[
+  {"goto": "http://localhost:5173"},
+  {"until": "window.__game && window.__game.scene.getScenes(true).length > 0 && window.__services && window.__services.save", "timeout": 20000},
+  {"wait": 1500},
+  {"shot": "c0_boot"},
+  {"eval": "const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; __run.start({heroId:'rowan'}); const g=__game; g.scene.getScenes(true).forEach(sc=>sc.scene.stop()); g.scene.start('Room',{kind:'combat',reward:'boon'}); 'started'"},
+  {"wait": 2500},
+  {"shot": "c1_room"},
+  {"eval": "__controls.attackHeld=true; 'atk'"},
+  {"wait": 2500},
+  {"shot": "c2_fight"},
+  {"eval": "__controls.moveX=0.7; __controls.moveY=-0.7; 'mv'"},
+  {"wait": 2500},
+  {"shot": "c3_fight"},
+  {"eval": "const r=__game.scene.getScene('Room'); JSON.stringify({hp:r.player.hp, enemies:r.enemies.length, kills:r.run.kills, lvl:r.run.level, cleared:r.cleared, fps: Math.round(__game.loop.actualFps)})"}
+]

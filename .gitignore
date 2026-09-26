@@ -1,0 +1,27 @@
+node_modules/
+dist/
+coverage/
+android/app/build/
+android/.gradle/
+*.keystore
+*.jks
+tools/.cache/
+# Paid Asset Store content (Super Retro Collection) - never publish
+public/assets/pack/
+
+# Build outputs (they embed the paid pack)
+dist-qa/
+dist-qa2/
+android/app/src/main/assets/public/
+android/build/
+android/capacitor-cordova-android-plugins/
+android/local.properties
+android/.idea/
+android/app/release/
+*.aab
+*.apk
+# Local tooling
+.claude/
+.env
+__pycache__/
+*.pyc

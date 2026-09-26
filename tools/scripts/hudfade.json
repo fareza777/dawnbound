@@ -1,0 +1,25 @@
+[
+ {
+  "goto": "http://localhost:4174"
+ },
+ {
+  "until": "window.__game && window.__services && window.__services.save && window.__autoplay && window.__game.scene.getScenes(true).length > 0",
+  "timeout": 20000
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); __autoplay()"
+ },
+ {
+  "until": "__bot && __bot.log.filter(l=>l.includes('scene Room>Hud')).length>=3",
+  "timeout": 120000
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "shot": "hud_after_transition"
+ },
+ {
+  "eval": "JSON.stringify({hudAlpha:__game.scene.getScene('Hud').cameras.main.alpha, fade:__game.scene.getScene('Hud').cameras.main.fadeEffect.isRunning, prog:__game.scene.getScene('Hud').cameras.main.fadeEffect.progress})"
+ }
+]

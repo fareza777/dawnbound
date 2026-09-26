@@ -1,0 +1,153 @@
+[
+ {
+  "goto": "http://localhost:4174"
+ },
+ {
+  "until": "window.__game && window.__services && window.__services.save && window.__grant && window.__game.scene.getScenes(true).length > 0",
+  "timeout": 20000
+ },
+ {
+  "wait": 800
+ },
+ {
+  "eval": "__setLang('id')"
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); __run.start({heroId:'rowan'}); g.scene.start('RunMap'); 'map'"
+ },
+ {
+  "eval": "__setLang('id')"
+ },
+ {
+  "wait": 2000
+ },
+ {
+  "shot": "r00_map"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "const m=__game.scene.getScene('RunMap'); m.select(__run.choices(__run.run)[0]); 'go'"
+ },
+ {
+  "wait": 3500
+ },
+ {
+  "shot": "r01_room"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "const r=__game.scene.getScene('Room'); __run.run.gold=500; r.enemies.forEach(e=>{}); 'ok'"
+ },
+ {
+  "eval": "const r=__game.scene.getScene('Room'); r.scene.pause(); r.scene.launch('BoonPick',{room:r,source:'level'}); 'BoonPick'"
+ },
+ {
+  "wait": 1200
+ },
+ {
+  "shot": "r02_BoonPick"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "__game.scene.stop('BoonPick'); __game.scene.getScene('Room').scene.resume(); (window.__errs||[]).slice(-3).join(' | ')"
+ },
+ {
+  "wait": 400
+ },
+ {
+  "eval": "const r=__game.scene.getScene('Room'); r.scene.pause(); r.scene.launch('Build',{room:r}); 'Build'"
+ },
+ {
+  "wait": 1200
+ },
+ {
+  "shot": "r03_Build"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "__game.scene.stop('Build'); __game.scene.getScene('Room').scene.resume(); (window.__errs||[]).slice(-3).join(' | ')"
+ },
+ {
+  "wait": 400
+ },
+ {
+  "eval": "const r=__game.scene.getScene('Room'); r.scene.pause(); r.scene.launch('Shop',{room:r}); 'Shop'"
+ },
+ {
+  "wait": 1200
+ },
+ {
+  "shot": "r04_Shop"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "__game.scene.stop('Shop'); __game.scene.getScene('Room').scene.resume(); (window.__errs||[]).slice(-3).join(' | ')"
+ },
+ {
+  "wait": 400
+ },
+ {
+  "eval": "const r=__game.scene.getScene('Room'); r.scene.pause(); r.scene.launch('Rest',{room:r}); 'Rest'"
+ },
+ {
+  "wait": 1200
+ },
+ {
+  "shot": "r05_Rest"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "__game.scene.stop('Rest'); __game.scene.getScene('Room').scene.resume(); (window.__errs||[]).slice(-3).join(' | ')"
+ },
+ {
+  "wait": 400
+ },
+ {
+  "eval": "const r=__game.scene.getScene('Room'); r.scene.pause(); r.scene.launch('Event',{room:r,eventId:'ev_wounded_knight'}); 'Event'"
+ },
+ {
+  "wait": 1200
+ },
+ {
+  "shot": "r06_Event"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "__game.scene.stop('Event'); __game.scene.getScene('Room').scene.resume(); (window.__errs||[]).slice(-3).join(' | ')"
+ },
+ {
+  "wait": 400
+ },
+ {
+  "eval": "const r=__game.scene.getScene('Room'); r.scene.pause(); r.scene.launch('Pause',{room:r}); 'Pause'"
+ },
+ {
+  "wait": 1200
+ },
+ {
+  "shot": "r07_Pause"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "__game.scene.stop('Pause'); __game.scene.getScene('Room').scene.resume(); (window.__errs||[]).slice(-3).join(' | ')"
+ },
+ {
+  "wait": 400
+ }
+]

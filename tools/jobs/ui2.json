@@ -1,0 +1,56 @@
+[
+ {
+  "out": "src/assets/gen/ui/icon_dash2.png",
+  "prompt": "dash skill icon, a glowing white winged boot leaving speed streaks, cyan motion trail, fantasy game ability icon",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/ui/icon_interact.png",
+  "prompt": "interact icon, an open glowing hand reaching out with golden sparkles, fantasy game ability icon",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/ui/icon_skill_rowan.png",
+  "prompt": "Lantern Spin skill icon, a sword whirling in a circle of warm amber lantern fire, spinning slash, fantasy game ability icon",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/ui/icon_skill_sera.png",
+  "prompt": "Skewer Rush skill icon, a silver spear thrusting forward with icy blue speed lines, piercing charge, fantasy game ability icon",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/ui/icon_skill_elio.png",
+  "prompt": "Starfall Nova skill icon, a burst of violet starlight exploding outward with falling stars, fantasy game ability icon",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ },
+ {
+  "out": "src/assets/gen/ui/icon_skill_kaito.png",
+  "prompt": "Crescent Wave skill icon, three crimson crescent blade waves flying forward, katana slash, fantasy game ability icon",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true
+ }
+]

@@ -1,0 +1,33 @@
+[
+ {
+  "goto": "http://localhost:4174"
+ },
+ {
+  "until": "window.__game && window.__services && window.__services.save && window.__grant && window.__game.scene.getScenes(true).length > 0",
+  "timeout": 20000
+ },
+ {
+  "wait": 800
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); __run.start({heroId:'rowan'}); g.scene.start('RunMap'); 'map'"
+ },
+ {
+  "wait": 2000
+ },
+ {
+  "shot": "r00_map"
+ },
+ {
+  "eval": "const m=__game.scene.getScene('RunMap'); const c=__run.choices(__run.run); const n=__run.run.floor? null:null; const all=Object.values(__run.run.map?.nodes??{}); const r=c[0]; r.kind='rest'; m.select(r); 'rest'"
+ },
+ {
+  "wait": 2500
+ },
+ {
+  "eval": "const r=__game.scene.getScene('Room'); r.player.x=r.player.x; 'ok'"
+ },
+ {
+  "shot": "fire_room"
+ }
+]

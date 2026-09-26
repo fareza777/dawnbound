@@ -1,0 +1,30 @@
+[
+ {
+  "goto": "http://localhost:4174"
+ },
+ {
+  "until": "window.__game && window.__services && window.__services.save && window.__grant && window.__game.scene.getScenes(true).length > 0",
+  "timeout": 20000
+ },
+ {
+  "wait": 800
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); __run.start({heroId:'rowan'}); g.scene.start('RunMap'); 'map'"
+ },
+ {
+  "wait": 2000
+ },
+ {
+  "shot": "r00_map"
+ },
+ {
+  "eval": "const m=__game.scene.getScene('RunMap'); const c=__run.choices(__run.run); const n=c[0]; n.kind='event'; n.content='ev_wounded_knight'; m.select(n); 'ev'"
+ },
+ {
+  "wait": 3500
+ },
+ {
+  "shot": "enc_room"
+ }
+]

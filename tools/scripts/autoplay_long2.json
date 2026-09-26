@@ -1,0 +1,123 @@
+[
+ {
+  "goto": "http://localhost:4174"
+ },
+ {
+  "until": "window.__game && window.__services && window.__services.save && window.__autoplay && window.__game.scene.getScenes(true).length > 0",
+  "timeout": 20000
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); __autoplay()"
+ },
+ {
+  "wait": 30000
+ },
+ {
+  "eval": "JSON.stringify({t:Math.round(performance.now()/1000),errs:(window.__errs||[]).slice(-5),run:(()=>{const r=__run.run; return r && {d:r.depth,f:r.floor,lvl:r.level,kills:r.kills,hp:r.hp,boons:r.boons.length,relics:r.relics.length,gold:r.gold}})(),runs:__bot.runs,deaths:__bot.deaths,fps:Math.round(__game.loop.actualFps),scenes:__game.scene.getScenes(true).map(s=>s.scene.key).join(\">\")})"
+ },
+ {
+  "wait": 30000
+ },
+ {
+  "eval": "JSON.stringify({t:Math.round(performance.now()/1000),errs:(window.__errs||[]).slice(-5),run:(()=>{const r=__run.run; return r && {d:r.depth,f:r.floor,lvl:r.level,kills:r.kills,hp:r.hp,boons:r.boons.length,relics:r.relics.length,gold:r.gold}})(),runs:__bot.runs,deaths:__bot.deaths,fps:Math.round(__game.loop.actualFps),scenes:__game.scene.getScenes(true).map(s=>s.scene.key).join(\">\")})"
+ },
+ {
+  "wait": 30000
+ },
+ {
+  "eval": "JSON.stringify({t:Math.round(performance.now()/1000),errs:(window.__errs||[]).slice(-5),run:(()=>{const r=__run.run; return r && {d:r.depth,f:r.floor,lvl:r.level,kills:r.kills,hp:r.hp,boons:r.boons.length,relics:r.relics.length,gold:r.gold}})(),runs:__bot.runs,deaths:__bot.deaths,fps:Math.round(__game.loop.actualFps),scenes:__game.scene.getScenes(true).map(s=>s.scene.key).join(\">\")})"
+ },
+ {
+  "wait": 30000
+ },
+ {
+  "eval": "JSON.stringify({t:Math.round(performance.now()/1000),errs:(window.__errs||[]).slice(-5),run:(()=>{const r=__run.run; return r && {d:r.depth,f:r.floor,lvl:r.level,kills:r.kills,hp:r.hp,boons:r.boons.length,relics:r.relics.length,gold:r.gold}})(),runs:__bot.runs,deaths:__bot.deaths,fps:Math.round(__game.loop.actualFps),scenes:__game.scene.getScenes(true).map(s=>s.scene.key).join(\">\")})"
+ },
+ {
+  "shot": "L4"
+ },
+ {
+  "wait": 30000
+ },
+ {
+  "eval": "JSON.stringify({t:Math.round(performance.now()/1000),errs:(window.__errs||[]).slice(-5),run:(()=>{const r=__run.run; return r && {d:r.depth,f:r.floor,lvl:r.level,kills:r.kills,hp:r.hp,boons:r.boons.length,relics:r.relics.length,gold:r.gold}})(),runs:__bot.runs,deaths:__bot.deaths,fps:Math.round(__game.loop.actualFps),scenes:__game.scene.getScenes(true).map(s=>s.scene.key).join(\">\")})"
+ },
+ {
+  "wait": 30000
+ },
+ {
+  "eval": "JSON.stringify({t:Math.round(performance.now()/1000),errs:(window.__errs||[]).slice(-5),run:(()=>{const r=__run.run; return r && {d:r.depth,f:r.floor,lvl:r.level,kills:r.kills,hp:r.hp,boons:r.boons.length,relics:r.relics.length,gold:r.gold}})(),runs:__bot.runs,deaths:__bot.deaths,fps:Math.round(__game.loop.actualFps),scenes:__game.scene.getScenes(true).map(s=>s.scene.key).join(\">\")})"
+ },
+ {
+  "wait": 30000
+ },
+ {
+  "eval": "JSON.stringify({t:Math.round(performance.now()/1000),errs:(window.__errs||[]).slice(-5),run:(()=>{const r=__run.run; return r && {d:r.depth,f:r.floor,lvl:r.level,kills:r.kills,hp:r.hp,boons:r.boons.length,relics:r.relics.length,gold:r.gold}})(),runs:__bot.runs,deaths:__bot.deaths,fps:Math.round(__game.loop.actualFps),scenes:__game.scene.getScenes(true).map(s=>s.scene.key).join(\">\")})"
+ },
+ {
+  "wait": 30000
+ },
+ {
+  "eval": "JSON.stringify({t:Math.round(performance.now()/1000),errs:(window.__errs||[]).slice(-5),run:(()=>{const r=__run.run; return r && {d:r.depth,f:r.floor,lvl:r.level,kills:r.kills,hp:r.hp,boons:r.boons.length,relics:r.relics.length,gold:r.gold}})(),runs:__bot.runs,deaths:__bot.deaths,fps:Math.round(__game.loop.actualFps),scenes:__game.scene.getScenes(true).map(s=>s.scene.key).join(\">\")})"
+ },
+ {
+  "shot": "L8"
+ },
+ {
+  "wait": 30000
+ },
+ {
+  "eval": "JSON.stringify({t:Math.round(performance.now()/1000),errs:(window.__errs||[]).slice(-5),run:(()=>{const r=__run.run; return r && {d:r.depth,f:r.floor,lvl:r.level,kills:r.kills,hp:r.hp,boons:r.boons.length,relics:r.relics.length,gold:r.gold}})(),runs:__bot.runs,deaths:__bot.deaths,fps:Math.round(__game.loop.actualFps),scenes:__game.scene.getScenes(true).map(s=>s.scene.key).join(\">\")})"
+ },
+ {
+  "wait": 30000
+ },
+ {
+  "eval": "JSON.stringify({t:Math.round(performance.now()/1000),errs:(window.__errs||[]).slice(-5),run:(()=>{const r=__run.run; return r && {d:r.depth,f:r.floor,lvl:r.level,kills:r.kills,hp:r.hp,boons:r.boons.length,relics:r.relics.length,gold:r.gold}})(),runs:__bot.runs,deaths:__bot.deaths,fps:Math.round(__game.loop.actualFps),scenes:__game.scene.getScenes(true).map(s=>s.scene.key).join(\">\")})"
+ },
+ {
+  "wait": 30000
+ },
+ {
+  "eval": "JSON.stringify({t:Math.round(performance.now()/1000),errs:(window.__errs||[]).slice(-5),run:(()=>{const r=__run.run; return r && {d:r.depth,f:r.floor,lvl:r.level,kills:r.kills,hp:r.hp,boons:r.boons.length,relics:r.relics.length,gold:r.gold}})(),runs:__bot.runs,deaths:__bot.deaths,fps:Math.round(__game.loop.actualFps),scenes:__game.scene.getScenes(true).map(s=>s.scene.key).join(\">\")})"
+ },
+ {
+  "wait": 30000
+ },
+ {
+  "eval": "JSON.stringify({t:Math.round(performance.now()/1000),errs:(window.__errs||[]).slice(-5),run:(()=>{const r=__run.run; return r && {d:r.depth,f:r.floor,lvl:r.level,kills:r.kills,hp:r.hp,boons:r.boons.length,relics:r.relics.length,gold:r.gold}})(),runs:__bot.runs,deaths:__bot.deaths,fps:Math.round(__game.loop.actualFps),scenes:__game.scene.getScenes(true).map(s=>s.scene.key).join(\">\")})"
+ },
+ {
+  "shot": "L12"
+ },
+ {
+  "wait": 30000
+ },
+ {
+  "eval": "JSON.stringify({t:Math.round(performance.now()/1000),errs:(window.__errs||[]).slice(-5),run:(()=>{const r=__run.run; return r && {d:r.depth,f:r.floor,lvl:r.level,kills:r.kills,hp:r.hp,boons:r.boons.length,relics:r.relics.length,gold:r.gold}})(),runs:__bot.runs,deaths:__bot.deaths,fps:Math.round(__game.loop.actualFps),scenes:__game.scene.getScenes(true).map(s=>s.scene.key).join(\">\")})"
+ },
+ {
+  "wait": 30000
+ },
+ {
+  "eval": "JSON.stringify({t:Math.round(performance.now()/1000),errs:(window.__errs||[]).slice(-5),run:(()=>{const r=__run.run; return r && {d:r.depth,f:r.floor,lvl:r.level,kills:r.kills,hp:r.hp,boons:r.boons.length,relics:r.relics.length,gold:r.gold}})(),runs:__bot.runs,deaths:__bot.deaths,fps:Math.round(__game.loop.actualFps),scenes:__game.scene.getScenes(true).map(s=>s.scene.key).join(\">\")})"
+ },
+ {
+  "wait": 30000
+ },
+ {
+  "eval": "JSON.stringify({t:Math.round(performance.now()/1000),errs:(window.__errs||[]).slice(-5),run:(()=>{const r=__run.run; return r && {d:r.depth,f:r.floor,lvl:r.level,kills:r.kills,hp:r.hp,boons:r.boons.length,relics:r.relics.length,gold:r.gold}})(),runs:__bot.runs,deaths:__bot.deaths,fps:Math.round(__game.loop.actualFps),scenes:__game.scene.getScenes(true).map(s=>s.scene.key).join(\">\")})"
+ },
+ {
+  "wait": 30000
+ },
+ {
+  "eval": "JSON.stringify({t:Math.round(performance.now()/1000),errs:(window.__errs||[]).slice(-5),run:(()=>{const r=__run.run; return r && {d:r.depth,f:r.floor,lvl:r.level,kills:r.kills,hp:r.hp,boons:r.boons.length,relics:r.relics.length,gold:r.gold}})(),runs:__bot.runs,deaths:__bot.deaths,fps:Math.round(__game.loop.actualFps),scenes:__game.scene.getScenes(true).map(s=>s.scene.key).join(\">\")})"
+ },
+ {
+  "shot": "L16"
+ },
+ {
+  "eval": "JSON.stringify({log:__bot.log.slice(-60),stats:__services.save.data.stats})"
+ }
+]

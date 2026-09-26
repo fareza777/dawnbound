@@ -1,0 +1,14 @@
+[
+  {"goto": "http://localhost:5173"},
+  {"until": "window.__game && window.__services && window.__services.save && window.__game.scene.getScenes(true).length > 0", "timeout": 20000},
+  {"wait": 1000},
+  {"eval": "const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); g.scene.start('Hub'); 'hub'"},
+  {"wait": 2500},
+  {"shot": "h1_dialogue"},
+  {"tap": [195, 700]}, {"wait": 300}, {"tap": [195, 700]}, {"wait": 300},{"tap": [195, 700]}, {"wait": 300},{"tap": [195, 700]}, {"wait": 300},{"tap": [195, 700]}, {"wait": 300},{"tap": [195, 700]}, {"wait": 300},{"tap": [195, 700]}, {"wait": 300},{"tap": [195, 700]}, {"wait": 300},{"tap": [195, 700]}, {"wait": 300},{"tap": [195, 700]}, {"wait": 300},{"tap": [195, 700]}, {"wait": 300},{"tap": [195, 700]},
+  {"wait": 1500},
+  {"shot": "h2_village"},
+  {"eval": "__controls.moveY=1; 'down'"}, {"wait": 1200}, {"eval": "__controls.moveY=0; 'stop'"},
+  {"shot": "h3_walk"},
+  {"eval": "JSON.stringify({q: __services.save.data.quests, tracked: __services.save.data.trackedQuest, emb: __services.save.data.currency.embers})"}
+]

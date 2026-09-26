@@ -1,0 +1,54 @@
+[
+ {
+  "goto": "http://localhost:4174"
+ },
+ {
+  "until": "window.__game && window.__services && window.__services.save && window.__grant && window.__game.scene.getScenes(true).length > 0",
+  "timeout": 20000
+ },
+ {
+  "wait": 800
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; s.flags.rift_open=1; __grant(24); const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); g.scene.start('Hub'); 'hub'"
+ },
+ {
+  "wait": 2500
+ },
+ {
+  "eval": "const d=__game.scene.getScene('Dialogue'); if(__game.scene.isActive('Dialogue')){d.scene.stop(); __game.scene.getScene('Hub').scene.resume();} 'ok'"
+ },
+ {
+  "wait": 800
+ },
+ {
+  "eval": "const s=__services.save.data; Object.keys(s.flags).filter(k=>k.startsWith('met_')).forEach(k=>delete s.flags[k]); __game.scene.getScene('Hub').openMenu('Descend'); 'd'"
+ },
+ {
+  "wait": 1000
+ },
+ {
+  "eval": "const d=__game.scene.getScene('Descend'); d.start(false); 'go'"
+ },
+ {
+  "wait": 2500
+ },
+ {
+  "eval": "const m=__game.scene.getScene('RunMap'); const c=__run.choices(__run.run); const n=c.find(x=>x.kind==='combat')||c[0]; n.kind='combat'; m.select(n); 'sel'"
+ },
+ {
+  "wait": 2600
+ },
+ {
+  "shot": "card_real1"
+ },
+ {
+  "eval": "const h=__game.scene.getScene('Hud'); JSON.stringify({active:__game.scene.getScenes(true).map(s=>s.scene.key), met:Object.keys(__services.save.data.flags).filter(k=>k.startsWith('met_')), showing:h.cardShowing, queue:(h.enemyCards||[]).length, listeners:h.events.listenerCount('newEnemy'), containers:h.children.list.filter(o=>o.type==='Container').map(o=>Math.round(o.x)+','+Math.round(o.y)) })"
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "shot": "card_real2"
+ }
+]

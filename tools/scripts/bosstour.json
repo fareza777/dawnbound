@@ -1,0 +1,102 @@
+[
+ {
+  "goto": "http://localhost:4174"
+ },
+ {
+  "until": "window.__game && window.__services && window.__services.save && window.__game.scene.getScenes(true).length > 0",
+  "timeout": 20000
+ },
+ {
+  "wait": 800
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); const run=__run.start({heroId:'rowan'}); while(!(run.depth===1 && run.floor===2)) __run.advance(run); run.level=12; const b=run.map.nodes.find(n=>n.kind==='boss'); g.scene.start('RunMap'); setTimeout(()=>g.scene.getScene('RunMap').select(b),600); 'boss 1'"
+ },
+ {
+  "wait": 4500
+ },
+ {
+  "shot": "b1a"
+ },
+ {
+  "wait": 5000
+ },
+ {
+  "shot": "b1b"
+ },
+ {
+  "eval": "JSON.stringify({errs:(window.__errs||[]).slice(-3), scenes:__game.scene.getScenes(true).map(s=>s.scene.key).join('>'), boss:(()=>{const r=__game.scene.getScene('Room'); const e=r&&r.enemies&&r.enemies.find(x=>x.isBoss||x.boss); return e?{hp:e.hp,max:e.maxHp}:null})()})"
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); const run=__run.start({heroId:'rowan'}); while(!(run.depth===2 && run.floor===2)) __run.advance(run); run.level=12; const b=run.map.nodes.find(n=>n.kind==='boss'); g.scene.start('RunMap'); setTimeout(()=>g.scene.getScene('RunMap').select(b),600); 'boss 2'"
+ },
+ {
+  "wait": 4500
+ },
+ {
+  "shot": "b2a"
+ },
+ {
+  "wait": 5000
+ },
+ {
+  "shot": "b2b"
+ },
+ {
+  "eval": "JSON.stringify({errs:(window.__errs||[]).slice(-3), scenes:__game.scene.getScenes(true).map(s=>s.scene.key).join('>'), boss:(()=>{const r=__game.scene.getScene('Room'); const e=r&&r.enemies&&r.enemies.find(x=>x.isBoss||x.boss); return e?{hp:e.hp,max:e.maxHp}:null})()})"
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); const run=__run.start({heroId:'rowan'}); while(!(run.depth===3 && run.floor===2)) __run.advance(run); run.level=12; const b=run.map.nodes.find(n=>n.kind==='boss'); g.scene.start('RunMap'); setTimeout(()=>g.scene.getScene('RunMap').select(b),600); 'boss 3'"
+ },
+ {
+  "wait": 4500
+ },
+ {
+  "shot": "b3a"
+ },
+ {
+  "wait": 5000
+ },
+ {
+  "shot": "b3b"
+ },
+ {
+  "eval": "JSON.stringify({errs:(window.__errs||[]).slice(-3), scenes:__game.scene.getScenes(true).map(s=>s.scene.key).join('>'), boss:(()=>{const r=__game.scene.getScene('Room'); const e=r&&r.enemies&&r.enemies.find(x=>x.isBoss||x.boss); return e?{hp:e.hp,max:e.maxHp}:null})()})"
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); const run=__run.start({heroId:'rowan'}); while(!(run.depth===4 && run.floor===2)) __run.advance(run); run.level=12; const b=run.map.nodes.find(n=>n.kind==='boss'); g.scene.start('RunMap'); setTimeout(()=>g.scene.getScene('RunMap').select(b),600); 'boss 4'"
+ },
+ {
+  "wait": 4500
+ },
+ {
+  "shot": "b4a"
+ },
+ {
+  "wait": 5000
+ },
+ {
+  "shot": "b4b"
+ },
+ {
+  "eval": "JSON.stringify({errs:(window.__errs||[]).slice(-3), scenes:__game.scene.getScenes(true).map(s=>s.scene.key).join('>'), boss:(()=>{const r=__game.scene.getScene('Room'); const e=r&&r.enemies&&r.enemies.find(x=>x.isBoss||x.boss); return e?{hp:e.hp,max:e.maxHp}:null})()})"
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); const run=__run.start({heroId:'rowan'}); while(!(run.depth===5 && run.floor===2)) __run.advance(run); run.level=12; const b=run.map.nodes.find(n=>n.kind==='boss'); g.scene.start('RunMap'); setTimeout(()=>g.scene.getScene('RunMap').select(b),600); 'boss 5'"
+ },
+ {
+  "wait": 4500
+ },
+ {
+  "shot": "b5a"
+ },
+ {
+  "wait": 5000
+ },
+ {
+  "shot": "b5b"
+ },
+ {
+  "eval": "JSON.stringify({errs:(window.__errs||[]).slice(-3), scenes:__game.scene.getScenes(true).map(s=>s.scene.key).join('>'), boss:(()=>{const r=__game.scene.getScene('Room'); const e=r&&r.enemies&&r.enemies.find(x=>x.isBoss||x.boss); return e?{hp:e.hp,max:e.maxHp}:null})()})"
+ }
+]
