@@ -3,7 +3,7 @@ import { COLORS, RARITY_COLORS } from '@/ui/theme';
 import type { DetailLine, DetailSpec } from '@/ui/detailCard';
 import { t, tr } from '@/core/i18n';
 import { ENEMIES, type EnemyDef } from '@/data/enemies';
-import { BOSSES, type BossDef } from '@/data/bosses';
+import { BOSSES, bossArt, type BossDef } from '@/data/bosses';
 import { ALL_BIOMES } from '@/data/biomes';
 import { materialDef } from '@/data/materials';
 import { SLOT_NAMES, baseById, type ItemBase, type UniqueDef } from '@/data/items';
@@ -96,7 +96,7 @@ export function bossDetail(b: BossDef, defeated: boolean): DetailSpec {
     title: tr(b.name),
     titleColor: COLORS.orange,
     subtitle: tr(b.title),
-    art: { atlas: 'battlers', frame: b.frame, tint: b.tint },
+    art: { ...bossArt(b), tint: b.sprite ? undefined : b.tint },
     bars: [
       { label: t('cxHp'), value: b.hp, max: max('hp'), color: COLORS.red },
       { label: t('cxAtk'), value: b.atk, max: max('atk'), color: COLORS.orange },

@@ -5,6 +5,11 @@ export type BossAttack =
   | 'charge' | 'charge3' | 'slam' | 'ring' | 'spiral' | 'fan' | 'summon' | 'rain' | 'sweep' | 'teleport'
   | 'homing' | 'nova' | 'cross' | 'burst';
 
+/** Texture (and frame) that draws a boss: generated faceless art when present, else the pack battler frame. */
+export function bossArt(b: BossDef): { atlas: string; frame?: string } {
+  return b.sprite ? { atlas: b.sprite } : { atlas: 'battlers', frame: b.frame };
+}
+
 export interface BossPhase {
   /** Phase is active while hp ratio is at or below this value. */
   below: number;
@@ -19,7 +24,10 @@ export interface BossDef {
   id: string;
   name: L10n;
   title: L10n;
-  frame: string;
+  /** Frame in the pack `battlers` atlas (used when there is no generated `sprite`). */
+  frame?: string;
+  /** Generated art texture key (bosses_<id>); takes precedence over `frame`. */
+  sprite?: string;
   /** Alternate frame used in the final phase (Malachar). */
   frame2?: string;
   scale: number;
@@ -52,7 +60,7 @@ export const BOSSES: Record<string, BossDef> = {
   },
   sseth: {
     id: 'sseth', name: { en: 'Sseth', id: 'Sseth' }, title: { en: 'Elder Sister of the Crypt', id: 'Kakak Sulung Kripta' },
-    frame: 'b/LamiaA', scale: 0.62, hp: 800, atk: 18, def: 6, radius: 12, element: 'poison', tint: 0xa8e05f,
+    sprite: 'bosses_sseth', scale: 0.39, hp: 800, atk: 18, def: 6, radius: 12, element: 'poison', tint: 0xa8e05f,
     phases: [
       { below: 1, attacks: [['fan', 3], ['charge', 3], ['burst', 2]], speed: 40, pause: 1.1 },
       { below: 0.45, attacks: [['fan', 3], ['charge3', 3], ['cross', 2]], speed: 50, pause: 0.7, line: { en: 'Ivra! Sing louder!', id: 'Ivra! Bernyanyilah lebih keras!' } },
@@ -63,7 +71,7 @@ export const BOSSES: Record<string, BossDef> = {
   },
   ivra: {
     id: 'ivra', name: { en: 'Ivra', id: 'Ivra' }, title: { en: 'Younger Sister of the Crypt', id: 'Adik Bungsu Kripta' },
-    frame: 'b/LamiaC', scale: 0.62, hp: 700, atk: 16, def: 4, radius: 12, element: 'shadow', tint: 0xc8a0ff, summon: 'skeleton',
+    sprite: 'bosses_ivra', scale: 0.41, hp: 700, atk: 16, def: 4, radius: 12, element: 'shadow', tint: 0xc8a0ff, summon: 'skeleton',
     phases: [
       { below: 1, attacks: [['spiral', 3], ['summon', 2], ['homing', 2], ['teleport', 1]], speed: 30, pause: 1.3 },
       { below: 0.45, attacks: [['spiral', 3], ['ring', 2], ['homing', 2], ['summon', 1]], speed: 38, pause: 0.8 },
@@ -74,7 +82,7 @@ export const BOSSES: Record<string, BossDef> = {
   },
   azhar: {
     id: 'azhar', name: { en: 'Azhar', id: 'Azhar' }, title: { en: 'The Bound Djinn', id: 'Jin yang Terikat' },
-    frame: 'b/GeniusA', scale: 0.5, hp: 2400, atk: 26, def: 10, radius: 16, element: 'fire', tint: 0xff9a5a, summon: 'dust_wisp',
+    sprite: 'bosses_azhar', scale: 0.53, hp: 2400, atk: 26, def: 10, radius: 16, element: 'fire', tint: 0xff9a5a, summon: 'dust_wisp',
     phases: [
       { below: 1, attacks: [['rain', 3], ['spiral', 2], ['homing', 2], ['teleport', 1]], speed: 30, pause: 1.1 },
       { below: 0.5, attacks: [['sweep', 3], ['rain', 3], ['ring', 2], ['summon', 1], ['teleport', 1]], speed: 38, pause: 0.7, line: { en: 'You would free me? Then EARN it!', id: 'Kau ingin membebaskanku? Maka BUKTIKAN!' } },
@@ -85,7 +93,7 @@ export const BOSSES: Record<string, BossDef> = {
   },
   vesper: {
     id: 'vesper', name: { en: 'Vesper', id: 'Vesper' }, title: { en: 'Queen of the Frozen Heart', id: 'Ratu Hati Beku' },
-    frame: 'b/SuccubusB', scale: 0.45, hp: 3600, atk: 34, def: 10, radius: 14, element: 'ice', tint: 0x9ee8ff, summon: 'banshee',
+    sprite: 'bosses_vesper', scale: 0.51, hp: 3600, atk: 34, def: 10, radius: 14, element: 'ice', tint: 0x9ee8ff, summon: 'banshee',
     phases: [
       { below: 1, attacks: [['spiral', 3], ['homing', 2], ['teleport', 2], ['nova', 2]], speed: 34, pause: 1 },
       { below: 0.55, attacks: [['cross', 3], ['rain', 2], ['nova', 2], ['summon', 1], ['teleport', 2]], speed: 42, pause: 0.7, line: { en: 'I loved him too, you know. The Hollow King.', id: 'Aku juga mencintainya, tahukah kau. Sang Raja Hampa.' } },

@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import { Enemy } from './Enemy';
 import type { BossAttack, BossDef, BossPhase } from '@/data/bosses';
+import { bossArt } from '@/data/bosses';
 import type { EnemyDef } from '@/data/enemies';
 import type { World } from '@/game/World';
 import { tr } from '@/core/i18n';
@@ -33,7 +34,8 @@ export class Boss extends Enemy {
     this.boss = true;
     this.x0 = x;
     this.sprite.anims.stop();
-    this.sprite.setTexture('battlers', bdef.frame);
+    const art = bossArt(bdef);
+    this.sprite.setTexture(art.atlas, art.frame);
     this.baseScale = bdef.scale;
     this.sprite.setScale(bdef.scale).setAlpha(0).setOrigin(0.5, 1);
     this.spriteOffsetY = 6;

@@ -1,0 +1,284 @@
+[
+ {
+  "out": "src/assets/gen/portraits/maren.png",
+  "prompt": "fantasy RPG character portrait, bust shot, translucent ghostly elderly keeper spirit in a deep silver hooded keeper robe, long silver braid falling from the hood, holding a golden lantern, soft blue spirit glow, the face is completely hidden, no visible eyes, no nose, no mouth, dark featureless shadow instead of a face, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/dorran.png",
+  "prompt": "fantasy RPG character portrait, bust shot, guard captain wearing a fully enclosed solid steel great helm with a solid faceplate and only a thin black slit, no skin visible, dented blue steel armor, blue cape, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96,
+  "seed": 7
+ },
+ {
+  "out": "src/assets/gen/portraits/brom.png",
+  "prompt": "fantasy RPG character portrait, bust shot, burly stocky blacksmith in a heavy leather welding hood and dark smithing mask covering the whole head, leather apron, big hammer, glowing forge light, the face is completely hidden, no visible eyes, no nose, no mouth, dark featureless shadow instead of a face, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/ysolde.png",
+  "prompt": "fantasy RPG character portrait, bust shot, alchemist in a green hooded robe, round brass goggles over a cloth plague mask covering the whole face, holding a bubbling green potion flask, the face is completely hidden, no visible eyes, no nose, no mouth, dark featureless shadow instead of a face, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/pip.png",
+  "prompt": "fantasy RPG character portrait, bust shot, small halfling merchant in a green hooded travel cloak with a feather pinned to the hood, gold coin pendant, green vest, big backpack of wares, the face is completely hidden, no visible eyes, no nose, no mouth, dark featureless shadow instead of a face, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/liora.png",
+  "prompt": "fantasy RPG character portrait, bust shot, priestess in a deep white and gold hood with a sheer golden veil covering the whole face, long golden hair, soft golden halo light, holy symbol, the face is completely hidden, no visible eyes, no nose, no mouth, dark featureless shadow instead of a face, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/kael.png",
+  "prompt": "fantasy RPG character portrait, bust shot, hunter in a deep dark green hood and green cloth scarf mask, bow on shoulder, fur mantle, quiver, the face is completely hidden, no visible eyes, no nose, no mouth, dark featureless shadow instead of a face, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/tobin.png",
+  "prompt": "fantasy RPG character portrait, bust shot, faceless hooded scholar, huge dark brown hood with a completely black empty opening, a long white beard hangs below the black opening, holding an old open book, candle glow, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96,
+  "seed": 11
+ },
+ {
+  "out": "src/assets/gen/portraits/nyx.png",
+  "prompt": "fantasy RPG character portrait, bust shot, mysterious mystic in a deep lavender hood, full smooth silver mask with no eye holes covering the whole face, purple starry cloak, the face is completely hidden, no visible eyes, no nose, no mouth, dark featureless shadow instead of a face, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/mira.png",
+  "prompt": "fantasy RPG character portrait, bust shot, farmer in a wide straw hat tilted down and an orange hooded shawl, long orange hair, holding a watering can, green fields glow, the face is completely hidden, no visible eyes, no nose, no mouth, dark featureless shadow instead of a face, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/wren.png",
+  "prompt": "fantasy RPG character portrait, bust shot, small child in an oversized pink hooded cloak with a ribbon, holding a wooden toy sword, patched clothes, the face is completely hidden, no visible eyes, no nose, no mouth, dark featureless shadow instead of a face, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/finn.png",
+  "prompt": "fantasy RPG character portrait, bust shot, bard in a deep red hood with a feathered brim, cloth scarf covering the lower half, holding a lute, musical notes, the face is completely hidden, no visible eyes, no nose, no mouth, dark featureless shadow instead of a face, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/rowan.png",
+  "prompt": "fantasy RPG character portrait, bust shot, young hero in a deep blue hood, tufts of spiky blond hair at the edge of the hood, blue tunic with brown leather shoulder strap, glowing golden lantern charm, the face is completely hidden, no visible eyes, no nose, no mouth, dark featureless shadow instead of a face, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/sera.png",
+  "prompt": "fantasy RPG character portrait, bust shot, spear warrior in a sleek closed steel helmet with a narrow visor, long white ponytail flowing from the helmet, light steel armor, spear, the face is completely hidden, no visible eyes, no nose, no mouth, dark featureless shadow instead of a face, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/elio.png",
+  "prompt": "fantasy RPG character portrait, bust shot, mage in a deep midnight blue starry hood, glowing star orb floating in front of the hood, silver lavender hair strands, starry robe, the face is completely hidden, no visible eyes, no nose, no mouth, dark featureless shadow instead of a face, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/kaito.png",
+  "prompt": "fantasy RPG character portrait, bust shot, swordsman in a dark navy straw kasa hat pulled low and a navy cloth mask, dark blue kimono-style jacket, katana hilt, the face is completely hidden, no visible eyes, no nose, no mouth, dark featureless shadow instead of a face, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/spirit_ember.png",
+  "prompt": "fantasy RPG icon, a floating ball of living fire and swirling embers, magical fire elemental orb, no creature, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96,
+  "seed": 7
+ },
+ {
+  "out": "src/assets/gen/portraits/spirit_rime.png",
+  "prompt": "fantasy RPG icon, a floating ice crystal crown surrounded by swirling snowflakes and frost mist, no creature, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96,
+  "seed": 7
+ },
+ {
+  "out": "src/assets/gen/portraits/spirit_tempest.png",
+  "prompt": "fantasy RPG icon, a floating crackling orb of yellow lightning inside small dark storm clouds, no creature, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96,
+  "seed": 7
+ },
+ {
+  "out": "src/assets/gen/portraits/spirit_venom.png",
+  "prompt": "fantasy RPG icon, a glowing emerald gem wrapped by green thorny vines and a coiled green serpent tail, no head, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96,
+  "seed": 7
+ },
+ {
+  "out": "src/assets/gen/portraits/spirit_aurora.png",
+  "prompt": "fantasy RPG icon, a radiant white sun orb inside a golden halo ring with sunrise colored light rays, no creature, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96,
+  "seed": 7
+ },
+ {
+  "out": "src/assets/gen/portraits/spirit_umbra.png",
+  "prompt": "fantasy RPG icon, a glowing purple crescent moon wrapped in swirling dark violet smoke and small stars, no creature, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96,
+  "seed": 11
+ },
+ {
+  "out": "src/assets/gen/portraits/ev_oracle.png",
+  "prompt": "fantasy RPG character portrait, bust shot, desert oracle in a deep sand colored hood with a full golden veil covering the whole face, golden jewelry, amber glow, the face is completely hidden, no visible eyes, no nose, no mouth, dark featureless shadow instead of a face, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/ev_frozen_knight.png",
+  "prompt": "fantasy RPG character portrait, bust shot, knight encased in pale blue ice, fully closed frosted great helm with a dark visor slit, icicles on the armor, icy mist, the face is completely hidden, no visible eyes, no nose, no mouth, dark featureless shadow instead of a face, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/ev_rival_bard.png",
+  "prompt": "fantasy RPG character portrait, bust shot, flamboyant rival showman bard in a green hood with a feathered hat on top, ornate green theatre half-drape covering the face, lute over shoulder, the face is completely hidden, no visible eyes, no nose, no mouth, dark featureless shadow instead of a face, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/ev_choir_ghost.png",
+  "prompt": "fantasy RPG character portrait, bust shot, drowned ghost chorister in a translucent teal hooded choir robe, dripping wet veil covering the face, water droplets, songbook, the face is completely hidden, no visible eyes, no nose, no mouth, dark featureless shadow instead of a face, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/ev_forge_spirit.png",
+  "prompt": "fantasy RPG character portrait, bust shot, fire elemental blacksmith spirit, a hooded silhouette of molten embers and flame with no face, leather apron, glowing anvil, abstract elemental being, no human features, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/ev_crystal_seer.png",
+  "prompt": "fantasy RPG character portrait, bust shot, ancient seer as a tall violet and cyan crystal formation shaped like a hooded robe, starlight glinting inside, no face, abstract elemental being, no human features, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/ev_old_keeper.png",
+  "prompt": "fantasy RPG character portrait, bust shot, old lanternkeeper in a tattered deep grey hooded cloak, a dim lantern glowing at its chest, peaceful, the face is completely hidden, no visible eyes, no nose, no mouth, dark featureless shadow instead of a face, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/portraits/ev_sand_merchant.png",
+  "prompt": "fantasy RPG character portrait, bust shot, shimmering mirage merchant in a large wrapped turban and face veil covering the whole face, heat haze distortion, wares on his back, gold trinkets, the face is completely hidden, no visible eyes, no nose, no mouth, dark featureless shadow instead of a face, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ },
+ {
+  "out": "src/assets/gen/art/title.png",
+  "prompt": "a lone hooded hero seen from behind holding a glowing golden lantern on a cliff edge overlooking a small village at night, enormous starry night sky with a crescent moon, a glowing purple rift crack in the distant mountains, epic fantasy key art, no visible face, dramatic lighting, detail",
+  "model": "rd-plus",
+  "style": "environment",
+  "w": 216,
+  "h": 384
+ },
+ {
+  "out": "src/assets/gen/art/intro_5.png",
+  "prompt": "a hooded old keeper with a silver braid seen from behind holding a glowing lantern high, fighting shadow monsters at the village gate, sparks and embers, figures seen from behind or with faces hidden in deep hoods, no visible faces, dramatic lighting, detailed pixel art illustration, vertical composition",
+  "model": "rd-plus",
+  "style": "environment",
+  "w": 216,
+  "h": 384
+ },
+ {
+  "out": "src/assets/gen/art/intro_6.png",
+  "prompt": "view from directly behind a young hero in a deep red hood kneeling with his back to the viewer, before a tall faceless ghost in a white hooded robe, inside the ghost's hood is only pitch black empty darkness, the ghost holds out a glowing lantern flame to him, golden shrine pillars, emotional moment, dramatic lighting, detailed pixel art illustration, vertical composition",
+  "model": "rd-plus",
+  "style": "environment",
+  "w": 216,
+  "h": 384,
+  "seed": 44
+ },
+ {
+  "out": "src/assets/gen/art/end_4.png",
+  "prompt": "view from directly behind a cloaked hooded hero standing with his back to the viewer, reaching a hand toward a kneeling sorcerer bowing his head so low that only the top of his black hood is visible, bright doorway of light beyond them in a ruined throne room, dramatic lighting, detailed pixel art illustration, vertical composition",
+  "model": "rd-plus",
+  "style": "environment",
+  "w": 216,
+  "h": 384,
+  "seed": 33
+ }
+]

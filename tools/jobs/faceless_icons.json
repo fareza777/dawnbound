@@ -1,0 +1,22 @@
+[
+ {
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true,
+  "seed": 3,
+  "out": "src/assets/gen/icons/relic_berserker_mask.png",
+  "prompt": "magic relic trinket, a cracked red war horn wrapped with a torn crimson cloth band and spikes, berserker rage, blue shimmer, fantasy RPG artifact icon, no face"
+ },
+ {
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true,
+  "seed": 9,
+  "out": "src/assets/gen/icons/relic_frenzy_idol.png",
+  "prompt": "magic relic trinket, a small carved grey rune stone with one glowing red spiral rune and crossed claw scratches, frenzy, blue shimmer, fantasy RPG artifact icon"
+ }
+]

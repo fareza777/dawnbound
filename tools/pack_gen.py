@@ -50,6 +50,8 @@ def images() -> None:
     pack("icons", icons, 32, 32)
     portraits = [(f"portraits_{p.stem}", p) for p in sorted((GEN / "portraits").glob("*.png"))]
     pack("portraits", portraits, 96, 10)
+    bosses = [(f"bosses_{p.stem}", p) for p in sorted((GEN / "bosses").glob("*.png"))]
+    pack("bosses", bosses, 128, 4)
     (OUT / "art").mkdir(parents=True, exist_ok=True)
     for p in sorted((GEN / "art").glob("*.png")):
         Image.open(p).save(OUT / "art" / p.name, optimize=True)

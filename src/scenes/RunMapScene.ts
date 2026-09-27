@@ -6,7 +6,7 @@ import { t, tr } from '@/core/i18n';
 import { services } from '@/core/services';
 import { biomeForDepth } from '@/data/biomes';
 import { ENEMIES } from '@/data/enemies';
-import { BIOME_BOSS, BOSSES } from '@/data/bosses';
+import { BIOME_BOSS, BOSSES, bossArt } from '@/data/bosses';
 import type { MapNode, NodeKind, RunState, SaveData } from '@/data/types';
 import { RunManager, buildContext } from '@/game/RunManager';
 import { nodeById } from '@/systems/floorgen';
@@ -186,8 +186,8 @@ export class RunMapScene extends BaseScene {
 
   private nodeIcon(n: MapNode): Phaser.GameObjects.GameObject | null {
     const biome = biomeForDepth(this.run.depth, this.run.regions);
-    const img = (atlas: string, frame: string, max = 22) => {
-      if (!this.textures.get(atlas).has(frame)) return null;
+    const img = (atlas: string, frame?: string, max = 22) => {
+      if (!this.textures.exists(atlas) || (frame !== undefined && !this.textures.get(atlas).has(frame))) return null;
       const i = this.add.image(0, 0, atlas, frame);
       i.setScale(Math.min(1.4, max / Math.max(i.width, i.height)));
       return i;
@@ -217,7 +217,7 @@ export class RunMapScene extends BaseScene {
       case 'challenge': return img('props', 'p/torii_01', 26);
       case 'boss': {
         const def = BOSSES[BIOME_BOSS[biome.boss] ?? biome.boss];
-        return def ? img('battlers', def.frame, 40) : null;
+        return def ? img(bossArt(def).atlas, bossArt(def).frame, 40) : null;
       }
     }
   }

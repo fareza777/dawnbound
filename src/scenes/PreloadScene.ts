@@ -17,7 +17,7 @@ const ATLASES = ['heroes', 'actors', 'monsters', 'battlers', 'props'];
 const BACKGROUNDS = ['DesertA', 'DesertB', 'DungeonA', 'DungeonB', 'DungeonC', 'DungeonD', 'ForestA', 'ForestB', 'ForestC', 'PlainA', 'PlainB'];
 const ART = ['title', 'hub_bg', 'intro_1', 'intro_2', 'intro_3', 'intro_4', 'intro_5', 'intro_6', 'end_1', 'end_2', 'end_3', 'end_4', 'end_5'];
 const MUSIC = ['m_title', 'm_intro', 'm_village', 'm_forest', 'm_crypt', 'm_desert', 'm_ice', 'm_throne', 'm_boss', 'm_final', 'm_victory', 'm_defeat', 'm_drowned', 'm_forge', 'm_crystal'];
-const GEN_ATLASES = ['icons', 'portraits'];
+const GEN_ATLASES = ['icons', 'portraits', 'bosses'];
 
 export class PreloadScene extends Phaser.Scene {
   constructor() {

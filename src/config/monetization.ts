@@ -2,7 +2,7 @@
  * Ads and in-app purchase configuration.
  *
  * Production IDs are registered in the Dawnbound AdMob account. The Play Console
- * one-time `remove_ads` product still needs to be created before billing is live.
+ * one-time `remove_ads` product is active at US$4.99.
  */
 export const MONETIZATION = {
   /** Keep false in Play builds; switch on only for local development/testing. */

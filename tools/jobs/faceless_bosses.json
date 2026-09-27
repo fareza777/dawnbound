@@ -1,0 +1,59 @@
+[
+ {
+  "out": "src/assets/gen/bosses/sseth.png",
+  "prompt": "pixel art fantasy RPG boss monster, full body, front view, standing, serpent crypt sorceress with a long coiled green snake tail instead of legs, upper body in a deep green hooded robe, the hood is pitch black empty darkness, a green cloth veil, twin curved daggers, poison mist, face completely hidden, no visible face, no eyes, no nose, no mouth, plain background",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 128,
+  "h": 128,
+  "remove_bg": true,
+  "seed": 5
+ },
+ {
+  "out": "src/assets/gen/bosses/ivra.png",
+  "prompt": "pixel art fantasy RPG boss monster, full body, front view, standing, serpent crypt witch with a long coiled purple snake tail instead of legs, upper body in a deep violet hooded robe, the hood is pitch black empty darkness, holding a skull-topped staff, shadow wisps, face completely hidden, no visible face, no eyes, no nose, no mouth, plain background",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 128,
+  "h": 128,
+  "remove_bg": true,
+  "seed": 5
+ },
+ {
+  "out": "src/assets/gen/bosses/azhar.png",
+  "prompt": "pixel art fantasy RPG boss monster, full body, front view, standing, giant fire djinn of smoke and flame, muscular arms crossed, lower body a swirling smoke tail, a golden turban and a golden cloth veil wrapped over the entire head, golden bracers, embers, face completely hidden, no visible face, no eyes, no nose, no mouth, plain background",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 128,
+  "h": 128,
+  "remove_bg": true,
+  "seed": 5
+ },
+ {
+  "out": "src/assets/gen/bosses/vesper.png",
+  "prompt": "pixel art fantasy RPG boss monster, full body, front view, standing, ice queen in a long heavy hooded ice blue gown and fur cape, the hood is pitch black empty darkness, a crystal ice crown on the hood, frozen crystal wings, holding an ice scepter, face completely hidden, no visible face, no eyes, no nose, no mouth, plain background",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 128,
+  "h": 128,
+  "remove_bg": true,
+  "seed": 5
+ },
+ {
+  "out": "src/assets/gen/portraits/ev_djinn.png",
+  "prompt": "fantasy RPG icon, a golden magic oil lamp with thick blue smoke rising and forming a swirling turban shape, glowing sand, no creature, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96,
+  "seed": 8
+ },
+ {
+  "out": "src/assets/gen/portraits/ev_frozen_lovers.png",
+  "prompt": "fantasy RPG portrait, an old frozen painting in an ornate gold frame covered in ice and frost, the painting shows two hooded figures seen from behind holding hands in the snow, cracked ice, no visible faces, dark moody background, rim lighting",
+  "model": "rd-plus",
+  "style": "default",
+  "w": 96,
+  "h": 96
+ }
+]

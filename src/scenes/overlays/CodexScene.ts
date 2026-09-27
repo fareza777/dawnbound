@@ -6,7 +6,7 @@ import { fitBox, label, panel, toast } from '@/ui/widgets';
 import { t, tr } from '@/core/i18n';
 import { ScrollPanel } from '@/ui/scroll';
 import { ENEMIES } from '@/data/enemies';
-import { BOSSES } from '@/data/bosses';
+import { BOSSES, bossArt } from '@/data/bosses';
 import { RELICS, RELIC_TIER_COLOR } from '@/data/relics';
 import { BOONS, SPIRITS, boonValue } from '@/data/boons';
 import { ITEM_BASES, UNIQUES } from '@/data/items';
@@ -121,7 +121,7 @@ export class CodexScene extends OverlayScene {
           total++;
           const known = s.unlocks.bossesDefeated.length > 0 && (s.codex.enemies[b.id] !== undefined || s.unlocks.bossesDefeated.some((x) => x === b.id || (x === 'twin_lamias' && (b.id === 'ivra' || b.id === 'sseth'))));
           if (known) found++;
-          entry(known, `${tr(b.name)} — ${tr(b.title)}`, tr(b.intro), COLORS.orange, { atlas: 'battlers', frame: b.frame }, () => bossDetail(b, s.unlocks.bossesDefeated.length > 0 && known));
+          entry(known, `${tr(b.name)} — ${tr(b.title)}`, tr(b.intro), COLORS.orange, bossArt(b), () => bossDetail(b, s.unlocks.bossesDefeated.length > 0 && known));
         }
         break;
       }

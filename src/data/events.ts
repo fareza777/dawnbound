@@ -218,7 +218,7 @@ const BASE_EVENTS: EventDef[] = [
     ],
   },
   {
-    id: 'ev_djinn_whisper', minDepth: 3, maxDepth: 3, speaker: L('Voice in the Sand', 'Suara di Pasir'), portrait: 'battlers:b/GeniusB',
+    id: 'ev_djinn_whisper', minDepth: 3, maxDepth: 3, speaker: L('Voice in the Sand', 'Suara di Pasir'), portrait: 'portraits_ev_djinn',
     text: L('"Keeper... I am not your enemy. The Hollow King bound me with a promise he never kept. Break my chain, and I will not forget."', '"Penjaga... aku bukan musuhmu. Raja Hampa mengikatku dengan janji yang tak pernah ditepati. Putuskan rantaiku, dan aku tak akan lupa."'),
     choices: [
       { label: L('Promise to free him', 'Berjanji membebaskannya'), outcome: [{ type: 'flag', id: 'azhar_promise' }, { type: 'shard' }, { type: 'boon' }], result: L('The sand shifts, and the heat eases. A gift, for now.', 'Pasir bergeser, dan panas mereda. Sebuah hadiah, untuk sekarang.') },
@@ -226,7 +226,7 @@ const BASE_EVENTS: EventDef[] = [
     ],
   },
   {
-    id: 'ev_frozen_lovers', minDepth: 4, maxDepth: 4, speaker: L('Frozen Portrait', 'Potret Beku'), portrait: 'battlers:b/SuccubusA',
+    id: 'ev_frozen_lovers', minDepth: 4, maxDepth: 4, speaker: L('Frozen Portrait', 'Potret Beku'), portrait: 'portraits_ev_frozen_lovers',
     text: L('A painting under the ice: a young woman and a young man in keeper\'s robes, laughing. The plaque reads "Vesper & Malachar".', 'Sebuah lukisan di bawah es: seorang wanita muda dan pria muda berjubah penjaga, tertawa. Plakatnya bertuliskan "Vesper & Malachar".'),
     choices: [
       { label: L('Thaw the painting', 'Cairkan lukisannya'), outcome: [{ type: 'lore', id: 'lore_vesper_love' }, { type: 'shard' }], result: L('As the ice melts, you hear laughter from very far away.', 'Saat es mencair, kau mendengar tawa dari tempat yang sangat jauh.') },
