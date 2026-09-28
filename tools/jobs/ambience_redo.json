@@ -1,0 +1,20 @@
+[
+ {
+  "out": "src/assets/audio/music/m_title.mp3",
+  "prompt": "night nature ambience, many crickets chirping in a grass field, gentle wind, an owl hooting in the distance, field recording",
+  "seconds": 45,
+  "seed": 77
+ },
+ {
+  "out": "src/assets/audio/music/m_forge.mp3",
+  "prompt": "a large bonfire roaring and crackling, lava bubbling, steam hissing from vents, field recording, high quality stereo ambience",
+  "seconds": 45,
+  "seed": 77
+ },
+ {
+  "out": "src/assets/audio/music/m_crystal.mp3",
+  "prompt": "water drops dripping slowly into a cave pool, echoing drips, quiet cave, field recording",
+  "seconds": 45,
+  "seed": 5
+ }
+]

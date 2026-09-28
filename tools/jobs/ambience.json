@@ -1,0 +1,107 @@
+[
+ {
+  "out": "src/assets/audio/music/m_title.mp3",
+  "prompt": "nature ambience, calm night on a hilltop, crickets chirping, gentle wind through grass, a distant owl hooting, soft crackle of a small lantern flame, natural field recording, no music, no musical instruments, no melody, no singing, no rhythm",
+  "seconds": 30,
+  "influence": 0.5,
+  "loop": true
+ },
+ {
+  "out": "src/assets/audio/music/m_intro.mp3",
+  "prompt": "nature ambience, quiet night, soft wind, a crackling campfire, distant rolling thunder, light rain beginning, natural field recording, no music, no musical instruments, no melody, no singing, no rhythm",
+  "seconds": 30,
+  "influence": 0.5,
+  "loop": true
+ },
+ {
+  "out": "src/assets/audio/music/m_village.mp3",
+  "prompt": "village ambience at dusk, crickets and frogs, a warm hearth fire crackling, gentle breeze, a distant dog bark, a small stream trickling, natural field recording, no music, no musical instruments, no melody, no singing, no rhythm",
+  "seconds": 30,
+  "influence": 0.5,
+  "loop": true
+ },
+ {
+  "out": "src/assets/audio/music/m_forest.mp3",
+  "prompt": "nature ambience, peaceful forest at daytime, birds chirping, leaves rustling in a soft breeze, distant woodpecker, insects buzzing, natural field recording, no music, no musical instruments, no melody, no singing, no rhythm",
+  "seconds": 30,
+  "influence": 0.5,
+  "loop": true
+ },
+ {
+  "out": "src/assets/audio/music/m_crypt.mp3",
+  "prompt": "dark cave ambience, slow water drips echoing in a stone crypt, low hollow wind, distant bats squeaking, faint rumbling, natural field recording, no music, no musical instruments, no melody, no singing, no rhythm",
+  "seconds": 30,
+  "influence": 0.5,
+  "loop": true
+ },
+ {
+  "out": "src/assets/audio/music/m_desert.mp3",
+  "prompt": "desert ambience, hot dry wind blowing sand across dunes, sand hissing, a distant hawk cry, occasional gust, natural field recording, no music, no musical instruments, no melody, no singing, no rhythm",
+  "seconds": 30,
+  "influence": 0.5,
+  "loop": true
+ },
+ {
+  "out": "src/assets/audio/music/m_ice.mp3",
+  "prompt": "arctic ambience, howling blizzard wind, snow blowing, ice creaking and cracking, cold gusts, natural field recording, no music, no musical instruments, no melody, no singing, no rhythm",
+  "seconds": 30,
+  "influence": 0.5,
+  "loop": true
+ },
+ {
+  "out": "src/assets/audio/music/m_throne.mp3",
+  "prompt": "ominous ambience in a ruined stone hall, deep low wind moaning through broken windows, distant thunder, fire crackling in braziers, faint rumble, natural field recording, no music, no musical instruments, no melody, no singing, no rhythm",
+  "seconds": 30,
+  "influence": 0.5,
+  "loop": true
+ },
+ {
+  "out": "src/assets/audio/music/m_boss.mp3",
+  "prompt": "intense storm ambience, heavy rain pouring, strong wind gusts, close thunder cracks, roaring fire, natural field recording, no music, no musical instruments, no melody, no singing, no rhythm",
+  "seconds": 30,
+  "influence": 0.5,
+  "loop": true
+ },
+ {
+  "out": "src/assets/audio/music/m_final.mp3",
+  "prompt": "violent apocalyptic storm ambience, torrential rain, very strong howling wind, loud thunder, deep earthquake rumble, crumbling stone, natural field recording, no music, no musical instruments, no melody, no singing, no rhythm",
+  "seconds": 30,
+  "influence": 0.5,
+  "loop": true
+ },
+ {
+  "out": "src/assets/audio/music/m_victory.mp3",
+  "prompt": "peaceful dawn ambience, morning birdsong chorus, a rooster crowing in the distance, gentle breeze, a calm stream, natural field recording, no music, no musical instruments, no melody, no singing, no rhythm",
+  "seconds": 30,
+  "influence": 0.5,
+  "loop": true
+ },
+ {
+  "out": "src/assets/audio/music/m_defeat.mp3",
+  "prompt": "somber ambience, soft rain falling, cold wind, a lone crow cawing in the distance, dripping water, natural field recording, no music, no musical instruments, no melody, no singing, no rhythm",
+  "seconds": 30,
+  "influence": 0.5,
+  "loop": true
+ },
+ {
+  "out": "src/assets/audio/music/m_drowned.mp3",
+  "prompt": "flooded catacomb ambience, water lapping against stone, bubbles, slow drips echoing, distant waves, muffled underwater gurgles, natural field recording, no music, no musical instruments, no melody, no singing, no rhythm",
+  "seconds": 30,
+  "influence": 0.5,
+  "loop": true
+ },
+ {
+  "out": "src/assets/audio/music/m_forge.mp3",
+  "prompt": "volcanic forge ambience, roaring fire, bubbling lava, hissing steam vents, distant hammer strikes on metal, deep rumble, natural field recording, no music, no musical instruments, no melody, no singing, no rhythm",
+  "seconds": 30,
+  "influence": 0.5,
+  "loop": true
+ },
+ {
+  "out": "src/assets/audio/music/m_crystal.mp3",
+  "prompt": "crystal cave ambience, soft echoing water drips, cool cave wind, tiny pebbles falling, faint distant bats, deep cavern echo, natural field recording, no music, no musical instruments, no melody, no singing, no rhythm",
+  "seconds": 30,
+  "influence": 0.5,
+  "loop": true
+ }
+]
