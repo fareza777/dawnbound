@@ -1,5 +1,5 @@
 {
-  "verifiedAt": "2026-09-26T08:08:46.025Z",
+  "verifiedAt": "2026-09-27T03:30:58.433Z",
   "checks": [
     {
       "file": "App-Icon.png",
@@ -59,11 +59,11 @@
     },
     {
       "file": "Store-6.png",
-      "width": 1080,
-      "height": 1920,
+      "width": 941,
+      "height": 1672,
       "colorType": 2,
-      "bytes": 1345330,
-      "sha256": "f9cd65271ee94e6632b94621e8dcb1b1546a3f0c2340d25d325ad12b3dcb8088"
+      "bytes": 1427676,
+      "sha256": "55e057d7ab884308e3162323ccdfed4a241525113b13458b30f8dbb43ee8c2cc"
     },
     {
       "file": "Store-7.png",
@@ -75,11 +75,11 @@
     },
     {
       "file": "Store-8.png",
-      "width": 1080,
-      "height": 1920,
+      "width": 941,
+      "height": 1672,
       "colorType": 2,
-      "bytes": 1429212,
-      "sha256": "7b15ec15836d40f6d92a87c4ef6470e3e5bbad4d20f7a11a8db062e7f6b13ed1"
+      "bytes": 1535432,
+      "sha256": "9d39f2b20c9bca8113e931cc9c00e3e4dd0cced112e5ef5645d340f028e00674"
     },
     {
       "file": "Dawnbound-Landscape.mp4",

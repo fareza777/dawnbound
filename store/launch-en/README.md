@@ -6,7 +6,7 @@ All campaign copy is in English. Creative direction: a single amber flame agains
 
 - `exports/App-Icon.png`: 512 × 512, full square app-store icon.
 - `exports/Feature-Graphic.png`: 1024 × 500 Google Play feature graphic.
-- `exports/Store-1.png` through `Store-8.png`: eight 1080 × 1920 phone screenshot creatives, in recommended display order.
+- `exports/Store-1.png` through `Store-8.png`: eight portrait phone screenshot creatives, in recommended display order. Store 6 and Store 8 use privacy-blurred character portraits at 941 × 1672; the other six are 1080 × 1920.
 - `exports/Dawnbound-Landscape.mp4`: 1920 × 1080, 30 fps, 28 seconds, H.264 video with game music.
 - `exports/Dawnbound-Vertical.mp4`: 1080 × 1920, 30 fps, 28 seconds, H.264 video with game music.
 - `play-listing.md`: English Google Play title, descriptions, privacy URL, and declaration reference.

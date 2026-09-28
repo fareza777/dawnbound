@@ -6,7 +6,9 @@ const root=path.resolve('store/launch-en');
 const ffprobe=path.join(root,'trailer/node_modules/@remotion/compositor-win32-x64-msvc/ffprobe.exe');
 const ffmpeg=path.join(root,'trailer/node_modules/@remotion/compositor-win32-x64-msvc/ffmpeg.exe');
 const checks=[];
-for(const [name,w,h] of [['App-Icon',512,512],['Feature-Graphic',1024,500],...Array.from({length:8},(_,i)=>[`Store-${i+1}`,1080,1920])]){
+for(const [name,w,h] of [['App-Icon',512,512],['Feature-Graphic',1024,500],...Array.from({length:8},(_,i)=>{
+ const n=i+1;return [`Store-${n}`,[6,8].includes(n)?941:1080,[6,8].includes(n)?1672:1920];
+})]){
  const file=path.join(root,'exports',name+'.png');const b=fs.readFileSync(file);
  const result={file:name+'.png',width:b.readUInt32BE(16),height:b.readUInt32BE(20),colorType:b[25],bytes:b.length,sha256:createHash('sha256').update(b).digest('hex')};
  if(result.width!==w||result.height!==h||result.colorType!==2)throw new Error('Image spec mismatch: '+name);
