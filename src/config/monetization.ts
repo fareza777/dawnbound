@@ -23,8 +23,13 @@ export const MONETIZATION = {
   removeAdsSku: 'remove_ads',
   /** Shown until the store returns the localized price. */
   removeAdsFallbackPrice: 'US$4.99',
-  /** Interstitial pacing: never in the first runs, never twice within this many seconds. */
-  interstitial: { minRuns: 3, minGapSec: 180, everyNthBreak: 2 },
+  /**
+   * Interstitial pacing: never in the first runs, never twice within this many seconds. Natural breaks are the run end
+   * and every floor/depth transition (a few minutes apart), so the gap is what really sets the rate.
+   */
+  interstitial: { minRuns: 2, minGapSec: 180, everyNthBreak: 1 },
+  /** Show the Remove Ads hint after every Nth interstitial of a session. */
+  removeAdsHintEvery: 3,
 } as const;
 
 export type AdUnit = 'banner' | 'interstitial' | 'rewarded';

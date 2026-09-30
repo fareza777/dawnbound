@@ -71,9 +71,8 @@ export class TransitionScene extends BaseScene {
       if (moving) return;
       moving = true;
       const go = () => this.goTo('RunMap', {}, 500);
-      // Entering a new Depth is a natural break (the paced interstitial slot); floor changes are not.
-      if (this.result === 'depth') void (services.ads?.naturalBreak() ?? Promise.resolve()).then(go, go);
-      else go();
+      // Every floor/depth change is a natural break; the pacing rule decides whether an interstitial actually shows.
+      void (services.ads?.naturalBreak() ?? Promise.resolve()).then(go, go);
     };
     this.time.delayedCall(this.result === 'depth' ? 5200 : 2600, next);
     this.input.once('pointerup', () => this.time.delayedCall(200, next));

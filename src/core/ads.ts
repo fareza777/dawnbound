@@ -1,24 +1,36 @@
 /**
  * AdMob integration with player-friendly pacing:
  *  - Banners only on calm screens (menu, path map, results) and never in combat.
- *  - Interstitials only at natural breaks (run end, new depth), never in the first runs, at most every few minutes.
- *  - Rewarded videos are always the player's choice (revive, double embers, extra reroll, daily gift).
+ *  - Interstitials only at natural breaks (run end, new floor/depth), never in the first runs, at most every few minutes
+ *    and never right after a rewarded video.
+ *  - Rewarded videos are always the player's choice (revive, double embers, extra reroll, daily gift, blessed rest,
+ *    merchant's favour).
  * Remove Ads turns banners and interstitials off; rewarded videos stay available as an opt-in.
  * On the web (dev/QA builds) rewarded ads are simulated so the flows can be tested; production web shows none.
  */
 import { Capacitor, type PluginListenerHandle } from '@capacitor/core';
 import {
-  AdMob, AdmobConsentStatus, BannerAdPosition, BannerAdSize, InterstitialAdPluginEvents, RewardAdPluginEvents,
+  AdMob, AdmobConsentStatus, BannerAdPluginEvents, BannerAdPosition, BannerAdSize, InterstitialAdPluginEvents, RewardAdPluginEvents,
 } from '@capacitor-community/admob';
 import { MONETIZATION, adUnitId } from '@/config/monetization';
 import { view } from './viewport';
 import type { SaveData } from '@/data/types';
 import type { AudioManager } from './audio';
 
-export type RewardPlacement = 'revive' | 'double_embers' | 'reroll' | 'daily_gift';
+export type RewardPlacement = 'revive' | 'double_embers' | 'reroll' | 'daily_gift' | 'blessed_rest' | 'merchant_favor';
 
-/** Standard 320x50 banner plus a little breathing room. */
-const BANNER_RESERVE_DP = 56;
+/** Gap kept above the banner so no button sits right against it (accidental clicks). */
+const BANNER_GAP_DP = 4;
+/** Retry delays after a failed ad load (no fill / offline), capped at the last value. */
+const RETRY_MS = [15_000, 30_000, 60_000, 120_000, 300_000];
+
+/**
+ * Height of Google's anchored adaptive banner for a screen width (dp): about 15.6% of the width, clamped to 50..90.
+ * Used to reserve space before the real size arrives from the SDK.
+ */
+export function adaptiveBannerHeightDp(widthDp: number): number {
+  return Math.min(90, Math.max(50, Math.ceil(widthDp * 0.157)));
+}
 const SIMULATED = import.meta.env.DEV || import.meta.env.VITE_QA === '1';
 
 /**
@@ -49,6 +61,14 @@ export class Ads {
   private wantBanner = false;
   private privacyRequired = false;
   private showing = false;
+  /** Real banner height reported by the SDK (dp); 0 until the first banner loaded. */
+  private bannerHeightDp = 0;
+  private retries = { interstitial: 0, rewarded: 0 };
+  private retryTimers: Partial<Record<'interstitial' | 'rewarded', ReturnType<typeof setTimeout>>> = {};
+  /** Interstitials shown this session (for the gentle Remove Ads hint). */
+  private interstitialsShown = 0;
+  /** Set by the game to show the Remove Ads hint (a toast) after some interstitials. */
+  onRemoveAdsHint?: () => void;
 
   constructor(private save: () => SaveData, private audio: () => AudioManager | undefined) {}
 
@@ -71,6 +91,9 @@ export class Ads {
       AdMob.addListener(InterstitialAdPluginEvents.FailedToLoad, () => (this.interstitialLoaded = false));
       AdMob.addListener(RewardAdPluginEvents.Loaded, () => (this.rewardedLoaded = true));
       AdMob.addListener(RewardAdPluginEvents.FailedToLoad, () => (this.rewardedLoaded = false));
+      AdMob.addListener(BannerAdPluginEvents.SizeChanged, (size) => {
+        if (size.height > 0) this.bannerHeightDp = size.height;
+      });
       void this.loadInterstitial();
       void this.loadRewarded();
       if (this.wantBanner) void this.showBanner();
@@ -84,7 +107,8 @@ export class Ads {
   bannerReserve(): number {
     // Reserved even before AdMob is ready so the layout does not jump when the banner arrives.
     if (!this.native || this.noAds) return 0;
-    return Math.ceil(BANNER_RESERVE_DP / view.cssPerVirtual);
+    const heightDp = Math.max(this.bannerHeightDp, adaptiveBannerHeightDp(window.innerWidth));
+    return Math.ceil((heightDp + BANNER_GAP_DP) / view.cssPerVirtual);
   }
 
   async showBanner(): Promise<void> {
@@ -95,7 +119,7 @@ export class Ads {
       if (this.bannerCreated) await AdMob.resumeBanner();
       else {
         await AdMob.showBanner({
-          adId: adUnitId('banner'), adSize: BannerAdSize.BANNER, position: BannerAdPosition.BOTTOM_CENTER,
+          adId: adUnitId('banner'), adSize: BannerAdSize.ADAPTIVE_BANNER, position: BannerAdPosition.BOTTOM_CENTER,
           margin: 0, isTesting: MONETIZATION.useTestAds,
         });
         this.bannerCreated = true;
@@ -117,21 +141,35 @@ export class Ads {
     }
   }
 
+  // ------------------------------------------------------------------ loading
+  /** After a failed load (no fill, offline) try again later with a growing delay, so buttons come back by themselves. */
+  private scheduleRetry(kind: 'interstitial' | 'rewarded'): void {
+    if (this.retryTimers[kind]) return;
+    const delay = RETRY_MS[Math.min(this.retries[kind], RETRY_MS.length - 1)];
+    this.retries[kind] += 1;
+    this.retryTimers[kind] = setTimeout(() => {
+      this.retryTimers[kind] = undefined;
+      void (kind === 'interstitial' ? this.loadInterstitial() : this.loadRewarded());
+    }, delay);
+  }
+
   // ------------------------------------------------------------------ interstitial
   private async loadInterstitial(): Promise<void> {
     if (!this.ready || this.noAds) return;
     try {
       await AdMob.prepareInterstitial({ adId: adUnitId('interstitial'), isTesting: MONETIZATION.useTestAds });
       this.interstitialLoaded = true;
+      this.retries.interstitial = 0;
     } catch (err) {
       this.interstitialLoaded = false;
       console.warn('[ads] interstitial load', err);
+      this.scheduleRetry('interstitial');
     }
   }
 
   /**
-   * A natural break (run ended, new depth). Shows an interstitial only if pacing allows; resolves when the game may
-   * continue (immediately when no ad is shown).
+   * A natural break (run ended, new floor or depth). Shows an interstitial only if pacing allows; resolves when the
+   * game may continue (immediately when no ad is shown).
    */
   async naturalBreak(): Promise<void> {
     const s = this.save();
@@ -153,6 +191,9 @@ export class Ads {
         AdMob.showInterstitial().catch(done);
       });
       s.shop.lastInterstitialAt = Date.now();
+      this.interstitialsShown += 1;
+      // Every few interstitials, a quiet reminder that they can be switched off for good.
+      if (this.interstitialsShown % MONETIZATION.removeAdsHintEvery === 0) this.onRemoveAdsHint?.();
     } finally {
       this.showing = false;
       this.interstitialLoaded = false;
@@ -167,9 +208,11 @@ export class Ads {
     try {
       await AdMob.prepareRewardVideoAd({ adId: adUnitId('rewarded'), isTesting: MONETIZATION.useTestAds });
       this.rewardedLoaded = true;
+      this.retries.rewarded = 0;
     } catch (err) {
       this.rewardedLoaded = false;
       console.warn('[ads] rewarded load', err);
+      this.scheduleRetry('rewarded');
     }
   }
 
@@ -208,6 +251,8 @@ export class Ads {
     } finally {
       this.showing = false;
       this.rewardedLoaded = false;
+      // No full-screen ad straight after a video the player chose to watch.
+      this.save().shop.lastInterstitialAt = Date.now();
       this.audio()?.setPaused(false);
       void this.loadRewarded();
     }

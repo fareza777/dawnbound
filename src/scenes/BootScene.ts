@@ -1,7 +1,7 @@
 import { bus } from '@/core/events';
 import { CloudSave } from '@/core/cloudSave';
 import Phaser from 'phaser';
-import { createUiTextures, FONT, fontSuffix } from '@/ui/theme';
+import { COLORS, createUiTextures, FONT, fontSuffix } from '@/ui/theme';
 import { view } from '@/core/viewport';
 import { createFxTextures } from '@/gfx/fxTextures';
 import { createHiResSkin } from '@/ui/skin';
@@ -9,7 +9,7 @@ import { services } from '@/core/services';
 import { SaveManager, migrate } from '@/core/save';
 import { AudioManager } from '@/core/audio';
 import { Platform } from '@/core/platform';
-import { setLang } from '@/core/i18n';
+import { setLang, t } from '@/core/i18n';
 import { Ads } from '@/core/ads';
 import { Store } from '@/core/store';
 
@@ -50,6 +50,7 @@ export class BootScene extends Phaser.Scene {
     // Ads + Remove Ads purchase start in the background so a slow network never delays loading.
     const ads = new Ads(() => save.data, () => services.audio);
     services.ads = ads;
+    ads.onRemoveAdsHint = () => services.notify?.(t('removeAdsHint'), COLORS.gold);
     services.store = new Store((owned) => {
       if (save.data.shop.noAds === owned) return;
       save.data.shop.noAds = owned;

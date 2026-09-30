@@ -17,6 +17,7 @@ import { STATS, type StatKey } from '@/data/stats';
 import { Rng, hashString } from '@/core/rng';
 import { boonDescription } from './BoonPickScene';
 import { ScrollPanel } from '@/ui/scroll';
+import { VIDEO_ICON } from './AdOverlays';
 
 // ============================================================================ Pause
 export class PauseScene extends OverlayScene {
@@ -141,10 +142,10 @@ export class RestScene extends OverlayScene {
     const inner = this.frame(t('restTitle'), 0.56, false);
     const room = this.room!;
     const run = RunManager.run!;
-    para(this, inner.x, inner.y, t('restBody'), inner.w, FONT.body, COLORS.textDim);
+    const body = para(this, inner.x, inner.y, t('restBody'), inner.w, FONT.body, COLORS.textDim);
     const cx = this.W / 2;
     const bw = inner.w - 20;
-    let y = inner.y + 60;
+    let y = inner.y + Math.max(60, body.height + 26);
     const done = () => this.close(() => room.refreshPlayerStats());
     new Button(this, cx, y, t('restHeal'), () => {
       room.player.heal(room.player.maxHp * 0.35, true);
@@ -166,6 +167,21 @@ export class RestScene extends OverlayScene {
       services.audio?.sfx('potion');
       done();
     }, { w: bw, h: 34 });
+    // Optional video: a bigger heal and full flasks together (not in the shared Daily Descent).
+    if (!run.daily && services.ads?.canReward()) {
+      y += 44;
+      const blessed: Button = new Button(this, cx, y, t('adBlessedRest'), async () => {
+        blessed.setEnabled(false);
+        if (!(await services.ads!.showRewarded('blessed_rest'))) {
+          blessed.setEnabled(true);
+          return toast(this, t('adNotReady'), COLORS.textDim);
+        }
+        room.player.heal(room.player.maxHp * 0.5, true);
+        room.player.potions = room.player.maxPotions;
+        services.audio?.sfx('heal');
+        done();
+      }, { w: bw, h: 34, icon: VIDEO_ICON });
+    }
     this.fitTo(y + 17, 20);
   }
 }
@@ -216,6 +232,25 @@ export class ShopScene extends OverlayScene {
     this.refreshGold();
     const blood = ctx.has('blood_shop');
     let y = inner.y + npcSay.height + 28;
+    const favorKey = `favor:${node.id}`;
+    if (!blood && !run.daily && !stored[favorKey] && services.ads?.canReward()) {
+      const gold = Math.round(60 * (1 + (run.depth - 1) * 0.25));
+      const favor: Button = new Button(this, this.W / 2, y + 12, t('adFavor', { n: gold }), async () => {
+        favor.setEnabled(false);
+        if (!(await services.ads!.showRewarded('merchant_favor'))) {
+          favor.setEnabled(true);
+          return toast(this, t('adNotReady'), COLORS.textDim);
+        }
+        stored[favorKey] = [];
+        run.gold += gold;
+        services.save!.markDirty();
+        services.audio?.sfx('coin');
+        toast(this, t('adFavorGot', { n: gold }), COLORS.gold);
+        this.refreshGold();
+        favor.setVisible(false);
+      }, { w: Math.min(220, inner.w - 20), h: 26, icon: VIDEO_ICON });
+      y += 30;
+    }
     const rowH = Math.min(52, Math.floor((inner.h - (y - inner.y) - 10) / this.wares.length) - 4);
     this.wares.forEach((w) => {
       this.makeRow(w, inner.x, y, inner.w, rowH, blood);
