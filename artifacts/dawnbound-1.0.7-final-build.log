@@ -1,0 +1,54 @@
+
+> dawnbound@1.0.0 android:release
+> npm run android:sync && cd android && gradlew.bat :app:assembleRelease :app:bundleRelease --console=plain --quiet
+
+
+> dawnbound@1.0.0 android:sync
+> npm run build && npx cap sync android
+
+
+> dawnbound@1.0.0 build
+> tsc --noEmit && vite build
+
+vite v7.3.6 building client environment for production...
+transforming...
+✓ 185 modules transformed.
+rendering chunks...
+[plugin vite:reporter] 
+(!) E:/Roguelike Opus 55/src/core/rng.ts is dynamically imported by E:/Roguelike Opus 55/src/scenes/hub/HubScene.ts but also statically imported by E:/Roguelike Opus 55/src/game/RunManager.ts, E:/Roguelike Opus 55/src/game/endless.ts, E:/Roguelike Opus 55/src/gfx/RoomRenderer.ts, E:/Roguelike Opus 55/src/gfx/VillageMap.ts, E:/Roguelike Opus 55/src/scenes/RunMapScene.ts, E:/Roguelike Opus 55/src/scenes/hub/HubMenus.ts, E:/Roguelike Opus 55/src/scenes/hub/HubScene.ts, E:/Roguelike Opus 55/src/scenes/hub/HubShops.ts, E:/Roguelike Opus 55/src/scenes/overlays/BoonPickScene.ts, E:/Roguelike Opus 55/src/scenes/overlays/RunOverlays.ts, E:/Roguelike Opus 55/src/systems/bounties.ts, dynamic import will not move module into another chunk.
+
+[plugin vite:reporter] 
+(!) E:/Roguelike Opus 55/src/systems/loot.ts is dynamically imported by E:/Roguelike Opus 55/src/scenes/hub/HubScene.ts but also statically imported by E:/Roguelike Opus 55/src/game/RunManager.ts, E:/Roguelike Opus 55/src/game/equipBest.ts, E:/Roguelike Opus 55/src/scenes/HudScene.ts, E:/Roguelike Opus 55/src/scenes/ResultsScene.ts, E:/Roguelike Opus 55/src/scenes/RoomScene.ts, E:/Roguelike Opus 55/src/scenes/hub/HubShops.ts, E:/Roguelike Opus 55/src/scenes/hub/InventoryScene.ts, E:/Roguelike Opus 55/src/scenes/overlays/RunOverlays.ts, E:/Roguelike Opus 55/src/ui/items.ts, dynamic import will not move module into another chunk.
+
+computing gzip size...
+dist/ad-build.json                  0.07 kB │ gzip:   0.08 kB
+dist/index.html                     1.02 kB │ gzip:   0.56 kB
+dist/assets/web-eYZ99teb.js         0.15 kB │ gzip:   0.14 kB
+dist/assets/web-C1OulANJ.js         0.19 kB │ gzip:   0.17 kB
+dist/assets/web-DIBikBvu.js         0.39 kB │ gzip:   0.27 kB
+dist/assets/web-CuHCZI0I.js         0.87 kB │ gzip:   0.42 kB
+dist/assets/web-CG8f42bj.js         0.93 kB │ gzip:   0.47 kB
+dist/assets/web-B3f1mAlC.js         1.09 kB │ gzip:   0.36 kB
+dist/assets/web-IUWIP9aB.js         1.27 kB │ gzip:   0.61 kB
+dist/assets/web-N5YAiS0K.js         1.66 kB │ gzip:   0.59 kB
+dist/assets/web-Be8-7b-Z.js         1.99 kB │ gzip:   0.64 kB
+dist/assets/index-2tZ6qngl.js     640.89 kB │ gzip: 219.26 kB
+dist/assets/phaser-DXXWZowi.js  1,208.05 kB │ gzip: 332.16 kB
+✓ built in 18.59s
+√ Copying web assets from dist to android\app\src\main\assets\public in 284.51ms
+√ Creating capacitor.config.json in android\app\src\main\assets in 17.48ms
+√ copy android in 504.75ms
+√ Updating Android plugins in 9.78ms
+[info] Found 10 Capacitor plugins for android:
+       @capacitor-community/admob@8.1.0
+       @capacitor-community/in-app-review@8.0.0
+       @capacitor/app@8.1.1
+       @capacitor/haptics@8.0.2
+       @capacitor/preferences@8.0.1
+       @capacitor/screen-orientation@8.0.1
+       @capacitor/share@8.0.2
+       @capacitor/splash-screen@8.0.2
+       @capacitor/status-bar@8.0.3
+       @capgo/native-purchases@8.8.1
+√ update android in 337.12ms
+[info] Sync finished in 0.968s

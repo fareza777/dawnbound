@@ -30,7 +30,7 @@ export const TALENTS: TalentDef[] = [
   tal('t_atk', 'might', 'Keeper\'s Strength', 'Kekuatan Penjaga', '+{v}% ATK per rank.', '+{v}% ATK per peringkat.', 5, 30, 4, 'atk', 'pct'),
   tal('t_crit', 'might', 'Keen Eye', 'Mata Tajam', '+{v}% Crit Chance per rank.', '+{v}% Peluang Kritis per peringkat.', 5, 45, 2, 'critChance', 'pct', { requires: 't_atk' }),
   tal('t_critdmg', 'might', 'Lethal Edge', 'Mata Mematikan', '+{v}% Crit Damage per rank.', '+{v}% Damage Kritis per peringkat.', 5, 60, 10, 'critDmg', 'pct', { requires: 't_crit', gate: 1 }),
-  tal('t_skill', 'might', 'Lantern Rite', 'Ritual Lentera', '+{v}% Skill damage per rank.', '+{v}% damage Skill per peringkat.', 5, 55, 8, 'skillDmg', 'pct', { requires: 't_atk' }),
+  tal('t_skill', 'might', 'Lantern Surge', 'Gelombang Lentera', '+{v}% Skill damage per rank.', '+{v}% damage Skill per peringkat.', 5, 55, 8, 'skillDmg', 'pct', { requires: 't_atk' }),
   tal('t_boss', 'might', 'Kingslayer', 'Pembunuh Raja', '+{v}% Boss damage per rank.', '+{v}% damage Bos per peringkat.', 3, 120, 8, 'bossDmg', 'pct', { requires: 't_critdmg', gate: 2 }),
   tal('t_flare', 'might', 'Bright Flare', 'Flare Terang', '+{v}% Flare charge per rank.', '+{v}% isi Flare per peringkat.', 3, 90, 12, 'flareGain', 'pct', { requires: 't_skill', gate: 1 }),
   // Guard
@@ -48,12 +48,12 @@ export const TALENTS: TalentDef[] = [
   tal('t_dodge', 'grace', 'Wisp Step', 'Langkah Arwah', '+{v}% Evasion per rank.', '+{v}% Menghindar per peringkat.', 3, 90, 2, 'dodge', 'pct', { requires: 't_dash', gate: 2 }),
   tal('t_range', 'grace', 'Long Reach', 'Jangkauan Jauh', '+{v}% Range and Area per rank.', '+{v}% Jangkauan dan Area per peringkat.', 3, 80, 5, 'range', 'pct', { requires: 't_aspd', gate: 1 }),
   // Fortune
-  tal('t_gold', 'fortune', 'Pip\'s Blessing', 'Berkat Pip', '+{v}% Gold Find per rank.', '+{v}% Temuan Emas per peringkat.', 5, 25, 10, 'goldFind', 'pct'),
+  tal('t_gold', 'fortune', 'Pip\'s Bargains', 'Tawaran Pip', '+{v}% Gold Find per rank.', '+{v}% Temuan Emas per peringkat.', 5, 25, 10, 'goldFind', 'pct'),
   tal('t_mf', 'fortune', 'Treasure Sense', 'Indra Harta', '+{v}% Magic Find per rank.', '+{v}% Temuan Sihir per peringkat.', 5, 40, 8, 'magicFind', 'pct', { requires: 't_gold' }),
   tal('t_luck', 'fortune', 'Fortune\'s Favor', 'Restu Keberuntungan', '+{v} Luck per rank.', '+{v} Keberuntungan per peringkat.', 5, 50, 4, 'luck', 'flat', { requires: 't_gold' }),
   tal('t_xp', 'fortune', 'Quick Study', 'Cepat Belajar', '+{v}% Ember XP per rank.', '+{v}% XP Bara per peringkat.', 3, 60, 8, 'xpGain', 'pct', { requires: 't_luck', gate: 1 }),
   tal('t_reroll', 'fortune', 'Fate Weaver', 'Penenun Takdir', '+1 Boon reroll per run per rank.', '+1 acak ulang Anugerah per run per peringkat.', 3, 120, 1, undefined, 'flat', { requires: 't_mf', effect: 'rerolls', gate: 1 }),
-  tal('t_start', 'fortune', 'Gift of the Spirits', 'Hadiah Para Roh', 'Begin each run with a random Boon.', 'Mulai setiap run dengan satu Anugerah acak.', 1, 400, 1, undefined, 'flat', { requires: 't_reroll', effect: 'start_boon', gate: 2 }),
+  tal('t_start', 'fortune', 'Gift of the Shards', 'Hadiah Para Kepingan', 'Begin each run with a random Boon.', 'Mulai setiap run dengan satu Anugerah acak.', 1, 400, 1, undefined, 'flat', { requires: 't_reroll', effect: 'start_boon', gate: 2 }),
 ];
 
 export function talentById(id: string): TalentDef | undefined {

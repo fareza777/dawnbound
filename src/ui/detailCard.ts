@@ -5,6 +5,7 @@ import { nine } from './skin';
 import { view } from '@/core/viewport';
 import { services } from '@/core/services';
 import { t } from '@/core/i18n';
+import { ScrollPanel } from './scroll';
 
 export interface DetailArt {
   atlas: string;
@@ -52,10 +53,13 @@ export function showDetailCard(scene: Phaser.Scene, spec: DetailSpec, onClose?: 
   const hx = 12 + ART + 10;
   const title = scene.add.bitmapText(hx, y + 4, FONT.head, spec.title).setTint(spec.titleColor).setMaxWidth(pw - hx - 12);
   body.add(title);
+  let headerBottom = Math.max(y + ART, title.y + title.height);
   if (spec.subtitle) {
-    body.add(scene.add.bitmapText(hx, y + 8 + title.height, FONT.small, spec.subtitle).setTint(COLORS.textDim).setMaxWidth(pw - hx - 12));
+    const subtitle = scene.add.bitmapText(hx, title.y + title.height + 4, FONT.small, spec.subtitle).setTint(COLORS.textDim).setMaxWidth(pw - hx - 12);
+    body.add(subtitle);
+    headerBottom = Math.max(headerBottom, subtitle.y + subtitle.height);
   }
-  y += ART + 12;
+  y = headerBottom + 12;
 
   for (const b of spec.bars ?? []) {
     const bx = 86;
@@ -67,14 +71,15 @@ export function showDetailCard(scene: Phaser.Scene, spec: DetailSpec, onClose?: 
     body.add(scene.add.bitmapText(pw - 14, y, FONT.small, `${b.value}`).setOrigin(1, 0).setTint(COLORS.text));
     fill.scaleX = 0;
     scene.tweens.add({ targets: fill, scaleX: 1, duration: 380, ease: 'Cubic.easeOut', delay: 80 });
-    y += 16;
+    y += 28;
   }
   if (spec.bars?.length) y += 6;
 
   for (const sec of spec.sections) {
     if (!sec.lines.length) continue;
-    body.add(scene.add.bitmapText(14, y, FONT.body, sec.head).setTint(COLORS.gold));
-    y += 18;
+    const head = scene.add.bitmapText(14, y, FONT.body, sec.head).setMaxWidth(tw).setTint(COLORS.gold);
+    body.add(head);
+    y += head.height + 6;
     for (const l of sec.lines) {
       const txt = scene.add.bitmapText(22, y, FONT.small, l.text).setTint(l.color ?? COLORS.text).setMaxWidth(tw - 8);
       body.add(scene.add.image(16, y + 6, 'proj_star').setTint(l.color ?? COLORS.gold).setScale(0.55).setAlpha(0.8));
@@ -90,23 +95,27 @@ export function showDetailCard(scene: Phaser.Scene, spec: DetailSpec, onClose?: 
   }
 
   let closed = false;
+  let scroll: ScrollPanel | undefined;
   const close = () => {
     if (closed) return;
     closed = true;
     unregister?.();
     services.audio?.sfx('ui_close', { volume: 0.6 });
-    scene.tweens.add({ targets: layer, alpha: 0, duration: 110, onComplete: () => layer.destroy() });
+    scene.tweens.add({ targets: layer, alpha: 0, duration: 110, onComplete: () => {
+      scroll?.destroy();
+      layer.destroy();
+    } });
     onClose?.();
   };
-  const closeBtn = new Button(scene, pw / 2, y + 14, t('cxClose'), close, { w: 140, h: 28 });
-  body.add(closeBtn);
-  y += 38;
-
-  const ph = Math.min(H - 20, y);
+  const ph = Math.min(H - 32, y + 56);
   const top = Math.round((H - ph) / 2);
-  body.y = top;
+  body.setPosition(0, 0);
+  scroll = new ScrollPanel(scene, px, top + 8, pw, ph - 56);
+  scroll.add(body);
+  scroll.setContentHeight(y);
+  const closeBtn = new Button(scene, W / 2, top + ph - 26, t('cxClose'), close, { w: 140, h: 34 });
   const frame = nine(scene, px, top, 'ui_panel_ornate', pw, ph).setOrigin(0, 0).setInteractive();
-  layer.add([frame, body]);
+  layer.add([frame, ...scroll.displayObjects, closeBtn]);
   dim.on('pointerup', close);
   const unregister = services.platform?.onBack(() => {
     close();

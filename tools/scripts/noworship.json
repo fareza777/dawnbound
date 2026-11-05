@@ -1,0 +1,42 @@
+[
+ {
+  "goto": "http://localhost:4174"
+ },
+ {
+  "until": "window.__game && window.__services && window.__services.save && window.__game.scene.getScenes(true).length > 0",
+  "timeout": 20000
+ },
+ {
+  "wait": 800
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); __run.start({heroId:'rowan'}); g.scene.start('RunMap'); 'map'"
+ },
+ {
+  "wait": 2500
+ },
+ {
+  "eval": "const nodes=__run.run.map.nodes; JSON.stringify(nodes.map(n=>n.kind).filter((k,i,a)=>a.indexOf(k)===i))"
+ },
+ {
+  "shot": "nw_map"
+ },
+ {
+  "eval": "const m=__game.scene.getScene('RunMap'); m.select(__run.choices(__run.run)[0]); 'go'"
+ },
+ {
+  "wait": 3500
+ },
+ {
+  "eval": "const r=__game.scene.getScene('Room'); r.features.spawnShrine(r.player.x+34, r.player.y-24, 'ember'); r.features.spawnShrine(r.player.x-34, r.player.y-24, 'rime'); 'shrine'"
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "shot": "nw_room"
+ },
+ {
+  "eval": "(window.__errs||[]).slice(-3).join(' | ')"
+ }
+]

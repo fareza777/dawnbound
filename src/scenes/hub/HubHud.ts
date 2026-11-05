@@ -46,7 +46,7 @@ export class HubHud extends Phaser.Scene {
     const W = view.w;
     const H = view.h;
     // Currency bar
-    panel(this, 4, 4, W - 8, 30, 'ui_panel_dark').setAlpha(0.9);
+    panel(this, 4, 4, W - 8, 38, 'ui_panel_dark').setAlpha(0.96);
     const icon = (key: string, fb: string, x: number) =>
       (this.textures.exists(key) ? this.add.image(x, 19, key).setDisplaySize(14, 14) : this.add.image(x, 19, fb).setScale(1.5));
     icon('ui_icon_embers', 'pk_ember', 18);
@@ -57,12 +57,12 @@ export class HubHud extends Phaser.Scene {
     this.shardText = label(this, 188, 12, '', FONT.head, 0xff9ad0);
     new Button(this, W - 22, 19, '=', () => this.hub.openMenu('HubMenu'), { w: 28, h: 24, font: FONT.head });
     // Quest tracker
-    this.questW = Math.min(250, W - 70);
-    const bodyH = fontSize(FONT.body, view.res);
-    const qp = panel(this, 4, 38, this.questW, 8 + bodyH + fontSize(FONT.small, view.res), 'ui_panel_dark').setAlpha(0.85).setInteractive();
+    this.questW = Math.min(280, W - 70);
+    const bodyH = fontSize(FONT.body, view.res) + 4;
+    const qp = panel(this, 4, 48, this.questW, 14 + bodyH + fontSize(FONT.small, view.res), 'ui_panel_dark').setAlpha(0.96).setInteractive();
     qp.on('pointerup', () => this.hub.openMenu('QuestLog'));
-    this.questTitle = label(this, 12, 42, '', FONT.body, COLORS.gold);
-    this.questObj = label(this, 12, 42 + bodyH, '', FONT.small, COLORS.text);
+    this.questTitle = label(this, 12, 52, '', FONT.body, COLORS.gold);
+    this.questObj = label(this, 12, 56 + bodyH, '', FONT.small, COLORS.text);
     // Shortcut column
     const shortcuts: [string, string, string][] = [['Inventory', 'ui_icon_inventory', t('inventory')], ['Hero', 'ui_icon_hero', t('character')], ['QuestLog', 'ui_icon_quests', t('quests')], ['Codex', 'ui_icon_codex', t('menuCodex')]];
     shortcuts.forEach(([scene, iconKey, name], i) => {

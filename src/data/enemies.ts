@@ -138,7 +138,7 @@ export const ENEMIES: Record<string, EnemyDef> = {
     weight: 6, projTint: 0xb9a8ff,
   },
   bone_mage: {
-    id: 'bone_mage', name: { en: 'Grave Chanter', id: 'Pelantun Kubur' },
+    id: 'bone_mage', name: { en: 'Grave Wailer', id: 'Peratap Kubur' },
     lore: { en: 'Sings the dead awake. Silence it first.', id: 'Menyanyikan orang mati hingga bangun. Bungkam dia lebih dulu.' },
     sprite: m('bonus_5', 1, { frontOnly: true }), ai: 'caster', hp: 40, atk: 12, def: 2, speed: 40, radius: 6, xp: 9, gold: [4, 8],
     pattern: 'spiral', cooldown: 3, projSpeed: 65, element: 'shadow', summon: 'skeleton', weight: 3, projTint: 0x9b6bff,
@@ -227,7 +227,7 @@ export const ENEMIES: Record<string, EnemyDef> = {
     weight: 0, projTint: 0xff8a3c,
   },
 
-  // ---------------- Depth 4 · Frostveil Cathedral ----------------
+  // ---------------- Depth 4 · Frostveil Citadel ----------------
   frost_slime: {
     id: 'frost_slime', name: { en: 'Rime Slime', id: 'Lendir Embun Beku' },
     lore: { en: 'Leaves a trail of frost wherever it hops.', id: 'Meninggalkan jejak beku di setiap lompatannya.' },
@@ -242,20 +242,20 @@ export const ENEMIES: Record<string, EnemyDef> = {
   },
   banshee: {
     id: 'banshee', name: { en: 'Choir Banshee', id: 'Banshee Paduan Suara' },
-    lore: { en: 'The cathedral choir never stopped singing.', id: 'Paduan suara katedral tak pernah berhenti bernyanyi.' },
+    lore: { en: 'The citadel\'s echoes never stopped.', id: 'Gema benteng itu tak pernah berhenti.' },
     sprite: m('m02_4'), ai: 'ghost', hp: 80, atk: 18, def: 0, speed: 50, radius: 6, xp: 12, gold: [5, 10], flying: true,
     element: 'ice', pattern: 'ring10', cooldown: 2.8, projSpeed: 60, onHit: ['chill', 0.4], resist: { physical: 0.35 },
     drop: ['wraith_silk', 0.4], weight: 6, projTint: 0x9ee8ff,
   },
   frost_genie: {
     id: 'frost_genie', name: { en: 'Hoarfrost Djinn', id: 'Jin Embun Beku' },
-    lore: { en: 'Bound to the cathedral bells.', id: 'Terikat pada lonceng katedral.' },
+    lore: { en: 'Bound to the citadel bells.', id: 'Terikat pada lonceng benteng.' },
     sprite: m('m04_1'), ai: 'caster', hp: 90, atk: 19, def: 4, speed: 50, radius: 7, xp: 14, gold: [6, 12], flying: true,
     pattern: 'homing', cooldown: 2.6, projSpeed: 70, element: 'ice', onHit: ['chill', 0.5], weight: 4, projTint: 0x9ee8ff,
   },
   frost_skeleton: {
-    id: 'frost_skeleton', name: { en: 'Frozen Pilgrim', id: 'Peziarah Beku' },
-    lore: { en: 'Came to pray for the sun. Stayed.', id: 'Datang untuk berdoa bagi matahari. Tak pernah pulang.' },
+    id: 'frost_skeleton', name: { en: 'Frozen Wanderer', id: 'Pengembara Beku' },
+    lore: { en: 'Came looking for the sun. Stayed.', id: 'Datang mencari matahari. Tak pernah pulang.' },
     sprite: m('m02_0', 1, { tint: 0xd0ecff }), ai: 'shooter', hp: 80, atk: 18, def: 5, speed: 44, radius: 6, xp: 10,
     gold: [4, 9], pattern: 'spread3', cooldown: 2, projSpeed: 110, range: 110, element: 'ice', onHit: ['chill', 0.4],
     drop: ['bone_dust', 0.4], weight: 6, projTint: 0x9ee8ff,
@@ -302,7 +302,7 @@ export const ENEMIES: Record<string, EnemyDef> = {
   },
   void_mage: {
     id: 'void_mage', name: { en: 'Hollow Acolyte', id: 'Pengikut Hampa' },
-    lore: { en: 'Prays to an empty throne.', id: 'Berdoa pada takhta yang kosong.' },
+    lore: { en: 'Still guards an empty throne.', id: 'Masih menjaga takhta yang kosong.' },
     sprite: m('bonus_5', 1, { frontOnly: true, tint: 0xff9ad0 }), ai: 'caster', hp: 120, atk: 26, def: 4, speed: 44, radius: 6,
     xp: 16, gold: [6, 12], pattern: 'wave', cooldown: 2.4, projSpeed: 80, element: 'shadow', summon: 'hell_imp',
     weight: 4, projTint: 0xff5ad0,
@@ -348,7 +348,7 @@ export const ENEMIES: Record<string, EnemyDef> = {
     cooldown: 3, element: 'ice', onHit: ['chill', 0.45], drop: ['grave_moss', 0.35], weight: 6,
   },
   tide_caster: {
-    id: 'tide_caster', name: { en: 'Tide Chanter', id: 'Pelantun Pasang' },
+    id: 'tide_caster', name: { en: 'Tide Wailer', id: 'Peratap Pasang' },
     lore: { en: 'Calls the drowned bell. The water answers in waves.', id: 'Membunyikan lonceng tenggelam. Air menjawab dengan gelombang.' },
     sprite: m('bonus_5', 1, { frontOnly: true, tint: 0x7fd8ff }), ai: 'caster', hp: 38, atk: 12, def: 2, speed: 40, radius: 6, xp: 9,
     gold: [4, 8], pattern: 'wave', cooldown: 3.2, projSpeed: 70, element: 'ice', onHit: ['chill', 0.3], weight: 4, projTint: 0x7fd8ff,
@@ -401,7 +401,7 @@ export const ENEMIES: Record<string, EnemyDef> = {
     splitInto: 'slimeling', drop: ['frost_crystal', 0.3], weight: 6,
   },
   prism_caster: {
-    id: 'prism_caster', name: { en: 'Prism Seer', id: 'Peramal Prisma' },
+    id: 'prism_caster', name: { en: 'Prism Weaver', id: 'Penenun Prisma' },
     lore: { en: 'Bends starlight into blades. Mostly pointed at you.', id: 'Membengkokkan cahaya bintang menjadi bilah. Kebanyakan diarahkan padamu.' },
     sprite: m('m04_1', 1, { tint: 0xffb0e0 }), ai: 'caster', hp: 88, atk: 18, def: 4, speed: 48, radius: 7, xp: 14, gold: [6, 12],
     flying: true, pattern: 'ring6', cooldown: 3, projSpeed: 80, element: 'holy', weight: 4, projTint: 0xffc0f0,

@@ -1,0 +1,123 @@
+{
+  "native": true,
+  "demoAds": true,
+  "build": {
+    "testAds": true,
+    "qa": true,
+    "versionName": "1.0.7",
+    "versionCode": 8
+  },
+  "scenes": [
+    "Hub",
+    "HubHud",
+    "Notify"
+  ],
+  "ads": {
+    "sdk": "Ready",
+    "banner": 4,
+    "interstitial": 1,
+    "rewarded": 1,
+    "rewardsEarned": 1,
+    "bannerStatus": "Hidden",
+    "interstitialStatus": "Ready",
+    "rewardedStatus": "Ready",
+    "lastError": "",
+    "native": true,
+    "testAds": true
+  },
+  "labels": [
+    "!",
+    "!",
+    "!",
+    "!",
+    "74",
+    "123",
+    "0",
+    "=",
+    "Steel and Flame",
+    "Captain Dorran wants to see you…  0/10"
+  ],
+  "buttons": [
+    {
+      "type": "Container",
+      "x": 284,
+      "y": 7,
+      "width": 28,
+      "height": 24
+    },
+    {
+      "type": "NineSlice",
+      "x": 4,
+      "y": 48,
+      "width": 250,
+      "height": 46
+    },
+    {
+      "type": "Container",
+      "x": 276,
+      "y": 34,
+      "width": 36,
+      "height": 36
+    },
+    {
+      "type": "Container",
+      "x": 276,
+      "y": 76,
+      "width": 36,
+      "height": 36
+    },
+    {
+      "type": "Container",
+      "x": 276,
+      "y": 118,
+      "width": 36,
+      "height": 36
+    },
+    {
+      "type": "Container",
+      "x": 276,
+      "y": 160,
+      "width": 36,
+      "height": 36
+    },
+    {
+      "type": "Container",
+      "x": 263.43359999999933,
+      "y": 189.43359999999933,
+      "width": 61.13280000000134,
+      "height": 61.13280000000134
+    },
+    {
+      "type": "Container",
+      "x": 230,
+      "y": 497,
+      "width": 40,
+      "height": 67
+    }
+  ],
+  "save": {
+    "currency": {
+      "gold": 123,
+      "embers": 74,
+      "shards": 0
+    },
+    "giftDay": 20732,
+    "runs": 3,
+    "adBreaks": 1
+  },
+  "viewport": {
+    "width": 320,
+    "height": 616,
+    "dpr": 1,
+    "canvas": {
+      "x": 0,
+      "y": 12,
+      "width": 320,
+      "height": 592,
+      "top": 12,
+      "right": 320,
+      "bottom": 604,
+      "left": 0
+    }
+  }
+}

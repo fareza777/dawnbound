@@ -19,16 +19,18 @@ export class SettingsScene extends OverlayScene {
     const s = this.save.settings;
     const scroll = new ScrollPanel(this, inner.x, inner.y, inner.w, inner.h);
     let y = 4;
-    const rowH = 34;
     const persist = () => services.save!.markDirty();
 
     const slider = (name: string, value: number, onChange: (v: number) => void) => {
-      scroll.add(this.add.bitmapText(0, y + 8, FONT.body, name).setTint(COLORS.text));
+      const caption = this.add.bitmapText(0, y, FONT.body, name).setMaxWidth(inner.w * 0.42).setTint(COLORS.text);
+      const rowH = Math.max(44, caption.height + 16);
+      caption.y = y + (rowH - caption.height) / 2;
+      scroll.add(caption);
       const sx = inner.w * 0.45;
       const sw = inner.w * 0.5;
-      const track = this.add.rectangle(sx, y + 16, sw, 4, COLORS.border).setOrigin(0, 0.5);
-      const fill = this.add.rectangle(sx, y + 16, sw * value, 4, COLORS.gold).setOrigin(0, 0.5);
-      const knob = this.add.circle(sx + sw * value, y + 16, 7, COLORS.text).setStrokeStyle(2, COLORS.goldDark);
+      const track = this.add.rectangle(sx, y + rowH / 2, sw, 4, COLORS.border).setOrigin(0, 0.5);
+      const fill = this.add.rectangle(sx, y + rowH / 2, sw * value, 4, COLORS.gold).setOrigin(0, 0.5);
+      const knob = this.add.circle(sx + sw * value, y + rowH / 2, 7, COLORS.text).setStrokeStyle(2, COLORS.goldDark);
       const zone = this.add.zone(sx - 8, y, sw + 16, rowH).setOrigin(0, 0).setInteractive({ draggable: true });
       const setFrom = (px: number) => {
         const local = px - scroll.x - sx;
@@ -46,22 +48,26 @@ export class SettingsScene extends OverlayScene {
     };
 
     const toggle = (name: string, options: string[], current: number, onChange: (i: number) => void) => {
-      scroll.add(this.add.bitmapText(0, y + 8, FONT.body, name).setTint(COLORS.text));
+      const caption = this.add.bitmapText(0, y, FONT.body, name).setMaxWidth(inner.w * 0.42).setTint(COLORS.text);
+      const rowH = Math.max(44, caption.height + 16);
+      caption.y = y + (rowH - caption.height) / 2;
+      scroll.add(caption);
       let idx = current;
       const bw = inner.w * 0.5;
-      const btn = new Button(this, inner.w * 0.45 + bw / 2, y + 16, options[idx], () => {
+      const btn = new Button(this, inner.w * 0.45 + bw / 2, y + rowH / 2, options[idx], () => {
         idx = (idx + 1) % options.length;
         btn.setCaption(options[idx]);
         onChange(idx);
         persist();
-      }, { w: bw, h: 26, font: FONT.body });
+      }, { w: bw, h: 34, font: FONT.body });
       scroll.add(btn);
       y += rowH;
     };
 
     const header = (text: string) => {
-      scroll.add(this.add.bitmapText(0, y + 4, FONT.head, text).setTint(COLORS.gold));
-      y += 24;
+      const caption = this.add.bitmapText(0, y + 6, FONT.head, text).setTint(COLORS.gold);
+      scroll.add(caption);
+      y += caption.height + 18;
     };
 
     header(t('audio'));
@@ -109,8 +115,8 @@ export class SettingsScene extends OverlayScene {
     header(t('other'));
     const bw = inner.w - 8;
     const addBtn = (text: string, fn: () => void, style: 'normal' | 'danger' = 'normal') => {
-      scroll.add(new Button(this, bw / 2 + 4, y + 16, text, fn, { w: bw, h: 28, style }));
-      y += 36;
+      scroll.add(new Button(this, bw / 2 + 4, y + 18, text, fn, { w: bw, h: 36, style }));
+      y += 46;
     };
     if (this.from === 'Menu') {
       addBtn(t('replayIntro'), () => {

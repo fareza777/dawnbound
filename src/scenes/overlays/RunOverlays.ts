@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import { OverlayScene, type OverlayData } from './OverlayScene';
 import { COLORS, FONT, RARITY_COLORS } from '@/ui/theme';
-import { Button, fitBox, label, panel, para, toast } from '@/ui/widgets';
+import { Button, label, panel, para, resizePanel, toast } from '@/ui/widgets';
 import { confirm } from '@/ui/modal';
 import { t, tr } from '@/core/i18n';
 import { services } from '@/core/services';
@@ -33,11 +33,11 @@ export class PauseScene extends OverlayScene {
     const cx = this.W / 2;
     let y = inner.y + 10;
     if (run) {
-      label(this, cx, y, `${t('seed')}: ${run.seed.toString(36).toUpperCase()}`, FONT.small, COLORS.textDim, 0.5, 0);
-      y += 14;
+      const seed = label(this, cx, y, `${t('seed')}: ${run.seed.toString(36).toUpperCase()}`, FONT.small, COLORS.textDim, 0.5, 0);
+      y += seed.height + 6;
       const mins = Math.floor(run.timeSec / 60);
-      label(this, cx, y, `${t('time')}: ${mins}m ${Math.floor(run.timeSec % 60)}s  ·  ${t('kills')}: ${run.kills}`, FONT.small, COLORS.textDim, 0.5, 0);
-      y += 24;
+      const time = label(this, cx, y, `${t('time')}: ${mins}m ${Math.floor(run.timeSec % 60)}s  ·  ${t('kills')}: ${run.kills}`, FONT.small, COLORS.textDim, 0.5, 0).setMaxWidth(inner.w).setCenterAlign();
+      y += time.height + 14;
     }
     const bw = Math.min(220, inner.w - 20);
     new Button(this, cx, y + 14, t('resume'), () => this.close(), { w: bw, h: 30, style: 'primary' });
@@ -88,20 +88,27 @@ export class BuildScene extends OverlayScene {
     const add = (o: Phaser.GameObjects.GameObject & { height?: number }) => scroll.add(o);
     if (!run) return;
     const ctx = buildContext(this.save, run);
-    add(this.add.bitmapText(0, y, FONT.head, t('stats')).setTint(COLORS.gold));
-    y += 18;
+    const statsHead = this.add.bitmapText(0, y, FONT.head, t('stats')).setTint(COLORS.gold);
+    add(statsHead);
+    y += statsHead.height + 8;
     const keys: StatKey[] = ['maxHp', 'atk', 'def', 'critChance', 'critDmg', 'atkSpeed', 'moveSpeed', 'dashCharges', 'lifesteal', 'cdr', 'dodge', 'dmgReduction', 'luck'];
-    keys.forEach((k, i) => {
-      const col = i % 2;
-      const row = Math.floor(i / 2);
-      add(this.add.bitmapText(col * (inner.w / 2), y + row * 12, FONT.small, `${tr(STATS[k].name)}: ${formatStatValue(k, ctx.stats[k])}`).setTint(COLORS.text));
-    });
-    y += Math.ceil(keys.length / 2) * 12 + 10;
-    add(this.add.bitmapText(0, y, FONT.head, `${t('boons')} (${run.boons.length})`).setTint(COLORS.gold));
-    y += 18;
+    for (let i = 0; i < keys.length; i += 2) {
+      let h = 0;
+      keys.slice(i, i + 2).forEach((k, col) => {
+        const text = this.add.bitmapText(col * (inner.w / 2), y, FONT.small, `${tr(STATS[k].name)}: ${formatStatValue(k, ctx.stats[k])}`).setMaxWidth(inner.w / 2 - 8).setTint(COLORS.text);
+        add(text);
+        h = Math.max(h, text.height);
+      });
+      y += h + 6;
+    }
+    y += 10;
+    const boonsHead = this.add.bitmapText(0, y, FONT.head, `${t('boons')} (${run.boons.length})`).setTint(COLORS.gold);
+    add(boonsHead);
+    y += boonsHead.height + 8;
     if (run.boons.length === 0) {
-      add(this.add.bitmapText(0, y, FONT.small, t('nothingHere')).setTint(COLORS.textDim));
-      y += 14;
+      const empty = this.add.bitmapText(0, y, FONT.small, t('nothingHere')).setTint(COLORS.textDim);
+      add(empty);
+      y += empty.height + 6;
     }
     for (const b of run.boons) {
       const def = boonDef(b.id);
@@ -111,22 +118,25 @@ export class BuildScene extends OverlayScene {
       add(this.textures.exists(iconKey)
         ? this.add.image(10, y + 10, iconKey).setDisplaySize(20, 20)
         : this.add.image(10, y + 6, 'proj_orb').setTint(sp.color).setBlendMode('ADD'));
-      add(this.add.bitmapText(26, y, FONT.body, `${tr(def.name)}  ${b.rank}/${def.maxRank}`).setTint(sp.color));
-      const d = this.add.bitmapText(26, y + 14, FONT.small, boonDescription(def, b.rank)).setMaxWidth(inner.w - 30).setTint(COLORS.textDim);
+      const name = this.add.bitmapText(26, y, FONT.body, `${tr(def.name)}  ${b.rank}/${def.maxRank}`).setMaxWidth(inner.w - 30).setTint(sp.color);
+      add(name);
+      const d = this.add.bitmapText(26, y + name.height + 4, FONT.small, boonDescription(def, b.rank)).setMaxWidth(inner.w - 30).setTint(COLORS.textDim);
       add(d);
-      y += Math.max(24, 18 + d.height) + 4;
+      y = d.y + d.height + 12;
     }
     y += 6;
-    add(this.add.bitmapText(0, y, FONT.head, `${t('relics')} (${run.relics.length})`).setTint(COLORS.gold));
-    y += 18;
+    const relicsHead = this.add.bitmapText(0, y, FONT.head, `${t('relics')} (${run.relics.length})`).setTint(COLORS.gold);
+    add(relicsHead);
+    y += relicsHead.height + 8;
     for (const id of run.relics) {
       const r = relicDef(id);
       if (!r) continue;
       if (this.textures.exists(r.icon)) add(this.add.image(10, y + 10, r.icon).setDisplaySize(20, 20));
-      add(this.add.bitmapText(26, y, FONT.body, tr(r.name)).setTint(RELIC_TIER_COLOR[r.tier]));
-      const d = this.add.bitmapText(26, y + 14, FONT.small, tr(r.desc)).setMaxWidth(inner.w - 30).setTint(COLORS.textDim);
+      const name = this.add.bitmapText(26, y, FONT.body, tr(r.name)).setMaxWidth(inner.w - 30).setTint(RELIC_TIER_COLOR[r.tier]);
+      add(name);
+      const d = this.add.bitmapText(26, y + name.height + 4, FONT.small, tr(r.desc)).setMaxWidth(inner.w - 30).setTint(COLORS.textDim);
       add(d);
-      y += Math.max(24, 18 + d.height) + 4;
+      y = d.y + d.height + 12;
     }
     scroll.setContentHeight(y + 10);
   }
@@ -231,7 +241,7 @@ export class ShopScene extends OverlayScene {
     this.goldText = label(this, this.W / 2, inner.y + npcSay.height + 6, '', FONT.head, COLORS.gold, 0.5, 0);
     this.refreshGold();
     const blood = ctx.has('blood_shop');
-    let y = inner.y + npcSay.height + 28;
+    let y = this.goldText.y + this.goldText.height + 12;
     const favorKey = `favor:${node.id}`;
     if (!blood && !run.daily && !stored[favorKey] && services.ads?.canReward()) {
       const gold = Math.round(60 * (1 + (run.depth - 1) * 0.25));
@@ -251,11 +261,14 @@ export class ShopScene extends OverlayScene {
       }, { w: Math.min(220, inner.w - 20), h: 26, icon: VIDEO_ICON });
       y += 30;
     }
-    const rowH = Math.min(52, Math.floor((inner.h - (y - inner.y) - 10) / this.wares.length) - 4);
+    const rowY = y;
+    const contentStart = this.children.list.length;
     this.wares.forEach((w) => {
-      this.makeRow(w, inner.x, y, inner.w, rowH, blood);
-      y += rowH + 4;
+      y += this.makeRow(w, inner.x, y, inner.w, blood) + 10;
     });
+    const content = this.children.list.slice(contentStart);
+    const scroll = new ScrollPanel(this, inner.x, rowY, inner.w, inner.y + inner.h - rowY);
+    scroll.adopt(content).setContentHeight(y - rowY);
   }
 
   private refreshGold(): void {
@@ -284,18 +297,21 @@ export class ShopScene extends OverlayScene {
     return key && this.textures.exists(key) ? key : null;
   }
 
-  private makeRow(w: Ware, x: number, y: number, width: number, h: number, blood: boolean): void {
+  private makeRow(w: Ware, x: number, y: number, width: number, blood: boolean): number {
     const info = this.wareInfo(w);
-    panel(this, x, y, width, h, 'ui_panel_dark');
+    const bg = panel(this, x, y, width, 60, 'ui_panel_dark');
     const icon = this.wareIcon(w);
     const tx = icon ? x + 36 : x + 8;
+    const name = this.add.bitmapText(tx, y + 5, FONT.body, info.name).setMaxWidth(width - (tx - x) - 88).setTint(info.color);
+    const desc = this.add.bitmapText(tx, name.y + name.height + 4, FONT.small, info.desc).setMaxWidth(width - (tx - x) - 88).setTint(COLORS.textDim);
+    const h = Math.max(60, desc.y + desc.height + 10 - y);
+    resizePanel(bg, width, h);
     if (icon) this.add.image(x + 18, y + h / 2, icon).setDisplaySize(26, 26);
-    this.add.bitmapText(tx, y + 5, FONT.body, info.name).setTint(info.color);
-    fitBox(this.add.bitmapText(tx, y + 21, FONT.small, info.desc).setMaxWidth(width - (tx - x) - 88).setTint(COLORS.textDim), width - (tx - x) - 88, h - 23);
     const cost = blood ? `${Math.ceil(w.price / 5)} HP` : `${w.price}`;
     const btn = new Button(this, x + width - 42, y + h / 2, w.sold ? t('soldOut') : cost, () => this.buy(w, btn), {
-      w: 72, h: 26, style: 'primary', disabled: w.sold || (w.kind === 'relic' && !w.relic),
+      w: 72, h: 34, style: 'primary', disabled: w.sold || (w.kind === 'relic' && !w.relic),
     });
+    return h;
   }
 
   private buy(w: Ware, btn: Button): void {
@@ -351,6 +367,7 @@ export class ShopScene extends OverlayScene {
 // ============================================================================ Event
 export class EventScene extends OverlayScene {
   private eventId?: string;
+  private contentScroll?: ScrollPanel;
 
   constructor() {
     super('Event');
@@ -364,6 +381,7 @@ export class EventScene extends OverlayScene {
   create(): void {
     const ev = eventById(this.eventId) ?? eventById('ev_spirit_well')!;
     const inner = this.frame(tr(ev.speaker), 0.84, false);
+    const contentStart = this.children.list.length;
     const s = this.save;
     if (!s.codex.events.includes(ev.id)) s.codex.events.push(ev.id);
     this.drawPortrait(ev.portrait, this.W / 2, inner.y + 42);
@@ -373,16 +391,22 @@ export class EventScene extends OverlayScene {
     ev.choices.forEach((c) => {
       const afford = (!c.cost?.gold || run.gold >= c.cost.gold);
       // Readable choice: the action in the body font, what it costs or gives on a dimmer line below.
-      const h = c.hint ? 44 : 34;
+      const width = inner.w - 8;
+      const caption = this.add.bitmapText(0, 0, FONT.body, tr(c.label)).setMaxWidth(width - 16);
+      const hint = c.hint ? this.add.bitmapText(0, 0, FONT.small, tr(c.hint)).setMaxWidth(width - 16).setCenterAlign().setOrigin(0.5, 0).setTint(afford ? 0xffd9a0 : COLORS.textDim) : undefined;
+      const h = Math.max(38, caption.height + (hint ? hint.height + 6 : 0) + 16);
+      caption.destroy();
       const btn = new Button(this, this.W / 2, y + h / 2, tr(c.label), () => this.choose(c), { w: inner.w - 8, h, disabled: !afford, font: FONT.body });
-      if (c.hint) {
-        btn.text.setY(-8);
-        const hint = this.add.bitmapText(0, 9, FONT.small, tr(c.hint)).setOrigin(0.5).setTint(afford ? 0xffd9a0 : COLORS.textDim);
+      btn.text.setScale(1).setMaxWidth(width - 16).setCenterAlign().setOrigin(0.5, 0).setPosition(0, -h / 2 + 8);
+      if (hint) {
+        hint.setPosition(0, btn.text.y + btn.text.height + 6);
         btn.add(hint);
       }
       y += h + 6;
     });
-    this.fitTo(y);
+    const content = this.children.list.slice(contentStart);
+    this.contentScroll = new ScrollPanel(this, inner.x, inner.y, inner.w, inner.h);
+    this.contentScroll.adopt(content).setContentHeight(y - inner.y + 8);
     services.audio?.sfx('event_open', { volume: 0.7 });
   }
 
@@ -405,14 +429,16 @@ export class EventScene extends OverlayScene {
     const outcomes = success ? c.outcome : c.fail ?? [];
     const resultText = success ? tr(c.result) : tr(c.failResult ?? c.result);
     bus.emit('eventChoice', { eventId: this.eventId ?? '', choice: tr(c.label) });
+    this.contentScroll?.destroy();
     this.children.removeAll(true);
     const inner = this.frame(success ? t('eventResult') : t('eventFail'), 0.5, false);
+    const contentStart = this.children.list.length;
     const lines = this.applyOutcomes(outcomes);
     const p = para(this, inner.x + 4, inner.y + 4, resultText, inner.w - 8, FONT.body, COLORS.text);
     let y = inner.y + p.height + 16;
     for (const l of lines) {
-      label(this, this.W / 2, y, l.text, FONT.small, l.color, 0.5, 0);
-      y += 13;
+      const line = label(this, this.W / 2, y, l.text, FONT.small, l.color, 0.5, 0).setMaxWidth(inner.w - 8).setCenterAlign();
+      y += line.height + 6;
     }
     const fight = outcomes.find((o) => o.type === 'fight') as { type: 'fight'; elite?: boolean } | undefined;
     const boons = outcomes.filter((o) => o.type === 'boon').length;
@@ -427,7 +453,9 @@ export class EventScene extends OverlayScene {
         if (fight) room.startAmbush(!!fight.elite);
       });
     }, { w: 160, h: 28, style: 'primary' });
-    this.fitTo(y + 28);
+    const content = this.children.list.slice(contentStart);
+    this.contentScroll = new ScrollPanel(this, inner.x, inner.y, inner.w, inner.h);
+    this.contentScroll.adopt(content).setContentHeight(y + 32 - inner.y);
     services.save!.markDirty();
   }
 

@@ -1,0 +1,10 @@
+node_modules/
+out/
+.raw/
+.qc/
+.bin/
+capture-report.json
+render-report.json
+.capture-server.log
+.capture.log
+.render*.log

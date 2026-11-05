@@ -52,7 +52,7 @@ const BASE_QUESTS: QuestDef[] = [
   {
     id: 'mq_awaken', type: 'main', chapter: 1, giver: 'maren',
     title: L('The Last Lantern', 'Lentera Terakhir'),
-    desc: L('You woke at the Lantern shrine. Speak with Maren\'s spirit.', 'Kau terbangun di kuil Lentera. Bicaralah dengan roh Maren.'),
+    desc: L('You woke beside the Lantern. Speak with Maren\'s spirit.', 'Kau terbangun di samping Lentera. Bicaralah dengan roh Maren.'),
     objectives: [{ kind: 'talk', npc: 'maren' }],
     rewards: { embers: 20 },
     done: L('The flame chose you, Rowan. Now go and find Captain Dorran — you will need a sword arm, not just a kind heart.', 'Nyala ini memilihmu, Rowan. Sekarang temui Kapten Dorran — kau butuh lengan pedang, bukan hanya hati yang baik.'),
@@ -136,7 +136,7 @@ const BASE_QUESTS: QuestDef[] = [
   {
     id: 'mq_frost', type: 'main', chapter: 11, giver: 'maren', requires: ['mq_forge_oath'],
     title: L('The Frozen Heart', 'Hati yang Membeku'),
-    desc: L('Vesper waits in the Frostveil Cathedral with the Ember of Love. Thaw her heart — or break it.', 'Vesper menunggu di Katedral Tirai Beku dengan Bara Cinta. Cairkan hatinya — atau hancurkan.'),
+    desc: L('Vesper waits in the Frostveil Citadel with the Ember of Love. Thaw her heart — or break it.', 'Vesper menunggu di Benteng Tirai Beku dengan Bara Cinta. Cairkan hatinya — atau hancurkan.'),
     objectives: [{ kind: 'boss', boss: 'vesper' }],
     rewards: { embers: 320, shards: 1 },
     done: L('Vesper was my student too. She loved him. She followed him into the cold because she could not bear for him to be alone.', 'Vesper juga muridku. Dia mencintainya. Dia mengikutinya ke dalam dingin karena tak sanggup membiarkannya sendirian.'),
@@ -257,11 +257,11 @@ const BASE_QUESTS: QuestDef[] = [
   },
   {
     id: 'sq_pilgrim', type: 'side', giver: 'liora', requires: ['mq_descend'],
-    title: L('The Pilgrim\'s Path', 'Jalan Peziarah'),
-    desc: L('Pray at 8 Spirit Shrines in the Depths.', 'Berdoa di 8 Kuil Roh di Kedalaman.'),
-    objectives: [{ kind: 'stat', stat: 'shrines', count: 8, label: L('Shrines', 'Kuil') }],
+    title: L('The Attuner\'s Path', 'Jalan Penyelaras'),
+    desc: L('Attune to 8 Elemental Shards in the Depths.', 'Selaraskan 8 Kepingan Elemen di Kedalaman.'),
+    objectives: [{ kind: 'stat', stat: 'shrines', count: 8, label: L('Shards', 'Kepingan') }],
     rewards: { embers: 100, flag: 'liora_blessing' },
-    done: L('The spirits know your name now. They will be... generous. Once more per run, they will let you choose again.', 'Para roh kini mengenal namamu. Mereka akan... murah hati. Sekali lagi setiap run, mereka akan membiarkanmu memilih ulang.'),
+    done: L('The shards hum when you come near now. Once more per run, they will let you choose again.', 'Kepingan-kepingan itu kini berdengung saat kau mendekat. Sekali lagi setiap run, kau boleh memilih ulang.'),
   },
   {
     id: 'sq_debt', type: 'side', giver: 'pip', requires: ['mq_descend'],

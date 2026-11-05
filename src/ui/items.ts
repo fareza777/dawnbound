@@ -64,17 +64,16 @@ export function itemCard(scene: Phaser.Scene, x: number, y: number, w: number, i
   const color = RARITY_COLORS[it.rarity];
   const lines: Phaser.GameObjects.GameObject[] = [];
   let cy = 8;
-  const add = (o: Phaser.GameObjects.BitmapText | Phaser.GameObjects.Image | Phaser.GameObjects.Container, h: number) => {
+  const add = (o: Phaser.GameObjects.BitmapText) => {
     lines.push(o);
-    cy += h;
+    cy = o.y + o.height + 4;
   };
   const icon = itemSlot(scene, 26, 26, it, 40);
   lines.push(icon);
   const name = scene.add.bitmapText(52, cy, FONT.head, itemName(it)).setTint(color).setMaxWidth(w - 60);
   lines.push(name);
   cy += Math.max(name.height, 16) + 2;
-  lines.push(scene.add.bitmapText(52, cy, FONT.small, `${tr(RARITY_NAMES[it.rarity])} ${tr(SLOT_NAMES[base.slot])} · iLv ${it.ilvl}`).setTint(COLORS.textDim));
-  cy += 12;
+  add(scene.add.bitmapText(52, cy, FONT.small, `${tr(RARITY_NAMES[it.rarity])} ${tr(SLOT_NAMES[base.slot])} · iLv ${it.ilvl}`).setMaxWidth(w - 60).setTint(COLORS.textDim));
   const power = itemPower(it);
   const diff = compare ? power - itemPower(compare) : 0;
   const pw = scene.add.bitmapText(52, cy, FONT.small, t('gearScore', { n: power })).setTint(COLORS.text);
@@ -82,32 +81,32 @@ export function itemCard(scene: Phaser.Scene, x: number, y: number, w: number, i
   if (compare) {
     lines.push(scene.add.bitmapText(52 + pw.width + 6, cy, FONT.small, diff === 0 ? '=' : `${diff > 0 ? '+' : ''}${diff}`).setTint(diff > 0 ? COLORS.green : diff < 0 ? COLORS.red : COLORS.textDim));
   }
-  cy = Math.max(cy + 16, 56);
+  cy = Math.max(cy + pw.height + 8, 60);
   const mul = upgradeMult(it.plus);
-  for (const m of base.implicit) add(scene.add.bitmapText(10, cy, FONT.small, formatMod({ ...m, value: Math.round(m.value * mul * 10) / 10 })).setTint(0xd8d4e6), 11);
+  for (const m of base.implicit) add(scene.add.bitmapText(10, cy, FONT.small, formatMod({ ...m, value: Math.round(m.value * mul * 10) / 10 })).setMaxWidth(w - 20).setTint(COLORS.text));
   if (it.affixes.length) cy += 3;
   for (const a of it.affixes) {
     const def = affixById(a.id);
     if (!def) continue;
-    add(scene.add.bitmapText(10, cy, FONT.small, formatMod({ stat: def.stat, type: def.type, value: Math.round(a.value * mul * 10) / 10 })).setTint(COLORS.blue), 11);
+    add(scene.add.bitmapText(10, cy, FONT.small, formatMod({ stat: def.stat, type: def.type, value: Math.round(a.value * mul * 10) / 10 })).setMaxWidth(w - 20).setTint(COLORS.blue));
   }
   const u = it.uniqueId ? uniqueById(it.uniqueId) : undefined;
   if (u) {
     cy += 3;
-    for (const m of u.mods) add(scene.add.bitmapText(10, cy, FONT.small, formatMod(m)).setTint(COLORS.orange), 11);
+    for (const m of u.mods) add(scene.add.bitmapText(10, cy, FONT.small, formatMod(m)).setMaxWidth(w - 20).setTint(COLORS.orange));
     const pwr = scene.add.bitmapText(10, cy + 2, FONT.small, tr(u.power)).setMaxWidth(w - 20).setTint(0xffd9a0);
-    add(pwr, pwr.height + 4);
+    add(pwr);
     const fl = scene.add.bitmapText(10, cy, FONT.small, `"${tr(u.flavor)}"`).setMaxWidth(w - 20).setTint(COLORS.textDim);
-    add(fl, fl.height + 2);
+    add(fl);
   }
   const set = it.setId ? setById(it.setId) : undefined;
   if (set) {
     cy += 3;
-    add(scene.add.bitmapText(10, cy, FONT.small, `${tr(set.name)} (${equippedSetCount}/4)`).setTint(COLORS.green), 11);
+    add(scene.add.bitmapText(10, cy, FONT.small, `${tr(set.name)} (${equippedSetCount}/4)`).setMaxWidth(w - 20).setTint(COLORS.green));
     const b2 = scene.add.bitmapText(14, cy, FONT.small, `(2) ${tr(set.bonus2.desc)}`).setMaxWidth(w - 24).setTint(equippedSetCount >= 2 ? COLORS.green : COLORS.textDim);
-    add(b2, b2.height + 1);
+    add(b2);
     const b4 = scene.add.bitmapText(14, cy, FONT.small, `(4) ${tr(set.bonus4.desc)}`).setMaxWidth(w - 24).setTint(equippedSetCount >= 4 ? COLORS.green : COLORS.textDim);
-    add(b4, b4.height + 1);
+    add(b4);
   }
   const height = cy + 8;
   const bg = panel(scene, 0, 0, w, height, it.rarity >= 4 ? 'ui_panel_ornate' : 'ui_panel');

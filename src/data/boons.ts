@@ -10,34 +10,35 @@ export interface SpiritDef {
   title: L10n;
   color: number;
   element: string;
+  /** One-line description of the shard, shown when its boons are offered (shards never speak). */
   greeting: L10n;
   portrait: string;
 }
 
 export const SPIRITS: Record<SpiritId, SpiritDef> = {
   ember: {
-    id: 'ember', name: { en: 'Ignis', id: 'Ignis' }, title: { en: 'Spirit of Ember', id: 'Roh Bara' }, color: 0xff7a2f, element: 'fire',
-    greeting: { en: 'Little flame, let me teach you to roar.', id: 'Nyala kecil, biar kuajari kau mengaum.' }, portrait: 'portraits_spirit_ember',
+    id: 'ember', name: { en: 'Ember', id: 'Bara' }, title: { en: 'Ember Shard', id: 'Kepingan Bara' }, color: 0xff7a2f, element: 'fire',
+    greeting: { en: 'A shard of living flame. Its heat sharpens every strike.', id: 'Kepingan api hidup. Panasnya menajamkan setiap serangan.' }, portrait: 'portraits_spirit_ember',
   },
   rime: {
-    id: 'rime', name: { en: 'Nivalis', id: 'Nivalis' }, title: { en: 'Spirit of Rime', id: 'Roh Embun Beku' }, color: 0x9ee8ff, element: 'ice',
-    greeting: { en: 'Stillness is a weapon. Hold it.', id: 'Keheningan adalah senjata. Genggamlah.' }, portrait: 'portraits_spirit_rime',
+    id: 'rime', name: { en: 'Rime', id: 'Embun Beku' }, title: { en: 'Rime Shard', id: 'Kepingan Embun Beku' }, color: 0x9ee8ff, element: 'ice',
+    greeting: { en: 'A shard of frozen light. It slows whatever it touches.', id: 'Kepingan cahaya beku. Ia memperlambat apa pun yang disentuhnya.' }, portrait: 'portraits_spirit_rime',
   },
   tempest: {
-    id: 'tempest', name: { en: 'Volta', id: 'Volta' }, title: { en: 'Spirit of Tempest', id: 'Roh Badai' }, color: 0xfff27a, element: 'shock',
-    greeting: { en: 'Faster! The storm waits for no one!', id: 'Lebih cepat! Badai tak menunggu siapa pun!' }, portrait: 'portraits_spirit_tempest',
+    id: 'tempest', name: { en: 'Tempest', id: 'Badai' }, title: { en: 'Tempest Shard', id: 'Kepingan Badai' }, color: 0xfff27a, element: 'shock',
+    greeting: { en: 'A shard crackling with lightning. Speed and storms live inside it.', id: 'Kepingan yang berderak dengan petir. Kecepatan dan badai tersimpan di dalamnya.' }, portrait: 'portraits_spirit_tempest',
   },
   venom: {
-    id: 'venom', name: { en: 'Verdra', id: 'Verdra' }, title: { en: 'Spirit of Venom', id: 'Roh Racun' }, color: 0x8fdc4a, element: 'poison',
-    greeting: { en: 'Patience, keeper. Rot is certain.', id: 'Sabar, penjaga. Kebusukan itu pasti.' }, portrait: 'portraits_spirit_venom',
+    id: 'venom', name: { en: 'Venom', id: 'Racun' }, title: { en: 'Venom Shard', id: 'Kepingan Racun' }, color: 0x8fdc4a, element: 'poison',
+    greeting: { en: 'A shard wrapped in thorny vines. Its poison works slowly, but surely.', id: 'Kepingan yang dililit sulur berduri. Racunnya bekerja perlahan, tapi pasti.' }, portrait: 'portraits_spirit_venom',
   },
   aurora: {
-    id: 'aurora', name: { en: 'Solenne', id: 'Solenne' }, title: { en: 'Spirit of Aurora', id: 'Roh Fajar' }, color: 0xfff0a0, element: 'holy',
-    greeting: { en: 'You carry the dawn. Let it mend you.', id: 'Kau membawa fajar. Biarkan ia memulihkanmu.' }, portrait: 'portraits_spirit_aurora',
+    id: 'aurora', name: { en: 'Aurora', id: 'Fajar' }, title: { en: 'Aurora Shard', id: 'Kepingan Fajar' }, color: 0xfff0a0, element: 'holy',
+    greeting: { en: 'A shard of warm dawnlight. It mends wounds and wards off harm.', id: 'Kepingan cahaya fajar yang hangat. Ia memulihkan luka dan menangkis serangan.' }, portrait: 'portraits_spirit_aurora',
   },
   umbra: {
-    id: 'umbra', name: { en: 'Nox', id: 'Nox' }, title: { en: 'Spirit of Umbra', id: 'Roh Bayangan' }, color: 0xb080ff, element: 'shadow',
-    greeting: { en: 'Every shadow is a door. Walk through.', id: 'Setiap bayangan adalah pintu. Masuklah.' }, portrait: 'portraits_spirit_umbra',
+    id: 'umbra', name: { en: 'Umbra', id: 'Bayangan' }, title: { en: 'Umbra Shard', id: 'Kepingan Bayangan' }, color: 0xb080ff, element: 'shadow',
+    greeting: { en: 'A shard of deep shadow. It turns darkness into an edge.', id: 'Kepingan bayangan pekat. Ia mengubah kegelapan menjadi senjata.' }, portrait: 'portraits_spirit_umbra',
   },
 };
 
@@ -67,14 +68,14 @@ const flat = (stat: Mod['stat']) => (v: number): Mod[] => [{ stat, type: 'flat',
 export const BOONS: BoonDef[] = [
   // ---------------------------------------------------------------- EMBER
   { id: 'em_kindle', spirit: 'ember', name: { en: 'Kindling Strikes', id: 'Serangan Pemantik' }, desc: { en: 'Attacks have {v}% chance to Burn.', id: 'Serangan berpeluang {v}% Membakar.' }, maxRank: 5, values: [20, 30, 40, 50, 60], mods: pct('burnChance') },
-  { id: 'em_blaze', spirit: 'ember', name: { en: 'Blazing Soul', id: 'Jiwa Berkobar' }, desc: { en: '+{v}% Fire damage and Burn deals more.', id: '+{v}% damage Api dan Bakar lebih kuat.' }, maxRank: 5, values: [15, 25, 35, 45, 55], mods: (v) => [{ stat: 'fireDmg', type: 'pct', value: v }, { stat: 'statusPower', type: 'flat', value: v / 2 }] },
+  { id: 'em_blaze', spirit: 'ember', name: { en: 'Blazing Will', id: 'Tekad Berkobar' }, desc: { en: '+{v}% Fire damage and Burn deals more.', id: '+{v}% damage Api dan Bakar lebih kuat.' }, maxRank: 5, values: [15, 25, 35, 45, 55], mods: (v) => [{ stat: 'fireDmg', type: 'pct', value: v }, { stat: 'statusPower', type: 'flat', value: v / 2 }] },
   { id: 'em_pyre', spirit: 'ember', name: { en: 'Funeral Pyre', id: 'Api Unggun Duka' }, desc: { en: 'Burning enemies explode on death for {v}% ATK.', id: 'Musuh terbakar meledak saat mati sebesar {v}% ATK.' }, maxRank: 4, values: [80, 120, 160, 200], effects: (v) => [{ id: 'burn_explode', p: [v] }] },
   { id: 'em_flashfire', spirit: 'ember', name: { en: 'Flashfire Dash', id: 'Dash Kilat Api' }, desc: { en: 'Your dash ends in a fire blast for {v}% ATK.', id: 'Dash-mu diakhiri ledakan api {v}% ATK.' }, maxRank: 4, values: [90, 130, 170, 210], effects: (v) => [{ id: 'dash_nova', p: [v] }] },
   { id: 'em_meteor', spirit: 'ember', name: { en: 'Falling Star', id: 'Bintang Jatuh' }, desc: { en: 'Every {v2}s a meteor strikes a foe for {v}% ATK.', id: 'Tiap {v2} dtk meteor menghantam musuh {v}% ATK.' }, maxRank: 4, values: [150, 200, 250, 300], values2: [5, 4.5, 4, 3.5], effects: (v, v2) => [{ id: 'meteor', p: [v, v2] }] },
   { id: 'em_trail', spirit: 'ember', name: { en: 'Scorched Path', id: 'Jejak Hangus' }, desc: { en: 'Dashing leaves flames that deal {v}% ATK per second.', id: 'Dash meninggalkan api {v}% ATK per detik.' }, maxRank: 3, values: [60, 90, 120], effects: (v) => [{ id: 'ember_trail', p: [v] }] },
   { id: 'em_heart', spirit: 'ember', name: { en: 'Emberheart', id: 'Hati Bara' }, desc: { en: '+{v}% ATK. Burning enemies heal you 1 HP on death.', id: '+{v}% ATK. Musuh terbakar memulihkanmu 1 HP saat mati.' }, maxRank: 5, values: [8, 12, 16, 20, 24], mods: pct('atk'), effects: () => [{ id: 'burn_kill_heal', p: [1] }] },
   { id: 'em_crit', spirit: 'ember', name: { en: 'White Flame', id: 'Api Putih' }, desc: { en: 'Critical hits always Burn. +{v}% Crit Damage.', id: 'Serangan kritis selalu Membakar. +{v}% Damage Kritis.' }, maxRank: 4, values: [15, 25, 35, 45], mods: pct('critDmg'), effects: () => [{ id: 'crit_burn', p: [1] }] },
-  { id: 'em_skill', spirit: 'ember', name: { en: 'Inferno Rite', id: 'Ritual Inferno' }, desc: { en: 'Your Skill deals +{v}% damage and Burns.', id: 'Skill-mu +{v}% damage dan Membakar.' }, maxRank: 4, values: [25, 40, 55, 70], mods: pct('skillDmg'), effects: () => [{ id: 'skill_burn', p: [1] }] },
+  { id: 'em_skill', spirit: 'ember', name: { en: 'Inferno Surge', id: 'Gelombang Inferno' }, desc: { en: 'Your Skill deals +{v}% damage and Burns.', id: 'Skill-mu +{v}% damage dan Membakar.' }, maxRank: 4, values: [25, 40, 55, 70], mods: pct('skillDmg'), effects: () => [{ id: 'skill_burn', p: [1] }] },
   { id: 'em_wall', spirit: 'ember', name: { en: 'Ring of Cinders', id: 'Cincin Arang' }, desc: { en: 'Enemies that touch you ignite and take {v}% ATK.', id: 'Musuh yang menyentuhmu terbakar dan menerima {v}% ATK.' }, maxRank: 3, values: [60, 100, 140], effects: (v) => [{ id: 'retaliate_fire', p: [v] }] },
   { id: 'em_flare', spirit: 'ember', name: { en: 'Solar Hunger', id: 'Lapar Surya' }, desc: { en: '+{v}% Flare charge rate.', id: '+{v}% laju isi Flare.' }, maxRank: 4, values: [20, 35, 50, 65], mods: pct('flareGain') },
   { id: 'em_phoenix', spirit: 'ember', legendary: true, name: { en: 'Phoenix Rebirth', id: 'Kelahiran Phoenix' }, desc: { en: 'Once per run, rise from death with {v}% HP in a blast of fire.', id: 'Sekali per run, bangkit dari kematian dengan {v}% HP dalam ledakan api.' }, maxRank: 1, values: [50], effects: (v) => [{ id: 'second_wind', p: [v] }] },
@@ -88,7 +89,7 @@ export const BOONS: BoonDef[] = [
   { id: 'ri_spike', spirit: 'rime', name: { en: 'Icicle Volley', id: 'Hujan Es' }, desc: { en: 'Every 4th attack launches {v} ice shards.', id: 'Setiap serangan ke-4 meluncurkan {v} serpih es.' }, maxRank: 4, values: [3, 4, 5, 6], effects: (v) => [{ id: 'ice_volley', p: [v] }] },
   { id: 'ri_power', spirit: 'rime', name: { en: 'Deep Cold', id: 'Dingin Mendalam' }, desc: { en: '+{v}% Frost damage. Freeze lasts longer.', id: '+{v}% damage Es. Beku bertahan lebih lama.' }, maxRank: 5, values: [15, 25, 35, 45, 55], mods: (v) => [{ stat: 'iceDmg', type: 'pct', value: v }, { stat: 'statusPower', type: 'flat', value: v / 2 }] },
   { id: 'ri_heart', spirit: 'rime', name: { en: 'Frozen Heart', id: 'Hati Beku' }, desc: { en: '+{v} Max HP. Heal 2 HP when an enemy Freezes.', id: '+{v} HP Maks. Pulih 2 HP saat musuh Membeku.' }, maxRank: 4, values: [15, 25, 35, 45], mods: flat('maxHp'), effects: () => [{ id: 'freeze_heal', p: [2] }] },
-  { id: 'ri_skill', spirit: 'rime', name: { en: 'Hoarfrost Rite', id: 'Ritual Embun Beku' }, desc: { en: 'Skill deals +{v}% damage and Chills twice.', id: 'Skill +{v}% damage dan Membekukan dua kali.' }, maxRank: 4, values: [25, 40, 55, 70], mods: pct('skillDmg'), effects: () => [{ id: 'skill_chill', p: [2] }] },
+  { id: 'ri_skill', spirit: 'rime', name: { en: 'Hoarfrost Surge', id: 'Gelombang Embun Beku' }, desc: { en: 'Skill deals +{v}% damage and Chills twice.', id: 'Skill +{v}% damage dan Membekukan dua kali.' }, maxRank: 4, values: [25, 40, 55, 70], mods: pct('skillDmg'), effects: () => [{ id: 'skill_chill', p: [2] }] },
   { id: 'ri_slow', spirit: 'rime', name: { en: 'Numbing Wind', id: 'Angin Kebas' }, desc: { en: 'Enemy projectiles near you slow by {v}%.', id: 'Proyektil musuh di dekatmu melambat {v}%.' }, maxRank: 3, values: [20, 30, 40], effects: (v) => [{ id: 'proj_slow', p: [v] }] },
   { id: 'ri_winter', spirit: 'rime', legendary: true, name: { en: 'Eternal Winter', id: 'Musim Dingin Abadi' }, desc: { en: 'All enemies start each room Chilled. Frozen enemies take +{v}% crit damage.', id: 'Semua musuh memulai ruangan dalam keadaan Membeku. Musuh beku menerima +{v}% damage kritis.' }, maxRank: 1, values: [50], effects: (v) => [{ id: 'room_chill', p: [v] }] },
 
@@ -102,9 +103,9 @@ export const BOONS: BoonDef[] = [
   { id: 'te_dash', spirit: 'tempest', name: { en: 'Lightning Dash', id: 'Dash Petir' }, desc: { en: 'Enemies you dash through take {v}% ATK and are Shocked.', id: 'Musuh yang kau tembus saat dash menerima {v}% ATK dan tersetrum.' }, maxRank: 4, values: [60, 90, 120, 150], effects: (v) => [{ id: 'storm_dash', p: [v] }] },
   { id: 'te_kill', spirit: 'tempest', name: { en: 'Storm Chaser', id: 'Pemburu Badai' }, desc: { en: 'Kills grant +{v}% Move and Attack Speed for 2s.', id: 'Membunuh memberi +{v}% Kecepatan Gerak dan Serang selama 2 dtk.' }, maxRank: 3, values: [15, 25, 35], effects: (v) => [{ id: 'kill_haste', p: [v] }] },
   { id: 'te_cdr', spirit: 'tempest', name: { en: 'Surge', id: 'Lonjakan' }, desc: { en: '+{v}% Cooldown Reduction.', id: '+{v}% Pengurangan Cooldown.' }, maxRank: 4, values: [8, 13, 18, 23], mods: pct('cdr') },
-  { id: 'te_skill', spirit: 'tempest', name: { en: 'Thunderclap Rite', id: 'Ritual Guntur' }, desc: { en: 'Your Skill calls {v} lightning bolts.', id: 'Skill-mu memanggil {v} sambaran petir.' }, maxRank: 4, values: [2, 3, 4, 5], effects: (v) => [{ id: 'skill_thunder', p: [v] }] },
+  { id: 'te_skill', spirit: 'tempest', name: { en: 'Thunderclap Surge', id: 'Gelombang Guntur' }, desc: { en: 'Your Skill calls {v} lightning bolts.', id: 'Skill-mu memanggil {v} sambaran petir.' }, maxRank: 4, values: [2, 3, 4, 5], effects: (v) => [{ id: 'skill_thunder', p: [v] }] },
   { id: 'te_multi', spirit: 'tempest', name: { en: 'Forked Bolts', id: 'Petir Bercabang' }, desc: { en: 'Chain lightning jumps {v} extra times.', id: 'Rantai petir melompat {v} kali lebih banyak.' }, maxRank: 3, values: [1, 2, 3], requires: ['te_arc'], effects: (v) => [{ id: 'chain_extra', p: [v] }] },
-  { id: 'te_zeus', spirit: 'tempest', legendary: true, name: { en: 'Heaven\'s Wrath', id: 'Murka Langit' }, desc: { en: 'Critical hits call down lightning for {v}% ATK.', id: 'Serangan kritis memanggil petir {v}% ATK.' }, maxRank: 1, values: [150], effects: (v) => [{ id: 'crit_thunder', p: [v] }] },
+  { id: 'te_zeus', spirit: 'tempest', legendary: true, name: { en: 'Storm\'s Wrath', id: 'Murka Badai' }, desc: { en: 'Critical hits call down lightning for {v}% ATK.', id: 'Serangan kritis memanggil petir {v}% ATK.' }, maxRank: 1, values: [150], effects: (v) => [{ id: 'crit_thunder', p: [v] }] },
 
   // ---------------------------------------------------------------- VENOM
   { id: 've_toxin', spirit: 'venom', name: { en: 'Toxin Coat', id: 'Lapisan Racun' }, desc: { en: 'Attacks have {v}% chance to Poison (stacks).', id: 'Serangan berpeluang {v}% Meracun (bertumpuk).' }, maxRank: 5, values: [30, 40, 50, 60, 70], mods: pct('poisonChance') },
@@ -115,23 +116,23 @@ export const BOONS: BoonDef[] = [
   { id: 've_dash', spirit: 'venom', name: { en: 'Noxious Wake', id: 'Jejak Beracun' }, desc: { en: 'Dashing through enemies Poisons them 3 times.', id: 'Dash menembus musuh meracuni mereka 3 kali.' }, maxRank: 1, values: [3], effects: (v) => [{ id: 'venom_dash', p: [v] }] },
   { id: 've_leech', spirit: 'venom', name: { en: 'Leeching Rot', id: 'Busuk Pengisap' }, desc: { en: 'Heal {v}% of poison damage dealt.', id: 'Pulihkan {v}% dari damage racun yang diberikan.' }, maxRank: 4, values: [3, 5, 7, 9], effects: (v) => [{ id: 'poison_leech', p: [v] }] },
   { id: 've_mark', spirit: 'venom', name: { en: 'Death Mark', id: 'Tanda Maut' }, desc: { en: 'Enemies with 4+ poison stacks take +{v}% damage.', id: 'Musuh dengan 4+ tumpukan racun menerima +{v}% damage.' }, maxRank: 4, values: [15, 25, 35, 45], effects: (v) => [{ id: 'poison_mark', p: [v] }] },
-  { id: 've_skill', spirit: 'venom', name: { en: 'Venom Rite', id: 'Ritual Bisa' }, desc: { en: 'Skill applies {v} Poison stacks.', id: 'Skill memberi {v} tumpukan Racun.' }, maxRank: 4, values: [2, 3, 4, 5], effects: (v) => [{ id: 'skill_poison', p: [v] }] },
+  { id: 've_skill', spirit: 'venom', name: { en: 'Venom Surge', id: 'Gelombang Bisa' }, desc: { en: 'Skill applies {v} Poison stacks.', id: 'Skill memberi {v} tumpukan Racun.' }, maxRank: 4, values: [2, 3, 4, 5], effects: (v) => [{ id: 'skill_poison', p: [v] }] },
   { id: 've_luck', spirit: 'venom', name: { en: 'Carrion Luck', id: 'Untung Bangkai' }, desc: { en: '+{v} Luck and +{v}% Gold Find.', id: '+{v} Keberuntungan dan +{v}% Temuan Emas.' }, maxRank: 3, values: [10, 18, 26], mods: (v) => [{ stat: 'luck', type: 'flat', value: v }, { stat: 'goldFind', type: 'pct', value: v }] },
   { id: 've_hydra', spirit: 'venom', legendary: true, name: { en: 'Hydra\'s Blood', id: 'Darah Hydra' }, desc: { en: 'Poison can stack infinitely and deals +{v}% damage.', id: 'Racun bertumpuk tanpa batas dan +{v}% damage.' }, maxRank: 1, values: [50], mods: pct('poisonDmg'), effects: () => [{ id: 'poison_stacks', p: [20] }] },
 
   // ---------------------------------------------------------------- AURORA
   { id: 'au_vital', spirit: 'aurora', name: { en: 'Dawn\'s Vigor', id: 'Semangat Fajar' }, desc: { en: '+{v} Max HP and heal fully.', id: '+{v} HP Maks dan pulih penuh.' }, maxRank: 5, values: [20, 30, 40, 50, 60], mods: flat('maxHp'), effects: () => [{ id: 'instant_heal', p: [100] }] },
-  { id: 'au_kill', spirit: 'aurora', name: { en: 'Soul Harvest', id: 'Panen Jiwa' }, desc: { en: 'Heal {v} HP on kill.', id: 'Pulih {v} HP saat membunuh.' }, maxRank: 5, values: [1, 2, 3, 4, 5], mods: flat('healOnKill') },
-  { id: 'au_shield', spirit: 'aurora', name: { en: 'Sanctuary', id: 'Suaka' }, desc: { en: 'Start each room with a {v} HP shield.', id: 'Mulai setiap ruangan dengan perisai {v} HP.' }, maxRank: 5, values: [15, 25, 35, 45, 55], mods: flat('shieldOnRoom') },
+  { id: 'au_kill', spirit: 'aurora', name: { en: 'Vital Harvest', id: 'Panen Vitalitas' }, desc: { en: 'Heal {v} HP on kill.', id: 'Pulih {v} HP saat membunuh.' }, maxRank: 5, values: [1, 2, 3, 4, 5], mods: flat('healOnKill') },
+  { id: 'au_shield', spirit: 'aurora', name: { en: 'Refuge', id: 'Perlindungan' }, desc: { en: 'Start each room with a {v} HP shield.', id: 'Mulai setiap ruangan dengan perisai {v} HP.' }, maxRank: 5, values: [15, 25, 35, 45, 55], mods: flat('shieldOnRoom') },
   { id: 'au_regen', spirit: 'aurora', name: { en: 'Morning Light', id: 'Cahaya Pagi' }, desc: { en: 'Regenerate {v} HP per second.', id: 'Regenerasi {v} HP per detik.' }, maxRank: 4, values: [0.6, 1, 1.4, 1.8], mods: flat('regen') },
-  { id: 'au_retaliate', spirit: 'aurora', name: { en: 'Judgement', id: 'Penghakiman' }, desc: { en: 'When hit, release a holy nova for {v}% ATK.', id: 'Saat terkena, lepaskan nova suci {v}% ATK.' }, maxRank: 4, values: [100, 150, 200, 250], effects: (v) => [{ id: 'retaliate', p: [v] }] },
-  { id: 'au_smite', spirit: 'aurora', name: { en: 'Smite', id: 'Hantaman Suci' }, desc: { en: 'Every 5th attack smites the target for {v}% ATK.', id: 'Setiap serangan ke-5 menghantam target {v}% ATK.' }, maxRank: 5, values: [120, 170, 220, 270, 320], effects: (v) => [{ id: 'smite', p: [v, 5] }] },
-  { id: 'au_potion', spirit: 'aurora', name: { en: 'Blessed Flask', id: 'Ramuan Terberkati' }, desc: { en: '+{v}% Potion power and +1 Flask charge.', id: '+{v}% kekuatan Ramuan dan +1 muatan.' }, maxRank: 3, values: [25, 45, 65], mods: pct('potionPower'), effects: () => [{ id: 'extra_flask', p: [1] }] },
+  { id: 'au_retaliate', spirit: 'aurora', name: { en: 'Radiant Retort', id: 'Balasan Cahaya' }, desc: { en: 'When hit, release a radiant nova for {v}% ATK.', id: 'Saat terkena, lepaskan nova cahaya {v}% ATK.' }, maxRank: 4, values: [100, 150, 200, 250], effects: (v) => [{ id: 'retaliate', p: [v] }] },
+  { id: 'au_smite', spirit: 'aurora', name: { en: 'Radiant Strike', id: 'Hantaman Cahaya' }, desc: { en: 'Every 5th attack smites the target for {v}% ATK.', id: 'Setiap serangan ke-5 menghantam target {v}% ATK.' }, maxRank: 5, values: [120, 170, 220, 270, 320], effects: (v) => [{ id: 'smite', p: [v, 5] }] },
+  { id: 'au_potion', spirit: 'aurora', name: { en: 'Refined Flask', id: 'Ramuan Murni' }, desc: { en: '+{v}% Potion power and +1 Flask charge.', id: '+{v}% kekuatan Ramuan dan +1 muatan.' }, maxRank: 3, values: [25, 45, 65], mods: pct('potionPower'), effects: () => [{ id: 'extra_flask', p: [1] }] },
   { id: 'au_holy', spirit: 'aurora', name: { en: 'Radiance', id: 'Pancaran' }, desc: { en: '+{v}% Radiant damage. Attacks deal bonus light damage.', id: '+{v}% damage Cahaya. Serangan memberi damage cahaya tambahan.' }, maxRank: 5, values: [15, 25, 35, 45, 55], mods: pct('holyDmg'), effects: (v) => [{ id: 'holy_bonus', p: [v / 5] }] },
   { id: 'au_dodge', spirit: 'aurora', name: { en: 'Grace', id: 'Rahmat' }, desc: { en: '+{v}% Evasion.', id: '+{v}% Menghindar.' }, maxRank: 4, values: [5, 8, 11, 14], mods: pct('dodge') },
   { id: 'au_boss', spirit: 'aurora', name: { en: 'Dawnbreaker', id: 'Pemecah Fajar' }, desc: { en: '+{v}% damage to bosses and elites.', id: '+{v}% damage ke bos dan elit.' }, maxRank: 4, values: [15, 25, 35, 45], mods: (v) => [{ stat: 'bossDmg', type: 'pct', value: v }, { stat: 'eliteDmg', type: 'pct', value: v }] },
-  { id: 'au_orbs', spirit: 'aurora', name: { en: 'Halo', id: 'Lingkaran Cahaya' }, desc: { en: '{v} orbs of light circle you, burning enemies.', id: '{v} bola cahaya mengitarimu, membakar musuh.' }, maxRank: 3, values: [2, 3, 4], effects: (v) => [{ id: 'halo_orbs', p: [v] }] },
-  { id: 'au_angel', spirit: 'aurora', legendary: true, name: { en: 'Guardian Angel', id: 'Malaikat Pelindung' }, desc: { en: 'Once per room, a lethal blow leaves you at 1 HP and grants 2s invulnerability.', id: 'Sekali per ruangan, pukulan mematikan menyisakan 1 HP dan memberi kebal 2 dtk.' }, maxRank: 1, values: [1], effects: () => [{ id: 'guardian', p: [1] }] },
+  { id: 'au_orbs', spirit: 'aurora', name: { en: 'Light Orbit', id: 'Orbit Cahaya' }, desc: { en: '{v} orbs of light circle you, burning enemies.', id: '{v} bola cahaya mengitarimu, membakar musuh.' }, maxRank: 3, values: [2, 3, 4], effects: (v) => [{ id: 'halo_orbs', p: [v] }] },
+  { id: 'au_angel', spirit: 'aurora', legendary: true, name: { en: 'Last Light', id: 'Cahaya Terakhir' }, desc: { en: 'Once per room, a lethal blow leaves you at 1 HP and grants 2s invulnerability.', id: 'Sekali per ruangan, pukulan mematikan menyisakan 1 HP dan memberi kebal 2 dtk.' }, maxRank: 1, values: [1], effects: () => [{ id: 'guardian', p: [1] }] },
 
   // ---------------------------------------------------------------- UMBRA
   { id: 'um_crit', spirit: 'umbra', name: { en: 'Keen Shadow', id: 'Bayangan Tajam' }, desc: { en: '+{v}% Crit Chance.', id: '+{v}% Peluang Kritis.' }, maxRank: 5, values: [6, 10, 14, 18, 22], mods: pct('critChance') },
@@ -144,7 +145,7 @@ export const BOONS: BoonDef[] = [
   { id: 'um_blades', spirit: 'umbra', name: { en: 'Umbral Blades', id: 'Pedang Bayangan' }, desc: { en: '{v} shadow blades orbit you, cutting enemies.', id: '{v} pedang bayangan mengitarimu, menyayat musuh.' }, maxRank: 3, values: [2, 3, 4], effects: (v) => [{ id: 'orbit_blades', p: [v] }] },
   { id: 'um_mark', spirit: 'umbra', name: { en: 'Hunter\'s Mark', id: 'Tanda Pemburu' }, desc: { en: 'Crits Mark enemies: +20% damage taken for 5s. +{v}% Shadow damage.', id: 'Kritis menandai musuh: +20% damage diterima 5 dtk. +{v}% damage Bayangan.' }, maxRank: 4, values: [15, 25, 35, 45], mods: pct('shadowDmg'), effects: () => [{ id: 'crit_mark', p: [1] }] },
   { id: 'um_glass', spirit: 'umbra', name: { en: 'Glass Dagger', id: 'Belati Kaca' }, desc: { en: '+{v}% ATK, but -15% Max HP.', id: '+{v}% ATK, tapi -15% HP Maks.' }, maxRank: 3, values: [25, 35, 45], mods: (v) => [{ stat: 'atk', type: 'more', value: v }, { stat: 'maxHp', type: 'more', value: -15 }] },
-  { id: 'um_skill', spirit: 'umbra', name: { en: 'Nightfall Rite', id: 'Ritual Senja' }, desc: { en: 'Skill always crits. +{v}% Skill damage.', id: 'Skill selalu kritis. +{v}% damage Skill.' }, maxRank: 4, values: [15, 25, 35, 45], mods: pct('skillDmg'), effects: () => [{ id: 'skill_crit', p: [1] }] },
+  { id: 'um_skill', spirit: 'umbra', name: { en: 'Nightfall Surge', id: 'Gelombang Senja' }, desc: { en: 'Skill always crits. +{v}% Skill damage.', id: 'Skill selalu kritis. +{v}% damage Skill.' }, maxRank: 4, values: [15, 25, 35, 45], mods: pct('skillDmg'), effects: () => [{ id: 'skill_crit', p: [1] }] },
   { id: 'um_void', spirit: 'umbra', legendary: true, name: { en: 'Void Walker', id: 'Penjelajah Hampa' }, desc: { en: 'Dashing makes your next attack deal +{v}% damage and crit.', id: 'Dash membuat seranganmu berikutnya +{v}% damage dan kritis.' }, maxRank: 1, values: [120], effects: (v) => [{ id: 'dash_empower', p: [v] }] },
 
   // ---------------------------------------------------------------- DUO
@@ -158,7 +159,7 @@ export const BOONS: BoonDef[] = [
   { id: 'duo_aegis', spirit: 'rime', duo: 'aurora', name: { en: 'Crystal Aegis', id: 'Perisai Kristal' }, desc: { en: 'Freezing an enemy grants a {v} HP shield.', id: 'Membekukan musuh memberi perisai {v} HP.' }, maxRank: 1, values: [6], effects: (v) => [{ id: 'freeze_shield', p: [v] }] },
   { id: 'duo_blackice', spirit: 'rime', duo: 'umbra', name: { en: 'Black Ice', id: 'Es Hitam' }, desc: { en: '+{v}% Crit Chance against Chilled or Frozen enemies.', id: '+{v}% Peluang Kritis ke musuh yang Membeku.' }, maxRank: 1, values: [30], effects: (v) => [{ id: 'black_ice', p: [v] }] },
   { id: 'duo_toxicstorm', spirit: 'tempest', duo: 'venom', name: { en: 'Acid Rain', id: 'Hujan Asam' }, desc: { en: 'Lightning applies {v} Poison stacks.', id: 'Petir memberi {v} tumpukan Racun.' }, maxRank: 1, values: [2], effects: (v) => [{ id: 'acid_rain', p: [v] }] },
-  { id: 'duo_divine', spirit: 'tempest', duo: 'aurora', name: { en: 'Divine Storm', id: 'Badai Ilahi' }, desc: { en: 'Each lightning strike heals you {v} HP.', id: 'Setiap sambaran petir memulihkanmu {v} HP.' }, maxRank: 1, values: [1], effects: (v) => [{ id: 'divine_storm', p: [v] }] },
+  { id: 'duo_divine', spirit: 'tempest', duo: 'aurora', name: { en: 'Radiant Storm', id: 'Badai Cahaya' }, desc: { en: 'Each lightning strike heals you {v} HP.', id: 'Setiap sambaran petir memulihkanmu {v} HP.' }, maxRank: 1, values: [1], effects: (v) => [{ id: 'divine_storm', p: [v] }] },
   { id: 'duo_thunderblade', spirit: 'tempest', duo: 'umbra', name: { en: 'Thunder Assassin', id: 'Pembunuh Guntur' }, desc: { en: 'Crits chain lightning for {v}% ATK.', id: 'Kritis memicu rantai petir {v}% ATK.' }, maxRank: 1, values: [80], effects: (v) => [{ id: 'crit_chain', p: [v] }] },
   { id: 'duo_purify', spirit: 'venom', duo: 'aurora', name: { en: 'Purifying Rot', id: 'Busuk Penyuci' }, desc: { en: 'Killing a poisoned enemy heals {v} HP.', id: 'Membunuh musuh teracun memulihkan {v} HP.' }, maxRank: 1, values: [3], effects: (v) => [{ id: 'poison_kill_heal', p: [v] }] },
   { id: 'duo_deathbloom', spirit: 'venom', duo: 'umbra', name: { en: 'Deathbloom', id: 'Mekar Maut' }, desc: { en: 'Execute threshold +{v}% against poisoned enemies.', id: 'Ambang eksekusi +{v}% ke musuh teracun.' }, maxRank: 1, values: [10], effects: (v) => [{ id: 'deathbloom', p: [v] }] },

@@ -110,7 +110,7 @@ export class HudScene extends Phaser.Scene {
       hurt.setAlpha(a11y.reduceMotion ? 0.3 : 0.6);
       this.tweens.add({ targets: hurt, alpha: 0, duration: 420, ease: 'Quad.easeOut' });
     });
-    if (this.room.save.settings.showFps) this.fpsText = label(this, 4, H - 12, '', FONT.small, COLORS.textDim);
+    if (this.room.save.settings.showFps) this.fpsText = label(this, 4, H - 8, '', FONT.small, COLORS.textDim, 0, 1);
     this.banner(this.floorLabel(), COLORS.text, true);
     this.hints = new TutorialHints(this, this.room, () => this.buttons);
   }
@@ -127,7 +127,7 @@ export class HudScene extends Phaser.Scene {
     const bw = Math.min(140, W * 0.4);
     // The HP bar grows with the accessibility text size so its number always fits inside.
     const hpH = Math.max(14, fontSize(FONT.small, view.res) + 2);
-    nine(this, pad - 3, pad - 3, 'ui_panel_dark', bw + 42, hpH + 22).setOrigin(0, 0).setAlpha(0.85);
+    nine(this, pad - 3, pad - 3, 'ui_panel_dark', bw + 42, hpH + 40).setOrigin(0, 0).setAlpha(0.96);
     this.lvlText = label(this, pad + 2, pad + 1, '1', FONT.head, COLORS.gold);
     this.hp = new Bar(this, pad + 26, pad + 1, bw, hpH, COLORS.red);
     this.hpText = label(this, pad + 26 + bw / 2, pad + 1 + hpH / 2, '', FONT.small, COLORS.white, 0.5, 0.5);
@@ -439,8 +439,8 @@ export class HudScene extends Phaser.Scene {
     });
     // Boss bar
     const bw = W - 40;
-    this.bossName = label(this, W / 2, 50, tr(def.name), FONT.head, COLORS.text, 0.5, 0).setDepth(30);
-    this.bossBar = new Bar(this, 20, 66, bw, 8, 0xd03a4a).setDepth(30);
+    this.bossName = label(this, W / 2, 72, tr(def.name), FONT.head, COLORS.text, 0.5, 0).setMaxWidth(W - 40).setCenterAlign().setDepth(30);
+    this.bossBar = new Bar(this, 20, 72 + this.bossName.height + 6, bw, 8, 0xd03a4a).setDepth(30);
     this.bossGroup = [this.bossName, this.bossBar];
   }
 
@@ -526,11 +526,15 @@ export class HudScene extends Phaser.Scene {
   private pushFeed(text: string, color: number): void {
     const W = view.w;
     const c = this.add.container(W - 8, 80).setDepth(35);
-    const txt = this.add.bitmapText(0, 0, FONT.small, text).setOrigin(1, 0.5).setTint(color);
-    const bg = nine(this, -txt.width - 6, -8, 'ui_panel_dark', txt.width + 12, 16).setOrigin(0, 0).setAlpha(0.85);
+    const txt = this.add.bitmapText(0, 0, FONT.small, text).setMaxWidth(W - 36).setOrigin(1, 0.5).setRightAlign().setTint(color);
+    const bg = nine(this, -txt.width - 6, -txt.height / 2 - 4, 'ui_panel_dark', txt.width + 12, txt.height + 8).setOrigin(0, 0).setAlpha(0.96);
     c.add([bg, txt]);
     this.feed.unshift(c);
-    this.feed.forEach((f, i) => this.tweens.add({ targets: f, y: 80 + i * 18, duration: 150 }));
+    let fy = 88;
+    this.feed.forEach((f) => {
+      this.tweens.add({ targets: f, y: fy, duration: 150 });
+      fy += f.getBounds().height + 6;
+    });
     c.x += 60;
     this.tweens.add({ targets: c, x: W - 8, duration: 200, ease: 'Back.easeOut' });
     this.time.delayedCall(3000, () => {

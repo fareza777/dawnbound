@@ -95,6 +95,11 @@ export function panel(
   return p;
 }
 
+/** Resize in layout pixels; high-resolution skins keep their atlas scale. */
+export function resizePanel(p: Phaser.GameObjects.NineSlice, w: number, h: number): void {
+  p.setSize(Math.round(w / p.scaleX), Math.round(h / p.scaleY));
+}
+
 export interface ButtonOpts {
   w?: number;
   h?: number;
@@ -124,7 +129,7 @@ export class Button extends Phaser.GameObjects.Container {
     this.upKey = style === 'primary' ? 'ui_btn_primary' : style === 'danger' ? 'ui_btn_danger' : style === 'ghost' ? 'ui_panel_dark' : 'ui_btn';
     this.downKey = style === 'primary' ? 'ui_btn_primary_down' : 'ui_btn_down';
     this.bw = opts.w ?? 140;
-    this.bh = opts.h ?? 28;
+    this.bh = opts.h ?? 34;
     this.bg = nine(scene, 0, 0, this.upKey, this.bw, this.bh);
     this.add(this.bg);
     let textX = 0;

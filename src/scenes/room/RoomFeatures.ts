@@ -49,7 +49,9 @@ export class RoomFeatures {
   spawnShrine(x: number, y: number, spirit: SpiritId): void {
     const r = this.room;
     const sp = SPIRITS[spirit];
-    const s = r.add.image(x, y, 'props', 'p/statue_01').setOrigin(0.5, 1).setDepth(y).setTint(0xffffff);
+    // An Elemental Shard (a crystal, never a statue) glowing in its element's colour; the hero attunes to it.
+    const s = r.add.sprite(x, y, 'props', 'crystal/cristal_17/0').setOrigin(0.5, 1).setDepth(y).setScale(1.3).setTint(sp.color);
+    if (r.anims.exists('crystal_cristal_17')) s.play('crystal_cristal_17');
     const aura = r.add.image(x, y - 20, 'fx_light').setTint(sp.color).setBlendMode('ADD').setScale(0.7).setAlpha(0.5).setDepth(y + 1);
     r.tweens.add({ targets: aura, scale: 0.8, alpha: 0.3, yoyo: true, repeat: -1, duration: 1200 });
     r.lighting.add({ x, y: y - 16, radius: 60, tint: sp.color, flicker: 0.1 });
@@ -108,7 +110,7 @@ export class RoomFeatures {
   }
 
   /**
-   * An encounter shows who (or what) waits in the room: its own sprite (a statue, a chest, a wounded knight...) or,
+   * An encounter shows who (or what) waits in the room: its own sprite (a crystal, a chest, a wounded knight...) or,
    * for spirits, a floating portrait, with its name above a glowing circle. Interacting opens the choice dialog.
    */
   spawnEventNpc(x: number, y: number): void {

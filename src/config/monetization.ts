@@ -5,8 +5,8 @@
  * one-time `remove_ads` product is active at US$4.99.
  */
 export const MONETIZATION = {
-  /** Keep false in Play builds; switch on only for local development/testing. */
-  useTestAds: false,
+  /** Demo and live releases have the same UI. The build profile selects only which ad unit IDs are requested. */
+  useTestAds: import.meta.env.VITE_AD_TEST === '1',
   /** Real ad unit ids from your AdMob account (format ca-app-pub-XXXXXXXXXXXXXXXX/NNNNNNNNNN). */
   production: {
     banner: 'ca-app-pub-6279186647593327/1259905416',
@@ -15,7 +15,7 @@ export const MONETIZATION = {
   },
   /** Google's documented test ad unit ids. */
   test: {
-    banner: 'ca-app-pub-3940256099942544/6300978111',
+    banner: 'ca-app-pub-3940256099942544/9214589741',
     interstitial: 'ca-app-pub-3940256099942544/1033173712',
     rewarded: 'ca-app-pub-3940256099942544/5224354917',
   },

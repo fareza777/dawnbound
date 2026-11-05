@@ -1,0 +1,90 @@
+{
+  "native": true,
+  "demoAds": true,
+  "build": {
+    "testAds": true,
+    "qa": true,
+    "versionName": "1.0.7",
+    "versionCode": 8
+  },
+  "scenes": [
+    "Results",
+    "Notify"
+  ],
+  "ads": {
+    "sdk": "Ready",
+    "banner": 2,
+    "interstitial": 1,
+    "rewarded": 0,
+    "rewardsEarned": 0,
+    "bannerStatus": "Ready",
+    "interstitialStatus": "Showing",
+    "rewardedStatus": "Ready",
+    "lastError": "",
+    "native": true,
+    "testAds": true
+  },
+  "labels": [
+    "YOU FELL",
+    "The Lantern calls you home...",
+    "Depth reached",
+    "Whisperwood 1-1",
+    "Time",
+    "1m 30s",
+    "Kills",
+    "8 (0 elites)",
+    "Rooms cleared",
+    "3",
+    "Boons / Relics",
+    "0 / 0",
+    "Embers earned",
+    "+9",
+    "Gold kept (50%)",
+    "+23",
+    "Items found (0)",
+    "Double Embers  +9",
+    "Seed: C29HQ",
+    "Return to Village"
+  ],
+  "buttons": [
+    {
+      "type": "Container",
+      "x": 35,
+      "y": 444,
+      "width": 250,
+      "height": 30
+    },
+    {
+      "type": "Container",
+      "x": 40,
+      "y": 505,
+      "width": 240,
+      "height": 32
+    }
+  ],
+  "save": {
+    "currency": {
+      "gold": 23,
+      "embers": 29,
+      "shards": 0
+    },
+    "giftDay": 0,
+    "runs": 3,
+    "adBreaks": 1
+  },
+  "viewport": {
+    "width": 320,
+    "height": 616,
+    "dpr": 1,
+    "canvas": {
+      "x": 0,
+      "y": 12,
+      "width": 320,
+      "height": 592,
+      "top": 12,
+      "right": 320,
+      "bottom": 604,
+      "left": 0
+    }
+  }
+}

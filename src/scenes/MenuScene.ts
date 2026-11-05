@@ -1,13 +1,11 @@
 import { BaseScene } from './BaseScene';
 import { addEmberParticles } from './SplashScene';
 import { COLORS, FONT } from '@/ui/theme';
-import { Button, label, shrinkToFit, toast } from '@/ui/widgets';
+import { Button, label, toast } from '@/ui/widgets';
 import { confirm, showModal } from '@/ui/modal';
 import { t } from '@/core/i18n';
 import { services } from '@/core/services';
-import { nine } from '@/ui/skin';
-
-export const GAME_VERSION = '1.0.0';
+export const GAME_VERSION = import.meta.env.VITE_APP_VERSION || '1.0.7';
 
 export class MenuScene extends BaseScene {
   constructor() {
@@ -87,7 +85,6 @@ export class MenuScene extends BaseScene {
     buttons.push(new Button(this, x0, y, t('menuAbout'), () => this.showAbout(), { w: small, h: 26, font: FONT.small }));
     buttons.push(new Button(this, x0 + small + 6, y, t('menuShare'), () => this.share(), { w: small, h: 26, font: FONT.small }));
     buttons.push(new Button(this, x0 + (small + 6) * 2, y, t('menuRate'), () => this.rate(), { w: small, h: 26, font: FONT.small }));
-    this.buildRemoveAds();
     buttons.forEach((b, i) => {
       b.setAlpha(0);
       b.y += 10;
@@ -107,27 +104,6 @@ export class MenuScene extends BaseScene {
       ]);
     });
     this.events.once('shutdown', off);
-  }
-
-  /** Crown button (top-right) that opens the Remove Ads offer; hidden once purchased. */
-  private buildRemoveAds(): void {
-    if (this.save.shop.noAds || !services.store?.available) return;
-    const b = this.add.container(this.W - 38, 24);
-    const bg = nine(this, 0, 0, 'ui_btn', 38, 38);
-    const glow = this.add.image(0, 0, 'fx_light').setTint(COLORS.gold).setBlendMode('ADD').setScale(0.4).setAlpha(0.4);
-    const ic = this.add.image(0, 0, this.textures.exists('ui_icon_crown') ? 'ui_icon_crown' : 'pk_coin').setDisplaySize(28, 28);
-    // Caption under the button (its length depends on the language), on a small plate so it reads over the art.
-    const txt = this.add.bitmapText(0, 27, FONT.small, t('adsBadge')).setOrigin(0.5).setTint(COLORS.gold);
-    shrinkToFit(txt, 68);
-    const plate = nine(this, 0, 27, 'ui_panel_dark', txt.displayWidth + 10, txt.displayHeight + 4).setAlpha(0.85);
-    b.add([glow, bg, ic, plate, txt]);
-    // Centred hit box (±32) covers both the button and its caption.
-    b.setSize(48, 68).setInteractive({ useHandCursor: true });
-    this.tweens.add({ targets: glow, alpha: 0.15, yoyo: true, repeat: -1, duration: 900 });
-    b.on('pointerup', () => {
-      services.audio?.sfx('ui_click');
-      this.scene.launch('RemoveAds', { from: 'Menu' });
-    });
   }
 
   private continueGame(): void {
@@ -152,7 +128,7 @@ export class MenuScene extends BaseScene {
       t('menuAbout'),
       `Dawnbound — The Last Lantern  v${GAME_VERSION}\n\n` +
         'Pixel art: Super Retro Collection by Gif.\n' +
-        'Fonts: Pixelify Sans, Jersey, Tiny5 (SIL OFL).\n' +
+        'Fonts: VT323, Pixelify Sans, Jersey, Tiny5 (SIL OFL).\n' +
         'Engine: Phaser 3. Built with love for every Lanternkeeper.',
       [{ label: t('close') }],
     );

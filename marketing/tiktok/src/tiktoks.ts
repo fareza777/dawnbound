@@ -1,0 +1,268 @@
+import type { Beat, Brief, Callout } from './brand';
+
+/**
+ * Ring positions live in the 1080x1920 source pixels of the matching still in public/stills,
+ * measured against a 108x192 grid overlay rather than eyeballed.
+ */
+const BOON: Record<string, Callout> = {
+  card1: { x: 540, y: 515, r: 150, label: 'FIRST CARD' },
+  card2: { x: 540, y: 830, r: 150, label: 'SECOND CARD' },
+  card3: { x: 540, y: 1155, r: 150, label: 'THIRD CARD' },
+  orb: { x: 150, y: 505, r: 95, label: 'SPIRIT' },
+  reroll: { x: 540, y: 1660, r: 120, label: 'REROLL' },
+};
+const INV: Record<string, Callout> = {
+  rarity: { x: 115, y: 725, r: 95, label: 'LEGENDARY' },
+  slot: { x: 115, y: 345, r: 90, label: 'WEAPON SLOT' },
+  action: { x: 540, y: 595, r: 115, label: 'EQUIP BEST' },
+  stack: { x: 955, y: 192, r: 85, label: '26 OF 150' },
+};
+const MAP: Record<string, Callout> = {
+  fight: { x: 200, y: 925, r: 95, label: 'FIGHT' },
+  treasure: { x: 860, y: 465, r: 95, label: 'TREASURE' },
+  unknown: { x: 205, y: 695, r: 95, label: 'UNKNOWN' },
+  shrine: { x: 860, y: 695, r: 95, label: 'SHRINE' },
+  elite: { x: 860, y: 270, r: 95, label: 'ELITE' },
+};
+const HERO: Record<string, Callout> = {
+  rowan: { x: 180, y: 285, r: 105, label: 'ROWAN' },
+  sera: { x: 435, y: 285, r: 105, label: 'SERA' },
+  elio: { x: 665, y: 285, r: 105, label: 'ELIO' },
+  kaito: { x: 915, y: 285, r: 105, label: 'KAITO' },
+  skill: { x: 100, y: 1220, r: 90, label: 'SKILL' },
+};
+const EVENT: Record<string, Callout> = {
+  choice1: { x: 540, y: 875, r: 130, label: 'THE COST' },
+  choice2: { x: 540, y: 1075, r: 130, label: 'THE PRIZE' },
+  choice3: { x: 540, y: 1240, r: 125, label: 'WALK ON' },
+};
+
+
+// Motion is decided by the template: a beat with a callout must not drift under its ring.
+const b = (over: Beat): Beat => over;
+
+export const briefs: Brief[] = [
+  {
+    id: 'DB-01-Long-Night',
+    slug: 'db-01-the-long-night',
+    name: 'Opening premise',
+    format: 'hook-card',
+    eyebrow: 'DAWNBOUND · DEPTH ONE',
+    hook: 'ONE HUNDRED\nNIGHTS.\n*NO SUN.*',
+    audio: 'm_intro',
+    cta: 'The Hollow King took the dawn. Go get it back.',
+    beats: [
+      { clip: '02_intro', seconds: 6.4, caption: 'Aurelle wakes up dark now.' },
+      { clip: '14_boss_malachar', seconds: 5.4, rate: 0.85, caption: 'He shattered the Dawnstone.' },
+      { clip: '09_combat_throne', seconds: 4.6, caption: 'Five Embers are still down here.' },
+    ],
+  },
+  {
+    id: 'DB-02-One-Thumb',
+    slug: 'db-02-one-thumb',
+    name: 'Controls',
+    format: 'montage',
+    hook: 'ONE THUMB.\n*ALL* THE\nACTION.',
+    audio: 'm_forest',
+    cta: 'Dash, strike, skill, Flare. Portrait, always.',
+    beats: [
+      b({ clip: '05_combat_forest', seconds: 3.4, caption: 'Left thumb walks. Right thumb fights.' }),
+      b({ clip: '17_flare', seconds: 3.2, caption: 'Charge the Flare, clear the room.' }),
+      b({ clip: '07_combat_crystal', seconds: 3.2, caption: 'Dodge windows are short.' }),
+      b({ clip: '06_combat_crypt', seconds: 3.4, caption: 'Auto-attack if you want both thumbs free.' }),
+      b({ clip: '08_combat_ice', seconds: 3.6, caption: 'Sixty seconds in, it clicks.' }),
+    ],
+  },
+  {
+    id: 'DB-03-Flare',
+    slug: 'db-03-the-flare',
+    name: 'Flare mechanic',
+    format: 'callout',
+    hook: 'ONE BUTTON.\n*EVERYTHING*\nDIES.',
+    audio: 'm_boss',
+    loud: 1.1,
+    cta: 'The Flare is your reset. Earn it with hits.',
+    beats: [
+      b({ still: 'boss_gorehorn', seconds: 4.4, caption: 'Hits charge it. Crits charge it faster.' }),
+      { clip: '17_flare', seconds: 4.6, caption: 'At one hundred it wipes the room.' },
+      { clip: '16_elite', seconds: 4.4, caption: 'Save it for the wave you cannot beat.' },
+    ],
+  },
+  {
+    id: 'DB-04-Four-Heroes',
+    slug: 'db-04-four-heroes',
+    name: 'Hero roster',
+    format: 'callout',
+    hook: 'FOUR HEROES.\n*FOUR* WAYS\nTO DESCEND.',
+    audio: 'm_village',
+    loud: 0.75,
+    cta: 'Rowan, Sera, Elio, Kaito. Pick one.',
+    beats: [
+      b({ still: 'hero', seconds: 4.4, callout: HERO.rowan, caption: 'Rowan: sword and bow, no bad day.' }),
+      b({ still: 'hero', seconds: 4.2, callout: HERO.sera, caption: 'Sera: a spear that pierces a whole line.' }),
+      b({ still: 'hero', seconds: 4.2, callout: HERO.elio, caption: 'Elio: staff, range, and patience.' }),
+      b({ still: 'hero', seconds: 4.2, callout: HERO.kaito, caption: 'Kaito: twin blades, no armour.' }),
+    ],
+  },
+  {
+    id: 'DB-05-Five-Depths',
+    slug: 'db-05-five-depths',
+    name: 'Biome tour',
+    format: 'montage',
+    hook: 'FIVE DEPTHS.\n*NONE* OF\nTHEM KIND.',
+    audio: 'm_crypt',
+    cta: 'Whisperwood to the Hollow Throne.',
+    beats: [
+      b({ clip: '05_combat_forest', seconds: 3.2, caption: 'Depth 1 · Whisperwood.' }),
+      b({ clip: '06_combat_crypt', seconds: 3.2, caption: 'Depth 2 · The Sunken Crypt.' }),
+      b({ clip: '07_combat_crystal', seconds: 3.2, caption: 'Depth 3 · Crystal Hollows.' }),
+      b({ clip: '08_combat_ice', seconds: 3.2, caption: 'Depth 4 · The Frozen Heart.' }),
+      b({ clip: '09_combat_throne', seconds: 3.6, caption: 'Depth 5 · Where he waits.' }),
+    ],
+  },
+  {
+    id: 'DB-06-Boons',
+    slug: 'db-06-eighty-five-boons',
+    name: 'Boon pick',
+    format: 'callout',
+    hook: 'THREE CARDS.\n*YOUR* BUILD\nFOR TONIGHT.',
+    audio: 'm_crystal',
+    cta: '85+ Boons across six Spirits.',
+    beats: [
+      b({ still: 'boonpick', seconds: 4.6, callout: BOON.card1, caption: 'Every card is a direction, not a number.' }),
+      b({ clip: '15_boonpick', seconds: 4.4, caption: 'Pick one. The other two are gone.' }),
+      b({ still: 'boonpick', seconds: 4.2, callout: BOON.spirit, caption: 'The Spirit who gave it watches.' }),
+    ],
+  },
+  {
+    id: 'DB-07-Hollow-King',
+    slug: 'db-07-the-hollow-king',
+    name: 'Final boss',
+    format: 'hook-card',
+    eyebrow: 'DEPTH FIVE · THE THRONE',
+    hook: 'HIS NAME\nIS\n*MALACHAR.*',
+    audio: 'm_throne',
+    cta: 'Six bosses. He is the last one awake.',
+    beats: [
+      { clip: '14_boss_malachar', seconds: 6.2, rate: 0.9, caption: 'He does not open with his best move.' },
+      { clip: '09_combat_throne', seconds: 5.2, rate: 0.95, caption: 'He saves it for the phase you think you know.' },
+    ],
+  },
+  {
+    id: 'DB-08-Emberhollow',
+    slug: 'db-08-emberhollow',
+    name: 'The village',
+    format: 'ambient-loop',
+    hook: 'BETWEEN\nRUNS, *GO\nHOME.*',
+    audio: 'm_village',
+    loud: 0.9,
+    cta: 'Emberhollow keeps the torch lit for you.',
+    beats: [
+      b({ clip: '03_hub_walk', seconds: 8, rate: 0.55, caption: 'A forge, a garden, a scholar, a drunk.' }),
+      b({ clip: '03_hub_walk', seconds: 8, rate: 0.55, caption: 'Fifteen story chapters live down here.' }),
+    ],
+  },
+  {
+    id: 'DB-09-Branching',
+    slug: 'db-09-every-path-is-a-gamble',
+    name: 'Map routes',
+    format: 'callout',
+    hook: 'EVERY PATH\nIS A\n*GAMBLE.*',
+    audio: 'm_forest',
+    cta: 'Fight, rest, shop, shrine, treasure, mystery.',
+    beats: [
+      b({ still: 'map', seconds: 4.2, callout: MAP.fight, caption: 'Fight pays in gold and XP.' }),
+      b({ still: 'map', seconds: 4.2, callout: MAP.treasure, caption: 'Treasure pays in gear.' }),
+      b({ still: 'map', seconds: 4.2, callout: MAP.unknown, caption: 'Unknown pays in stories.' }),
+      b({ clip: '04_map', seconds: 4.2, caption: 'You only ever see the row ahead.' }),
+    ],
+  },
+  {
+    id: 'DB-10-Gear',
+    slug: 'db-10-the-drop',
+    name: 'Loot and rarity',
+    format: 'callout',
+    hook: 'THE DROP\nDECIDES\n*THE RUN.*',
+    audio: 'm_forge',
+    cta: 'Seven slots. Six rarities. No two rolls alike.',
+    beats: [
+      b({ still: 'inventory', seconds: 4.4, callout: INV.rarity, caption: 'Grey is a start. Red is a plan.' }),
+      b({ still: 'inventory', seconds: 4.4, callout: INV.slot, caption: 'Seven slots. Fill them before depth five.' }),
+      b({ clip: '20_inventory', seconds: 4.2, caption: 'Equip Best exists. Judgement is still yours.' }),
+    ],
+  },
+  {
+    id: 'DB-11-Die-Learn',
+    slug: 'db-11-die-learn-descend',
+    name: 'Death loop',
+    format: 'montage',
+    hook: 'YOU WILL\nDIE.\n*COME BACK.*',
+    audio: 'm_defeat',
+    cta: 'Every run banks embers, gear and story.',
+    beats: [
+      b({ clip: '24_defeat', seconds: 3.6, caption: 'Depth four. Bad day.' }),
+      b({ clip: '23_results', seconds: 3.8, caption: 'The run still pays out.' }),
+      b({ clip: '26_tree', seconds: 3.6, caption: 'Embers buy permanent talents.' }),
+      b({ clip: '05_combat_forest', seconds: 3.8, caption: 'Next time you last longer.' }),
+    ],
+  },
+  {
+    id: 'DB-12-Lantern-Tree',
+    slug: 'db-12-the-lantern-tree',
+    name: 'Permanent growth',
+    format: 'ken-burns',
+    hook: 'PLANT YOUR\nPROGRESS\n*IN THE*\nLANTERN TREE.',
+    audio: 'm_forge',
+    cta: 'Talents stay when the run does not.',
+    beats: [
+      b({ still: 'tree', seconds: 5, move: 'in', caption: 'Embers go in. Permanent stats come out.' }),
+      b({ clip: '26_tree', seconds: 5, caption: 'Unlock a node, keep it forever.' }),
+      b({ still: 'garden', seconds: 4.5, move: 'out', caption: 'The garden grows what the depths drop.' }),
+    ],
+  },
+  {
+    id: 'DB-13-Events',
+    slug: 'db-13-mysterious-events',
+    name: 'Event choices',
+    format: 'callout',
+    hook: 'A DOOR.\nA PRICE.\n*YOUR CALL.*',
+    audio: 'm_drowned',
+    loud: 0.75,
+    cta: 'Mystery rooms with real consequences.',
+    beats: [
+      b({ clip: '21_event', seconds: 4.4, caption: 'A knight in dented armor asks for your flask.' }),
+      b({ still: 'event', seconds: 4.4, callout: EVENT.choice1, caption: 'Give it: minus one flask, plus one Boon.' }),
+      b({ still: 'event', seconds: 4.2, callout: EVENT.choice2, caption: 'Take his blade instead. He is not arguing.' }),
+      b({ still: 'event', seconds: 4, callout: EVENT.choice3, caption: 'Or walk on. The depths keep score.' }),
+    ],
+  },
+  {
+    id: 'DB-14-Gorehorn',
+    slug: 'db-14-gorehorn',
+    name: 'First boss',
+    format: 'hook-card',
+    eyebrow: 'DEPTH ONE · BOSS',
+    hook: 'GOREHORN\nGUARDS THE\n*FIRST*\nEMBER.',
+    audio: 'm_boss',
+    loud: 1.05,
+    cta: 'Six multi-phase bosses start here.',
+    beats: [
+      { clip: '10_boss_gorehorn', seconds: 6.4, rate: 0.9, caption: 'Phase one: he charges.' },
+      { clip: '10_boss_gorehorn', seconds: 5.6, rate: 0.9, caption: 'Phase two: the forest helps him.' },
+    ],
+  },
+  {
+    id: 'DB-15-Shop',
+    slug: 'db-15-the-merchant',
+    name: 'Shops and rerolls',
+    format: 'ambient-loop',
+    hook: 'A MERCHANT\nIN THE\n*DARK.*',
+    audio: 'm_forge',
+    loud: 0.85,
+    cta: 'Spend gold before the depth spends you.',
+    beats: [
+      b({ clip: '18_shop', seconds: 8, rate: 0.6, caption: 'He sells what the next floor will punish you for.' }),
+      b({ clip: '19_forge', seconds: 8, rate: 0.6, caption: 'And the forge turns spare gear into better gear.' }),
+    ],
+  },
+];

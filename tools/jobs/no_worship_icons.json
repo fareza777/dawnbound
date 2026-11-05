@@ -1,0 +1,122 @@
+[
+ {
+  "out": "src/assets/gen/icons/boon_au_angel.png",
+  "prompt": "skill icon, a radiant golden round shield glowing with warm sunrise light and a small white flame in the centre, last stand protection, fantasy RPG ability icon, no creature, no figure",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true,
+  "seed": 4
+ },
+ {
+  "out": "src/assets/gen/icons/boon_au_smite.png",
+  "prompt": "skill icon, a golden war hammer striking down with a burst of radiant white light, fantasy RPG ability icon, no creature, no figure",
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true,
+  "seed": 4
+ },
+ {
+  "out": "src/assets/gen/icons/relic_gold_idol.png",
+  "prompt": "magic relic trinket, one large ornate shining gold coin with a crown stamp and sparkles, blue shimmer, fantasy RPG artifact icon, no creature, no figure",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true,
+  "seed": 4
+ },
+ {
+  "out": "src/assets/gen/icons/relic_greed_idol.png",
+  "prompt": "cursed relic trinket, a dark red leather coin purse overflowing with gold coins, sinister red glow, fantasy RPG artifact icon, no creature, no figure",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true,
+  "seed": 4
+ },
+ {
+  "out": "src/assets/gen/icons/relic_retaliation.png",
+  "prompt": "magic relic trinket, a dark iron arm guard bracelet ring with sharp metal spikes around its edge and glowing red cracks, side view, fantasy RPG artifact icon, no eye, no face, no creature",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true,
+  "seed": 12
+ },
+ {
+  "out": "src/assets/gen/icons/relic_censer.png",
+  "prompt": "magic relic trinket, a cracked round glass flask leaking thick green poison gas, cork stopper, fantasy RPG artifact icon, no creature, no face",
+  "model": "rd-plus",
+  "style": "topdown_item",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true,
+  "seed": 4
+ },
+ {
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true,
+  "seed": 6,
+  "out": "src/assets/gen/icons/boon_au_kill.png",
+  "prompt": "a glowing green healing leaf with golden sparkles, fantasy RPG ability icon, simple object, no creature, no person, no figure, no face, no eye, no cross"
+ },
+ {
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true,
+  "seed": 6,
+  "out": "src/assets/gen/icons/boon_au_orbs.png",
+  "prompt": "three small glowing golden light orbs orbiting in a ring, fantasy RPG ability icon, simple object, no creature, no person, no figure, no face, no eye, no cross"
+ },
+ {
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true,
+  "seed": 6,
+  "out": "src/assets/gen/icons/boon_au_vital.png",
+  "prompt": "a red heart glowing with warm golden dawn light, fantasy RPG ability icon, simple object, no creature, no person, no figure, no face, no eye, no cross"
+ },
+ {
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true,
+  "seed": 6,
+  "out": "src/assets/gen/icons/boon_au_holy.png",
+  "prompt": "a bright round golden sun burst with rays, fantasy RPG ability icon, simple object, no creature, no person, no figure, no face, no eye, no cross"
+ },
+ {
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true,
+  "seed": 6,
+  "out": "src/assets/gen/icons/boon_au_retaliate.png",
+  "prompt": "a golden round shield releasing a bright ring shockwave, fantasy RPG ability icon, simple object, no creature, no person, no figure, no face, no eye, no cross"
+ },
+ {
+  "model": "rd-plus",
+  "style": "skill_icon",
+  "w": 32,
+  "h": 32,
+  "remove_bg": true,
+  "seed": 6,
+  "out": "src/assets/gen/icons/boon_duo_twilight.png",
+  "prompt": "an emblem split in half, half golden sun and half purple crescent moon, fantasy RPG ability icon, simple object, no creature, no person, no figure, no face, no eye, no cross"
+ }
+]

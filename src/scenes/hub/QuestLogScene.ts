@@ -43,9 +43,9 @@ export class QuestLogScene extends OverlayScene {
     const mains = QUESTS.filter((q) => q.type === 'main');
     const mainsDone = mains.filter((q) => status(q) === 'claimed').length;
     let y = inner.y;
-    label(this, inner.x, y, t('qStory'), FONT.head, MAIN_COLOR);
+    const story = label(this, inner.x, y, t('qStory'), FONT.head, MAIN_COLOR);
     fitBox(label(this, inner.x + inner.w, y + 3, t('qChapter', { a: Math.min(mains.length, mainsDone + 1), b: mains.length }), FONT.small, COLORS.textDim, 1, 0), inner.w - 70);
-    y += 22;
+    y += story.height + 8;
     this.add.rectangle(inner.x, y, inner.w, 6, 0x0d0b1a).setOrigin(0, 0).setStrokeStyle(1, COLORS.border);
     const fill = this.add.rectangle(inner.x + 1, y + 1, Math.max(2, (inner.w - 2) * (mainsDone / mains.length)), 4, MAIN_COLOR).setOrigin(0, 0);
     fill.scaleX = 0;
@@ -56,16 +56,16 @@ export class QuestLogScene extends OverlayScene {
     const tabs: [Tab, string][] = [['active', `${t('qActive')} (${active.length})`], ['done', `${t('qDone')} (${done.length})`]];
     const tw = inner.w / 2;
     tabs.forEach(([key, name], i) => {
-      const bg = panel(this, inner.x + i * tw + 1, y, tw - 2, 22, key === this.tab ? 'ui_tab_on' : 'ui_tab').setInteractive();
-      fitBox(label(this, inner.x + i * tw + tw / 2, y + 11, name, FONT.small, key === this.tab ? COLORS.gold : COLORS.textDim, 0.5, 0.5), tw - 10, 18);
+      const bg = panel(this, inner.x + i * tw + 1, y, tw - 2, 30, key === this.tab ? 'ui_tab_on' : 'ui_tab').setInteractive();
+      fitBox(label(this, inner.x + i * tw + tw / 2, y + 15, name, FONT.small, key === this.tab ? COLORS.gold : COLORS.textDim, 0.5, 0.5), tw - 10, 24);
       bg.on('pointerup', () => {
         if (key !== this.tab) this.scene.restart({ from: this.from, tab: key });
       });
     });
-    y += 28;
+    y += 38;
     if (this.tab === 'active') {
-      label(this, inner.x + inner.w / 2, y, t('qTapTrack'), FONT.small, COLORS.textDim, 0.5, 0).setAlpha(0.7);
-      y += 16;
+      const hint = label(this, inner.x + inner.w / 2, y, t('qTapTrack'), FONT.small, COLORS.textDim, 0.5, 0).setMaxWidth(inner.w).setCenterAlign();
+      y += hint.height + 10;
     }
 
     const scroll = new ScrollPanel(this, inner.x, y, inner.w, inner.y + inner.h - y);
@@ -103,18 +103,18 @@ export class QuestLogScene extends OverlayScene {
     const chip = this.add.bitmapText(tx + 4, top + 7, FONT.smallPlain, q.type === 'main' ? t('qMain') : t('qSide')).setTint(0x0d0b1a);
     const chipBg = this.add.rectangle(tx, top + 6, chip.width + 8, chip.height + 2, claimed ? COLORS.border : color).setOrigin(0, 0);
     parts.push(chipBg, chip);
-    parts.push(fitBox(this.add.bitmapText(tx + chip.width + 14, top + 7, FONT.small, giver ? tr(giver.name) : '').setTint(COLORS.textDim), tw - chip.width - 90));
-    let y = top + 9 + chip.height;
-    const title = fitBox(this.add.bitmapText(tx, y, FONT.body, tr(q.title)).setTint(claimed ? COLORS.textDim : color), tw);
+    const giverText = this.add.bitmapText(tx + chip.width + 14, top + 7, FONT.small, giver ? tr(giver.name) : '').setMaxWidth(tw - chip.width - 14).setTint(COLORS.textDim);
+    parts.push(giverText);
+    let y = top + 11 + Math.max(chip.height, giverText.height);
+    const title = this.add.bitmapText(tx, y, FONT.body, tr(q.title)).setMaxWidth(tw).setTint(claimed ? COLORS.textDim : color);
     parts.push(title);
     y += title.displayHeight + 2;
 
     const statusText = tracked ? t('qTrackedChip') : ready ? t('qReady') : claimed ? t('complete') : '';
     if (statusText) {
-      const stT = this.add.bitmapText(w - 10, top + 7, FONT.small, statusText).setOrigin(1, 0).setTint(ready ? COLORS.green : tracked ? COLORS.gold : COLORS.textDim);
+      const stT = this.add.bitmapText(tx, y + 2, FONT.small, statusText).setTint(ready ? COLORS.green : tracked ? COLORS.gold : COLORS.textDim);
       parts.push(stT);
-      if (tracked) parts.push(this.add.image(w - 14 - stT.width, top + 7 + stT.height / 2, 'proj_star').setTint(COLORS.gold).setScale(0.8));
-      if (ready) this.tweens.add({ targets: stT, alpha: 0.45, yoyo: true, repeat: -1, duration: 600 });
+      y += stT.height + 8;
     }
 
     // Description.
@@ -139,24 +139,34 @@ export class QuestLogScene extends OverlayScene {
         } else y += txt.height + 4;
       });
       if (ready && giver) {
-        parts.push(this.add.bitmapText(tx, y, FONT.small, t('returnTo', { n: tr(giver.name) })).setTint(COLORS.green));
-        y += 14;
+        const returnText = this.add.bitmapText(tx, y, FONT.small, t('returnTo', { n: tr(giver.name) })).setMaxWidth(tw).setTint(COLORS.green);
+        parts.push(returnText);
+        y += returnText.height + 6;
       }
     }
 
     // Rewards.
     let rx = tx;
-    const ry = y + 2;
+    let ry = y + 2;
+    let rewardH = 0;
     for (const c of rewardChips(q.rewards)) {
+      const rt = this.add.bitmapText(0, 0, FONT.small, c.text).setTint(claimed ? COLORS.textDim : c.color);
+      const iconW = c.icon && this.textures.exists(c.icon) ? 14 : 0;
+      if (rx > tx && rx + iconW + rt.width > w - 10) {
+        rx = tx;
+        ry += rewardH + 4;
+        rewardH = 0;
+      }
       if (c.icon && this.textures.exists(c.icon)) {
-        parts.push(this.add.image(rx + 6, ry + 6, c.icon).setDisplaySize(12, 12).setAlpha(claimed ? 0.5 : 1));
+        parts.push(this.add.image(rx + 6, ry + rt.height / 2, c.icon).setDisplaySize(12, 12).setAlpha(claimed ? 0.5 : 1));
         rx += 14;
       }
-      const rt = this.add.bitmapText(rx, ry, FONT.small, c.text).setTint(claimed ? COLORS.textDim : c.color);
+      rt.setPosition(rx, ry);
       parts.push(rt);
       rx += rt.width + 10;
+      rewardH = Math.max(rewardH, rt.height);
     }
-    y = ry + 16;
+    y = ry + rewardH + 4;
 
     const h = Math.max(y - top + 6, PORTRAIT + 16);
     const bg = panel(this, 0, top, w, h, tracked ? 'ui_panel_ornate' : ready ? 'ui_panel' : 'ui_panel_dark');

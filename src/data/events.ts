@@ -53,7 +53,7 @@ const BASE_EVENTS: EventDef[] = [
     id: 'ev_wounded_knight', minDepth: 1, speaker: L('Wounded Knight', 'Ksatria Terluka'), portrait: 'actors:arpg4/walk/down/1',
     text: L('A knight in dented armor leans against the wall, clutching his side. "Keeper... I have no strength left. Take my blade — or share your flask?"', 'Seorang ksatria berzirah penyok bersandar di dinding sambil memegangi rusuknya. "Penjaga... tenagaku habis. Ambil pedangku — atau bagikan ramuanmu?"'),
     choices: [
-      { label: L('Share your flask', 'Bagikan ramuanmu'), hint: L('-1 Flask, gain a Boon', '-1 Ramuan, dapat Anugerah'), outcome: [{ type: 'flask', v: -1 }, { type: 'boon' }], result: L('He drinks, and color returns to his face. "The spirits saw that." A warm light settles on you.', 'Ia minum, dan warna kembali ke wajahnya. "Para roh melihat itu." Cahaya hangat menyelimutimu.') },
+      { label: L('Share your flask', 'Bagikan ramuanmu'), hint: L('-1 Flask, gain a Boon', '-1 Ramuan, dapat Anugerah'), outcome: [{ type: 'flask', v: -1 }, { type: 'boon' }], result: L('He drinks, and color returns to his face. He presses a glowing shard into your hand.', 'Ia minum, dan warna kembali ke wajahnya. Ia menyelipkan sebuah kepingan bercahaya ke tanganmu.') },
       { label: L('Take his blade', 'Ambil pedangnya'), hint: L('Gain an item', 'Dapat item'), outcome: [{ type: 'item', rarity: 2 }], result: L('"Use it well," he whispers, and closes his eyes.', '"Gunakan dengan baik," bisiknya, lalu memejamkan mata.') },
       { label: L('Leave him be', 'Biarkan dia'), outcome: [], result: L('You walk on. His breathing fades behind you.', 'Kau terus berjalan. Napasnya memudar di belakangmu.') },
     ],
@@ -68,11 +68,11 @@ const BASE_EVENTS: EventDef[] = [
     ],
   },
   {
-    id: 'ev_spirit_well', minDepth: 1, speaker: L('Spirit Well', 'Sumur Roh'), portrait: 'props:crystal/cristal_3/0',
-    text: L('Silver water glows in an ancient well. Whispers rise from its depths: "Give, and receive."', 'Air perak berpendar di sumur kuno. Bisikan naik dari kedalamannya: "Berikan, maka kau menerima."'),
+    id: 'ev_spirit_well', minDepth: 1, speaker: L('Silver Well', 'Sumur Perak'), portrait: 'props:crystal/cristal_3/0',
+    text: L('Silver water glows in an ancient well. Shards of light glitter at the bottom, and an old caretaker dozes beside it.', 'Air perak berpendar di sumur kuno. Kepingan cahaya berkilau di dasarnya, dan seorang penjaga tua terkantuk di sampingnya.'),
     choices: [
-      { label: L('Offer blood', 'Persembahkan darah'), cost: { hpPct: 20 }, outcome: [{ type: 'boon' }, { type: 'boon' }], result: L('The water drinks your blood. Two spirits answer.', 'Air meminum darahmu. Dua roh menjawab.') },
-      { label: L('Offer gold (40)', 'Persembahkan emas (40)'), cost: { gold: 40 }, outcome: [{ type: 'upgrade' }], result: L('The coins sink without a sound. One of your boons burns brighter.', 'Koin tenggelam tanpa suara. Salah satu anugerahmu menyala lebih terang.') },
+      { label: L('Dive for the shards', 'Selami kepingannya'), cost: { hpPct: 20 }, outcome: [{ type: 'boon' }, { type: 'boon' }], result: L('The cold bites deep, but you surface with two glowing shards.', 'Dinginnya menusuk, tapi kau muncul membawa dua kepingan bercahaya.') },
+      { label: L('Pay the caretaker (40)', 'Bayar penjaganya (40)'), cost: { gold: 40 }, outcome: [{ type: 'upgrade' }], result: L('She tempers one of your powers in the silver water. It burns brighter.', 'Ia menempa salah satu kekuatanmu di air perak. Nyalanya makin terang.') },
       { label: L('Drink', 'Minum'), outcome: [{ type: 'hp', v: 40 }], result: L('Cold and sweet. Your wounds close.', 'Dingin dan manis. Lukamu menutup.') },
     ],
   },
@@ -118,12 +118,12 @@ const BASE_EVENTS: EventDef[] = [
     ],
   },
   {
-    id: 'ev_shrine_dark', minDepth: 2, speaker: L('Shrine of Nox', 'Kuil Nox'), portrait: 'props:p/statue_02',
-    text: L('A statue with no face holds out an empty hand. The air smells of iron.', 'Sebuah patung tanpa wajah mengulurkan tangan kosong. Udara berbau besi.'),
+    id: 'ev_shrine_dark', minDepth: 2, speaker: L('Umbral Obelisk', 'Obelisk Kelam'), portrait: 'props:crystal/cristal_10/0',
+    text: L('A black obelisk hums in the dark. An iron grip is carved into its side. The air smells of iron.', 'Sebuah obelisk hitam berdengung dalam gelap. Sebuah pegangan besi terukir di sisinya. Udara berbau besi.'),
     choices: [
-      { label: L('Clasp its hand', 'Genggam tangannya'), chance: 0.6, outcome: [{ type: 'relic', tier: 'epic' }], fail: [{ type: 'relic', tier: 'cursed' }], result: L('Power floods your arm.', 'Kekuatan membanjiri lenganmu.'), failResult: L('It does not let go. Something follows you now.', 'Ia tak melepaskanmu. Sesuatu kini mengikutimu.') },
-      { label: L('Pray', 'Berdoa'), outcome: [{ type: 'boon' }], result: L('The shadows lean closer, listening.', 'Bayangan-bayangan mendekat, mendengarkan.') },
-      { label: L('Smash it', 'Hancurkan'), outcome: [{ type: 'fight', elite: true }, { type: 'embers', v: 40 }], result: L('The statue screams. Its guardians wake.', 'Patung itu menjerit. Para penjaganya terbangun.') },
+      { label: L('Grip the iron', 'Genggam besinya'), chance: 0.6, outcome: [{ type: 'relic', tier: 'epic' }], fail: [{ type: 'relic', tier: 'cursed' }], result: L('Power floods your arm.', 'Kekuatan membanjiri lenganmu.'), failResult: L('It does not let go. Something follows you now.', 'Ia tak melepaskanmu. Sesuatu kini mengikutimu.') },
+      { label: L('Study the carvings', 'Pelajari ukirannya'), outcome: [{ type: 'boon' }], result: L('The runes shift as you read, and a new technique takes shape.', 'Rune-rune bergeser saat kau membacanya, dan sebuah teknik baru terbentuk.') },
+      { label: L('Smash it', 'Hancurkan'), outcome: [{ type: 'fight', elite: true }, { type: 'embers', v: 40 }], result: L('The obelisk cracks with a shriek. Its guardians wake.', 'Obelisk itu retak dengan jeritan. Para penjaganya terbangun.') },
     ],
   },
   {
@@ -161,20 +161,20 @@ const BASE_EVENTS: EventDef[] = [
     ],
   },
   {
-    id: 'ev_pilgrim', minDepth: 1, speaker: L('Lost Pilgrim', 'Peziarah Tersesat'), portrait: 'actors:npc3/walk/down/1',
-    text: L('An old pilgrim offers you a charm. "For the road. The Lantern kept my village safe once. I remember."', 'Seorang peziarah tua menawarkan jimat. "Untuk perjalanan. Lentera pernah menjaga desaku. Aku ingat."'),
+    id: 'ev_pilgrim', minDepth: 1, speaker: L('Lost Traveller', 'Pengembara Tersesat'), portrait: 'actors:npc3/walk/down/1',
+    text: L('An old traveller offers you a keepsake. "For the road. The Lantern kept my village safe once. I remember."', 'Seorang pengembara tua menawarkan kenang-kenangan. "Untuk perjalanan. Lentera pernah menjaga desaku. Aku ingat."'),
     choices: [
       { label: L('Accept', 'Terima'), outcome: [{ type: 'relic', tier: 'common' }], result: L('"Walk in light, keeper."', '"Berjalanlah dalam cahaya, penjaga."') },
-      { label: L('Give him gold (25)', 'Beri emas (25)'), cost: { gold: 25 }, outcome: [{ type: 'embers', v: 40 }, { type: 'hp', v: 25 }], result: L('He blesses you with a trembling hand. You feel lighter.', 'Ia memberkatimu dengan tangan gemetar. Kau merasa lebih ringan.') },
+      { label: L('Give him gold (25)', 'Beri emas (25)'), cost: { gold: 25 }, outcome: [{ type: 'embers', v: 40 }, { type: 'hp', v: 25 }], result: L('He thanks you, gripping your hand. You feel lighter.', 'Ia berterima kasih sambil menggenggam tanganmu. Kau merasa lebih ringan.') },
     ],
   },
   {
-    id: 'ev_forge_spirit', minDepth: 2, speaker: L('Forge Spirit', 'Roh Tempa'), portrait: 'props:fire/fire_01/0',
-    text: L('A living flame dances over an anvil. "Metal! Give me metal and I will make it SING!"', 'Nyala api hidup menari di atas landasan. "Logam! Beri aku logam dan akan kubuat ia BERNYANYI!"'),
+    id: 'ev_forge_spirit', minDepth: 2, speaker: L('Wandering Smith', 'Pandai Besi Pengembara'), portrait: 'props:fire/fire_01/0',
+    text: L('A travelling smith has set up a roaring portable forge. "Metal! Bring me metal and I will make it ROAR!"', 'Seorang pandai besi pengembara mendirikan tungku portabel yang menderu. "Logam! Bawakan aku logam dan akan kubuat ia MENGAUM!"'),
     choices: [
       { label: L('Temper a boon (30 gold)', 'Tempa anugerah (30 emas)'), cost: { gold: 30 }, outcome: [{ type: 'upgrade' }, { type: 'upgrade' }], result: L('CLANG! CLANG! Your power rings true.', 'DENTANG! DENTANG! Kekuatanmu berdering nyaring.') },
-      { label: L('Forge a weapon (50 gold)', 'Tempa senjata (50 emas)'), cost: { gold: 50 }, outcome: [{ type: 'item', rarity: 3 }], result: L('It hands you something still hissing.', 'Ia menyerahkan sesuatu yang masih berdesis.') },
-      { label: L('Leave', 'Pergi'), outcome: [], result: L('"COWARD!" it crackles, fondly.', '"PENGECUT!" ia berderak, dengan sayang.') },
+      { label: L('Forge a weapon (50 gold)', 'Tempa senjata (50 emas)'), cost: { gold: 50 }, outcome: [{ type: 'item', rarity: 3 }], result: L('He hands you something still hissing.', 'Ia menyerahkan sesuatu yang masih berdesis.') },
+      { label: L('Leave', 'Pergi'), outcome: [], result: L('"COWARD!" he barks, fondly.', '"PENGECUT!" serunya, dengan ramah.') },
     ],
   },
   {
@@ -270,7 +270,7 @@ const BASE_EVENTS: EventDef[] = [
     text: L('A cache marked with Kael\'s sign: a crossed arrow. Inside, supplies — and a note: "Take what you need. Kill what you must."', 'Simpanan bertanda Kael: panah bersilang. Di dalamnya, perbekalan — dan catatan: "Ambil yang kau perlukan. Bunuh yang harus."'),
     choices: [
       { label: L('Take supplies', 'Ambil perbekalan'), outcome: [{ type: 'flask', v: 1 }, { type: 'gold', v: 20 }], result: L('Kael always packs the good stuff.', 'Kael selalu membawa barang bagus.') },
-      { label: L('Take the hunting charm', 'Ambil jimat berburu'), outcome: [{ type: 'relic', tier: 'common' }], result: L('It smells of pine and old leather.', 'Baunya pinus dan kulit tua.') },
+      { label: L('Take the hunting kit', 'Ambil perlengkapan berburu'), outcome: [{ type: 'relic', tier: 'common' }], result: L('It smells of pine and old leather.', 'Baunya pinus dan kulit tua.') },
     ],
   },
   {
@@ -282,8 +282,8 @@ const BASE_EVENTS: EventDef[] = [
     ],
   },
   {
-    id: 'ev_ember_altar', minDepth: 1, speaker: L('Ember Altar', 'Altar Bara'), portrait: 'props:fire/fire_02/0',
-    text: L('An altar of the Lanternkeepers, still burning. You feel it recognize you.', 'Altar para Penjaga Lentera, masih menyala. Kau merasa altar itu mengenalimu.'),
+    id: 'ev_ember_altar', minDepth: 1, speaker: L('Ember Brazier', 'Tungku Bara'), portrait: 'props:fire/fire_02/0',
+    text: L('A brazier the Lanternkeepers left behind, still burning. Its warmth feels familiar.', 'Tungku peninggalan para Penjaga Lentera, masih menyala. Hangatnya terasa akrab.'),
     choices: [
       { label: L('Rest by the flame', 'Beristirahat di dekat api'), outcome: [{ type: 'hp', v: 50 }], result: L('Maren used to sing by a fire like this.', 'Maren dulu bernyanyi di dekat api seperti ini.') },
       { label: L('Feed it embers', 'Beri makan bara'), outcome: [{ type: 'upgrade' }, { type: 'embers', v: -20 }], result: L('The flame roars. So does your power.', 'Api mengaum. Begitu juga kekuatanmu.') },

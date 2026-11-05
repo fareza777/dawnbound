@@ -1,7 +1,8 @@
 import Phaser from 'phaser';
 import { BaseScene } from './BaseScene';
-import { COLORS, FONT } from '@/ui/theme';
-import { Bar, Button, fitBox, label, panel } from '@/ui/widgets';
+import { COLORS, FONT, fontSize } from '@/ui/theme';
+import { Bar, Button, label, panel, resizePanel } from '@/ui/widgets';
+import { ScrollPanel } from '@/ui/scroll';
 import { t, tr } from '@/core/i18n';
 import { services } from '@/core/services';
 import { biomeForDepth } from '@/data/biomes';
@@ -21,7 +22,7 @@ const KIND_LABEL: Record<NodeKind, { en: string; id: string }> = {
   elite: { en: 'Elite', id: 'Elit' },
   treasure: { en: 'Treasure', id: 'Harta' },
   shop: { en: 'Merchant', id: 'Pedagang' },
-  shrine: { en: 'Spirit Shrine', id: 'Kuil Roh' },
+  shrine: { en: 'Elemental Shard', id: 'Kepingan Elemen' },
   event: { en: 'Encounter', id: 'Pertemuan' },
   rest: { en: 'Campfire', id: 'Api Unggun' },
   challenge: { en: 'Trial', id: 'Ujian' },
@@ -37,6 +38,9 @@ export class RunMapScene extends BaseScene {
   /** Space kept free at the bottom for the banner ad. */
   private adReserve = 0;
   private run!: RunState;
+  private mapTop = 140;
+  private mapScroll!: ScrollPanel;
+  private rowGap = 76;
 
   constructor() {
     super('RunMap');
@@ -99,20 +103,21 @@ export class RunMapScene extends BaseScene {
     const { W } = this;
     const run = this.run;
     const biome = biomeForDepth(run.depth, run.regions);
-    panel(this, 6, 6, W - 12, 62, 'ui_panel_dark').setAlpha(0.92);
-    label(this, W / 2, 14, tr(biome.name).toUpperCase(), FONT.title, COLORS.gold, 0.5, 0);
+    const bg = panel(this, 6, 6, W - 12, 90, 'ui_panel_dark').setAlpha(0.96);
+    const name = label(this, W / 2, 12, tr(biome.name).toUpperCase(), FONT.title, COLORS.gold, 0.5, 0).setMaxWidth(W - 32).setCenterAlign();
     const floorTxt = t(RunManager.floorLabelKey(run.map), { d: run.depth, f: run.floor });
-    label(this, W / 2, 38, floorTxt, FONT.body, COLORS.textDim, 0.5, 0);
-    fitBox(label(this, W / 2, 54, `"${tr(biome.subtitle)}"`, FONT.small, 0xa08cc0, 0.5, 0), W - 28, 14);
+    const floor = label(this, W / 2, name.y + name.height + 2, floorTxt, FONT.body, COLORS.textDim, 0.5, 0);
+    const subtitle = label(this, W / 2, floor.y + floor.height + 2, `"${tr(biome.subtitle)}"`, FONT.small, COLORS.textDim, 0.5, 0).setMaxWidth(W - 28).setCenterAlign();
+    const bottom = subtitle.y + subtitle.height + 8;
+    resizePanel(bg, W - 12, bottom - 6);
+    this.mapTop = bottom + 34;
   }
 
   private nodePos(n: MapNode): { x: number; y: number } {
     const W = this.W;
-    const H = this.H - this.adReserve;
-    const top = 100;
-    const bottom = H - 150;
+    const top = this.mapTop;
     const rows = this.run.map.rows;
-    const y = bottom - (n.row / (rows - 1)) * (bottom - top);
+    const y = top + (rows - 1 - n.row) * this.rowGap;
     const laneW = Math.min(110, (W - 60) / 2);
     const jitter = new Rng(hashString(n.id + this.run.seed)).int(-8, 8);
     return { x: W / 2 + (n.lane - 1) * laneW + (n.row === 0 || n.row === rows - 1 ? 0 : jitter), y };
@@ -121,6 +126,8 @@ export class RunMapScene extends BaseScene {
   private drawMap(): void {
     const run = this.run;
     const map = run.map;
+    this.rowGap = Math.max(76, 48 + fontSize(FONT.small) * 2);
+    const contentStart = this.children.length;
     const g = this.add.graphics();
     const visited = new Set(run.visited);
     const choices = new Set(RunManager.choices(run).map((n) => n.id));
@@ -142,6 +149,13 @@ export class RunMapScene extends BaseScene {
       }
     }
     for (const n of map.nodes) this.drawNode(n, visited.has(n.id), n.id === run.nodeId, choices.has(n.id));
+    const content = this.children.list.slice(contentStart);
+    const y = this.mapTop - 28;
+    const h = this.H - this.adReserve - 192 - y;
+    this.mapScroll = new ScrollPanel(this, 8, y, this.W - 16, h);
+    this.mapScroll.adopt(content).setContentHeight((map.rows - 1) * this.rowGap + 92);
+    const current = nodeById(map, run.nodeId);
+    if (current) this.mapScroll.setScroll(this.nodePos(current).y - y - h + 64);
   }
 
   private drawNode(n: MapNode, visited: boolean, current: boolean, available: boolean): void {
@@ -178,10 +192,11 @@ export class RunMapScene extends BaseScene {
       const glow = this.add.image(x, y, 'fx_light').setTint(COLORS.ember).setBlendMode('ADD').setScale(r / 40).setAlpha(0.45);
       this.children.moveBelow(glow, c);
       c.setSize(r * 2 + 16, r * 2 + 16).setInteractive({ useHandCursor: true });
-      c.on('pointerup', () => this.select(n));
+      c.on('pointerup', () => { if (!this.mapScroll.wasDrag) this.select(n); });
     }
-    const name = label(this, x, y + r + 3, tr(KIND_LABEL[n.kind]), FONT.small, available ? COLORS.text : COLORS.textDim, 0.5, 0);
-    name.setAlpha(available || boss ? 1 : 0.6);
+    const name = label(this, x, y + r + 3, tr(KIND_LABEL[n.kind]), FONT.small, available ? COLORS.text : COLORS.textDim, 0.5, 0)
+      .setMaxWidth(Math.min(104, (this.W - 60) / 2 - 12)).setCenterAlign();
+    name.setAlpha(available || boss ? 1 : 0.85);
   }
 
   private nodeIcon(n: MapNode): Phaser.GameObjects.GameObject | null {
@@ -207,14 +222,14 @@ export class RunMapScene extends BaseScene {
       case 'treasure': return img('props', 'chest/chest_03/0', 20);
       case 'shop': return this.add.image(0, 0, 'pk_coin').setScale(2.2);
       case 'shrine': {
-        const i = img('props', 'p/statue_01', 24) as Phaser.GameObjects.Image | null;
+        const i = img('props', 'crystal/cristal_17/0', 24) as Phaser.GameObjects.Image | null;
         if (i && n.content) i.setTint(SPIRITS[n.content as keyof typeof SPIRITS]?.color ?? 0xffffff);
         return i;
       }
       case 'rest': return img('props', 'fire/campfire_burning/1', 24);
       case 'event': return this.add.bitmapText(0, -1, FONT.title, '?').setOrigin(0.5).setTint(0xc8b0ff);
       case 'mystery': return this.add.bitmapText(0, -1, FONT.title, '??').setOrigin(0.5).setTint(0xff9ad0);
-      case 'challenge': return img('props', 'p/torii_01', 26);
+      case 'challenge': return img('ui_icon_attack', undefined, 22);
       case 'boss': {
         const def = BOSSES[BIOME_BOSS[biome.boss] ?? biome.boss];
         return def ? img(bossArt(def).atlas, bossArt(def).frame, 40) : null;
@@ -229,12 +244,12 @@ export class RunMapScene extends BaseScene {
     const ctx = buildContext(this.save, run);
     const maxHp = Math.round(ctx.stats.maxHp);
     const hp = run.hp < 0 ? maxHp : run.hp;
-    panel(this, 6, H - 122, W - 12, 116, 'ui_panel_dark').setAlpha(0.92);
-    label(this, 16, H - 114, `HP ${hp}/${maxHp}`, FONT.small, COLORS.text);
-    new Bar(this, 16, H - 104, W / 2 - 30, 7, COLORS.red).setValue(hp / maxHp, false);
-    label(this, W / 2 + 4, H - 114, `${t('gold')}: ${run.gold}`, FONT.small, COLORS.gold);
-    fitBox(label(this, W / 2 + 4, H - 102, `Lv ${run.level}  ·  ${t('boons')}: ${run.boons.length}  ·  ${t('relics')}: ${run.relics.length}`, FONT.small, COLORS.textDim), W / 2 - 20);
-    label(this, W / 2, H - 84, t('chooseRoute'), FONT.head, COLORS.gold, 0.5, 0);
+    panel(this, 6, H - 180, W - 12, 174, 'ui_panel_dark').setAlpha(0.96);
+    label(this, 16, H - 170, `HP ${hp}/${maxHp}`, FONT.small, COLORS.text);
+    new Bar(this, 16, H - 136, W / 2 - 30, 7, COLORS.red).setValue(hp / maxHp, false);
+    label(this, W / 2 + 4, H - 170, `${t('gold')}: ${run.gold}`, FONT.small, COLORS.gold).setMaxWidth(W / 2 - 20);
+    label(this, W / 2, H - 118, `Lv ${run.level}  ·  ${t('boons')}: ${run.boons.length}  ·  ${t('relics')}: ${run.relics.length}`, FONT.small, COLORS.textDim, 0.5, 0).setMaxWidth(W - 32).setCenterAlign();
+    label(this, W / 2, H - 76, t('chooseRoute'), FONT.head, COLORS.gold, 0.5, 0);
     const bw = (W - 36) / 2;
     new Button(this, 18 + bw / 2, H - 38, t('build'), () => {
       this.scene.launch('Build', { from: 'RunMap' });

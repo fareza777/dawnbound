@@ -23,7 +23,7 @@ export const EVENTS_EXPANSION: EventDef[] = [
     speaker: L('A Fallen Keeper', 'Penjaga yang Gugur'), portrait: 'portraits_ev_old_keeper',
     text: L('A skeleton in a keeper\'s cloak sits against the wall, a dim lantern still glowing in its lap. In its other hand: a folded page.', 'Kerangka berjubah penjaga duduk bersandar di dinding, lentera redup masih menyala di pangkuannya. Di tangan satunya: selembar halaman terlipat.'),
     choices: [
-      { label: L('Take the page, say a prayer', 'Ambil halamannya, ucapkan doa'), hint: L('Heal', 'Pulihkan'), outcome: [{ type: 'flag', id: 'journal_2' }, { type: 'lore', id: 'lore_journal_2' }, { type: 'hp', v: 30 }], result: L('The lantern flares once, warm as a hand on your shoulder.', 'Lentera itu menyala sekali, hangat seperti tangan di bahumu.') },
+      { label: L('Take the page, cover him with his cloak', 'Ambil halamannya, tutupi dengan jubahnya'), hint: L('Heal', 'Pulihkan'), outcome: [{ type: 'flag', id: 'journal_2' }, { type: 'lore', id: 'lore_journal_2' }, { type: 'hp', v: 30 }], result: L('The lantern flares once, warm as a hand on your shoulder.', 'Lentera itu menyala sekali, hangat seperti tangan di bahumu.') },
       { label: L('Take the page and the lantern', 'Ambil halaman dan lenteranya'), hint: L('Relic', 'Relik'), outcome: [{ type: 'flag', id: 'journal_2' }, { type: 'lore', id: 'lore_journal_2' }, { type: 'relic', tier: 'common' }], result: L('The light goes out the moment you lift it. You feel watched... and forgiven.', 'Cahayanya padam saat kau mengangkatnya. Kau merasa diawasi... dan dimaafkan.') },
     ],
   },
@@ -51,11 +51,11 @@ export const EVENTS_EXPANSION: EventDef[] = [
   // ------------------------------------------------------------ Main story: the Oathbound Anvil
   {
     id: 'ev_oath_anvil', minDepth: 3, maxDepth: 3, quest: 'mq_forge_oath', onceFlag: 'anvil_found',
-    speaker: L('The Oathbound Anvil', 'Landasan Sumpah'), portrait: 'portraits_ev_forge_spirit',
-    text: L('A spirit of living embers stands over an anvil older than the village. "The smiths of Emberhollow swore an oath here: forge only what protects. Does your blade keep that oath, keeper?"', 'Roh bara hidup berdiri di atas landasan yang lebih tua dari desa. "Para pandai besi Emberhollow bersumpah di sini: hanya menempa yang melindungi. Apakah pedangmu menepati sumpah itu, penjaga?"'),
+    speaker: L('The Oathbound Anvil', 'Landasan Sumpah'), portrait: 'props:fire/fire_01/0',
+    text: L('An anvil older than the village still glows with living embers. Words are carved into its side: THE SMITHS OF EMBERHOLLOW FORGE ONLY WHAT PROTECTS.', 'Sebuah landasan yang lebih tua dari desa masih membara. Ukiran di sisinya berbunyi: PANDAI BESI EMBERHOLLOW HANYA MENEMPA YANG MELINDUNGI.'),
     choices: [
-      { label: L('Swear the oath', 'Ucapkan sumpahnya'), hint: L('Empower a Boon', 'Kuatkan Anugerah'), outcome: [{ type: 'flag', id: 'anvil_found' }, { type: 'lore', id: 'lore_forge_oath' }, { type: 'upgrade' }], result: L('The spirit strikes the anvil once. The sound rings inside your bones. "Take word to Brom."', 'Roh itu memukul landasan sekali. Bunyinya bergema di dalam tulangmu. "Kabarkan pada Brom."') },
-      { label: L('Prove it in battle', 'Buktikan dalam pertarungan'), hint: L('Elite fight, rare relic', 'Lawan elite, relik langka'), outcome: [{ type: 'flag', id: 'anvil_found' }, { type: 'lore', id: 'lore_forge_oath' }, { type: 'fight', elite: true }, { type: 'relic', tier: 'rare' }], result: L('The spirit laughs like a bellows. "Good! Show me!"', 'Roh itu tertawa seperti ububan. "Bagus! Tunjukkan padaku!"') },
+      { label: L('Make the same promise', 'Ucapkan janji yang sama'), hint: L('Empower a Boon', 'Kuatkan Anugerah'), outcome: [{ type: 'flag', id: 'anvil_found' }, { type: 'lore', id: 'lore_forge_oath' }, { type: 'upgrade' }], result: L('You strike the anvil once. The sound rings inside your bones. Brom needs to hear about this.', 'Kau memukul landasan sekali. Bunyinya bergema di dalam tulangmu. Brom harus tahu soal ini.') },
+      { label: L('Prove it in battle', 'Buktikan dalam pertarungan'), hint: L('Elite fight, rare relic', 'Lawan elite, relik langka'), outcome: [{ type: 'flag', id: 'anvil_found' }, { type: 'lore', id: 'lore_forge_oath' }, { type: 'fight', elite: true }, { type: 'relic', tier: 'rare' }], result: L('The embers flare, and the forge\'s old guardians stir. Show them what your blade protects!', 'Bara menyala, dan para penjaga tua tempaan itu terbangun. Tunjukkan apa yang dilindungi pedangmu!') },
     ],
   },
 
@@ -82,11 +82,11 @@ export const EVENTS_EXPANSION: EventDef[] = [
   },
   {
     id: 'ev_singing_crystal', minDepth: 4, maxDepth: 4, region: 'crystal', quest: 'sq_crystal_song', onceFlag: 'crystal_song',
-    speaker: L('The Crystal Seer', 'Peramal Kristal'), portrait: 'portraits_ev_crystal_seer',
-    text: L('A seer made of crystal hums inside a cracked geode, and the whole cave resonates with her song. "Few listen. Fewer remember. Will you carry my song to the surface?"', 'Seorang peramal dari kristal bersenandung di dalam geode yang retak, dan seluruh gua bergema dengan lagunya. "Sedikit yang mendengar. Lebih sedikit yang ingat. Maukah kau membawa laguku ke permukaan?"'),
+    speaker: L('The Crystal Sage', 'Bijak Kristal'), portrait: 'portraits_ev_crystal_seer',
+    text: L('A sage made of crystal hums inside a cracked geode, and the whole cave resonates with her song. "Few listen. Fewer remember. Will you carry my song to the surface?"', 'Seorang bijak dari kristal bersenandung di dalam geode yang retak, dan seluruh gua bergema dengan lagunya. "Sedikit yang mendengar. Lebih sedikit yang ingat. Maukah kau membawa laguku ke permukaan?"'),
     choices: [
       { label: L('Memorize the song', 'Hafalkan lagunya'), hint: L('Empower a Boon', 'Kuatkan Anugerah'), outcome: [{ type: 'flag', id: 'crystal_song' }, { type: 'upgrade' }], result: L('The melody lodges in your chest, bright and cold. Finn is going to lose his mind.', 'Melodi itu tersimpan di dadamu, terang dan dingin. Finn pasti bakal heboh.') },
-      { label: L('Ask for a gift instead', 'Minta hadiah saja'), hint: L('Rare relic', 'Relik langka'), outcome: [{ type: 'flag', id: 'crystal_song' }, { type: 'relic', tier: 'rare' }], result: L('"Songs ARE gifts," the seer sighs — but hands you something shiny anyway.', '"Lagu ITU hadiah," desah sang peramal — tapi ia tetap memberimu sesuatu yang berkilau.') },
+      { label: L('Ask for a gift instead', 'Minta hadiah saja'), hint: L('Rare relic', 'Relik langka'), outcome: [{ type: 'flag', id: 'crystal_song' }, { type: 'relic', tier: 'rare' }], result: L('"Songs ARE gifts," the sage sighs — but hands you something shiny anyway.', '"Lagu ITU hadiah," desah sang bijak — tapi ia tetap memberimu sesuatu yang berkilau.') },
     ],
   },
   {
@@ -110,12 +110,12 @@ export const EVENTS_EXPANSION: EventDef[] = [
 
   // ------------------------------------------------------------ Depths 3-5
   {
-    id: 'ev_sand_oracle', minDepth: 3, maxDepth: 4, speaker: L('Veiled Oracle', 'Peramal Bercadar'), portrait: 'portraits_ev_oracle',
-    text: L('A veiled oracle sits cross-legged on the burning ground, untouched by the heat. "I see three roads in you, keeper. Pay the toll for one."', 'Seorang peramal bercadar duduk bersila di tanah yang membara, tak tersentuh panas. "Aku melihat tiga jalan dalam dirimu, penjaga. Bayarlah tol untuk salah satunya."'),
+    id: 'ev_sand_oracle', minDepth: 3, maxDepth: 4, speaker: L('Veiled Trader', 'Pedagang Bercadar'), portrait: 'portraits_ev_oracle',
+    text: L('A veiled trader sits cross-legged on the burning ground, untouched by the heat. "Three bargains, keeper. Pick one."', 'Seorang pedagang bercadar duduk bersila di tanah yang membara, tak tersentuh panas. "Tiga tawaran, penjaga. Pilih satu."'),
     choices: [
-      { label: L('The road of fortune (70 gold)', 'Jalan keberuntungan (70 emas)'), cost: { gold: 70 }, outcome: [{ type: 'relic', tier: 'rare' }], result: L('She presses something warm into your palm. "Spend it wisely. Or don\'t. The road is yours."', 'Ia meletakkan sesuatu yang hangat di telapak tanganmu. "Gunakan dengan bijak. Atau tidak. Jalan itu milikmu."') },
-      { label: L('The road of power (blood)', 'Jalan kekuatan (darah)'), cost: { hpPct: 20 }, outcome: [{ type: 'boon' }, { type: 'boon' }], result: L('Two spirits circle you like hawks, then settle on your shoulders.', 'Dua roh mengitarimu seperti elang, lalu hinggap di bahumu.') },
-      { label: L('The road of rest', 'Jalan istirahat'), outcome: [{ type: 'hp', v: 35 }, { type: 'flask', v: 1 }], result: L('She seems pleased you chose it. "Few do. Fewer live long enough to regret not choosing it."', 'Ia tampak senang kau memilihnya. "Sedikit yang memilihnya. Lebih sedikit lagi yang hidup cukup lama untuk menyesal tidak memilihnya."') },
+      { label: L('The bargain of wealth (70 gold)', 'Tawaran harta (70 emas)'), cost: { gold: 70 }, outcome: [{ type: 'relic', tier: 'rare' }], result: L('She presses something warm into your palm. "Spend it wisely. Or don\'t. The choice is yours."', 'Ia meletakkan sesuatu yang hangat di telapak tanganmu. "Gunakan dengan bijak. Atau tidak. Pilihan itu milikmu."') },
+      { label: L('The bargain of power (spar, -20% HP)', 'Tawaran kekuatan (tanding, -20% HP)'), cost: { hpPct: 20 }, outcome: [{ type: 'boon' }, { type: 'boon' }], result: L('She tests you with her blade. You leave bruised, with two new techniques.', 'Ia mengujimu dengan pedangnya. Kau pergi penuh memar, membawa dua teknik baru.') },
+      { label: L('The bargain of rest', 'Tawaran istirahat'), outcome: [{ type: 'hp', v: 35 }, { type: 'flask', v: 1 }], result: L('She seems pleased you chose it. "Few do. Fewer live long enough to regret not choosing it."', 'Ia tampak senang kau memilihnya. "Sedikit yang memilihnya. Lebih sedikit lagi yang hidup cukup lama untuk menyesal tidak memilihnya."') },
     ],
   },
   {
@@ -137,11 +137,11 @@ export const EVENTS_EXPANSION: EventDef[] = [
     ],
   },
   {
-    id: 'ev_star_altar', minDepth: 4, maxDepth: 5, speaker: L('Altar of Stars', 'Altar Bintang'), portrait: 'props:crystal/cristal_20/0',
-    text: L('An altar of black glass catches starlight that should never reach this deep. Carved words read: TAKE A STAR. GIVE A LIFE.', 'Altar kaca hitam menangkap cahaya bintang yang seharusnya tak pernah mencapai kedalaman ini. Ukirannya berbunyi: AMBIL SEBUAH BINTANG. BERIKAN SEBUAH NYAWA.'),
+    id: 'ev_star_altar', minDepth: 4, maxDepth: 5, speaker: L('Starglass Monolith', 'Monolit Kaca Bintang'), portrait: 'props:crystal/cristal_20/0',
+    text: L('A slab of black glass catches starlight that should never reach this deep. Carved words read: TAKE A STAR. GIVE A LIFE.', 'Lempeng kaca hitam menangkap cahaya bintang yang seharusnya tak pernah mencapai kedalaman ini. Ukirannya berbunyi: AMBIL SEBUAH BINTANG. BERIKAN SEBUAH NYAWA.'),
     choices: [
       { label: L('Take a star', 'Ambil sebuah bintang'), hint: L('Epic relic, -15 Max HP', 'Relik epik, -15 HP Maks'), outcome: [{ type: 'relic', tier: 'epic' }, { type: 'maxhp', v: -15 }], result: L('It burns cold in your hand. Your heart beats a little slower.', 'Ia membakar dingin di tanganmu. Jantungmu berdetak sedikit lebih lambat.') },
-      { label: L('Offer a prayer', 'Panjatkan doa'), outcome: [{ type: 'hp', v: 50 }], result: L('The starlight rests on you like snow that does not melt.', 'Cahaya bintang itu menyelimutimu seperti salju yang tak mencair.') },
+      { label: L('Rest in the starlight', 'Beristirahat di bawah cahayanya'), outcome: [{ type: 'hp', v: 50 }], result: L('The starlight rests on you like snow that does not melt.', 'Cahaya bintang itu menyelimutimu seperti salju yang tak mencair.') },
     ],
   },
   {
@@ -217,11 +217,11 @@ export const EVENTS_EXPANSION: EventDef[] = [
 
   // ------------------------------------------------------------ Region: Drowned Catacombs
   {
-    id: 'ev_drowned_choir', minDepth: 2, maxDepth: 2, region: 'drowned', speaker: L('Drowned Choir', 'Paduan Suara Tenggelam'), portrait: 'portraits_ev_choir_ghost',
-    text: L('Ghostly choristers stand knee-deep in the water, singing a hymn without words. They part to let you pass — if you pay the toll of a verse.', 'Para penyanyi hantu berdiri setinggi lutut di air, menyanyikan himne tanpa kata. Mereka menyingkir untuk membiarkanmu lewat — jika kau membayar tol berupa satu bait.'),
+    id: 'ev_drowned_choir', minDepth: 2, maxDepth: 2, region: 'drowned', speaker: L('Drowned Echoes', 'Gema Tenggelam'), portrait: 'portraits_ev_choir_ghost',
+    text: L('Pale figures stand knee-deep in the water, their murmurs echoing off the stone. They part to let you pass — if you answer a riddle.', 'Sosok-sosok pucat berdiri setinggi lutut di air, gumaman mereka menggema di dinding batu. Mereka menyingkir untuk membiarkanmu lewat — jika kau menjawab sebuah teka-teki.'),
     choices: [
-      { label: L('Sing along', 'Ikut bernyanyi'), hint: L('Gain a Boon', 'Dapat Anugerah'), outcome: [{ type: 'boon' }], result: L('Your voice cracks on the high note. They sing louder, kindly, to cover it.', 'Suaramu pecah di nada tinggi. Mereka bernyanyi lebih keras, dengan baik hati, untuk menutupinya.') },
-      { label: L('Listen in silence', 'Dengarkan dalam diam'), outcome: [{ type: 'hp', v: 40 }], result: L('The hymn washes your wounds like cool water.', 'Himne itu membasuh lukamu seperti air sejuk.') },
+      { label: L('Answer the riddle', 'Jawab teka-tekinya'), hint: L('Gain a Boon', 'Dapat Anugerah'), outcome: [{ type: 'boon' }], result: L('You stumble over the answer. They murmur, kindly, and let it count.', 'Kau tergagap menjawabnya. Mereka bergumam, dengan baik hati, dan menganggapnya benar.') },
+      { label: L('Rest in the shallows', 'Beristirahat di air dangkal'), outcome: [{ type: 'hp', v: 40 }], result: L('The cool water washes your wounds.', 'Air sejuk membasuh lukamu.') },
     ],
   },
   {

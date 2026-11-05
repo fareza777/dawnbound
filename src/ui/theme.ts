@@ -10,7 +10,7 @@ export const COLORS = {
   gold: 0xe8b04b,
   goldDark: 0x9c6b2a,
   text: 0xf4ecd8,
-  textDim: 0xa79fc2,
+  textDim: 0xc3bbd7,
   red: 0xe0524f,
   green: 0x6bd46b,
   blue: 0x5fa8ff,
@@ -33,22 +33,19 @@ export const FONT = {
   smallPlain: 'smallplain',
 } as const;
 
-/** Logical (virtual-pixel) size of each font. Hi-res atlases allow in-between sizes; 1x atlases use native sizes. */
+/** Logical font sizes stay readable at every graphics quality. */
 let textScale = 1;
 
-/** Accessibility: enlarge body and small text (hi-res atlases only; 1x atlases have fixed pixel sizes). */
+/** Accessibility applies to low-resolution phones as well as high-resolution atlases. */
 export function setTextScale(k: number): void {
-  textScale = k;
+  textScale = Phaser.Math.Clamp(Number.isFinite(k) ? k : 1, 1, 1.3);
 }
 
-export function fontSize(key: string, res: number): number {
-  const hi = res > 1;
-  const sizes: Record<string, number> = hi
-    ? { body: 16, bodyplain: 16, head: 18, title: 22, small: 12, smallplain: 12 }
-    : { body: 15, bodyplain: 15, head: 20, title: 20, small: 8, smallplain: 8 };
+export function fontSize(key: string, _res = 1): number {
+  const sizes: Record<string, number> = { body: 16, bodyplain: 16, head: 18, title: 22, small: 12, smallplain: 12 };
   const size = sizes[key] ?? sizes.body;
   const scalable = key === 'body' || key === 'bodyplain' || key === 'small' || key === 'smallplain';
-  return hi && scalable ? Math.round(size * textScale) : size;
+  return scalable ? Math.round(size * textScale) : size;
 }
 
 /** Atlas suffix for the render scale: hi-res atlases put every glyph exactly on device pixels. */
@@ -66,7 +63,9 @@ export function installBitmapTextDefaults(res: number): void {
   Factory.register('bitmapText', function (
     this: Phaser.GameObjects.GameObjectFactory, x: number, y: number, font: string, text?: string | string[], size?: number, align?: number,
   ) {
-    return this.displayList.add(new Phaser.GameObjects.BitmapText(this.scene, x, y, font, text, size ?? fontSize(font, res), align));
+    const obj = new Phaser.GameObjects.BitmapText(this.scene, x, y, font, text, size ?? fontSize(font, res), align);
+    obj.setLineSpacing(2);
+    return this.displayList.add(obj);
   });
 }
 

@@ -95,10 +95,10 @@ export const SIDE_QUESTS_EXPANSION: QuestDef[] = [
   },
   {
     id: 'sq_pilgrim_road', type: 'side', giver: 'liora', requires: ['sq_pilgrim'],
-    title: L('The Pilgrim\'s Road', 'Jalan Peziarah'),
-    desc: L('Liora asks you to honor the spirits properly. Pray at 12 Spirit Shrines in the Depths.', 'Liora memintamu menghormati para roh dengan layak. Berdoalah di 12 Kuil Roh di Kedalaman.'),
-    objectives: [{ kind: 'stat', stat: 'shrines', count: 12, label: L('Shrines visited', 'Kuil dikunjungi') }],
+    title: L('The Attuner\'s Road', 'Jejak Penyelaras'),
+    desc: L('Liora asks you to master the elements. Attune to 12 Elemental Shards in the Depths.', 'Liora memintamu menguasai elemen. Selaraskan 12 Kepingan Elemen di Kedalaman.'),
+    objectives: [{ kind: 'stat', stat: 'shrines', count: 12, label: L('Shards attuned', 'Kepingan diselaraskan') }],
     rewards: { embers: 200, shards: 1 },
-    done: L('The spirits speak your name now, keeper. They will answer you a little more readily from here on.', 'Para roh kini menyebut namamu, penjaga. Mulai sekarang mereka akan sedikit lebih mudah menjawabmu.'),
+    done: L('The shards respond to your touch more readily now, keeper.', 'Kepingan-kepingan kini lebih mudah merespons sentuhanmu, penjaga.'),
   },
 ];

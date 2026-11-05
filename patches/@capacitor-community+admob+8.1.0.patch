@@ -1,8 +1,15 @@
 diff --git a/node_modules/@capacitor-community/admob/android/src/main/java/com/getcapacitor/community/admob/banner/BannerExecutor.java b/node_modules/@capacitor-community/admob/android/src/main/java/com/getcapacitor/community/admob/banner/BannerExecutor.java
-index 36b773c..1b3a7ad 100644
 --- a/node_modules/@capacitor-community/admob/android/src/main/java/com/getcapacitor/community/admob/banner/BannerExecutor.java
 +++ b/node_modules/@capacitor-community/admob/android/src/main/java/com/getcapacitor/community/admob/banner/BannerExecutor.java
-@@ -86,9 +86,15 @@ public class BannerExecutor extends Executor {
+@@ -2,7 +2,6 @@
+ 
+ import android.app.Activity;
+ import android.content.Context;
+-import android.os.Build;
+ import android.util.DisplayMetrics;
+ import android.util.Log;
+ import android.view.Gravity;
+@@ -86,9 +85,15 @@
              mAdViewLayout.setHorizontalGravity(Gravity.CENTER_HORIZONTAL);
              mAdViewLayout.setVerticalGravity(Gravity.BOTTOM);
  
@@ -19,7 +26,34 @@ index 36b773c..1b3a7ad 100644
              );
  
              // TODO: Make an enum like the AdSizeEnum?
-@@ -268,8 +274,20 @@ public class BannerExecutor extends Executor {
+@@ -130,23 +135,9 @@
+                 mAdViewLayoutParams.setMargins(sideMargin, densityMargin, sideMargin, densityMargin);
+             }
+ 
+-            // set Safe Area only for Android 15+
+-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+-                View rootView = activitySupplier.get().getWindow().getDecorView();
+-                rootView.setOnApplyWindowInsetsListener((v, insets) -> {
+-                    int bottomInset = insets.getSystemWindowInsetBottom();
+-                    int topInset = insets.getSystemWindowInsetTop();
+-
+-                    if ("TOP_CENTER".equals(adOptions.position)) {
+-                        mAdViewLayoutParams.setMargins(margins[0], margins[1] + topInset, margins[2], margins[3]);
+-                    } else {
+-                        mAdViewLayoutParams.setMargins(margins[0], margins[1], margins[2], margins[3] + bottomInset);
+-                    }
+-
+-                    mAdViewLayout.setLayoutParams(mAdViewLayoutParams);
+-                    return insets;
+-                });
+-            }
++            // Capacitor's SystemBars plugin owns the decor inset listener and pads this shared native root.
++            // Replacing that listener here disables WebView safe-area handling and can put ads over navigation.
++            // Keep the banner in the same safe, padded root as the game; adOptions.margin adds only its visual gap.
+ 
+             createNewAdView(adOptions);
+ 
+@@ -268,8 +259,20 @@
                  final AdRequest adRequest = RequestHelper.createRequest(adOptions);
                  // Assign the correct id needed
                  AdViewIdHelper.assignIdToAdView(adView, adOptions, adRequest, logTag, contextSupplier.get());

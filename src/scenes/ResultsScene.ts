@@ -13,6 +13,7 @@ import { addEmberParticles } from './SplashScene';
 import { vowEmberMult } from '@/data/vows';
 import { ENDING_NORMAL, ENDING_TRUE } from '@/data/story';
 import { relicDef } from '@/data/relics';
+import { ScrollPanel } from '@/ui/scroll';
 
 /** End-of-run summary. Converts the run into permanent rewards and sends the player home. */
 export class ResultsScene extends BaseScene {
@@ -59,19 +60,27 @@ export class ResultsScene extends BaseScene {
     services.save!.flush();
 
     const title = this.victory ? t('victory') : this.abandoned ? t('abandoned') : t('defeated');
-    const tt = label(this, W / 2, 50, title, FONT.title, this.victory ? COLORS.gold : COLORS.red, 0.5, 0.5).setScale(2).setAlpha(0);
-    this.tweens.add({ targets: tt, alpha: 1, scale: 2.2, duration: 700, ease: 'Back.easeOut' });
-    label(this, W / 2, 84, this.victory ? t('victorySub') : t('wakeAtDawn'), FONT.body, COLORS.textDim, 0.5, 0.5);
+    const tt = label(this, W / 2, 50, title, FONT.title, this.victory ? COLORS.gold : COLORS.red, 0.5, 0.5).setAlpha(0);
+    const titleScale = Math.min(2.2, (W - 24) / tt.width);
+    tt.setScale(titleScale * 0.9);
+    this.tweens.add({ targets: tt, alpha: 1, scale: titleScale, duration: 700, ease: 'Back.easeOut' });
+    const subtitle = label(this, W / 2, 84, this.victory ? t('victorySub') : t('wakeAtDawn'), FONT.body, COLORS.textDim, 0.5, 0).setMaxWidth(W - 28).setCenterAlign();
 
     const px = 14;
     const pw = W - 28;
-    const top = 104;
-    panel(this, px, top, pw, H - top - 70, 'ui_panel_ornate');
+    const top = subtitle.y + subtitle.height + 14;
+    const rewarded = embers > 0 && !!services.ads?.canReward();
+    const panelBottom = H - (rewarded ? 116 : 82);
+    panel(this, px, top, pw, panelBottom - top, 'ui_panel_ornate');
+    const contentStart = this.children.list.length;
     let y = top + 12;
     const row = (k: string, v: string, color: number = COLORS.text) => {
-      label(this, px + 14, y, k, FONT.body, COLORS.textDim);
+      const name = label(this, px + 14, y, k, FONT.small, COLORS.textDim);
       const value = label(this, px + pw - 14, y, v, FONT.body, color, 1, 0);
-      y += 18;
+      if (name.width + value.width + 12 > pw - 28) {
+        value.setOrigin(0, 0).setPosition(px + 14, y + name.height + 3).setMaxWidth(pw - 28);
+      }
+      y = Math.max(name.y + name.height, value.y + value.height) + 8;
       return value;
     };
     const mins = Math.floor(summary.time / 60);
@@ -84,8 +93,8 @@ export class ResultsScene extends BaseScene {
     row(t('goldBanked'), `+${res.goldBanked}`, COLORS.gold);
     if (buildIcons.length) {
       y += 6;
-      label(this, px + 14, y, `${t('boons')} & ${t('relics')}`, FONT.head, COLORS.gold);
-      y += 18;
+      const build = label(this, px + 14, y, `${t('boons')} & ${t('relics')}`, FONT.head, COLORS.gold);
+      y += build.height + 8;
       const size = 22;
       const perRow = Math.floor((pw - 28) / (size + 4));
       const shown = buildIcons.slice(0, perRow * 3);
@@ -98,26 +107,25 @@ export class ResultsScene extends BaseScene {
       y += Math.ceil(shown.length / perRow) * (size + 4);
     }
     y += 6;
-    label(this, px + 14, y, `${t('itemsFound')} (${itemsFound.length})`, FONT.head, COLORS.gold);
-    y += 18;
-    const maxItems = Math.max(0, Math.floor((H - 140 - y) / 14) - (mats.length ? 3 : 0));
-    itemsFound.sort((a, b) => b!.rarity - a!.rarity).slice(0, maxItems).forEach((it) => {
-      label(this, px + 18, y, itemName(it!), FONT.small, RARITY_COLORS[it!.rarity]);
-      y += 12;
+    const itemsTitle = label(this, px + 14, y, `${t('itemsFound')} (${itemsFound.length})`, FONT.head, COLORS.gold);
+    y += itemsTitle.height + 8;
+    itemsFound.sort((a, b) => b!.rarity - a!.rarity).forEach((it) => {
+      const item = label(this, px + 18, y, itemName(it!), FONT.small, RARITY_COLORS[it!.rarity]).setMaxWidth(pw - 36);
+      y += item.height + 4;
     });
-    if (itemsFound.length > maxItems) {
-      label(this, px + 18, y, `+${itemsFound.length - maxItems}...`, FONT.small, COLORS.textDim);
-      y += 12;
-    }
     if (mats.length) {
       y += 6;
-      label(this, px + 14, y, t('materials'), FONT.head, COLORS.gold);
-      y += 18;
+      const materials = label(this, px + 14, y, t('materials'), FONT.head, COLORS.gold);
+      y += materials.height + 8;
       const txt = mats.slice(0, 8).map(([id, n]) => `${tr(materialDef(id)?.name ?? { en: id, id })} x${n}`).join(', ');
-      this.add.bitmapText(px + 18, y, FONT.small, txt).setMaxWidth(pw - 30).setTint(COLORS.blue);
+      const materialText = this.add.bitmapText(px + 18, y, FONT.small, txt).setMaxWidth(pw - 36).setTint(COLORS.blue);
+      y += materialText.height + 8;
     }
+    const content = this.children.list.slice(contentStart);
+    const scroll = new ScrollPanel(this, px + 8, top + 8, pw - 16, panelBottom - top - 16);
+    scroll.adopt(content).setContentHeight(y - top);
     // Optional rewarded video: double the embers from this run.
-    if (embers > 0 && services.ads?.canReward()) {
+    if (rewarded) {
       const dbl = new Button(this, W / 2, H - 70 - 24, `${t('adDoubleEmbers')}  +${embers}`, async () => {
         dbl.setEnabled(false);
         const ok = await services.ads!.showRewarded('double_embers');

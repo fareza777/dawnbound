@@ -119,13 +119,11 @@ export class VillageMap {
     // Library
     this.p('p/book_06', 8, 6, {});
     this.p('p/lamp_02', 9, 5, { light: { r: 44, tint: 0xffd9a0, dy: -22, flicker: 0.1 } });
-    // Shrine of spirits (Liora)
-    this.p('p/torii_02', 18, 5, { box: { w: 70, h: 6 } });
-    this.p('p/statue_01', 18, 4, { box: { w: 20, h: 8 }, light: { r: 50, tint: 0xfff0a0, dy: -24 } });
-    // Lantern shrine (centre)
-    this.p('p/torii_01', 12, 13, { box: { w: 8, h: 6 } });
-    this.p('p/lamp_14', 10, 15, { light: { r: 38, tint: 0xffc070, dy: -70, flicker: 0.1 } });
-    this.p('p/lamp_15', 14, 15, { light: { r: 38, tint: 0xffc070, dy: -70, flicker: 0.1 } });
+    // Elemental Shard (Liora)
+    this.p('crystal/cristal_17/0', 18, 4, { box: { w: 20, h: 8 }, light: { r: 50, tint: 0xfff0a0, dy: -24 } });
+    // Lantern (centre)
+    this.p('p/lamp_02', 10, 15, { light: { r: 38, tint: 0xffc070, dy: -22, flicker: 0.1 } });
+    this.p('p/lamp_02', 14, 15, { light: { r: 38, tint: 0xffc070, dy: -22, flicker: 0.1 } });
     // Garden plots (drawn by HubScene) and fence
     for (let x = 19; x <= 22; x++) this.p('p/crate_07', x, 18, { box: { w: 14, h: 6 }, scale: 0.9 });
     // Market (Pip)

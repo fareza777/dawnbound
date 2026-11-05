@@ -4,6 +4,7 @@ import { Button, dimmer, panel } from './widgets';
 import { t } from '@/core/i18n';
 import { services } from '@/core/services';
 import { view } from '@/core/viewport';
+import { ScrollPanel } from './scroll';
 
 export interface ModalButton {
   label: string;
@@ -22,22 +23,30 @@ export function showModal(
   const W = view.w;
   const H = view.h;
   const container = scene.add.container(0, 0).setDepth(depth).setScrollFactor(0);
+  let scroll: ScrollPanel | undefined;
   const close = () => {
     unregister?.();
-    scene.tweens.add({ targets: container, alpha: 0, duration: 120, onComplete: () => container.destroy() });
+    scene.tweens.add({ targets: container, alpha: 0, duration: 120, onComplete: () => {
+      scroll?.destroy();
+      container.destroy();
+    } });
   };
   const dim = dimmer(scene, 0.72);
   const pw = Math.min(W - 32, 300);
   const bodyText = scene.add.bitmapText(0, 0, FONT.body, body).setMaxWidth(pw - 28).setTint(COLORS.text);
-  const titleText = scene.add.bitmapText(0, 0, FONT.head, title).setTint(COLORS.gold).setOrigin(0.5, 0);
-  const btnH = 28;
-  const ph = 18 + titleText.height + 10 + bodyText.height + 16 + btnH + 16;
+  const titleText = scene.add.bitmapText(0, 0, FONT.head, title).setMaxWidth(pw - 28).setCenterAlign().setTint(COLORS.gold).setOrigin(0.5, 0);
+  const btnH = 36;
+  const ph = Math.min(H - 32, 18 + titleText.height + 10 + bodyText.height + 16 + btnH + 16);
   const px = Math.round((W - pw) / 2);
   const py = Math.round((H - ph) / 2);
   const bg = panel(scene, px, py, pw, ph, 'ui_panel_ornate');
   titleText.setPosition(W / 2, py + 14);
-  bodyText.setPosition(px + 14, py + 18 + titleText.height + 8);
-  container.add([dim, bg, titleText, bodyText]);
+  const bodyY = py + 18 + titleText.height + 8;
+  const bodyH = py + ph - btnH - 32 - bodyY;
+  scroll = new ScrollPanel(scene, px + 14, bodyY, pw - 28, bodyH);
+  scroll.add(bodyText);
+  scroll.setContentHeight(bodyText.height);
+  container.add([dim, bg, titleText, ...scroll.displayObjects]);
   const n = buttons.length;
   const gap = 8;
   const bw = Math.floor((pw - 28 - gap * (n - 1)) / n);

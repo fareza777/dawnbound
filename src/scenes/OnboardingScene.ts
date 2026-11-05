@@ -6,6 +6,7 @@ import { t } from '@/core/i18n';
 import { services } from '@/core/services';
 import { addEmberParticles } from './SplashScene';
 import { vx } from '@/core/viewport';
+import { ScrollPanel } from '@/ui/scroll';
 
 interface Card {
   title: string;
@@ -19,6 +20,7 @@ export class OnboardingScene extends BaseScene {
   private cardObjs: Phaser.GameObjects.GameObject[] = [];
   private dots: Phaser.GameObjects.Arc[] = [];
   private nextBtn!: Button;
+  private cardScroll?: ScrollPanel;
 
   constructor() {
     super('Onboarding');
@@ -80,9 +82,9 @@ export class OnboardingScene extends BaseScene {
         art: (x, y) => {
           const glow = this.add.image(x, y - 10, 'fx_light').setTint(0xffb347).setBlendMode('ADD').setScale(1.4).setAlpha(0.6);
           this.tweens.add({ targets: glow, alpha: 0.3, yoyo: true, repeat: -1, duration: 1200 });
-          const torii = this.add.image(x, y + 20, 'props', 'p/torii_01').setScale(2).setOrigin(0.5, 1);
+          const lantern = this.add.image(x, y + 20, 'props', 'crystal/cristal_3/0').setScale(2.4).setOrigin(0.5, 1);
           const hero = this.add.sprite(x, y + 20, 'heroes', 'hero1/idle/up/0').setScale(3).setOrigin(0.5, 1);
-          return [glow, torii, hero];
+          return [glow, lantern, hero];
         },
       },
     ];
@@ -91,16 +93,22 @@ export class OnboardingScene extends BaseScene {
   private showCard(i: number): void {
     const { W, H } = this;
     this.index = i;
+    this.cardScroll?.destroy();
     for (const o of this.cardObjs) o.destroy();
     this.cardObjs = [];
     const card = this.cards()[i];
     const top = Math.round(H * 0.1);
     const art = card.art(W / 2, Math.round(H * 0.32));
-    const p = panel(this, 20, Math.round(H * 0.5), W - 40, Math.round(H * 0.28), 'ui_panel_ornate');
-    const title = label(this, W / 2, Math.round(H * 0.5) + 16, card.title.toUpperCase(), FONT.title, COLORS.gold, 0.5, 0).setScale(1.3);
-    const body = this.add.bitmapText(W / 2, Math.round(H * 0.5) + 50, FONT.body, card.body).setOrigin(0.5, 0).setMaxWidth(W - 70).setCenterAlign().setTint(COLORS.text);
+    const panelY = Math.round(H * 0.46);
+    const panelBottom = H - 124;
+    const p = panel(this, 20, panelY, W - 40, panelBottom - panelY, 'ui_panel_ornate');
+    const title = label(this, W / 2, panelY + 14, card.title.toUpperCase(), FONT.title, COLORS.gold, 0.5, 0).setMaxWidth((W - 70) / 1.2).setCenterAlign().setScale(1.2);
+    const bodyY = title.y + title.displayHeight + 10;
+    const body = this.add.bitmapText((W - 70) / 2, 0, FONT.body, card.body).setOrigin(0.5, 0).setMaxWidth(W - 70).setCenterAlign().setTint(COLORS.text);
+    this.cardScroll = new ScrollPanel(this, 35, bodyY, W - 70, panelBottom - bodyY - 12);
+    this.cardScroll.add(body).setContentHeight(body.height);
     const hdr = label(this, W / 2, top, `${i + 1} / 3`, FONT.small, COLORS.textDim, 0.5, 0);
-    this.cardObjs = [...art, p, title, body, hdr];
+    this.cardObjs = [...art, p, title, ...this.cardScroll.displayObjects, hdr];
     for (const o of this.cardObjs) {
       const go = o as Phaser.GameObjects.Image;
       go.setAlpha?.(0);

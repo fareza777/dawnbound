@@ -12,8 +12,12 @@
     "typecheck": "tsc --noEmit",
     "assets": "python tools/pack_assets.py && python tools/pack_gen.py",
     "android:sync": "npm run build && npx cap sync android",
+    "android:adtest:sync": "tsc --noEmit && vite build --mode adtest && npx cap sync android",
+    "android:adtest": "npm run android:adtest:sync && cd android && gradlew.bat assembleAdTest",
     "android:debug": "npm run android:sync && cd android && gradlew.bat assembleDebug",
-    "android:release": "npm run android:sync && cd android && gradlew.bat bundleRelease",
+    "android:release": "npm run android:sync && cd android && gradlew.bat :app:assembleRelease :app:bundleRelease --console=plain --quiet",
+    "android:live:sync": "tsc --noEmit && vite build --mode live && npx cap sync android",
+    "android:live": "npm run android:live:sync && cd android && gradlew.bat :app:assembleRelease :app:bundleRelease --console=plain --quiet",
     "qa": "vite build --outDir dist-qa --emptyOutDir --mode qa",
     "play": "node tools/play.mjs",
     "postinstall": "patch-package"

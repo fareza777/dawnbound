@@ -1,0 +1,106 @@
+{
+  "native": true,
+  "demoAds": true,
+  "build": {
+    "testAds": true,
+    "qa": true,
+    "versionName": "1.0.7",
+    "versionCode": 8
+  },
+  "scenes": [
+    "Menu",
+    "Notify"
+  ],
+  "ads": {
+    "sdk": "Ready",
+    "banner": 1,
+    "interstitial": 0,
+    "rewarded": 0,
+    "rewardsEarned": 0,
+    "bannerStatus": "Ready",
+    "interstitialStatus": "Ready",
+    "rewardedStatus": "Ready",
+    "lastError": "",
+    "native": true,
+    "testAds": true
+  },
+  "labels": [
+    "DAWNBOUND",
+    "THE LAST LANTERN",
+    "New Game",
+    "Settings",
+    "Codex",
+    "About",
+    "Share",
+    "Rate",
+    "Version 1.0.7"
+  ],
+  "buttons": [
+    {
+      "type": "Container",
+      "x": 60,
+      "y": 330,
+      "width": 200,
+      "height": 30
+    },
+    {
+      "type": "Container",
+      "x": 60,
+      "y": 366,
+      "width": 200,
+      "height": 30
+    },
+    {
+      "type": "Container",
+      "x": 60,
+      "y": 402,
+      "width": 200,
+      "height": 30
+    },
+    {
+      "type": "Container",
+      "x": 60,
+      "y": 448,
+      "width": 62,
+      "height": 26
+    },
+    {
+      "type": "Container",
+      "x": 128,
+      "y": 448,
+      "width": 62,
+      "height": 26
+    },
+    {
+      "type": "Container",
+      "x": 196,
+      "y": 448,
+      "width": 62,
+      "height": 26
+    }
+  ],
+  "save": {
+    "currency": {
+      "gold": 0,
+      "embers": 0,
+      "shards": 0
+    },
+    "giftDay": 0,
+    "adBreaks": 0
+  },
+  "viewport": {
+    "width": 320,
+    "height": 616,
+    "dpr": 1,
+    "canvas": {
+      "x": 0,
+      "y": 12,
+      "width": 320,
+      "height": 592,
+      "top": 12,
+      "right": 320,
+      "bottom": 604,
+      "left": 0
+    }
+  }
+}

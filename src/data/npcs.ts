@@ -50,7 +50,7 @@ export const NPCS: NpcDef[] = [
     look: 'cheerful halfling merchant, green cap with feather, big grin, round cheeks, gold coin earring, green vest',
   },
   {
-    id: 'liora', name: L('Sister Liora', 'Suster Liora'), title: L('Keeper of Shrines', 'Penjaga Kuil'), role: 'shrine', sprite: 'npc5',
+    id: 'liora', name: L('Liora', 'Liora'), title: L('Shard Keeper', 'Penjaga Kepingan'), role: 'shrine', sprite: 'npc5',
     pos: [17, 7], voice: 'serene', unlockAfter: 'mq_descend',
     look: 'serene young priestess, long golden hair, white and gold hood, closed calm eyes, soft golden halo light',
   },

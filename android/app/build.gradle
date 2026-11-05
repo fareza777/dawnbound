@@ -1,5 +1,8 @@
 apply plugin: 'com.android.application'
 
+def webModeFile = file('src/main/assets/public/ad-build.json')
+def webMode = webModeFile.exists() ? new groovy.json.JsonSlurper().parse(webModeFile) : [:]
+
 android {
     namespace = "com.fajar.dawnbound"
     compileSdk = rootProject.ext.compileSdkVersion
@@ -7,8 +10,9 @@ android {
         applicationId "com.fajar.dawnbound"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 4
-        versionName "1.0.3"
+        versionCode((webMode.versionCode ?: 8) as int)
+        versionName(webMode.versionName ?: "1.0.7")
+        manifestPlaceholders = [admobAppId: '@string/admob_app_id', appLabel: '@string/app_name']
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         aaptOptions {
              // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
@@ -36,6 +40,13 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        adTest {
+            initWith release
+            debuggable true
+            applicationIdSuffix '.adtest'
+            versionNameSuffix '-qa'
+            matchingFallbacks = ['release']
+        }
     }
 }
 
@@ -60,6 +71,24 @@ dependencies {
 }
 
 apply from: 'capacitor.build.gradle'
+
+// Release packages always use the normal game UI and the registered publisher App ID.
+// QA hooks are restricted to the separate, debuggable QA package.
+tasks.configureEach { task ->
+    if (task.name in ['preReleaseBuild', 'preDebugBuild', 'preAdTestBuild']) {
+        task.doFirst {
+            def modeFile = file('src/main/assets/public/ad-build.json')
+            if (!modeFile.exists()) throw new GradleException('Run android:sync or android:adtest:sync first.')
+            def mode = new groovy.json.JsonSlurper().parse(modeFile)
+            if ((task.name == 'preReleaseBuild' && mode.qa) || (task.name == 'preAdTestBuild' && !mode.qa)) {
+                throw new GradleException('QA hooks do not match this Android build. Sync the matching mode first.')
+            }
+            if (!(mode.versionCode instanceof Number) || mode.versionCode <= 0 || !mode.versionName) {
+                throw new GradleException('Build version is missing. Sync the matching build profile first.')
+            }
+        }
+    }
+}
 
 try {
     def servicesJSON = file('google-services.json')

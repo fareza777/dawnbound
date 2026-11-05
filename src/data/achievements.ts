@@ -35,7 +35,7 @@ export const ACHIEVEMENTS: AchievementDef[] = [
     }
     return [...c.values()].some((n) => n >= 4);
   } },
-  { id: 'a_boons_30', name: L('Spirit Friend', 'Sahabat Roh'), desc: L('Discover 30 Boons.', 'Temukan 30 Anugerah.'), embers: 50, check: (s) => s.codex.boons.length >= 30 },
+  { id: 'a_boons_30', name: L('Shard Collector', 'Pengumpul Kepingan'), desc: L('Discover 30 Boons.', 'Temukan 30 Anugerah.'), embers: 50, check: (s) => s.codex.boons.length >= 30 },
   { id: 'a_relics_30', name: L('Collector', 'Kolektor'), desc: L('Discover 30 Relics.', 'Temukan 30 Relik.'), embers: 50, check: (s) => s.codex.relics.length >= 30 },
   { id: 'a_events_15', name: L('Storyteller', 'Pendongeng'), desc: L('Witness 15 different encounters.', 'Saksikan 15 pertemuan berbeda.'), embers: 50, check: (s) => s.codex.events.length >= 15 },
   { id: 'a_talents_10', name: L('Lantern Scholar', 'Cendekia Lentera'), desc: L('Buy 10 talent ranks.', 'Beli 10 peringkat bakat.'), embers: 40, check: (s) => Object.values(s.talents).reduce((a, b) => a + b, 0) >= 10 },
@@ -43,6 +43,6 @@ export const ACHIEVEMENTS: AchievementDef[] = [
   { id: 'a_heroes', name: L('Fellowship', 'Persekutuan'), desc: L('Unlock all four heroes.', 'Buka keempat pahlawan.'), embers: 100, check: (s) => s.unlocks.heroes.length >= 4 },
   { id: 'a_shards', name: L('Memories of Maren', 'Kenangan Maren'), desc: L('Collect 10 Memory Shards.', 'Kumpulkan 10 Serpihan Memori.'), embers: 100, check: (s) => s.currency.shards >= 10 },
   { id: 'a_vow5', name: L('Night Sworn', 'Bersumpah pada Malam'), desc: L('Win with 5 or more Heat.', 'Menang dengan Heat 5 atau lebih.'), embers: 200, check: (s) => (s.flags.heatWin ?? 0) >= 5 },
-  { id: 'a_daily', name: L('Daily Devotion', 'Pengabdian Harian'), desc: L('Complete a Daily Run.', 'Selesaikan Run Harian.'), embers: 30, check: (s) => s.daily.best > 0 },
+  { id: 'a_daily', name: L('Daily Diligence', 'Rajin Harian'), desc: L('Complete a Daily Run.', 'Selesaikan Run Harian.'), embers: 30, check: (s) => s.daily.best > 0 },
   { id: 'a_quests_10', name: L('Village Hero', 'Pahlawan Desa'), desc: L('Complete 10 quests.', 'Selesaikan 10 misi.'), embers: 80, check: (s) => Object.values(s.quests).filter((q) => q.status === 'claimed').length >= 10 },
 ];

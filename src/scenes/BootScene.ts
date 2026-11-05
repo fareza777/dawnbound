@@ -1,7 +1,7 @@
 import { bus } from '@/core/events';
 import { CloudSave } from '@/core/cloudSave';
 import Phaser from 'phaser';
-import { COLORS, createUiTextures, FONT, fontSuffix } from '@/ui/theme';
+import { COLORS, createUiTextures, FONT, fontSuffix, setTextScale } from '@/ui/theme';
 import { view } from '@/core/viewport';
 import { createFxTextures } from '@/gfx/fxTextures';
 import { createHiResSkin } from '@/ui/skin';
@@ -37,6 +37,7 @@ export class BootScene extends Phaser.Scene {
     await platform.init();
     await save.restoreFromNative();
     const s = save.data.settings;
+    setTextScale(s.textScale ?? 1);
     setLang(s.lang);
     platform.hapticsEnabled = s.vibration;
     services.audio.setMusicVolume(s.musicVol);
@@ -46,7 +47,10 @@ export class BootScene extends Phaser.Scene {
       void services.cloud?.upload(true);
       services.audio?.setPaused(true);
     });
-    platform.onResume(() => services.audio?.setPaused(false));
+    platform.onResume(() => {
+      services.audio?.setPaused(false);
+      void services.ads?.onResume();
+    });
     // Ads + Remove Ads purchase start in the background so a slow network never delays loading.
     const ads = new Ads(() => save.data, () => services.audio);
     services.ads = ads;
@@ -57,7 +61,8 @@ export class BootScene extends Phaser.Scene {
       save.markDirty();
       if (owned) ads.onAdsRemoved();
     });
-    void ads.init().then(() => services.store?.init());
+    void ads.init();
+    void services.store.init();
     // Google Play Games (cloud save, achievements, leaderboards) also starts in the background.
     services.cloud = new CloudSave(save, migrate);
     void services.cloud.init();

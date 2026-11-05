@@ -2,13 +2,14 @@ import Phaser from 'phaser';
 import { VIDEO_ICON } from './AdOverlays';
 import { OverlayScene, type OverlayData } from './OverlayScene';
 import { COLORS, FONT } from '@/ui/theme';
-import { Button, fitBox, label, panel, toast } from '@/ui/widgets';
+import { Button, label, panel, resizePanel, toast } from '@/ui/widgets';
 import { t, tr } from '@/core/i18n';
 import { services } from '@/core/services';
 import { SPIRITS, boonValue, type BoonDef, type SpiritId } from '@/data/boons';
 import { duoUnlockedBy } from '@/game/synergy';
 import { RunManager } from '@/game/RunManager';
 import { Rng } from '@/core/rng';
+import { ScrollPanel } from '@/ui/scroll';
 
 export function boonDescription(def: BoonDef, rank: number): string {
   const { v, v2 } = boonValue(def, rank);
@@ -27,6 +28,7 @@ export class BoonPickScene extends OverlayScene {
   private spirit?: SpiritId;
   private cards: Phaser.GameObjects.Container[] = [];
   private picked = false;
+  private cardScroll!: ScrollPanel;
 
   constructor() {
     super('BoonPick');
@@ -49,18 +51,20 @@ export class BoonPickScene extends OverlayScene {
       const sp = SPIRITS[this.spirit];
       const portrait = this.textures.exists(sp.portrait) ? this.add.image(this.W / 2, inner.y + 26, sp.portrait).setDisplaySize(44, 44) : this.add.image(this.W / 2, inner.y + 26, 'proj_orb').setTint(sp.color).setScale(4).setBlendMode('ADD');
       void portrait;
-      this.add.bitmapText(this.W / 2, inner.y + 54, FONT.body, `"${tr(sp.greeting)}"`).setOrigin(0.5, 0).setMaxWidth(inner.w - 10).setCenterAlign().setTint(0xffd9a0);
-      inner.y += 78;
-      inner.h -= 78;
+      const greeting = this.add.bitmapText(this.W / 2, inner.y + 54, FONT.body, tr(sp.greeting)).setOrigin(0.5, 0).setMaxWidth(inner.w - 10).setCenterAlign().setTint(0xffd9a0);
+      const headerH = 54 + greeting.height + 12;
+      inner.y += headerH;
+      inner.h -= headerH;
     } else {
-      label(this, this.W / 2, inner.y, t('chooseBoon'), FONT.body, COLORS.textDim, 0.5, 0);
-      inner.y += 20;
-      inner.h -= 20;
+      const hint = label(this, this.W / 2, inner.y, t('chooseBoon'), FONT.body, COLORS.textDim, 0.5, 0);
+      inner.y += hint.height + 10;
+      inner.h -= hint.height + 10;
     }
+    this.cardScroll = new ScrollPanel(this, inner.x, inner.y, inner.w, inner.h - 50);
     this.buildCards(inner);
-    const by = inner.y + 3 * this.cardH(inner) + 2 * CARD_GAP + 22;
+    const by = inner.y + inner.h - 16;
     const reroll = () => {
-      this.cards.forEach((c) => c.destroy());
+      this.cardScroll.clear();
       this.cards = [];
       this.buildCards(inner, new Rng(Date.now()));
     };
@@ -97,11 +101,6 @@ export class BoonPickScene extends OverlayScene {
     const showAd = run.rerolls <= 0 && adAvailable();
     rerollBtn.setVisible(!showAd);
     adBtn.setVisible(showAd);
-    inner.y += this.fitTo(by + 13);
-  }
-
-  private cardH(inner: { h: number }, count = 3): number {
-    return Math.min(96, Math.floor((inner.h - 40 - CARD_GAP * (count - 1)) / count));
   }
 
   private buildCards(inner: { x: number; y: number; w: number; h: number }, rng?: Rng): void {
@@ -119,52 +118,72 @@ export class BoonPickScene extends OverlayScene {
       const spiritOffers = RunManager.boonOffers(run, count, this.spirit, rng);
       if (spiritOffers.length >= 2) offers = spiritOffers;
     }
-    const ch = this.cardH(inner, offers.length);
+    let y = 0;
     offers.forEach((o, i) => {
-      const y = inner.y + i * (ch + CARD_GAP);
-      const c = this.makeCard(o.def, o.rank, o.upgrade, inner.x, y, inner.w, ch);
+      const c = this.makeCard(o.def, o.rank, o.upgrade, 0, y, inner.w - 4);
       c.setAlpha(0);
       c.x += 30;
       this.tweens.add({ targets: c, alpha: 1, x: c.x - 30, delay: i * 90, duration: 260, ease: 'Back.easeOut' });
       this.cards.push(c);
+      this.cardScroll.add(c);
+      y += c.height + CARD_GAP;
     });
+    this.cardScroll.setContentHeight(y);
   }
 
-  private makeCard(def: BoonDef, rank: number, upgrade: boolean, x: number, y: number, w: number, h: number): Phaser.GameObjects.Container {
+  private makeCard(def: BoonDef, rank: number, upgrade: boolean, x: number, y: number, w: number): Phaser.GameObjects.Container {
     const sp = SPIRITS[def.spirit];
     const c = this.add.container(x, y);
     const legendary = def.legendary || def.duo;
-    const bg = panel(this, 0, 0, w, h, legendary ? 'ui_panel_ornate' : 'ui_panel');
-    const stripe = this.add.rectangle(3, 3, 4, h - 6, sp.color).setOrigin(0, 0);
+    const bg = panel(this, 0, 0, w, 96, legendary ? 'ui_panel_ornate' : 'ui_panel');
+    const stripe = this.add.rectangle(3, 3, 4, 90, sp.color).setOrigin(0, 0);
     c.add([bg, stripe]);
     const iconX = 30;
-    const glow = this.add.image(iconX, h / 2, 'fx_light').setTint(sp.color).setBlendMode('ADD').setScale(0.4).setAlpha(0.6);
+    const glow = this.add.image(iconX, 48, 'fx_light').setTint(sp.color).setBlendMode('ADD').setScale(0.4).setAlpha(0.6);
     const iconKey = `icons_boon_${def.id}`;
     const orb = this.textures.exists(iconKey)
-      ? this.add.image(iconX, h / 2, iconKey).setDisplaySize(40, 40)
-      : this.add.image(iconX, h / 2, 'proj_orb').setTint(sp.color).setScale(2.4).setBlendMode('ADD');
+      ? this.add.image(iconX, 48, iconKey).setDisplaySize(40, 40)
+      : this.add.image(iconX, 48, 'proj_orb').setTint(sp.color).setScale(2.4).setBlendMode('ADD');
     c.add([glow, orb]);
     if (def.duo) {
-      const orb2 = this.add.image(iconX + 8, h / 2 + 8, 'proj_orb').setTint(SPIRITS[def.duo].color).setScale(1.6).setBlendMode('ADD');
+      const orb2 = this.add.image(iconX + 8, 56, 'proj_orb').setTint(SPIRITS[def.duo].color).setScale(1.6).setBlendMode('ADD');
       c.add(orb2);
     }
     this.tweens.add({ targets: glow, alpha: 0.25, yoyo: true, repeat: -1, duration: 900 });
     const tx = 58;
-    const name = this.add.bitmapText(tx, 8, FONT.head, tr(def.name)).setTint(sp.color);
+    const name = this.add.bitmapText(tx, 8, FONT.head, tr(def.name)).setMaxWidth(w - tx - 8).setTint(sp.color);
     // Taking the first boon of a spirit can open a Duo with a spirit already in the build: say so on the card.
     const duoPartner = !upgrade && !def.duo ? duoUnlockedBy(RunManager.run!, def) : undefined;
     const tag = upgrade ? t('talentRank', { a: rank, b: def.maxRank }) : def.duo ? 'DUO' : def.legendary ? 'LEGENDARY'
       : duoPartner ? t('duoUnlock', { s: tr(SPIRITS[duoPartner].name) }) : t('new');
-    const tagT = this.add.bitmapText(w - 8, 10, FONT.small, tag).setOrigin(1, 0)
+    const spiritName = def.duo ? `${tr(sp.name)} + ${tr(SPIRITS[def.duo].name)}` : tr(sp.name);
+    const tagT = this.add.bitmapText(tx, name.y + name.height + 4, FONT.small, `${spiritName}  ·  ${tag}`).setMaxWidth(w - tx - 8)
       .setTint(upgrade ? COLORS.cyan : legendary ? COLORS.orange : duoPartner ? COLORS.gold : COLORS.green);
-    const spiritT = this.add.bitmapText(tx, 25, FONT.small, def.duo ? `${tr(sp.name)} + ${tr(SPIRITS[def.duo].name)}` : tr(sp.name)).setTint(COLORS.textDim);
-    const desc = fitBox(this.add.bitmapText(tx, 37, FONT.body, boonDescription(def, rank)).setMaxWidth(w - tx - 8).setTint(COLORS.text), w - tx - 8, h - 41);
-    c.add([name, tagT, spiritT, desc]);
+    const desc = this.add.bitmapText(tx, tagT.y + tagT.height + 6, FONT.body, boonDescription(def, rank)).setMaxWidth(w - tx - 8).setTint(COLORS.text);
+    const h = Math.max(96, desc.y + desc.height + 12);
+    resizePanel(bg, w, h);
+    stripe.height = h - 6;
+    c.add([name, tagT, desc]);
     c.setSize(w, h);
-    c.setInteractive(new Phaser.Geom.Rectangle(0, 0, w, h), Phaser.Geom.Rectangle.Contains);
-    c.on('pointerdown', () => bg.setTint(0xd0c8ff));
-    c.on('pointerout', () => bg.clearTint());
-    c.on('pointerup', () => this.pick(def, c));
+    // InputManager adds a Container's half-size display origin to custom hit-area coordinates.
+    // Children are drawn from (0,0), so compensate to make the whole visible card tappable.
+    c.setInteractive(new Phaser.Geom.Rectangle(w / 2, h / 2, w, h), Phaser.Geom.Rectangle.Contains);
+    let pressedPointer: number | null = null;
+    c.on('pointerdown', (p: Phaser.Input.Pointer) => {
+      if (this.picked || !this.cardScroll.contains(p)) return;
+      pressedPointer = p.id;
+      bg.setTint(0xd0c8ff);
+    });
+    c.on('pointerout', () => {
+      pressedPointer = null;
+      bg.clearTint();
+    });
+    c.on('pointerup', (p: Phaser.Input.Pointer) => {
+      const tapped = pressedPointer === p.id && !this.cardScroll.wasDrag && this.cardScroll.contains(p);
+      pressedPointer = null;
+      bg.clearTint();
+      if (tapped) this.pick(def, c);
+    });
     return c;
   }
 

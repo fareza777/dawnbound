@@ -1,0 +1,66 @@
+[
+ {
+  "goto": "http://localhost:4174"
+ },
+ {
+  "until": "window.__game && window.__services && window.__services.save && window.__game.scene.getScenes(true).length > 0",
+  "timeout": 20000
+ },
+ {
+  "wait": 800
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); __run.start({heroId:'rowan'}); g.scene.start('RunMap'); 'map';__setLang('en')"
+ },
+ {
+  "wait": 2500
+ },
+ {
+  "eval": "const m=__game.scene.getScene('RunMap'); m.select(__run.choices(__run.run)[0]); 'go'"
+ },
+ {
+  "wait": 3500
+ },
+ {
+  "eval": "const r=__game.scene.getScene('Room'); r.scene.pause(); r.scene.launch('BoonPick',{room:r,source:'shrine',spirit:'aurora'}); 'pick'"
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "shot": "shard_pick_en"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "__game.scene.stop('BoonPick'); __game.scene.getScene('Room').scene.resume(); (window.__errs||[]).slice(-3).join(' | ')"
+ },
+ {
+  "eval": "localStorage.clear(); __services.save.reset(); const s=__services.save.data; s.profile.onboardingDone=true; s.profile.introSeen=true; const g=__game; g.scene.getScenes(true).filter(x=>x.scene.key!=='Notify').forEach(sc=>sc.scene.stop()); __run.start({heroId:'rowan'}); g.scene.start('RunMap'); 'map';__setLang('id')"
+ },
+ {
+  "wait": 2500
+ },
+ {
+  "eval": "const m=__game.scene.getScene('RunMap'); m.select(__run.choices(__run.run)[0]); 'go'"
+ },
+ {
+  "wait": 3500
+ },
+ {
+  "eval": "const r=__game.scene.getScene('Room'); r.scene.pause(); r.scene.launch('BoonPick',{room:r,source:'shrine',spirit:'aurora'}); 'pick'"
+ },
+ {
+  "wait": 1500
+ },
+ {
+  "shot": "shard_pick_id"
+ },
+ {
+  "eval": "'OVF '+JSON.stringify(__overflow())"
+ },
+ {
+  "eval": "__game.scene.stop('BoonPick'); __game.scene.getScene('Room').scene.resume(); (window.__errs||[]).slice(-3).join(' | ')"
+ }
+]

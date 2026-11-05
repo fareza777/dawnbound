@@ -113,8 +113,8 @@ const BASE_CONVERSATIONS: Conversation[] = [
   {
     id: 'c_liora_intro', npc: 'liora', priority: 70, cond: () => true,
     lines: [
-      { who: 'liora', text: L('The six Spirits still wander the Depths. They are drawn to the Lantern\'s flame — to you.', 'Keenam Roh masih berkelana di Kedalaman. Mereka tertarik pada nyala Lentera — padamu.') },
-      { who: 'liora', text: L('Pray at their shrines. Accept their Boons. Just remember: power borrowed is still power owed.', 'Berdoalah di kuil mereka. Terimalah Anugerah mereka. Ingatlah: kekuatan yang dipinjam tetap harus dibayar.') },
+      { who: 'liora', text: L('Six Elemental Shards still glow in the Depths. They resonate with the Lantern\'s flame — and you carry it.', 'Enam Kepingan Elemen masih bersinar di Kedalaman. Mereka beresonansi dengan nyala Lentera — dan kau membawanya.') },
+      { who: 'liora', text: L('Attune to them. Accept their Boons. Just remember: power borrowed is still power owed.', 'Selaraskan dirimu dengan mereka. Terimalah Anugerah mereka. Ingatlah: kekuatan yang dipinjam tetap harus dibayar.') },
     ],
   },
   {
@@ -188,8 +188,8 @@ export const IDLE: Record<string, { cond?: (s: SaveData) => boolean; text: L10n 
     { text: L('Salvage junk at Brom\'s, sell treasures to me. That\'s the circle of commerce.', 'Urai barang rongsok di Brom, jual harta padaku. Itulah lingkaran perdagangan.') },
   ],
   liora: [
-    { text: L('Two spirits in harmony can grant a Duo Boon. Seek balance.', 'Dua roh yang selaras bisa memberi Anugerah Duo. Carilah keseimbangan.') },
-    { text: L('Legendary Boons come to those devoted to one spirit.', 'Anugerah Legendaris datang kepada yang setia pada satu roh.') },
+    { text: L('Two shards in harmony can grant a Duo Boon. Seek balance.', 'Dua kepingan yang selaras bisa memberi Anugerah Duo. Carilah keseimbangan.') },
+    { text: L('Legendary Boons come to those who focus on one shard.', 'Anugerah Legendaris datang kepada yang fokus pada satu kepingan.') },
   ],
   kael: [
     { text: L('Wasps come in swarms. Dash through, don\'t fight in the middle.', 'Tawon datang berkawanan. Dash menembus, jangan bertarung di tengah.') },

@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import { OverlayScene } from '../overlays/OverlayScene';
 import { COLORS, FONT, RARITY_COLORS } from '@/ui/theme';
-import { Button, fitBox, fitText, label, panel, para, shrinkToFit, toast } from '@/ui/widgets';
+import { Button, label, panel, para, resizePanel, shrinkToFit, toast } from '@/ui/widgets';
 import { t, tr } from '@/core/i18n';
 import { services } from '@/core/services';
 import { bus } from '@/core/events';
@@ -71,14 +71,14 @@ export class BlacksmithScene extends OverlayScene {
     const tw = inner.w / 3;
     tabs.forEach(([m, name], i) => {
       const locked = m === 'reforge' && !s.unlocks.features.includes('reforge');
-      const bg = panel(this, inner.x + i * tw + 1, inner.y, tw - 2, 22, m === this.mode ? 'ui_tab_on' : 'ui_tab').setInteractive();
-      shrinkToFit(label(this, inner.x + i * tw + tw / 2, inner.y + 11, locked ? `${name} (${t('locked')})` : name, FONT.small, locked ? COLORS.textDim : COLORS.text, 0.5, 0.5), tw - 8);
+      const bg = panel(this, inner.x + i * tw + 1, inner.y, tw - 2, 30, m === this.mode ? 'ui_tab_on' : 'ui_tab').setInteractive();
+      shrinkToFit(label(this, inner.x + i * tw + tw / 2, inner.y + 15, locked ? `${name} (${t('locked')})` : name, FONT.small, locked ? COLORS.textDim : COLORS.text, 0.5, 0.5), tw - 8);
       bg.on('pointerup', () => {
         if (locked) toast(this, t('reforgeLocked'), COLORS.textDim);
         else this.restartWith(m, this.selected?.uid);
       });
     });
-    const body = { x: inner.x, y: inner.y + 30, w: inner.w, h: inner.h - 30 };
+    const body = { x: inner.x, y: inner.y + 38, w: inner.w, h: inner.h - 38 };
     if (this.mode === 'forge') this.drawForge(body);
     else this.drawItemPicker(body);
   }
@@ -108,9 +108,10 @@ export class BlacksmithScene extends OverlayScene {
       return;
     }
     const cardY = b.y + listH + 8;
-    const { container, height } = itemCard(this, b.x, cardY, b.w, it);
-    const maxCard = b.h - listH - 92;
-    if (height > maxCard) container.setScale(Math.max(0.65, maxCard / height));
+    const { container, height } = itemCard(this, 0, 0, b.w - 6, it);
+    const maxCard = Math.max(64, b.h - listH - (this.mode === 'reforge' ? 150 : 116));
+    const detail = new ScrollPanel(this, b.x, cardY, b.w, maxCard);
+    detail.add(container).setContentHeight(height);
     const bottom = this.panelY + this.panelH - 16;
     if (this.mode === 'upgrade') this.upgradePanel(it, b, bottom);
     else this.reforgePanel(it, b, bottom);
@@ -124,8 +125,8 @@ export class BlacksmithScene extends OverlayScene {
     }
     const cost = upgradeCost(it);
     const chance = upgradeSuccessChance(it.plus);
-    label(this, b.x, bottom - 62, `+${it.plus} -> +${it.plus + 1}   ${t('chance')}: ${Math.round(chance * 100)}%`, FONT.body, COLORS.text);
-    costLine(this, b.x, bottom - 46, cost.gold, cost.mats, s);
+    label(this, b.x, bottom - 86, `+${it.plus} -> +${it.plus + 1}   ${t('chance')}: ${Math.round(chance * 100)}%`, FONT.body, COLORS.text).setMaxWidth(b.w);
+    costLine(this, b.x, bottom - 48, cost.gold, cost.mats, s);
     const can = s.currency.gold >= cost.gold && haveMats(s, cost.mats);
     new Button(this, view.w / 2, bottom - 16, t('upgrade'), () => {
       if (!can) return;
@@ -153,7 +154,7 @@ export class BlacksmithScene extends OverlayScene {
     const s = this.save;
     const gold = Math.round(60 + it.ilvl * 4 + it.rarity * 40);
     const mats: [string, number][] = [['arcane_dust', 2 + it.rarity], ['rare_shard', Math.max(1, it.rarity - 1)]];
-    label(this, b.x, bottom - 62, t('reforgeHint'), FONT.small, COLORS.textDim);
+    label(this, b.x, bottom - 112, t('reforgeHint'), FONT.small, COLORS.textDim).setMaxWidth(b.w);
     costLine(this, b.x, bottom - 46, gold, mats, s);
     const can = s.currency.gold >= gold && haveMats(s, mats) && it.affixes.length > 0;
     new Button(this, view.w / 2, bottom - 16, t('reforge'), () => {
@@ -176,19 +177,20 @@ export class BlacksmithScene extends OverlayScene {
 
   private drawForge(b: { x: number; y: number; w: number; h: number }): void {
     const s = this.save;
-    para(this, b.x, b.y, t('forgeHint'), b.w, FONT.body, COLORS.textDim);
+    const hint = para(this, b.x, b.y, t('forgeHint'), b.w, FONT.body, COLORS.textDim);
     const depth = Math.max(1, s.unlocks.maxDepthReached);
     const ilvl = depth * 10 + 2;
     const gold = 80 + depth * 60;
     const mats: [string, number][] = [['iron_ore', 6 + depth * 2], ['arcane_dust', 2 + depth]];
     if (depth >= 3) mats.push(['rare_shard', depth - 2]);
-    costLine(this, b.x, b.y + 42, gold, mats, s);
+    const costY = hint.y + hint.height + 12;
+    costLine(this, b.x, costY, gold, mats, s);
     const can = s.currency.gold >= gold && haveMats(s, mats);
     const cols = 2;
     const bw = (b.w - 8) / cols;
     SLOTS.forEach((slot: Slot, i) => {
       const x = b.x + (i % cols) * (bw + 8) + bw / 2;
-      const y = b.y + 80 + Math.floor(i / cols) * 36;
+      const y = costY + 46 + Math.floor(i / cols) * 42;
       new Button(this, x, y, tr(SLOT_NAMES[slot]), () => {
         if (!can) return;
         s.currency.gold -= gold;
@@ -201,7 +203,7 @@ export class BlacksmithScene extends OverlayScene {
         services.save!.markDirty();
         checkProgress();
         this.showForged(item);
-      }, { w: bw, h: 30, disabled: !can });
+      }, { w: bw, h: 34, disabled: !can });
     });
   }
 
@@ -230,13 +232,18 @@ export class AlchemistScene extends OverlayScene {
     const flaskMax = 3;
     const flaskCost = [120, 300, 700][s.flaskLevel] ?? 0;
     const flaskMats: [string, number][] = [['slime_gel', 4 + s.flaskLevel * 4], ['moonpetal', 1 + s.flaskLevel]];
-    scroll.add(this.add.bitmapText(0, y, FONT.head, `${t('flaskUpgrade')} (${s.flaskLevel}/${flaskMax})`).setTint(COLORS.gold));
-    y += 18;
-    scroll.add(this.add.bitmapText(0, y, FONT.small, t('flaskUpgradeDesc', { n: 2 + s.flaskLevel })).setMaxWidth(inner.w).setTint(COLORS.textDim));
-    y += 14;
+    const flask = this.add.bitmapText(0, y, FONT.head, `${t('flaskUpgrade')} (${s.flaskLevel}/${flaskMax})`).setMaxWidth(inner.w).setTint(COLORS.gold);
+    scroll.add(flask);
+    y += flask.height + 4;
+    const flaskDesc = this.add.bitmapText(0, y, FONT.small, t('flaskUpgradeDesc', { n: 2 + s.flaskLevel })).setMaxWidth(inner.w).setTint(COLORS.textDim);
+    scroll.add(flaskDesc);
+    y += flaskDesc.height + 6;
     if (s.flaskLevel < flaskMax) {
       const can = s.currency.gold >= flaskCost && haveMats(s, flaskMats);
-      const btn = new Button(this, inner.w - 50, y + 10, t('upgrade'), () => {
+      const g = this.add.bitmapText(0, y, FONT.small, `${flaskCost}g + ${flaskMats.map(([id, n]) => `${n} ${tr(materialDef(id)!.name)}`).join(', ')}`).setMaxWidth(inner.w).setTint(COLORS.text);
+      scroll.add(g);
+      y += g.height + 8;
+      const btn = new Button(this, inner.w - 54, y + 17, t('upgrade'), () => {
         if (!can) return;
         s.currency.gold -= flaskCost;
         payMats(s, flaskMats);
@@ -244,17 +251,17 @@ export class AlchemistScene extends OverlayScene {
         services.audio?.sfx('brew');
         services.save!.markDirty();
         this.scene.restart({ from: this.from });
-      }, { w: 96, h: 24, style: 'primary', disabled: !can });
+      }, { w: 104, h: 34, style: 'primary', disabled: !can });
       scroll.add(btn);
-      y += 30;
-      const g = this.add.bitmapText(0, y - 24, FONT.small, `${flaskCost}g + ${flaskMats.map(([id, n]) => `${n} ${tr(materialDef(id)!.name)}`).join(', ')}`).setMaxWidth(inner.w - 110).setTint(COLORS.text);
-      scroll.add(g);
+      y += 44;
     }
     y += 10;
-    scroll.add(this.add.bitmapText(0, y, FONT.head, t('elixirs')).setTint(COLORS.gold));
-    y += 18;
-    scroll.add(this.add.bitmapText(0, y, FONT.small, t('elixirHint')).setMaxWidth(inner.w).setTint(COLORS.textDim));
-    y += 26;
+    const elixirs = this.add.bitmapText(0, y, FONT.head, t('elixirs')).setTint(COLORS.gold);
+    scroll.add(elixirs);
+    y += elixirs.height + 4;
+    const hint = this.add.bitmapText(0, y, FONT.small, t('elixirHint')).setMaxWidth(inner.w).setTint(COLORS.textDim);
+    scroll.add(hint);
+    y += hint.height + 12;
     for (const e of ELIXIRS) {
       const unlocked = s.unlocks.maxDepthReached >= e.unlockDepth;
       const owned = s.elixirs[e.id] ?? 0;
@@ -263,12 +270,15 @@ export class AlchemistScene extends OverlayScene {
       scroll.add(box);
       const icon = this.textures.exists(e.icon) ? this.add.image(18, y + 20, e.icon).setDisplaySize(24, 24) : this.add.image(18, y + 20, 'pk_heart');
       scroll.add(icon);
-      scroll.add(this.add.bitmapText(36, y + 5, FONT.body, `${tr(e.name)}  x${owned}`).setTint(unlocked ? COLORS.text : COLORS.textDim));
-      scroll.add(this.add.bitmapText(36, y + 21, FONT.small, unlocked ? tr(e.desc) : t('requiresDepth', { d: e.unlockDepth })).setMaxWidth(inner.w - 130).setTint(COLORS.textDim));
+      const name = this.add.bitmapText(36, y + 5, FONT.body, `${tr(e.name)}  x${owned}`).setMaxWidth(inner.w - 46).setTint(unlocked ? COLORS.text : COLORS.textDim);
+      const desc = this.add.bitmapText(36, name.y + name.height + 3, FONT.small, unlocked ? tr(e.desc) : t('requiresDepth', { d: e.unlockDepth })).setMaxWidth(inner.w - 46).setTint(COLORS.textDim);
+      scroll.add([name, desc]);
       const costTxt = `${e.gold}g, ${e.cost.map(([id, n]) => `${n} ${tr(materialDef(id)!.name)}`).join(', ')}`;
-      scroll.add(this.add.bitmapText(36, y + 44, FONT.small, costTxt).setMaxWidth(inner.w - 130).setTint(COLORS.gold));
+      const cost = this.add.bitmapText(36, desc.y + desc.height + 6, FONT.small, costTxt).setMaxWidth(inner.w - 46).setTint(COLORS.gold);
+      scroll.add(cost);
+      const actionY = cost.y + cost.height + 24;
       const can = unlocked && s.currency.gold >= e.gold && haveMats(s, e.cost);
-      scroll.add(new Button(this, inner.w - 44, y + 18, t('brew'), () => {
+      scroll.add(new Button(this, inner.w - 48, actionY, t('brew'), () => {
         if (!can) return;
         s.currency.gold -= e.gold;
         payMats(s, e.cost);
@@ -276,15 +286,17 @@ export class AlchemistScene extends OverlayScene {
         services.audio?.sfx('brew');
         services.save!.markDirty();
         this.scene.restart({ from: this.from });
-      }, { w: 76, h: 22, font: FONT.small, disabled: !can }));
+      }, { w: 86, h: 32, font: FONT.small, disabled: !can }));
       if (owned > 0) {
-        scroll.add(new Button(this, inner.w - 44, y + 44, active ? t('active') : t('use'), () => {
+        scroll.add(new Button(this, inner.w - 144, actionY, active ? t('active') : t('use'), () => {
           s.activeElixir = active ? null : e.id;
           services.save!.markDirty();
           this.scene.restart({ from: this.from });
-        }, { w: 76, h: 22, font: FONT.small, style: active ? 'primary' : 'normal' }));
+        }, { w: 86, h: 32, font: FONT.small, style: active ? 'primary' : 'normal' }));
       }
-      y += 70;
+      const h = actionY + 24 - y;
+      resizePanel(box, inner.w, h);
+      y += h + 10;
     }
     scroll.setContentHeight(y + 10);
   }
@@ -333,20 +345,24 @@ export class MerchantScene extends OverlayScene {
     const tabs: ['buy' | 'sell' | 'seeds', string][] = [['buy', t('buy')], ['sell', t('sell')], ['seeds', t('seeds')]];
     const tw = inner.w / 3;
     tabs.forEach(([m, name], i) => {
-      const bg = panel(this, inner.x + i * tw + 1, inner.y, tw - 2, 22, m === this.tab ? 'ui_tab_on' : 'ui_tab').setInteractive();
-      label(this, inner.x + i * tw + tw / 2, inner.y + 11, name, FONT.small, COLORS.text, 0.5, 0.5);
+      const bg = panel(this, inner.x + i * tw + 1, inner.y, tw - 2, 30, m === this.tab ? 'ui_tab_on' : 'ui_tab').setInteractive();
+      label(this, inner.x + i * tw + tw / 2, inner.y + 15, name, FONT.small, COLORS.text, 0.5, 0.5);
       bg.on('pointerup', () => this.scene.restart({ from: this.from, tab: m }));
     });
-    label(this, inner.x + inner.w, inner.y + 28, `${t('gold')}: ${s.currency.gold}`, FONT.body, COLORS.gold, 1, 0);
-    const scroll = new ScrollPanel(this, inner.x, inner.y + 46, inner.w, inner.h - 46);
+    label(this, inner.x + inner.w, inner.y + 36, `${t('gold')}: ${s.currency.gold}`, FONT.body, COLORS.gold, 1, 0);
+    const scroll = new ScrollPanel(this, inner.x, inner.y + 70, inner.w, inner.h - 70);
     let y = 0;
     const row = (it: ItemInstance, price: number, btnLabel: string, onClick: () => void, disabled: boolean) => {
-      scroll.add(panel(this, 0, y, inner.w, 46, 'ui_panel_dark'));
+      const bg = panel(this, 0, y, inner.w, 60, 'ui_panel_dark');
+      scroll.add(bg);
       scroll.add(itemSlot(this, 22, y + 23, it, 36));
-      scroll.add(fitText(this, 46, y + 6, FONT.body, itemName(it), inner.w - 140).setTint(RARITY_COLORS[it.rarity]));
-      scroll.add(this.add.bitmapText(46, y + 26, FONT.small, `${tr(SLOT_NAMES[baseById(it.baseId)!.slot])} · ${t('gearScore', { n: itemPower(it) })}`).setTint(COLORS.textDim));
-      scroll.add(new Button(this, inner.w - 44, y + 23, `${btnLabel} ${price}`, onClick, { w: 80, h: 24, font: FONT.small, disabled }));
-      y += 50;
+      const name = this.add.bitmapText(46, y + 6, FONT.body, itemName(it)).setMaxWidth(inner.w - 150).setTint(RARITY_COLORS[it.rarity]);
+      const desc = this.add.bitmapText(46, Math.max(name.y + name.height + 4, y + 42), FONT.small, `${tr(SLOT_NAMES[baseById(it.baseId)!.slot])} · ${t('gearScore', { n: itemPower(it) })}`).setMaxWidth(inner.w - 54).setTint(COLORS.textDim);
+      scroll.add([name, desc]);
+      scroll.add(new Button(this, inner.w - 48, y + 23, `${btnLabel} ${price}`, onClick, { w: 88, h: 32, font: FONT.small, disabled }));
+      const h = desc.y + desc.height + 8 - y;
+      resizePanel(bg, inner.w, h);
+      y += h + 10;
     };
     if (this.tab === 'buy') {
       const stock = this.stock();
@@ -384,10 +400,12 @@ export class MerchantScene extends OverlayScene {
       const seeds = MATERIALS.filter((m) => m.kind === 'seed' && (m.id !== 'seed_golden' || s.unlocks.maxDepthReached >= 4));
       seeds.forEach((m) => {
         const price = m.value * 4;
-        scroll.add(panel(this, 0, y, inner.w, 40, 'ui_panel_dark'));
+        const bg = panel(this, 0, y, inner.w, 60, 'ui_panel_dark');
+        scroll.add(bg);
         scroll.add(materialIcon(this, 20, y + 20, m.id, 22));
-        scroll.add(this.add.bitmapText(40, y + 5, FONT.body, `${tr(m.name)}  x${s.materials[m.id] ?? 0}`).setTint(COLORS.text));
-        scroll.add(this.add.bitmapText(40, y + 22, FONT.small, tr(m.desc)).setTint(COLORS.textDim).setMaxWidth(inner.w - 130));
+        const name = this.add.bitmapText(40, y + 5, FONT.body, `${tr(m.name)}  x${s.materials[m.id] ?? 0}`).setMaxWidth(inner.w - 144).setTint(COLORS.text);
+        const desc = this.add.bitmapText(40, Math.max(name.y + name.height + 4, y + 42), FONT.small, tr(m.desc)).setTint(COLORS.textDim).setMaxWidth(inner.w - 48);
+        scroll.add([name, desc]);
         scroll.add(new Button(this, inner.w - 44, y + 20, `${t('buy')} ${price}`, () => {
           if (s.currency.gold < price) return toast(this, t('notEnoughGold'), COLORS.red);
           s.currency.gold -= price;
@@ -395,8 +413,10 @@ export class MerchantScene extends OverlayScene {
           services.audio?.sfx('buy');
           services.save!.markDirty();
           this.scene.restart({ from: this.from, tab: 'seeds' });
-        }, { w: 80, h: 24, font: FONT.small, disabled: s.currency.gold < price }));
-        y += 44;
+        }, { w: 80, h: 32, font: FONT.small, disabled: s.currency.gold < price }));
+        const h = desc.y + desc.height + 8 - y;
+        resizePanel(bg, inner.w, h);
+        y += h + 10;
       });
     }
     scroll.setContentHeight(y + 10);
@@ -413,18 +433,21 @@ export class GardenScene extends OverlayScene {
     const inner = this.frame(t('garden'), 0.8);
     const s = this.save;
     if (s.unlocks.features.includes('garden_plot') && s.garden.length < 4) s.garden.push({ seedId: null, plantedAtRun: 0 });
-    para(this, inner.x, inner.y, t('gardenHint'), inner.w, FONT.small, COLORS.textDim);
+    const contentStart = this.children.list.length;
+    const hint = para(this, inner.x, inner.y, t('gardenHint'), inner.w, FONT.small, COLORS.textDim);
     const runs = s.stats.runs ?? 0;
-    let y = inner.y + 34;
+    let y = hint.y + hint.height + 12;
     s.garden.forEach((plot, i) => {
-      panel(this, inner.x, y, inner.w, 60, 'ui_panel_dark');
-      label(this, inner.x + 10, y + 6, `${t('plot')} ${i + 1}`, FONT.head, COLORS.gold);
+      const bg = panel(this, inner.x, y, inner.w, 90, 'ui_panel_dark');
+      const title = label(this, inner.x + 10, y + 6, `${t('plot')} ${i + 1}`, FONT.head, COLORS.gold);
+      let bottom = title.y + title.height + 6;
       if (plot.seedId) {
         const grow = SEED_GROWTH[plot.seedId];
         const left = Math.max(0, grow.runs - (runs - plot.plantedAtRun));
-        fitBox(label(this, inner.x + 10, y + 25, tr(materialDef(plot.seedId)!.name), FONT.body, COLORS.text), inner.w - 110, 16);
-        label(this, inner.x + 10, y + 42, left > 0 ? t('growsIn', { n: left }) : t('ready'), FONT.small, left > 0 ? COLORS.textDim : COLORS.green);
-        new Button(this, inner.x + inner.w - 50, y + 30, t('harvest'), () => {
+        const name = para(this, inner.x + 10, bottom, tr(materialDef(plot.seedId)!.name), inner.w - 116, FONT.body, COLORS.text);
+        const status = para(this, inner.x + 10, name.y + name.height + 3, left > 0 ? t('growsIn', { n: left }) : t('ready'), inner.w - 116, FONT.small, left > 0 ? COLORS.textDim : COLORS.green);
+        bottom = status.y + status.height + 10;
+        new Button(this, inner.x + inner.w - 50, y + 48, t('harvest'), () => {
           for (const [id, n] of grow.yields) s.materials[id] = (s.materials[id] ?? 0) + n;
           if (grow.bonus === 'embers') s.currency.embers += 100;
           plot.seedId = null;
@@ -437,22 +460,29 @@ export class GardenScene extends OverlayScene {
           services.save!.markDirty();
           checkProgress();
           this.scene.restart({ from: this.from });
-        }, { w: 84, h: 26, style: 'primary', disabled: left > 0 });
+        }, { w: 84, h: 34, style: 'primary', disabled: left > 0 });
       } else {
         const seeds = Object.keys(SEED_PLANT).filter((id) => (s.materials[id] ?? 0) > 0);
-        label(this, inner.x + 10, y + 28, seeds.length ? t('empty') : t('noSeeds'), FONT.body, COLORS.textDim);
+        const empty = para(this, inner.x + 10, bottom, seeds.length ? t('empty') : t('noSeeds'), inner.w - 20, FONT.body, COLORS.textDim);
+        bottom = empty.y + empty.height + 8;
+        const seedW = (inner.w - 30) / 2;
         seeds.slice(0, 3).forEach((id, k) => {
-          new Button(this, inner.x + inner.w - 50 - k * 72, y + 30, tr(materialDef(id)!.name).split(' ')[0], () => {
+          new Button(this, inner.x + 10 + (k % 2) * (seedW + 10) + seedW / 2, bottom + 18 + Math.floor(k / 2) * 42, tr(materialDef(id)!.name).split(' ')[0], () => {
             s.materials[id] -= 1;
             plot.seedId = id;
             plot.plantedAtRun = runs;
             services.audio?.sfx('plant');
             services.save!.markDirty();
             this.scene.restart({ from: this.from });
-          }, { w: 68, h: 24, font: FONT.small });
+          }, { w: seedW, h: 36, font: FONT.small });
         });
+        if (seeds.length) bottom += Math.ceil(Math.min(3, seeds.length) / 2) * 42;
       }
-      y += 66;
+      resizePanel(bg, inner.w, bottom - y + 6);
+      y = bottom + 16;
     });
+    const content = this.children.list.slice(contentStart);
+    const scroll = new ScrollPanel(this, inner.x, inner.y, inner.w, inner.h);
+    scroll.adopt(content).setContentHeight(y - inner.y);
   }
 }

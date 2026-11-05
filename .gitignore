@@ -6,6 +6,7 @@ android/.gradle/
 *.keystore
 *.jks
 tools/.cache/
+artifacts/readability/
 # Paid Asset Store content (Super Retro Collection) - never publish
 public/assets/pack/
 
@@ -27,3 +28,11 @@ __pycache__/
 *.pyc
 # Launch pack archive duplicates the exports (kept locally)
 store/launch-en/*.zip
+# Private AdMob console screenshots (other apps, consent stats) - keep local
+artifacts/admob-*.png
+# TikTok media recorded from an older build (old portraits with faces); re-record with marketing/tiktok/scripts/capture.mjs
+marketing/tiktok/public/clips/
+marketing/tiktok/public/images/
+marketing/tiktok/public/stills/
+# Separate repository (F7 Developer website) - not part of Dawnbound
+artifacts/website-f7developer-badge/

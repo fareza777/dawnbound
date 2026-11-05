@@ -4,6 +4,7 @@ import { COLORS, FONT } from '@/ui/theme';
 import { Button, label, para, toast, type ButtonOpts } from '@/ui/widgets';
 import { t } from '@/core/i18n';
 import { services } from '@/core/services';
+import { ScrollPanel } from '@/ui/scroll';
 
 /** Button decoration marking a rewarded video (the player always knows a video will play). */
 export const VIDEO_ICON: NonNullable<ButtonOpts['icon']> = { atlas: 'ui_play', scale: 14 / 48, tint: 0xffe2a0 };
@@ -87,6 +88,7 @@ export class RemoveAdsScene extends OverlayScene {
 
   create(): void {
     const inner = this.frame(t('removeAds'), 0.8);
+    const contentStart = this.children.list.length;
     const store = services.store;
     const owned = this.save.shop.noAds;
     this.add.image(this.W / 2, inner.y + 30, 'fx_light').setTint(COLORS.gold).setBlendMode('ADD').setScale(0.8).setAlpha(0.45);
@@ -107,7 +109,9 @@ export class RemoveAdsScene extends OverlayScene {
       });
     }
     new Button(this, this.W / 2, by + 42, t('restorePurchases'), () => void this.restore(), { w: 200, h: 26, font: FONT.small });
-    this.fitTo(by + 55);
+    const content = this.children.list.slice(contentStart);
+    const scroll = new ScrollPanel(this, inner.x, inner.y, inner.w, inner.h);
+    scroll.adopt(content).setContentHeight(by + 62 - inner.y);
   }
 
   private async buy(): Promise<void> {

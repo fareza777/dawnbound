@@ -16,15 +16,14 @@ CHARS = [chr(c) for c in range(32, 127)] + list("…•·×°—’“”éèà�
 
 FONTS = [
     # key, ttf, size at 1x, logical size on hi-res, outline, weight (variable fonts), ttf at 1x (if different)
-    # Jersey is bold and unambiguous on phones (Pixelify drew "5" like "S" and "B" like "G").
-    ("body", "Jersey15-Regular.ttf", 15, 16, True, None, None),
-    ("bodyplain", "Jersey15-Regular.ttf", 15, 16, False, None, None),
-    ("head", "Jersey20-Regular.ttf", 20, 18, True, None, None),
-    ("title", "Jersey20-Regular.ttf", 20, 22, True, None, None),
-    # Small text: Jersey's tall x-height reads far better than Tiny5 on phones; Tiny5 stays for 1x (Low quality),
-    # where Jersey would be drawn off its native pixel grid.
-    ("small", "Jersey15-Regular.ttf", 8, 12, True, None, "Tiny5-Regular.ttf"),
-    ("smallplain", "Jersey15-Regular.ttf", 8, 12, False, None, "Tiny5-Regular.ttf"),
+    # Clear, open letterforms at the original compact sizes, outlined to read over game art.
+    ("body", "VT323-Regular.ttf", 16, 16, True, None, None),
+    ("bodyplain", "VT323-Regular.ttf", 16, 16, False, None, None),
+    ("head", "Jersey20-Regular.ttf", 18, 18, True, None, None),
+    ("title", "Jersey20-Regular.ttf", 22, 22, True, None, None),
+    # Keep small labels readable at low quality too, instead of returning to the old 8px atlas.
+    ("small", "VT323-Regular.ttf", 12, 12, True, None, None),
+    ("smallplain", "VT323-Regular.ttf", 12, 12, False, None, None),
 ]
 SCALES = [1, 2, 3, 4]
 FALLBACK = "Tiny5-Regular.ttf"

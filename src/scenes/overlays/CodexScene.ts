@@ -37,17 +37,20 @@ export class CodexScene extends OverlayScene {
     const tabW = inner.w / 4;
     TABS.forEach((tb, i) => {
       const x = inner.x + (i % 4) * tabW;
-      const y = inner.y + Math.floor(i / 4) * 22;
-      const bg = panel(this, x + 1, y, tabW - 2, 20, 'ui_tab').setInteractive();
-      const txt = fitBox(label(this, x + tabW / 2, y + 10, t(tb === 'bestiary' ? 'bestiary' : tb === 'items' ? 'equipment' : tb), FONT.small, COLORS.text, 0.5, 0.5), tabW - 8, 18);
+      const y = inner.y + Math.floor(i / 4) * 34;
+      const bg = panel(this, x + 1, y, tabW - 2, 30, 'ui_tab').setInteractive();
+      const name = tb === 'bestiary' ? tr({ en: 'Foes', id: 'Musuh' })
+        : tb === 'items' ? tr({ en: 'Gear', id: 'Peralatan' })
+        : tb === 'achievements' ? tr({ en: 'Awards', id: 'Prestasi' }) : t(tb);
+      const txt = fitBox(label(this, x + tabW / 2, y + 15, name, FONT.small, COLORS.text, 0.5, 0.5), tabW - 8, 24, 0.85);
       bg.on('pointerup', () => this.show(tb));
       this.tabBtns.push(txt);
       (txt as unknown as { bgRef: Phaser.GameObjects.NineSlice }).bgRef = bg;
     });
     this.detailOpen = false;
-    this.tapHint = label(this, inner.x, inner.y + 48, t('cxTapHint'), FONT.small, COLORS.textDim).setAlpha(0.7);
-    this.countText = label(this, inner.x + inner.w, inner.y + 48, '', FONT.small, COLORS.textDim, 1, 0);
-    this.scroll = new ScrollPanel(this, inner.x, inner.y + 62, inner.w, inner.h - 62);
+    this.tapHint = label(this, inner.x, inner.y + 72, t('cxTapHint'), FONT.small, COLORS.textDim);
+    this.countText = label(this, inner.x + inner.w, inner.y + 98, '', FONT.small, COLORS.textDim, 1, 0);
+    this.scroll = new ScrollPanel(this, inner.x, inner.y + 130, inner.w, inner.h - 130);
     this.show('bestiary');
   }
 
@@ -81,11 +84,12 @@ export class CodexScene extends OverlayScene {
           this.scroll.add(img);
         }
       }
-      this.scroll.add(this.add.bitmapText(x0, y, FONT.body, known ? title : t('undiscovered')).setTint(known ? color : COLORS.textDim));
-      const d = this.add.bitmapText(x0, y + 15, FONT.small, known ? body : t(`codexHint_${tab}`)).setMaxWidth(w - x0 - 6)
-        .setTint(COLORS.textDim).setAlpha(known ? 1 : 0.6);
+      const name = this.add.bitmapText(x0, y, FONT.body, known ? title : t('undiscovered')).setMaxWidth(w - x0 - 6).setTint(known ? color : COLORS.textDim);
+      this.scroll.add(name);
+      const d = this.add.bitmapText(x0, y + name.height + 3, FONT.small, known ? body : t(`codexHint_${tab}`)).setMaxWidth(w - x0 - 6)
+        .setTint(COLORS.textDim);
       this.scroll.add(d);
-      y += Math.max(icon ? 30 : 0, 17 + d.height) + 6;
+      y = Math.max(top + (icon ? 30 : 0), d.y + d.height) + 12;
       if (detail) {
         // Whole row is the tap target; taps that ended a scroll drag are ignored.
         const zone = this.add.zone(0, top - 2, w, y - top).setOrigin(0, 0).setInteractive();
@@ -175,9 +179,10 @@ export class CodexScene extends OverlayScene {
           total++;
           const known = !!s.achievements[a.id];
           if (known) found++;
-          this.scroll.add(this.add.bitmapText(4, y, FONT.body, tr(a.name)).setTint(known ? COLORS.gold : COLORS.textDim));
-          this.scroll.add(this.add.bitmapText(4, y + 15, FONT.small, tr(a.desc)).setMaxWidth(w - 10).setTint(known ? COLORS.text : COLORS.border));
-          y += 34;
+          const name = this.add.bitmapText(4, y, FONT.body, tr(a.name)).setMaxWidth(w - 10).setTint(known ? COLORS.gold : COLORS.textDim);
+          const desc = this.add.bitmapText(4, y + name.height + 3, FONT.small, tr(a.desc)).setMaxWidth(w - 10).setTint(known ? COLORS.text : COLORS.textDim);
+          this.scroll.add([name, desc]);
+          y = desc.y + desc.height + 12;
         }
         break;
       }
@@ -192,7 +197,7 @@ export class CodexScene extends OverlayScene {
         for (const [k, v] of rows) {
           this.scroll.add(this.add.bitmapText(4, y, FONT.body, k).setTint(COLORS.textDim));
           this.scroll.add(this.add.bitmapText(w - 4, y, FONT.body, v).setOrigin(1, 0).setTint(COLORS.text));
-          y += 20;
+          y += 34;
         }
         break;
       }

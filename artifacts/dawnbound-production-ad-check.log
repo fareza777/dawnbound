@@ -1,0 +1,16 @@
+10-06 00:06:10.430  6816  6816 W UserMessagingPlatform: Publisher misconfiguration: Failed to read publisher's account configuration; no form(s) configured for the input app ID. Verify that you have configured one or more forms for this application and try again. Received app ID: `ca-app-pub-6279186647593327~3638656746`.
+10-06 00:06:28.881  6816  6816 W UserMessagingPlatform: Publisher misconfiguration: Failed to read publisher's account configuration; no form(s) configured for the input app ID. Verify that you have configured one or more forms for this application and try again. Received app ID: `ca-app-pub-6279186647593327~3638656746`.
+10-06 00:06:59.076  6816  6961 D UserMessagingPlatform: Action[write]: {"UMP_consentModeValues":"4444","IABTCF_CmpSdkID":300,"IABTCF_gdprApplies":0}
+10-06 00:06:59.080  6816  6961 D UserMessagingPlatform: Writing to storage: [IABTCF_gdprApplies] 0
+10-06 00:06:59.411  6816  6962 I Ads     : This request is sent from a test device.
+10-06 00:06:59.971  6816  6962 I Ads     : This request is sent from a test device.
+10-06 00:07:05.003  6816  6816 I Ads     : Ad failed to load : 3
+10-06 00:07:20.204  6816  6962 I Ads     : This request is sent from a test device.
+10-06 00:07:21.895  6816  6816 I Ads     : Ad failed to load : 3
+10-06 00:07:52.026  6816  6962 I Ads     : This request is sent from a test device.
+10-06 00:07:54.092  6816  6816 I Ads     : Ad failed to load : 3
+10-06 00:07:55.083  6816  6962 I Ads     : This request is sent from a test device.
+10-06 00:08:54.213  6816  6962 I Ads     : This request is sent from a test device.
+10-06 00:08:55.772  6816  6816 I Ads     : Ad failed to load : 3
+10-06 00:09:08.903  6816  6816 I Ads     : This request is sent from a test device.
+10-06 00:10:19.723  6816  6816 I Ads     : This request is sent from a test device.

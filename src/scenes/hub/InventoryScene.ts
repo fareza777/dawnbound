@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import { OverlayScene } from '../overlays/OverlayScene';
-import { COLORS, FONT } from '@/ui/theme';
-import { Button, label, panel, toast } from '@/ui/widgets';
+import { COLORS, FONT, fontSize } from '@/ui/theme';
+import { Button, fitBox, label, panel, setTextFit, toast } from '@/ui/widgets';
 import { confirm } from '@/ui/modal';
 import { t, tr } from '@/core/i18n';
 import { services } from '@/core/services';
@@ -25,12 +25,14 @@ export class InventoryScene extends OverlayScene {
   private filter: Filter = 'all';
   private sortMode: 'power' | 'rarity' | 'new' = 'power';
   private grid!: ScrollPanel;
-  private detail?: Phaser.GameObjects.Container;
+  private detail?: ScrollPanel;
   private detailBtns: Phaser.GameObjects.GameObject[] = [];
   private eqRow: Phaser.GameObjects.Container[] = [];
   private powerText!: Phaser.GameObjects.BitmapText;
   private inner!: { x: number; y: number; w: number; h: number };
   private countText!: Phaser.GameObjects.BitmapText;
+  private statsText!: Phaser.GameObjects.BitmapText;
+  private eqY = 0;
 
   constructor() {
     super('Inventory');
@@ -39,26 +41,43 @@ export class InventoryScene extends OverlayScene {
   create(): void {
     this.inner = this.frame(t('inventory'), 0.94);
     const { x, y, w } = this.inner;
-    this.powerText = label(this, x, y - 2, '', FONT.small, COLORS.gold);
-    this.countText = label(this, x + w, y - 2, '', FONT.small, COLORS.textDim, 1, 0);
+    this.powerText = label(this, x, y - 2, t('gearScore', { n: 0 }), FONT.small, COLORS.gold);
+    this.countText = label(this, x + w, y - 2, `0/${INVENTORY_CAP}`, FONT.small, COLORS.textDim, 1, 0);
+    this.statsText = label(this, x, y + this.powerText.height + 2, 'HP 0  ·  ATK 0  ·  DEF 0', FONT.small, COLORS.text);
+    this.eqY = this.statsText.y + this.statsText.height + 26;
     this.drawEquipped();
     const tabs: [Filter, string][] = [['all', t('all')], ['weapon', tr(SLOT_NAMES.weapon)], ['armor', tr(SLOT_NAMES.armor)], ['jewel', t('jewelry')], ['materials', t('materials')]];
-    const tw = w / tabs.length;
+    const tabCols = w < 320 || fontSize(FONT.small) > 20 ? 3 : tabs.length;
+    const tw = w / tabCols;
+    const tabY = this.eqY + 26;
     tabs.forEach(([f, name], i) => {
-      const bg = panel(this, x + i * tw + 1, y + 58, tw - 2, 20, f === this.filter ? 'ui_tab_on' : 'ui_tab').setInteractive();
-      label(this, x + i * tw + tw / 2, y + 68, name, FONT.small, COLORS.text, 0.5, 0.5);
+      const tx = x + (i % tabCols) * tw;
+      const ty = tabY + Math.floor(i / tabCols) * 34;
+      const bg = panel(this, tx + 1, ty, tw - 2, 30, f === this.filter ? 'ui_tab_on' : 'ui_tab').setInteractive();
+      fitBox(label(this, tx + tw / 2, ty + 15, name, FONT.small, COLORS.text, 0.5, 0.5), tw - 8, 24, 0.85);
       bg.on('pointerup', () => {
         this.filter = f;
         this.scene.restart({ from: this.from, filter: f, sort: this.sortMode });
       });
     });
-    new Button(this, x + 36, y + 94, t('sort'), () => {
+    const actionW = (w - 12) / 3;
+    const actionH = Math.max(34, ...[t('sort'), t('equipBest'), t('salvageAll')].map((caption) => {
+      const measure = this.add.bitmapText(0, 0, FONT.small, caption).setMaxWidth(actionW - 10);
+      const height = measure.height + 10;
+      measure.destroy();
+      return height;
+    }));
+    const actionY = tabY + Math.ceil(tabs.length / tabCols) * 34 + actionH / 2 + 6;
+    const sortBtn = new Button(this, x + actionW / 2, actionY, t('sort'), () => {
       this.sortMode = this.sortMode === 'power' ? 'rarity' : this.sortMode === 'rarity' ? 'new' : 'power';
       this.drawGrid();
-    }, { w: 72, h: 22, font: FONT.small });
-    new Button(this, x + w / 2 - 4, y + 94, t('equipBest'), () => this.equipBest(), { w: 104, h: 22, font: FONT.small, style: 'primary' });
-    new Button(this, x + w - 50, y + 94, t('salvageAll'), () => this.salvageJunk(), { w: 100, h: 22, font: FONT.small });
-    this.grid = new ScrollPanel(this, x, y + 110, w, Math.round(this.inner.h * 0.42));
+    }, { w: actionW, h: actionH, font: FONT.small });
+    const equipBtn = new Button(this, x + w / 2, actionY, t('equipBest'), () => this.equipBest(), { w: actionW, h: actionH, font: FONT.small, style: 'primary' });
+    const salvageBtn = new Button(this, x + w - actionW / 2, actionY, t('salvageAll'), () => this.salvageJunk(), { w: actionW, h: actionH, font: FONT.small });
+    [sortBtn, equipBtn, salvageBtn].forEach((b) => b.text.setScale(1).setMaxWidth(actionW - 10).setCenterAlign());
+    const gridY = actionY + actionH / 2 + 8;
+    const remaining = this.inner.y + this.inner.h - gridY - 44;
+    this.grid = new ScrollPanel(this, x, gridY, w, Math.max(84, Math.min(180, Math.round(remaining * 0.4))));
     this.drawGrid();
   }
 
@@ -73,7 +92,7 @@ export class InventoryScene extends OverlayScene {
 
   private drawEquipped(): void {
     const s = this.save;
-    const { x, y, w } = this.inner;
+    const { x, w } = this.inner;
     this.eqRow.forEach((c) => c.destroy());
     this.eqRow = [];
     const size = Math.min(40, Math.floor((w - 12) / 7));
@@ -81,15 +100,16 @@ export class InventoryScene extends OverlayScene {
       const uid = s.equipped[slot];
       const it = uid ? s.inventory.find((q) => q.uid === uid) ?? null : null;
       const ghost = ITEM_BASES.find((b) => b.slot === slot)?.icon;
-      const c = itemSlot(this, x + size / 2 + i * (size + 2), y + 30, it, size, tr(SLOT_NAMES[slot]).slice(0, 4), ghost);
+      const c = itemSlot(this, x + size / 2 + i * (size + 2), this.eqY, it, size, tr(SLOT_NAMES[slot]).slice(0, 4), ghost);
       c.setSize(size, size).setInteractive();
       c.on('pointerup', () => it && this.showDetail(it));
       this.eqRow.push(c);
     });
     const ctx = buildContext(s, null);
     const power = equippedItems(s).reduce((a, it) => a + itemPower(it), 0);
-    this.powerText.setText(`${t('gearScore', { n: power })}  ·  HP ${Math.round(ctx.stats.maxHp)}  ATK ${Math.round(ctx.stats.atk)}  DEF ${Math.round(ctx.stats.def)}`);
     this.countText.setText(`${s.inventory.length}/${INVENTORY_CAP}`);
+    setTextFit(this.powerText, t('gearScore', { n: power }), w - this.countText.width - 16);
+    this.statsText.setText(`HP ${Math.round(ctx.stats.maxHp)}  ·  ATK ${Math.round(ctx.stats.atk)}  ·  DEF ${Math.round(ctx.stats.def)}`);
   }
 
   private visibleItems(): ItemInstance[] {
@@ -115,10 +135,11 @@ export class InventoryScene extends OverlayScene {
       if (!owned.length) this.grid.add(this.add.bitmapText(4, 4, FONT.body, t('nothingHere')).setTint(COLORS.textDim));
       for (const m of owned) {
         this.grid.add(materialIcon(this, 12, y + 10, m.id, 18));
-        this.grid.add(this.add.bitmapText(28, y + 2, FONT.body, `${tr(m.name)}  x${s.materials[m.id]}`).setTint(COLORS.text));
-        const d = this.add.bitmapText(28, y + 17, FONT.small, tr(m.desc)).setMaxWidth(w - 34).setTint(COLORS.textDim);
+        const name = this.add.bitmapText(28, y + 2, FONT.body, `${tr(m.name)}  x${s.materials[m.id]}`).setMaxWidth(w - 34).setTint(COLORS.text);
+        this.grid.add(name);
+        const d = this.add.bitmapText(28, name.y + name.height + 2, FONT.small, tr(m.desc)).setMaxWidth(w - 34).setTint(COLORS.textDim);
         this.grid.add(d);
-        y += 22 + d.height;
+        y = d.y + d.height + 10;
       }
       this.grid.setContentHeight(y + 4);
       return;
@@ -161,10 +182,11 @@ export class InventoryScene extends OverlayScene {
     const isEquipped = equippedUid === it.uid;
     const current = equippedUid && !isEquipped ? s.inventory.find((q) => q.uid === equippedUid) : null;
     const top = this.grid.y + this.grid.h + 6;
-    const { container, height } = itemCard(this, this.inner.x, top, this.inner.w, it, current, this.setCount(it));
-    this.detail = container;
-    const maxH = this.panelY + this.panelH - 44 - top;
-    if (height > maxH) container.setScale(Math.max(0.7, maxH / height));
+    const { container, height } = itemCard(this, 0, 0, this.inner.w - 6, it, current, this.setCount(it));
+    const maxH = this.panelY + this.panelH - 48 - top;
+    this.detail = new ScrollPanel(this, this.inner.x, top, this.inner.w, Math.max(64, maxH));
+    this.detail.add(container);
+    this.detail.setContentHeight(height);
     const by = this.panelY + this.panelH - 22;
     const bw = (this.inner.w - 12) / 3;
     const bx = this.inner.x + bw / 2;
@@ -175,12 +197,12 @@ export class InventoryScene extends OverlayScene {
       services.save!.markDirty();
       checkProgress();
       this.refreshAll(it);
-    }, { w: bw, h: 26, style: 'primary' });
+    }, { w: bw, h: 32, style: 'primary' });
     const b2 = new Button(this, bx + bw + 6, by, it.locked ? t('unlock') : t('lock'), () => {
       it.locked = !it.locked;
       services.save!.markDirty();
       this.refreshAll(it);
-    }, { w: bw, h: 26 });
+    }, { w: bw, h: 32 });
     const b3 = new Button(this, bx + (bw + 6) * 2, by, t('salvage'), () => {
       confirm(this, t('salvage'), `${t('salvageConfirm')}`, () => {
         this.salvage([it]);
@@ -188,7 +210,7 @@ export class InventoryScene extends OverlayScene {
         this.detailBtns.forEach((b) => b.destroy());
         this.refreshAll();
       }, true);
-    }, { w: bw, h: 26, style: 'danger', disabled: !!it.locked || isEquipped });
+    }, { w: bw, h: 32, style: 'danger', disabled: !!it.locked || isEquipped });
     this.detailBtns.push(b1, b2, b3);
   }
 
