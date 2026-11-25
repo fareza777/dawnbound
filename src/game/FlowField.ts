@@ -35,13 +35,29 @@ export class FlowField {
 
   update(px: number, py: number): void {
     const l = this.layout;
-    const tx = Math.floor(px / TILE);
-    const ty = Math.floor(py / TILE);
-    const t = ty * l.w + tx;
+    let tx = Math.max(0, Math.min(l.w - 1, Math.floor(px / TILE)));
+    let ty = Math.max(0, Math.min(l.h - 1, Math.floor(py / TILE)));
+    let t = ty * l.w + tx;
+    if (this.blocked[t]) {
+      const maxR = Math.max(l.w, l.h);
+      let found = -1;
+      for (let r = 1; r <= maxR && found < 0; r++) {
+        for (let dy = -r; dy <= r && found < 0; dy++) {
+          for (let dx = -r; dx <= r && found < 0; dx++) {
+            const nx = tx + dx;
+            const ny = ty + dy;
+            if (nx < 0 || ny < 0 || nx >= l.w || ny >= l.h) continue;
+            const ni = ny * l.w + nx;
+            if (!this.blocked[ni]) found = ni;
+          }
+        }
+      }
+      if (found < 0) return;
+      t = found;
+    }
     if (t === this.target) return;
     this.target = t;
     this.dist.fill(Infinity);
-    if (tx < 0 || ty < 0 || tx >= l.w || ty >= l.h) return;
     // Simple bucketed Dijkstra (grid is tiny).
     const open: number[] = [t];
     this.dist[t] = 0;

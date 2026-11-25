@@ -4,6 +4,7 @@ import type { AiKind, EnemyDef, Pattern } from '@/data/enemies';
 import type { World } from '@/game/World';
 import { dirFromVector } from '@/gfx/animations';
 import type { StatusKind } from '@/systems/combat';
+import { services } from '@/core/services';
 
 type EState = 'spawn' | 'move' | 'windup' | 'charge' | 'recover' | 'burrowed' | 'emerge' | 'fuse' | 'fade';
 
@@ -104,7 +105,11 @@ export class Enemy extends Actor {
     if (affixes.includes('armored')) this.armor *= 2;
     if (affixes.includes('shielded')) this.eliteShield = this.maxHp * 0.35;
     const glow = affixes.includes('burning') ? 0xff7a2f : affixes.includes('frozen') ? 0x9ee8ff : affixes.includes('vampiric') ? 0xe0304a : 0xffd84a;
-    this.sprite.preFX?.addGlow(glow, 3, 0, false, 0.1, 10);
+    if (services.save?.data.settings.quality === 'high') {
+      this.sprite.preFX?.addGlow(glow, 3, 0, false, 0.1, 10);
+    } else if (!this.def.sprite.tint) {
+      this.setBaseTint(glow);
+    }
   }
 
   private animBase(): string {
@@ -596,12 +601,11 @@ export class Enemy extends Actor {
     for (let i = 0; i < 10; i++) {
       const a = Math.random() * Math.PI * 2;
       const r = 50 + Math.random() * 40;
-      const x = w.player.x + Math.cos(a) * r;
-      const y = w.player.y + Math.sin(a) * r;
-      if (!w.isWalkableAt(x, y, this.def.flying ?? false)) continue;
+      const spot = w.safeSpotNear(w.player.x + Math.cos(a) * r, w.player.y + Math.sin(a) * r, this.radius, !!this.def.flying);
+      if (Math.hypot(spot.x - w.player.x, spot.y - w.player.y) < 35) continue;
       w.light(this.x, this.y, 20, this.def.projTint ?? 0xb080ff, 300);
-      this.body.reset(x, y);
-      w.light(x, y, 20, this.def.projTint ?? 0xb080ff, 300);
+      this.reposition(spot.x, spot.y, true);
+      w.light(spot.x, spot.y, 20, this.def.projTint ?? 0xb080ff, 300);
       w.sfx('blink', 0.4);
       return;
     }

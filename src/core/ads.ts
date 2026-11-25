@@ -25,6 +25,9 @@ const BANNER_GAP_DP = 4;
 const BANNER_MARGIN_DP = 8;
 /** Retry delays after a failed ad load (no fill / offline), capped at the last value. */
 const RETRY_MS = [15_000, 30_000, 60_000, 120_000, 300_000];
+/** Safety timeouts so a missing native AdMob callback can never hang a transition or revive dialog. */
+const AD_SHOW_TIMEOUT_MS = 12_000;
+const AD_DISMISS_TIMEOUT_MS = 120_000;
 type RetryKind = 'init' | 'banner' | 'interstitial' | 'rewarded';
 
 /**
@@ -382,18 +385,28 @@ export class Ads {
   private async playFullScreen(kind: 'interstitial' | 'rewarded'): Promise<{ displayed: boolean; earned: boolean }> {
     let displayed = false;
     let earned = false;
+    let settled = false;
     let finish!: () => void;
     const dismissed = new Promise<void>((resolve) => { finish = resolve; });
+    let watchdog: ReturnType<typeof setTimeout> | undefined;
+    const done = () => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(watchdog);
+      finish();
+    };
     const handles: PluginListenerHandle[] = [];
     const failed = (err: unknown) => {
       this.setStatus(kind, 'Failed', err);
       console.warn(`[ads] ${kind} show failed`, err);
-      finish();
+      done();
     };
     const showed = () => {
       displayed = true; this.counts[kind] += 1; this.setStatus(kind, 'Showing');
+      clearTimeout(watchdog);
+      watchdog = setTimeout(() => { this.setStatus(kind, 'Closed'); done(); }, AD_DISMISS_TIMEOUT_MS);
     };
-    const closed = () => { this.setStatus(kind, 'Closed'); finish(); };
+    const closed = () => { this.setStatus(kind, 'Closed'); done(); };
     try {
       handles.push(...await Promise.all([
         kind === 'interstitial' ? AdMob.addListener(InterstitialAdPluginEvents.Showed, showed) : AdMob.addListener(RewardAdPluginEvents.Showed, showed),
@@ -404,11 +417,13 @@ export class Ads {
           earned = true;
         })] : []),
       ]));
+      watchdog = setTimeout(() => failed(new Error(`${kind} show timeout`)), AD_SHOW_TIMEOUT_MS);
       void (kind === 'interstitial' ? AdMob.showInterstitial() : AdMob.showRewardVideoAd()).catch(failed);
       await dismissed;
     } catch (err) {
       failed(err);
     } finally {
+      clearTimeout(watchdog);
       await Promise.all(handles.map((h) => h.remove().catch(() => undefined)));
     }
     return { displayed, earned };

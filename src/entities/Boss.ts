@@ -22,6 +22,8 @@ export class Boss extends Enemy {
   private breathe?: Phaser.Tweens.Tween;
   private baseScale: number;
   private enraged = false;
+  private charging = false;
+  private onChargeWallHit: (() => void) | null = null;
 
   constructor(scene: Phaser.Scene, x: number, y: number, readonly bdef: BossDef, readonly slot: number, world: () => World, hpMul: number, atkMul: number) {
     const pseudo: EnemyDef = {
@@ -81,6 +83,16 @@ export class Boss extends Enemy {
     this.checkPhase();
     const kb = this.consumeKnockback(dt);
     const canAct = this.statuses.canAct();
+    if (this.charging) {
+      const b = this.body.blocked;
+      if (b.left || b.right || b.up || b.down) {
+        this.charging = false;
+        this.body.setVelocity(0, 0);
+        const cb = this.onChargeWallHit;
+        this.onChargeWallHit = null;
+        cb?.();
+      }
+    }
     if (this.bstate === 'idle' && canAct) {
       const dx = p.x - this.x;
       const dy = p.y - this.y;
@@ -190,26 +202,35 @@ export class Boss extends Enemy {
           this.later(i === 0 ? 650 : 420, () => {
             g.destroy();
             w.sfx('charge', 0.9);
+            this.charging = true;
             this.body.setVelocity(Math.cos(ang) * 300 * speedMul, Math.sin(ang) * 300 * speedMul);
-            this.later(480, () => {
+            let finished = false;
+            const endCharge = (hitWall: boolean) => {
+              if (finished || !this.alive) return;
+              finished = true;
+              this.charging = false;
+              this.onChargeWallHit = null;
               this.body.setVelocity(0, 0);
-              w.shake(0.006, 150);
+              w.shake(hitWall ? 0.009 : 0.006, 150);
               if (i + 1 < n) doCharge(i + 1);
               else done(0.4);
-            });
+            };
+            this.onChargeWallHit = () => endCharge(true);
+            this.later(480, () => endCharge(false));
           });
         };
         doCharge(0);
         break;
       }
       case 'slam': {
-        const tx = p.x;
-        const ty = p.y;
+        const landing = w.safeSpotNear(p.x, p.y, this.radius);
+        const tx = landing.x;
+        const ty = landing.y;
         this.telegraphCircle(tx, ty, 38, 850);
         this.scene.tweens.add({ targets: this.sprite, y: this.sprite.y - 40, alpha: 0.6, duration: 380, ease: 'Quad.easeOut' });
         w.sfx('boss_jump', 0.8);
         this.invulnerable = true;
-        this.later(420, () => this.body.reset(tx, ty));
+        this.later(420, () => this.reposition(tx, ty, true));
         this.later(850, () => {
           this.invulnerable = false;
           this.sprite.setAlpha(1);
@@ -341,10 +362,9 @@ export class Boss extends Enemy {
         this.invulnerable = true;
         w.sfx('blink', 0.8);
         this.later(300, () => {
-          const x = Phaser.Math.Clamp(p.x + Phaser.Math.Between(-70, 70), 30, w.roomWidth - 30);
-          const y = Phaser.Math.Clamp(p.y - Phaser.Math.Between(50, 90), 70, w.roomHeight - 40);
-          this.body.reset(x, y);
-          w.light(x, y - 20, 50, this.bdef.tint, 500);
+          const spot = w.safeSpotNear(p.x + Phaser.Math.Between(-70, 70), p.y - Phaser.Math.Between(50, 90), this.radius);
+          this.reposition(spot.x, spot.y, true);
+          w.light(spot.x, spot.y - 20, 50, this.bdef.tint, 500);
           this.scene.tweens.add({ targets: this.sprite, alpha: 1, duration: 250 });
           this.later(260, () => {
             this.invulnerable = false;
@@ -384,6 +404,8 @@ export class Boss extends Enemy {
 
   onDeath(): void {
     const w = this.w;
+    this.charging = false;
+    this.onChargeWallHit = null;
     this.breathe?.stop();
     w.floatText(this.x, this.y - 60, tr(this.bdef.defeat), 0xffd9a0, true);
     if (this.partner && this.partner.alive) {

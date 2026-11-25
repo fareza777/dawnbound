@@ -5,6 +5,7 @@ import { Button, label, toast } from '@/ui/widgets';
 import { confirm, showModal } from '@/ui/modal';
 import { t } from '@/core/i18n';
 import { services } from '@/core/services';
+import { RunManager } from '@/game/RunManager';
 export const GAME_VERSION = import.meta.env.VITE_APP_VERSION || '1.0.7';
 
 export class MenuScene extends BaseScene {
@@ -109,8 +110,11 @@ export class MenuScene extends BaseScene {
   private continueGame(): void {
     const save = this.save;
     if (!save.profile.introSeen) this.goTo('Intro');
-    else if (save.run) this.goTo('RunMap');
-    else this.goTo('Hub');
+    else if (save.run) {
+      const target = RunManager.resumeTarget(save.run);
+      if (target.scene === 'Room') this.goTo('Room', target.data);
+      else this.goTo('RunMap');
+    } else this.goTo('Hub');
   }
 
   private newGame(hasProgress: boolean): void {

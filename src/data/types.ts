@@ -54,6 +54,13 @@ export interface Settings {
 export type NodeKind =
   | 'start' | 'combat' | 'elite' | 'treasure' | 'shop' | 'shrine' | 'event' | 'rest' | 'challenge' | 'mystery' | 'boss';
 
+export interface PendingRoom {
+  kind: NodeKind;
+  reward?: string;
+  content?: string;
+  modifier?: string;
+}
+
 export interface MapNode {
   id: string;
   row: number;
@@ -122,6 +129,8 @@ export interface RunState {
   endless?: boolean;
   /** Weekly mutator active when the run started (see data/mutators). */
   mutator?: string;
+  /** Room currently being played (set when entering a node, cleared on exit) so Continue resumes cleanly. */
+  pendingRoom?: PendingRoom | null;
   damageTaken?: number;
   potionsUsed?: number;
   bonusMaxHp?: number;

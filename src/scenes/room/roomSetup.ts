@@ -40,6 +40,28 @@ export function setupKeyboard(room: RoomScene): void {
   });
 }
 
+// ------------------------------------------------------------------ physics
+/**
+ * Clamp and sub-step Arcade Physics so dashes and boss charges cannot tunnel past 16 px walls on laggy frames.
+ */
+export function installPhysicsSubstep(world: Phaser.Physics.Arcade.World, maxStepMs = 12, maxTotalMs = 50): void {
+  world.TILE_BIAS = 24;
+  const tagged = world as unknown as { __substepped?: boolean };
+  if (tagged.__substepped) return;
+  tagged.__substepped = true;
+  const origUpdate = world.update;
+  world.update = function (time: number, delta: number): void {
+    const total = Math.min(maxTotalMs, Math.max(0, delta));
+    if (total <= maxStepMs) {
+      origUpdate.call(this, time, total);
+      return;
+    }
+    const steps = Math.ceil(total / maxStepMs);
+    const step = total / steps;
+    for (let i = 0; i < steps; i++) origUpdate.call(this, time, step);
+  };
+}
+
 // ------------------------------------------------------------------ building
 export function buildColliders(room: RoomScene): void {
   room.solids = room.physics.add.staticGroup();

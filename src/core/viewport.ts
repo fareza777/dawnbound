@@ -96,6 +96,25 @@ export function autoQuality(): boolean {
   return !readQuality().user;
 }
 
+/** True on low-RAM devices (<= 3 GB) or older Android WebViews (4-8) where hi-res/postFX shaders can glitch. */
+export function isLowTierDevice(nav?: { deviceMemory?: number; userAgent?: string }): boolean {
+  const info = nav ?? (typeof navigator !== 'undefined' ? (navigator as Navigator & { deviceMemory?: number }) : undefined);
+  if (!info) return false;
+  if (info.deviceMemory !== undefined && info.deviceMemory <= 3) return true;
+  if (typeof info.userAgent === 'string' && /Android [4-8](?:\.|\b)/i.test(info.userAgent)) return true;
+  return false;
+}
+
+/** True when automatic quality degradation is active for this device. */
+export function isAutoLowActive(): boolean {
+  try {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem(AUTO_LOW_KEY) === '1') return true;
+  } catch {
+    // Storage unavailable: fall through to device check.
+  }
+  return isLowTierDevice();
+}
+
 /**
  * Decides hi-res rendering before the save system boots (the canvas size is fixed at startup): the player's choice
  * if they made one, otherwise hi-res unless the device reports little memory or already failed the frame-rate check.
@@ -103,13 +122,7 @@ export function autoQuality(): boolean {
 export function savedHiRes(): boolean {
   const q = readQuality();
   if (q.user) return q.quality !== 'low';
-  try {
-    if (localStorage.getItem(AUTO_LOW_KEY) === '1') return false;
-  } catch {
-    // Storage unavailable: fall through to the device check.
-  }
-  const mem = (navigator as Navigator & { deviceMemory?: number }).deviceMemory;
-  return !(mem !== undefined && mem <= 3);
+  return !isAutoLowActive();
 }
 
 /**

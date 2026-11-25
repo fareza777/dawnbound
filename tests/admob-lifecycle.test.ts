@@ -211,4 +211,27 @@ describe('native AdMob lifecycle', () => {
     expect(sdk.prepareInterstitial).not.toHaveBeenCalled();
     expect(sdk.prepareRewardVideoAd).not.toHaveBeenCalled();
   });
+
+  it('resolves naturalBreak cleanly after show timeout if no SDK callback fires', async () => {
+    await ads.init();
+    let settled = false;
+    const pending = ads.naturalBreak().then(() => { settled = true; });
+    await flush();
+    expect(settled).toBe(false);
+    await vi.advanceTimersByTimeAsync(12_000);
+    await pending;
+    expect(settled).toBe(true);
+    expect(save.shop.lastInterstitialAt).toBe(0);
+    expect(sdk.prepareInterstitial).toHaveBeenCalledTimes(2);
+  });
+
+  it('resolves showRewarded(false) after show timeout and unlocks future rewarded ads', async () => {
+    await ads.init();
+    const pending = ads.showRewarded('revive');
+    await flush();
+    await vi.advanceTimersByTimeAsync(12_000);
+    expect(await pending).toBe(false);
+    expect(sdk.prepareRewardVideoAd).toHaveBeenCalledTimes(2);
+    expect(ads.canReward()).toBe(true);
+  });
 });

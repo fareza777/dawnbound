@@ -24,6 +24,8 @@ export abstract class Actor {
   hitFlash = 0;
   knockX = 0;
   knockY = 0;
+  safeX: number;
+  safeY: number;
   private flashTint = 0xffffff;
   private baseTint = 0xffffff;
   private punchBase?: { x: number; y: number };
@@ -39,6 +41,20 @@ export abstract class Actor {
     this.shadow = scene.add.image(x, y, 'fx_shadow');
     this.shadow.setScale(Math.max(0.6, radius / 6), 1).setAlpha(0.9);
     this.sprite = scene.add.sprite(x, y + this.spriteOffsetY, atlas, frame);
+    this.safeX = x;
+    this.safeY = y;
+  }
+
+  reposition(x: number, y: number, stopVelocity = false): void {
+    this.zone.setPosition(x, y);
+    this.body.position.set(x - this.body.halfWidth, y - this.body.halfHeight);
+    this.body.prev.set(this.body.position.x, this.body.position.y);
+    if (stopVelocity) {
+      this.body.setVelocity(0, 0);
+      this.knockX = 0;
+      this.knockY = 0;
+    }
+    this.syncVisual(0);
   }
 
   get x(): number {

@@ -109,3 +109,39 @@ describe('RunManager.end', () => {
     expect(RunManager.end(run, true).embers).toBe(150);
   });
 });
+
+describe('RunManager.resumeTarget', () => {
+  it('sets pendingRoom on enterNode and resumes directly into Room', () => {
+    const run = RunManager.start({ heroId: 'rowan', seed: 31 });
+    const next = RunManager.choices(run)[0];
+    const room = RunManager.enterNode(run, next.id);
+    expect(run.pendingRoom).toEqual(room);
+    const target = RunManager.resumeTarget(run);
+    expect(target).toEqual({ scene: 'Room', data: room });
+  });
+
+  it('recovers a v1.0.10 stuck save on the last row with no pendingRoom', () => {
+    const run = RunManager.start({ heroId: 'rowan', seed: 32 });
+    const lastNode = run.map.nodes.find((n) => n.row === run.map.rows - 1)!;
+    run.nodeId = lastNode.id;
+    run.pendingRoom = undefined;
+    expect(RunManager.choices(run)).toEqual([]);
+    const target = RunManager.resumeTarget(run);
+    expect(target.scene).toBe('Room');
+    if (target.scene === 'Room') {
+      expect(target.data.kind).toBe(lastNode.kind);
+    }
+  });
+
+  it('clears pendingRoom on advance and restores choices on the new floor', () => {
+    const run = RunManager.start({ heroId: 'rowan', seed: 33 });
+    const lastNode = run.map.nodes.find((n) => n.row === run.map.rows - 1)!;
+    RunManager.enterNode(run, lastNode.id);
+    expect(run.pendingRoom).toBeTruthy();
+    const res = RunManager.advance(run);
+    expect(res).toBe('floor');
+    expect(run.pendingRoom).toBeNull();
+    expect(RunManager.choices(run).length).toBeGreaterThan(0);
+    expect(RunManager.resumeTarget(run)).toEqual({ scene: 'RunMap' });
+  });
+});

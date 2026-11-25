@@ -18,6 +18,7 @@ import { RoomRenderer, TILE } from '@/gfx/RoomRenderer';
 import { Player } from '@/entities/Player';
 import { Enemy, ELITE_AFFIXES, type EliteAffix } from '@/entities/Enemy';
 import { Boss } from '@/entities/Boss';
+import type { Actor } from '@/entities/Actor';
 import { BIOME_BOSS, BOSSES, bossScaling } from '@/data/bosses';
 import { Combat } from '@/game/Combat';
 import { Fx } from '@/game/Fx';
@@ -40,7 +41,9 @@ import { mutatorById } from '@/data/mutators';
 import { shakeCamera, worldZoom } from '@/core/viewport';
 import { a11y } from '@/core/a11y';
 import { RoomFeatures } from './room/RoomFeatures';
-import { buildColliders, buildProps, lookAhead, setupCamera, setupKeyboard } from './room/roomSetup';
+import { buildColliders, buildProps, installPhysicsSubstep, lookAhead, setupCamera, setupKeyboard } from './room/roomSetup';
+import { initialRoomState } from './room/roomState';
+import { clampToWalkable, findSafeSpotNear, isCellWalkableAt, playableBounds } from '@/systems/roomBounds';
 
 /** Global shake softening (tuned on phones; 1 = the raw values passed by gameplay code). */
 const SHAKE_SCALE = 0.6;
@@ -133,15 +136,10 @@ export class RoomScene extends BaseScene implements World {
     this.breakables = [];
     this.interactables = [];
     this.boss = null;
-    this.cleared = false;
-    this.gateOpen = false;
-    this.leaving = false;
-    this.pendingLevelUps = 0;
-    this.pendingEventBoons = 0;
-    this.dead = false;
+    this.gate = undefined;
     this.transitioning = false;
-    this.hitStopMs = 0;
-    this.roomTime = 0;
+    (this as unknown as { shopCache?: Record<string, unknown> }).shopCache = undefined;
+    Object.assign(this, initialRoomState());
   }
 
   create(): void {
@@ -164,7 +162,9 @@ export class RoomScene extends BaseScene implements World {
     this.layout = generateRoom(this.rng.fork('layout'), { kind: genKind, hazard: this.biome.theme.hazard !== 'pit', minHeight });
     this.roomWidth = this.layout.w * TILE;
     this.roomHeight = this.layout.h * TILE;
-    this.physics.world.setBounds(0, TILE * 2, this.roomWidth, this.roomHeight - TILE * 2);
+    const bounds = playableBounds(this.layout, TILE);
+    this.physics.world.setBounds(bounds.left, bounds.top, bounds.right - bounds.left, bounds.bottom - bounds.top);
+    installPhysicsSubstep(this.physics.world);
     this.roomRenderer = new RoomRenderer(this, this.layout, this.biome.theme, this.rng.int(0, 1e9));
     this.foliage = this.biome.theme.foliage ? this.buildFoliage(this.roomRenderer.under) : undefined;
     const q = this.save.settings.quality;
@@ -385,14 +385,15 @@ export class RoomScene extends BaseScene implements World {
   private telegraphSpawn(x: number, y: number, id: string, elite: boolean, delay: number): void {
     this.spawning++;
     this.time.delayedCall(delay * 1000, () => {
+      if (!this.scene.isActive() && !this.scene.isPaused()) return;
       const seal = this.add.image(x, y, 'fx_seal').setTint(elite ? 0xffd84a : 0xff4040).setBlendMode('ADD').setDepth(4).setAlpha(0);
       this.tweens.add({ targets: seal, alpha: 1, duration: 200 });
       this.tweens.add({ targets: seal, angle: 180, duration: 700 });
       this.lighting.add({ x, y, radius: 18, tint: elite ? 0xffd84a : 0xff5050, ttl: 0.9 });
       this.time.delayedCall(700, () => {
         seal.destroy();
-        this.spawning--;
-        if (this.dead || this.leaving) return;
+        this.spawning = Math.max(0, this.spawning - 1);
+        if ((!this.scene.isActive() && !this.scene.isPaused()) || this.dead || this.leaving) return;
         const e = this.spawnEnemy(id, x, y, elite);
         if (e && elite) e.makeElite(this.rng.sample(ELITE_AFFIXES as unknown as EliteAffix[], this.depth >= 3 ? 2 : 1));
         this.sfx('spawn', 0.3);
@@ -407,7 +408,8 @@ export class RoomScene extends BaseScene implements World {
     const end = endlessEnemyMult(this.depth, this.biome);
     const ad = this.adaptive();
     const scaling = { hp: sc.hp * this.heatHp * end.hp * ad.hp, atk: sc.atk * this.heatAtk * end.atk * ad.atk };
-    const e = new Enemy(this, x, y, def, scaling, () => this, elite);
+    const pos = findSafeSpotNear(this.layout, x, y, def.radius * (elite ? 1.2 : 1), !!def.flying, TILE);
+    const e = new Enemy(this, pos.x, pos.y, def, scaling, () => this, elite);
     e.speed *= this.heatSpeed;
     this.enemyGroup.add(e.zone);
     if (!def.flying) {
@@ -449,6 +451,7 @@ export class RoomScene extends BaseScene implements World {
     this.boss = new Boss(this, cx, cy, def, 0, () => this, (tyrant ? 1.3 : this.heatHp) * end.hp, this.heatAtk * end.atk);
     this.enemyGroup.add(this.boss.zone);
     this.physics.add.collider(this.boss.zone, this.solids);
+    this.physics.add.collider(this.boss.zone, this.liquids);
     this.enemies.push(this.boss);
     if (def.partner) {
       const pEnd = endlessBossMult(this.depth, BOSSES[def.partner]);
@@ -457,6 +460,7 @@ export class RoomScene extends BaseScene implements World {
       const partner = new Boss(this, cx + 40, cy + 10, BOSSES[def.partner], 1, () => this, (tyrant ? 1.3 : this.heatHp) * pEnd.hp, this.heatAtk * pEnd.atk);
       this.enemyGroup.add(partner.zone);
       this.physics.add.collider(partner.zone, this.solids);
+      this.physics.add.collider(partner.zone, this.liquids);
       this.enemies.push(partner);
       this.boss.partner = partner;
       partner.partner = this.boss;
@@ -713,6 +717,19 @@ export class RoomScene extends BaseScene implements World {
     return flying ? c !== CELL.Wall : isWalkable(c);
   }
 
+  safeSpotNear(px: number, py: number, radius: number, flying = false): { x: number; y: number } {
+    return findSafeSpotNear(this.layout, px, py, radius, flying, TILE);
+  }
+
+  private enforceActorBounds(actor: Actor, flying: boolean): void {
+    const res = clampToWalkable(this.layout, actor.x, actor.y, actor.radius, actor.safeX, actor.safeY, flying, TILE);
+    if (res.corrected) actor.reposition(res.x, res.y, res.wasBlocked);
+    if (flying || isCellWalkableAt(this.layout, actor.x, actor.y, TILE)) {
+      actor.safeX = actor.x;
+      actor.safeY = actor.y;
+    }
+  }
+
   flowDir(px: number, py: number): { x: number; y: number } {
     return this.flow.dirFrom(px, py, this.player.x, this.player.y);
   }
@@ -850,10 +867,15 @@ export class RoomScene extends BaseScene implements World {
     lookAhead(this, dt);
     this.auras.update(dt, this.enemies);
     this.foliage?.update(dt, this.player.x, this.player.y, this.player.moving);
+    this.enforceActorBounds(this.player, false);
     this.flow.update(this.player.x, this.player.y);
     this.player.hasteMul = this.combat.hasteTime > 0 ? 1 + this.combat.hasteAmount / 100 : 1;
     this.player.update(dt);
-    for (const e of this.enemies.slice()) e.update(dt);
+    this.enforceActorBounds(this.player, false);
+    for (const e of this.enemies.slice()) {
+      e.update(dt);
+      if (e.alive) this.enforceActorBounds(e, !!e.def.flying);
+    }
     for (const pr of this.projectiles.list) if (pr.alive) this.combat.updateProjectile(pr, dt);
     this.projectiles.compact();
     this.combat.update(dt);
@@ -958,6 +980,9 @@ export class RoomScene extends BaseScene implements World {
     this.scene.get('Hud').cameras.main.fadeOut(300, 11, 10, 20);
     this.cameras.main.once(Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, () => {
       this.scene.stop('Hud');
+      this.run.pendingRoom = null;
+      services.save!.markDirty();
+      services.save!.flush();
       if (lastRow) {
         const result = RunManager.advance(this.run);
         if (result === 'victory') {
@@ -1028,6 +1053,8 @@ export class RoomScene extends BaseScene implements World {
   }
 
   private cleanup(): void {
+    this.spawning = 0;
+    this.wavesLeft = 0;
     this.roomRenderer?.destroy();
     this.lighting?.destroy();
     this.projectiles?.clearAll();

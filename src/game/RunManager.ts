@@ -4,7 +4,7 @@ import { services } from '@/core/services';
 import { t } from '@/core/i18n';
 import { MUTATOR_EMBER_BONUS, mutatorById, weeklyMutator } from '@/data/mutators';
 import { endlessMilestone, endlessRegion, isEndlessDepth } from './endless';
-import type { FloorMap, ItemInstance, MapNode, RunState, SaveData, Slot } from '@/data/types';
+import type { FloorMap, ItemInstance, MapNode, NodeKind, PendingRoom, RunState, SaveData, Slot } from '@/data/types';
 import { heroDef } from '@/data/heroes';
 import { BOONS, boonDef, boonValue, type BoonDef, type SpiritId } from '@/data/boons';
 import { relicDef, RELICS, type RelicDef, type RelicTier } from '@/data/relics';
@@ -162,7 +162,7 @@ export class RunManager {
   }
 
   static node(run: RunState): MapNode {
-    return nodeById(run.map, run.nodeId)!;
+    return nodeById(run.map, run.nodeId) ?? run.map.nodes.find((n) => n.kind === 'start') ?? run.map.nodes[0];
   }
 
   static choices(run: RunState): MapNode[] {
@@ -177,8 +177,47 @@ export class RunManager {
     return RunManager.node(run);
   }
 
+  static resolveNodeRoom(run: RunState, node: MapNode): PendingRoom {
+    let kind: NodeKind = node.kind;
+    let reward = node.content;
+    if (kind === 'mystery') {
+      const r = new Rng(hashString(`${run.seed}:mystery:${node.id}`));
+      kind = r.weighted([['event', 45], ['treasure', 20], ['combat', 20], ['elite', 8], ['shop', 7]] as const);
+      if (kind === 'combat' || kind === 'elite') reward = r.pick(['relic', 'item', 'boon']);
+    }
+    return { kind, reward, content: node.content, modifier: node.modifier };
+  }
+
+  static enterNode(run: RunState, nodeId: string): PendingRoom {
+    const node = RunManager.moveTo(run, nodeId);
+    const room = RunManager.resolveNodeRoom(run, node);
+    run.pendingRoom = room;
+    persist();
+    return room;
+  }
+
+  static resumeTarget(run: RunState): { scene: 'Room'; data: PendingRoom } | { scene: 'RunMap' } {
+    if (run.pendingRoom) return { scene: 'Room', data: run.pendingRoom };
+    if (RunManager.choices(run).length === 0) {
+      const node = RunManager.node(run);
+      if (node && node.kind !== 'start') {
+        const room = RunManager.resolveNodeRoom(run, node);
+        run.pendingRoom = room;
+        persist();
+        return { scene: 'Room', data: room };
+      }
+      const start = run.map.nodes.find((n) => n.kind === 'start') ?? run.map.nodes[0];
+      if (start) {
+        run.nodeId = start.id;
+        persist();
+      }
+    }
+    return { scene: 'RunMap' };
+  }
+
   /** Called after the final node of a floor is completed. Returns 'floor' | 'depth' | 'victory'. */
   static advance(run: RunState): 'floor' | 'depth' | 'victory' {
+    run.pendingRoom = null;
     const s = save();
     let result: 'floor' | 'depth' | 'victory';
     if (run.floor < FLOORS_PER_DEPTH) {

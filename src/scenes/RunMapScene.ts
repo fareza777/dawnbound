@@ -148,7 +148,8 @@ export class RunMapScene extends BaseScene {
         }
       }
     }
-    for (const n of map.nodes) this.drawNode(n, visited.has(n.id), n.id === run.nodeId, choices.has(n.id));
+    const deadEndCurrent = choices.size === 0;
+    for (const n of map.nodes) this.drawNode(n, visited.has(n.id), n.id === run.nodeId, choices.has(n.id) || (deadEndCurrent && n.id === run.nodeId));
     const content = this.children.list.slice(contentStart);
     const y = this.mapTop - 28;
     const h = this.H - this.adReserve - 192 - y;
@@ -266,15 +267,15 @@ export class RunMapScene extends BaseScene {
     services.audio?.sfx('ui_confirm');
     services.platform?.haptic('medium');
     const run = this.run;
-    const node = RunManager.moveTo(run, n.id);
-    let kind: NodeKind = node.kind;
-    let reward = node.content;
-    if (kind === 'mystery') {
-      const r = new Rng(hashString(`${run.seed}:mystery:${n.id}`));
-      kind = r.weighted([['event', 45], ['treasure', 20], ['combat', 20], ['elite', 8], ['shop', 7]] as const);
-      if (kind === 'combat' || kind === 'elite') reward = r.pick(['relic', 'item', 'boon']);
+    if (n.id === run.nodeId && RunManager.choices(run).length === 0) {
+      const room = RunManager.resolveNodeRoom(run, n);
+      run.pendingRoom = room;
+      services.save!.markDirty();
+      this.goTo('Room', room);
+      return;
     }
-    this.goTo('Room', { kind, reward, content: node.content, modifier: node.modifier });
+    const room = RunManager.enterNode(run, n.id);
+    this.goTo('Room', room);
   }
 }
 

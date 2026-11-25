@@ -42,4 +42,16 @@ describe('FlowField', () => {
     expect(dot).toBeLessThan(0.99);
     expect(d.x).toBeGreaterThan(0);
   });
+
+  it('falls back to nearest walkable cell when target coordinate sits inside a wall', () => {
+    const f = new FlowField(wallRoom());
+    // Target inside the wall column at (2, 1): pathfinding must still produce finite directions, not freeze.
+    const wallTarget = centre(2, 1);
+    f.update(wallTarget.x, wallTarget.y);
+    const from = centre(0, 0);
+    const d = f.dirFrom(from.x, from.y, wallTarget.x, wallTarget.y);
+    expect(Number.isFinite(d.x)).toBe(true);
+    expect(Number.isFinite(d.y)).toBe(true);
+    expect(Math.hypot(d.x, d.y)).toBeCloseTo(1, 3);
+  });
 });

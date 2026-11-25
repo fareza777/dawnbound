@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import { SCENES } from './scenes';
 import { AUTO_LOW_KEY, autoQuality, computeViewport, savedHiRes, savedTextScale, setView, view } from './core/viewport';
+import { services } from './core/services';
 import { installBitmapTextDefaults, setTextScale } from './ui/theme';
 
 const hiRes = savedHiRes();
@@ -53,8 +54,17 @@ window.addEventListener('resize', () => {
 
 (window as unknown as { __game: Phaser.Game }).__game = game;
 
+game.canvas?.addEventListener('webglcontextlost', (e) => {
+  e.preventDefault();
+  services.save?.flush();
+});
+game.canvas?.addEventListener('webglcontextrestored', () => {
+  services.save?.flush();
+  window.location.reload();
+});
+
 // Frame-rate guard: if hi-res rendering runs slowly on this device (and the player never picked a quality),
-// remember that and restart once in the lighter pixel-resolution mode.
+// remember that and restart once in the lighter pixel-resolution mode (never mid-run).
 if (hiRes && vp.res > 1 && autoQuality()) {
   setTimeout(() => {
     const samples: number[] = [];
@@ -70,7 +80,13 @@ if (hiRes && vp.res > 1 && autoQuality()) {
         } catch {
           return;
         }
-        window.location.reload();
+        if (services.save && !services.save.data.settings.qualityUser) {
+          services.save.data.settings.quality = 'low';
+          services.save.markDirty();
+          services.save.flush();
+        }
+        const inRun = game.scene.isActive('Room') || game.scene.isActive('RunMap') || game.scene.isActive('Transition');
+        if (!inRun) window.location.reload();
       }
     }, 500);
   }, 6000);

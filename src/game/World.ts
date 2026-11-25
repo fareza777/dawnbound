@@ -61,6 +61,7 @@ export interface World {
   killEnemy(e: Enemy): void;
   dotEnemy(e: Enemy, amount: number): void;
   isWalkableAt(px: number, py: number, flying: boolean): boolean;
+  safeSpotNear(px: number, py: number, radius: number, flying?: boolean): { x: number; y: number };
   /** Direction (unit vector) towards the player following the flow field. */
   flowDir(px: number, py: number): { x: number; y: number };
   hasLineOfSight(ax: number, ay: number, bx: number, by: number): boolean;

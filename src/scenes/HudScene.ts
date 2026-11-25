@@ -90,7 +90,10 @@ export class HudScene extends Phaser.Scene {
     // A scene's own event emitter survives restarts: without this, every room added another copy of each
     // listener and one item showed up as 10 notifications after 10 rooms.
     const custom = ['bossIntro', 'itemGained', 'relicGained', 'roomCleared', 'bossPhase', 'hurt', 'blessing', 'newEnemy', 'tip'];
-    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => custom.forEach((n) => this.events.off(n)));
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
+      custom.forEach((n) => this.events.off(n));
+      this.buttons.forEach((b) => b.bg.destroy());
+    });
     this.events.on('bossIntro', (def: BossDef) => this.bossIntro(def));
     this.events.on('itemGained', (it: ItemInstance) => this.pushFeed(itemName(it), RARITY_COLORS[it.rarity]));
     this.events.on('relicGained', (id: string) => {

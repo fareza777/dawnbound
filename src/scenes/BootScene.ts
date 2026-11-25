@@ -2,7 +2,7 @@ import { bus } from '@/core/events';
 import { CloudSave } from '@/core/cloudSave';
 import Phaser from 'phaser';
 import { COLORS, createUiTextures, FONT, fontSuffix, setTextScale } from '@/ui/theme';
-import { view } from '@/core/viewport';
+import { view, savedHiRes } from '@/core/viewport';
 import { createFxTextures } from '@/gfx/fxTextures';
 import { createHiResSkin } from '@/ui/skin';
 import { services } from '@/core/services';
@@ -37,6 +37,7 @@ export class BootScene extends Phaser.Scene {
     await platform.init();
     await save.restoreFromNative();
     const s = save.data.settings;
+    if (!s.qualityUser && !savedHiRes()) s.quality = 'low';
     setTextScale(s.textScale ?? 1);
     setLang(s.lang);
     platform.hapticsEnabled = s.vibration;
